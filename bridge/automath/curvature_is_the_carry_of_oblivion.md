@@ -230,12 +230,12 @@ Fold becomes a ring homomorphism:
 
 $$\Phi(x \oplus y) = \Phi(x) \oplus \Phi(y)$$
 
-This fact, verified in Lean 4, is the discrete version of conjecture OP-I-2:
+This fact is structurally implied by the Lean 4 theorems — the carry indicator $\kappa$ is defined in terms of the Fibonacci threshold $F_{m+3}$, which loses its constraining power when the No11 condition is removed — but the zero-constraint limit itself has not been directly formalized in Lean 4. It is the discrete version of conjecture OP-I-2:
 
 | OP-I-2 (continuous) | automath (discrete) |
 |:---|:---|
 | $\Phi \to 0$ (oblivion field vanishes) | No11 constraint vanishes (all words are stable) |
-| $\delta \to 0$ (composition drift vanishes) | $\kappa = 0$ (carry defect vanishes) |
+| $\delta \to 0$ (composition drift vanishes) | $\kappa = 0$ (carry defect vanishes) — *structurally implied, not directly Lean-verified* |
 | Hom $\in \{0,1\}$ (standard category) | fold is a ring homomorphism |
 | **Unproven conjecture** | **Proven in Lean 4** |
 
