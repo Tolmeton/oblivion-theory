@@ -32,13 +32,13 @@ $$F_{ij} \neq 0 \iff d(\Phi T) \neq 0$$
 | III | Markov 圏の向こう側 | v1.0 | Z₂-次数付き CPS; ボソン-フェルミオン対応 |
 | IV | なぜ効果量は小さいか | v1.0 | 効果量減衰定理 |
 | V | 繰り込みは忘却である | v1.0 | 忘却 β 関数; c 定理 β_Φ ≥ 0 |
-| VI | 行為可能性は忘却である | v1.0 | G∘F 結晶化; Coherence τ-不変性 |
+| VI | 忘却が扉を開く | v1.0 | G∘F 結晶化; Coherence τ-不変性 |
 | VII | 知覚は忘却である | v1.3 | 普遍フィルトレーション U_arrow ≤ ⋯ ≤ U_self |
 | VIII | 存在は忘却に先行する | v1.8 | α-忘却濾過; 米田の超克 |
 | IX | エントロピーは忘却である | 草稿 | CPS エントロピー; 忘却の第二法則 |
-| X | Context Rot は忘却である | v0.1 | CM 戦略の圏論的分析 |
-| XI | プロンプトは忘却である | v0.7 | 制約-符号化分離仮説 |
-| XII | 速度は忘却である | v0.9 | 可区別性境界の運動学 |
+| X | 長距離エージェントはいかに忘れるか | v0.1 | CM 戦略の圏論的分析 |
+| XI | プロンプトは忘却を選ぶ | v0.7 | 制約-符号化分離仮説 |
+| XII | 欠如は存在より速い | v0.9 | 可区別性境界の運動学 |
 | XIII | 時空は忘却である | v0.1 | CPS スパン → Einstein 方程式 (予想 D1-D3) |
 
 ### 番外編
@@ -81,4 +81,4 @@ CC BY-NC-ND 4.0 (ドキュメント)。[LICENSE](LICENSE) 参照。
 
 ## 著者
 
-**Tolmetes** (Makaron) — [@tolmeton](https://github.com/Tolmeton)
+**Tolmetes** — [@tolmeton](https://github.com/Tolmeton)

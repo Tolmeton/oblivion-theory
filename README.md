@@ -32,13 +32,13 @@ This is not a metaphor. It is a proved theorem in information geometry.
 | III | Beyond Markov Categories | v1.0 | Z₂-graded CPS; boson-fermion correspondence |
 | IV | Why Effect Sizes Are Small | v1.0 | Effect size decay theorem |
 | V | Renormalization is Oblivion | v1.0 | Oblivion β-function; c-theorem β_Φ ≥ 0 |
-| VI | Affordance is Oblivion | v1.0 | G∘F crystallization; Coherence τ-Invariance |
+| VI | Forgetting Opens Doors | v1.0 | G∘F crystallization; Coherence τ-Invariance |
 | VII | Perception is Oblivion | v1.3 | Universal filtration U_arrow ≤ ⋯ ≤ U_self |
 | VIII | Existence Precedes Oblivion | v1.8 | α-oblivion filtration; Yoneda beyond identity |
 | IX | Entropy is Oblivion | draft | CPS entropy; the second law of oblivion |
-| X | Context Rot is Oblivion | v0.1 | Categorical analysis of CM strategies |
-| XI | Prompting is Oblivion | v0.7 | Constraint-encoding separation hypothesis |
-| XII | Speed is Oblivion | v0.9 | Kinematics of distinguishability boundaries |
+| X | How Long-Range Agents Forget | v0.1 | Categorical analysis of CM strategies |
+| XI | Prompts Select What to Forget | v0.7 | Constraint-encoding separation hypothesis |
+| XII | Absence Outruns Presence | v0.9 | Kinematics of distinguishability boundaries |
 | XIII | Spacetime is Oblivion | v0.1 | CPS span → Einstein equation (Conjectures D1-D3) |
 
 ### Standalone
@@ -81,4 +81,4 @@ CC BY-NC-ND 4.0 (documentation). See [LICENSE](LICENSE).
 
 ## Author
 
-**Tolmetes** (Makaron) — [@tolmeton](https://github.com/Tolmeton)
+**Tolmetes** — [@tolmeton](https://github.com/Tolmeton)
