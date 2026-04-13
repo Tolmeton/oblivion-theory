@@ -50,14 +50,6 @@ $$F_{ij} \neq 0 \iff d(\Phi T) \neq 0$$
 - **類推的自由エネルギー** — 類推の自由エネルギー
 - **レター: Inoue 定理との合流** — CPS0' と圏論的独立性の接続
 
-## 橋渡しプロジェクト
-
-### [Automath Bridge](bridge/automath/)
-
-本理論と [The Omega Project (automath)](https://github.com/the-omega-institute/automath) (Lean 4, 3,427+ 機械検証済み定理) の構造的対応を研究するプロジェクト。
-
-核心的発見: automath の **carry defect 定理** (Lean 証明済) は、忘却論の **合成ドリフト** (予想 OP-I-2) の離散インスタンスである。[対応辞書](bridge/automath/dictionary.md) を参照。
-
 ## 数学的基盤
 
 - **情報幾何学** (Amari, Chentsov): 統計多様体、α-接続、Fisher 計量

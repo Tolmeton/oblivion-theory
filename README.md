@@ -50,14 +50,6 @@ This is not a metaphor. It is a proved theorem in information geometry.
 - **Analogical Free Energy** — Free energy of analogy
 - **Letter: Confluence with the Inoue Theorem** — CPS0' meets categorical independence
 
-## Bridge Projects
-
-### [Automath Bridge](bridge/automath/)
-
-Structural correspondence between this theory and [The Omega Project (automath)](https://github.com/the-omega-institute/automath) — a Lean 4 project with 3,427+ machine-verified theorems derived from a single constraint (no-consecutive-1s on binary words).
-
-Key finding: automath's **carry defect theorem** (Lean-proved) is a discrete instance of our **composition drift** (Conjecture OP-I-2). See the [dictionary](bridge/automath/dictionary.md).
-
 ## Mathematical Foundation
 
 - **Information geometry** (Amari, Chentsov): statistical manifolds, α-connections, Fisher metric
