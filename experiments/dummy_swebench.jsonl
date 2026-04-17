@@ -1,0 +1,12 @@
+{"instance_id": "test_1", "repo": "test/repo1", "problem_statement": "Test issue 1", "patch": "diff --git a b", "test_patch": "test_patch_1", "resolved": true}
+{"instance_id": "test_2", "repo": "test/repo1", "problem_statement": "Test issue 2 that is a bit longer", "patch": "diff --git a b\n+ new line", "test_patch": "test_patch_2\n+ test", "resolved": false}
+{"instance_id": "test_3", "repo": "test/repo2", "problem_statement": "Short", "patch": "diff", "test_patch": "test", "resolved": true}
+{"instance_id": "test_4", "repo": "test/repo2", "problem_statement": "Medium length issue", "patch": "patch patch patch", "test_patch": "test test test test test", "success": 1}
+{"instance_id": "test_5", "repo": "test/repo3", "problem_statement": "Another issue", "patch": "x", "test_patch": "y", "resolved": false}
+{"instance_id": "test_6", "repo": "test/repo3", "problem_statement": "Issue 6", "patch": "x", "test_patch": "y", "resolved": true}
+{"instance_id": "test_7", "repo": "test/repo4", "problem_statement": "Issue 7", "patch": "x", "test_patch": "y", "resolved": true}
+{"instance_id": "test_8", "repo": "test/repo4", "problem_statement": "Issue 8", "patch": "x", "test_patch": "y", "resolved": false}
+{"instance_id": "test_9", "repo": "test/repo5", "problem_statement": "Issue 9", "patch": "x", "test_patch": "y", "resolved": true}
+{"instance_id": "test_10", "repo": "test/repo5", "problem_statement": "Issue 10", "patch": "x", "test_patch": "y", "resolved": true}
+{"instance_id": "test_11", "repo": "test/repo6", "problem_statement": "Issue 11", "patch": "x", "test_patch": "y", "resolved": false}
+{"instance_id": "test_12", "repo": "test/repo6", "problem_statement": "Issue 12", "patch": "x", "test_patch": "y", "resolved": true}

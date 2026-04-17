@@ -1,0 +1,6 @@
+formal_n,coupling_id,sizes,eta_proxy,eta_stderr,eta_anchor_lpa,gamma_anchor_lpa,gamma_phi_proxy_lpa,status_lpa,eta_anchor_de2,gamma_anchor_de2,gamma_phi_proxy_de2,status_de2,target_ratio_lpa,target_ratio_de2
+2.680000,n2.68_m1.500_lam1.000,"4,6,8",1.4496773519,0.3533116373,0.0160000000,0.4730000000,,out_of_anchor_band,0.0380000000,0.6510000000,,out_of_anchor_band,,
+2.700000,n2.70_m1.000_lam0.500,"4,6,8",2.2782092415,0.3392056977,0.0160000000,0.4680000000,,out_of_anchor_band,0.0370000000,0.6030000000,,out_of_anchor_band,,
+2.780000,n2.78_m0.400_lam1.000,"4,6,8",2.3727640585,0.3421390364,0.0160000000,0.4270000000,,out_of_anchor_band,0.0320000000,0.4620000000,,out_of_anchor_band,,
+2.900000,n2.90_m0.430_lam0.600,"4,6,8",1.6727692419,0.3368466509,0.0150000000,0.3530000000,,out_of_anchor_band,0.0250000000,0.3670000000,,out_of_anchor_band,,
+3.000000,n3.00_m1.500_lam0.500,"4,6,8",1.0109701700,0.4038514896,0.0130000000,0.2980000000,,out_of_anchor_band,0.0190000000,0.2940000000,,out_of_anchor_band,,

@@ -1,0 +1,340 @@
+{
+  "benchmarks": {
+    "frg_current": {
+      "eta": 0.036,
+      "nu": 0.644,
+      "source": "Paper V §5.5.9 DE2 3D Ising benchmark"
+    },
+    "literature": {
+      "beta_c": 0.2216544,
+      "binder": 0.4656,
+      "eta": 0.0363,
+      "nu": 0.63,
+      "source": "3D Ising literature reference",
+      "xi_over_L": 0.6431
+    }
+  },
+  "binder": {
+    "per_size": {
+      "10": {
+        "binder": {
+          "stderr": 0.018515722910855355,
+          "value": 0.477998216023486
+        },
+        "susceptibility": {
+          "stderr": 1.7916411114841195,
+          "value": 29.122120974144
+        },
+        "tau_int": {
+          "cluster_size": 1.3292661779355743,
+          "magnetization_abs": 3.9396100035070982
+        },
+        "xi_over_L": {
+          "stderr": 0.04553288525602651,
+          "value": 0.5669759403094826
+        }
+      },
+      "12": {
+        "binder": {
+          "stderr": 0.018903561113269726,
+          "value": 0.5032918774970483
+        },
+        "susceptibility": {
+          "stderr": 3.18429025537988,
+          "value": 50.99468415647221
+        },
+        "tau_int": {
+          "cluster_size": 1.6013816126987102,
+          "magnetization_abs": 10.93908211195212
+        },
+        "xi_over_L": {
+          "stderr": 0.0463049146776277,
+          "value": 0.6738333314627605
+        }
+      },
+      "14": {
+        "binder": {
+          "stderr": 0.024269901030503364,
+          "value": 0.4633570288054074
+        },
+        "susceptibility": {
+          "stderr": 4.174921334950828,
+          "value": 60.59453653647814
+        },
+        "tau_int": {
+          "cluster_size": 2.4199197075021814,
+          "magnetization_abs": 6.982141850281577
+        },
+        "xi_over_L": {
+          "stderr": 0.041210039860968106,
+          "value": 0.6296061227004435
+        }
+      },
+      "8": {
+        "binder": {
+          "stderr": 0.016204618695349244,
+          "value": 0.512894276806484
+        },
+        "susceptibility": {
+          "stderr": 1.0520761168408141,
+          "value": 19.86782114109375
+        },
+        "tau_int": {
+          "cluster_size": 0.8906423341649166,
+          "magnetization_abs": 4.242986090052683
+        },
+        "xi_over_L": {
+          "stderr": 0.030906814191927645,
+          "value": 0.6511700691164956
+        }
+      }
+    },
+    "stderr": 0.00944016707331695,
+    "value": 0.49393387143853906
+  },
+  "critical_point": {
+    "beta": 0.2216544,
+    "beta_points": 5,
+    "beta_window": 0.006,
+    "source": "3D Ising literature reference"
+  },
+  "diagnostics": {
+    "beta_grid": [
+      0.2156544,
+      0.2186544,
+      0.2216544,
+      0.2246544,
+      0.2276544
+    ],
+    "fit_ranges": {
+      "block_size": 10,
+      "eta_sizes": [
+        8,
+        10,
+        12,
+        14
+      ],
+      "nu_sizes": [
+        10,
+        12,
+        14
+      ]
+    },
+    "nu_channels": {
+      "binder": {
+        "fit": {
+          "intercept": -0.07983770984907108,
+          "method": "binder: dO/dβ ~ L^(1/nu)",
+          "slope": 1.3466888569961397,
+          "slope_stderr": 0.3763046606277972
+        },
+        "per_size": {
+          "10": {
+            "intercept": 0.4784011398970108,
+            "slope": 20.397217792026115,
+            "slope_stderr": 2.187652239718782
+          },
+          "12": {
+            "intercept": 0.46271439968321126,
+            "slope": 26.419280411391792,
+            "slope_stderr": 2.2189824229774233
+          },
+          "14": {
+            "intercept": 0.43927531451134394,
+            "slope": 32.17528910546377,
+            "slope_stderr": 2.2980306703955584
+          }
+        },
+        "stderr": 0.20749377114755305,
+        "value": 0.7425620215129369
+      },
+      "xi_over_L": {
+        "fit": {
+          "intercept": 0.28619785488069477,
+          "method": "xi_over_L: dO/dβ ~ L^(1/nu)",
+          "slope": 1.5160754056491361,
+          "slope_stderr": 0.32349671231817667
+        },
+        "per_size": {
+          "10": {
+            "intercept": 0.6618187839647927,
+            "slope": 44.19917633370957,
+            "slope_stderr": 4.205463117275131
+          },
+          "12": {
+            "intercept": 0.6737527627065383,
+            "slope": 56.78309204121523,
+            "slope_stderr": 4.052585246275745
+          },
+          "14": {
+            "intercept": 0.7188513333905072,
+            "slope": 73.14436833141708,
+            "slope_stderr": 4.29292942838566
+          }
+        },
+        "stderr": 0.14074347389828562,
+        "value": 0.6595977985487016
+      }
+    },
+    "pass_breakdown": {
+      "binder": {
+        "delta": 0.02833387143853905,
+        "pass": true,
+        "target": 0.4656,
+        "tolerance": 0.2,
+        "value": 0.49393387143853906
+      },
+      "eta": {
+        "delta": 0.14499868936719795,
+        "pass": true,
+        "target": 0.0363,
+        "tolerance": 0.2,
+        "value": -0.10869868936719795
+      },
+      "nu": {
+        "delta": 0.05574086280572499,
+        "pass": true,
+        "target": 0.63,
+        "tolerance": 0.25,
+        "value": 0.685740862805725
+      },
+      "xi_over_L": {
+        "delta": 0.008466545785684843,
+        "pass": true,
+        "target": 0.6431,
+        "tolerance": 0.25,
+        "value": 0.6346334542143152
+      }
+    }
+  },
+  "dimension_mode": "integer_proxy",
+  "eta_estimate": {
+    "method": "chi ~ L^(2-eta)",
+    "stderr": 0.1431499392724642,
+    "value": -0.10869868936719795
+  },
+  "model": "3d_ising_wolff",
+  "nu_estimate": {
+    "method": "inverse-variance weighted combination of dU/dβ and d(ξ/L)/dβ channels",
+    "stderr": 0.1164763852344863,
+    "value": 0.685740862805725
+  },
+  "pass": true,
+  "sizes": [
+    8,
+    10,
+    12,
+    14
+  ],
+  "stderr": {
+    "binder": 0.00944016707331695,
+    "eta_estimate": 0.1431499392724642,
+    "nu_estimate": 0.1164763852344863,
+    "susceptibility": 2.5507322046639107,
+    "xi_over_L": 0.019670620194921967
+  },
+  "susceptibility": {
+    "per_size": {
+      "10": {
+        "stderr": 1.7916411114841195,
+        "value": 29.122120974144
+      },
+      "12": {
+        "stderr": 3.18429025537988,
+        "value": 50.99468415647221
+      },
+      "14": {
+        "stderr": 4.174921334950828,
+        "value": 60.59453653647814
+      },
+      "8": {
+        "stderr": 1.0520761168408141,
+        "value": 19.86782114109375
+      }
+    },
+    "stderr": 2.5507322046639107,
+    "value": 40.144790702047025
+  },
+  "tau_int": {
+    "cluster_size": 1.5603024580753457,
+    "magnetization_abs": 6.525955013948369
+  },
+  "xi_over_L": {
+    "per_size": {
+      "10": {
+        "binder": {
+          "stderr": 0.018515722910855355,
+          "value": 0.477998216023486
+        },
+        "susceptibility": {
+          "stderr": 1.7916411114841195,
+          "value": 29.122120974144
+        },
+        "tau_int": {
+          "cluster_size": 1.3292661779355743,
+          "magnetization_abs": 3.9396100035070982
+        },
+        "xi_over_L": {
+          "stderr": 0.04553288525602651,
+          "value": 0.5669759403094826
+        }
+      },
+      "12": {
+        "binder": {
+          "stderr": 0.018903561113269726,
+          "value": 0.5032918774970483
+        },
+        "susceptibility": {
+          "stderr": 3.18429025537988,
+          "value": 50.99468415647221
+        },
+        "tau_int": {
+          "cluster_size": 1.6013816126987102,
+          "magnetization_abs": 10.93908211195212
+        },
+        "xi_over_L": {
+          "stderr": 0.0463049146776277,
+          "value": 0.6738333314627605
+        }
+      },
+      "14": {
+        "binder": {
+          "stderr": 0.024269901030503364,
+          "value": 0.4633570288054074
+        },
+        "susceptibility": {
+          "stderr": 4.174921334950828,
+          "value": 60.59453653647814
+        },
+        "tau_int": {
+          "cluster_size": 2.4199197075021814,
+          "magnetization_abs": 6.982141850281577
+        },
+        "xi_over_L": {
+          "stderr": 0.041210039860968106,
+          "value": 0.6296061227004435
+        }
+      },
+      "8": {
+        "binder": {
+          "stderr": 0.016204618695349244,
+          "value": 0.512894276806484
+        },
+        "susceptibility": {
+          "stderr": 1.0520761168408141,
+          "value": 19.86782114109375
+        },
+        "tau_int": {
+          "cluster_size": 0.8906423341649166,
+          "magnetization_abs": 4.242986090052683
+        },
+        "xi_over_L": {
+          "stderr": 0.030906814191927645,
+          "value": 0.6511700691164956
+        }
+      }
+    },
+    "stderr": 0.019670620194921967,
+    "value": 0.6346334542143152
+  }
+}

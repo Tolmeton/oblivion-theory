@@ -1,0 +1,39 @@
+{
+  "probe_name": "paper_xi_third_model_probe_v1",
+  "mode": "calibration_first_main_bench_blocked_until_source_import",
+  "supported_provider_modes": [
+    "openai",
+    "anthropic"
+  ],
+  "m3_initial_candidate": {
+    "provider": "openai",
+    "model": "gpt-4-0125-preview",
+    "reason": "run_api compatibility first within the currently supported provider adapters; this is an initial local execution candidate, not a claim about the latest or best frontier model"
+  },
+  "generation": {
+    "temperature": 0,
+    "top_p": 1,
+    "max_tokens": 256,
+    "tools": "off",
+    "browsing": "off"
+  },
+  "calibration_suite": {
+    "prompt_file": "/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/paper_xi_third_model_cfmt12.jsonl",
+    "output_file": "/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/results/paper_xi_third_model_cfmt12_openai.jsonl"
+  },
+  "main_bench": {
+    "topic_manifest_file": "/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/paper_xi_third_model_main_bench.template.json",
+    "status": "source_import_required",
+    "readiness": "blocked_until_exact_prompt_sources_are_versioned",
+    "conditions": [
+      "A",
+      "B"
+    ],
+    "mvp_n_per_condition": 20,
+    "full_n_per_condition": 50
+  },
+  "decision_rule": {
+    "mvp_pass": "ord(c_fmt) matches ord(d_struct_star) and content metrics remain near-null",
+    "mvp_fail": "demote C4 to local descriptor and stop before full run"
+  }
+}

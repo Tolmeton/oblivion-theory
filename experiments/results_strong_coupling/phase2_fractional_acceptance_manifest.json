@@ -1,0 +1,62 @@
+{
+  "block_size": 8,
+  "blocking_reason": "Metropolis-family exhausted",
+  "component_summary": {
+    "blocking_reason": "Metropolis-family exhausted",
+    "largest_calibrated_component_size": 0,
+    "local_foothold": false,
+    "per_formal_n": {},
+    "selected_component_couplings": [],
+    "selected_component_formal_n": null
+  },
+  "formal_n": [
+    2.78
+  ],
+  "lambda_like_grid": [
+    1.0,
+    1.05,
+    1.1,
+    1.15,
+    1.2
+  ],
+  "largest_calibrated_component_size": 0,
+  "local_foothold": false,
+  "mass_like_grid": [
+    0.9,
+    0.95,
+    1.0,
+    1.05,
+    1.1
+  ],
+  "measure": 240,
+  "proposal_scale": 0.65,
+  "proxy_kind": "t_projected_direct",
+  "seed": 171,
+  "selected_component_couplings": [],
+  "selected_rows": {
+    "2.780000": {
+      "acceptance_by_L": "0.5355497685|0.5238476562|0.5166083333|0.5161747685",
+      "eta_anchor_de2": 0.032,
+      "eta_proxy": 1.8705877187,
+      "lambda_like": 1.05,
+      "mass_like": 1.05,
+      "proposal_scale_final_by_L": "0.6597624565|0.6868261472|0.7007715000|0.7007715000",
+      "score_de2": 1.8385877187,
+      "split_stability_pass": true,
+      "stability_gate_pass": true,
+      "status_de2": "out_of_anchor_band",
+      "status_lpa": "out_of_anchor_band",
+      "susceptibility_spike_ratio": 1.0030262204,
+      "susceptibility_values": "0.3182545890|0.3477670643|0.3498782507|0.3498782087",
+      "xi_values": "0.1008306057|0.0966925967|0.0793412891|0.0542338434",
+      "xi_window_pass": true
+    }
+  },
+  "sizes": [
+    6,
+    8,
+    10,
+    12
+  ],
+  "warmup": 120
+}

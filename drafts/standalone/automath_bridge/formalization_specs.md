@@ -1,0 +1,240 @@
+# Formalization Specs — Open 1-3 for Codex Delegation
+
+Automath Bridge の残存 Open 問題 3 件の形式化仕様書。
+Codex (GPT-5.4) または Lean 4 形式化エージェントへの委譲用。
+
+**委譲先**: codex-mcp / copilot (GPT-5.4:xhigh) / gemini-cli (素材生成)
+**前提**: dictionary.md v0.4 + curvature_is_the_carry_of_oblivion.md の定義を使用
+
+---
+
+## Open 1: 離散化 bridge の strict 部分と defect 2-cell の分離
+
+### 問題の定式化
+
+dictionary.md §2.A で定義された離散化候補 D について、
+
+- どこまでが ordinary functor として既に閉じているか
+- どこからが carry defect を伴う higher coherence の問題か
+
+を切り分ける。
+
+`D: Man -> Hyp` をそのまま full generality で問うのは粗すぎる。理由は二つ:
+
+1. 一般の統計多様体から hypercube への写像には chart / cell decomposition / observable class の固定が要る。
+2. automath 側で未解決なのは単なる射の合成ではなく、加法・carry・composition drift を伴う monoidal coherence である。
+
+**D の定義** (dictionary §2.A):
+```
+D: Man → Hyp
+D(M) = {0,1}^n       (n = dim M)
+D(Φ) = f: Word n → ℤ (忘却場の離散化)
+D(T) = A ⊆ Fin n     (Chebyshev 1-形式の離散化。dT=0 なら標準基底)
+D(d) = deltaSet       (外微分の離散化)
+D(∧) = carry defect   (外積の離散化)
+D(∫) = walshFlux      (境界積分の離散化)
+```
+
+**再定式化された証明課題**:
+
+(F1) strict 1-functor 部分
+- 部分圏 `CubeExp_proj` を取る:
+  - 対象: product Bernoulli family `M_I = (Δ^1)^I`
+  - 射: 座標忘却 `π_{J ⊆ I}`
+- 対応する離散側 `Hyp_proj`:
+  - 対象: `{0,1}^I`
+  - 射: `restrict_{J ⊆ I}`
+- このとき `D_proj(π_{J ⊆ I}) = restrict_{J ⊆ I}` と置けば、ordinary composition の意味で strict functor になるはずである。
+
+(F2) chain-map 部分
+- observable を multilinear / cubical cochain に制限する。
+- この制限の下で
+  - `D(d) = deltaSet`
+  - `D(∫) = walshFlux`
+  が単なる比喩ではなく、mixed partial の cell 積分として実定理になるかを問う。
+
+(F3) actual core: defect-bearing coherence
+- 本当に難しいのは
+  - `D(x ⊕ y) =? D(x) ⊕ D(y)`
+  - `D(g ∘ f) =? D(g) ∘ D(f)` を monoidal / additive structure まで含めて要求したときのズレ
+- ここでは ordinary functor ではなく、
+  - `strict functor + defect 2-cell`
+  - `lax monoidal functor`
+  - `pseudofunctor`
+  のどれとして定式化すべきかが open である。
+
+### 攻略方向
+
+**戦略 A (strict part の固定)**:
+- `CubeExp_proj -> Hyp_proj` に問題を制限する
+- `D_proj(π_{J ⊆ I}) := restrict_{J ⊆ I}` と置く
+- automath の `restrict_functorial` を witness にして strict composition を閉じる
+
+**戦略 B (cubical chain-map の固定)**:
+- cubical chart と multilinear observable に制限する
+- `deltaSet` が mixed partial の cell 積分に一致することを示す
+- `d ↦ deltaSet`, `∫ ↦ walshFlux` を cubical cochain レベルで固定する
+
+**戦略 C (core open problem の分離)**:
+- carry defect / composition drift を ordinary failure ではなく obstruction class として読む
+- continuous 側の候補:
+  - composition drift `δ`
+  - Čech 2-cocycle
+  - central extension / gerbe 的障害
+- automath 側の `κ` と continuous 側の obstruction をどう対応づけるかを本丸とする
+
+### Lean 4 対応
+- 既存:
+  - `restrict_functorial` (strict projection composition)
+  - `globalDefect_compose` (defect の xor-cocycle)
+  - `restrict_stableAdd_carry_defect` (carry defect の局所版)
+- 必要:
+  - `discretize_proj_functorial` (`CubeExp_proj` 上の strict part)
+  - `deltaSet_mixed_partial_cell_formula` (cubical chain-map)
+  - `obstruction_class_matches_kappa` のような higher coherence の定式化 [未着手]
+- 依存:
+  - automath の `WalshStokes.lean`, `Defect.lean`, `CarryDefect.lean`, `CollisionKernel.lean`
+
+### 期待出力
+- strict part が既に閉じている範囲の明示
+- chain-map 部分の定理文と証明スケッチ
+- higher coherence の open core を ordinary functor 問題から分離した仕様
+- Lean 4 の型シグネチャ候補 (sorry 付き可)
+- 反例または obstruction class の候補
+
+### 現在の進捗
+- 解析ノート:
+  - `drafts/standalone/automath_bridge/functoriality_reduction.md`
+- 実験:
+  - `experiments/cubical_functoriality_check.py`
+- 現状の到達点:
+  - strict 1-functor 部分は `CubeExp_proj` で閉じる見込みが高い
+  - chain-map 部分は multilinear observable で有限検証済み
+  - actual core は defect 2-cell の連続側同定に縮約された
+
+### 難易度
+- strict / chain-map 部分: 中
+- defect-bearing coherence 部分: 高
+- 総合: 高
+
+---
+
+## Open 2: 命題 F2.1 の厳密証明 — 排他律が加法性を強制
+
+### 問題の定式化
+
+**命題 F2.1** (curvature_is_the_carry_of_oblivion.md §7.3 Route D):
+
+n-cell tower の公理的複雑度 |A(n)| が Fibonacci 再帰に従うことを証明する。
+
+**主張**: A(n) = A(n-1) ⊔ A(n-2) (disjoint union)
+
+ここで:
+- A(n) = n-cell を定義するために必要な独立公理の集合
+- A(n-1) = 直接の前提 (n-1 次元の構造)
+- A(n-2) = 整合性条件 (n-2 次元の合成律)
+
+**核心**: A(n-1) ∩ A(n-2) = ∅ を証明する。
+- 根拠: anti-copy nilpotency e_x ∧ e_x = 0 (Paper III §2.3, §3.1(D))
+- 「同一の公理が2つの異なる cell 次元の役割を同時に果たすこと」= 「同一構造が隣接位置を占有」= Pauli 排他律に違反
+
+### 証明スケッチ (現在 [推定 75%])
+
+Step 1: n-cell tower の各レベルの定義的依存を列挙 (aletheia Proof 1-7)
+```
+Proof 1: U_arrow ≤ U_compose     (定義的: 射なしに合成なし)
+Proof 2: U_compose ≤ U_depth     (定義的: 合成なしに関手なし)
+Proof 3: U_depth ≤ U_precision   (意味論的: 自然変換なしに豊穣の整合なし)
+Proof 4: U_precision ≤ U_causal  (意味論的: 精度なしに因果判断なし)
+Proof 5: U_causal ≤ U_context    (意味論的: 因果なしに文脈転写なし)
+Proof 6: U_context ≤ U_adjoint   (定義的: 関手なしに随伴なし)
+Proof 7: U_adjoint ≤ U_self      (意味論的: 随伴なしに自己適用の双方向性なし)
+```
+
+Step 2: 各依存が「n-1 型」(直接前提) か「n-2 型」(整合性条件) かを分類
+- 定義的依存 (Proof 1,2,6): n-1 型。「この構造がないと次の構造が文字通り定義できない」
+- 意味論的依存 (Proof 3,4,5,7): n-2 型。「この構造がないと次の構造は定義可能だが空虚」
+
+Step 3: 同一公理が n-1 と n-2 の両方に属することが不可能なことを示す
+- **ギャップ**: 「定義的依存」と「意味論的依存」が異なる cell 次元に属することの形式的証明
+- これが Open。直感的には「定義の前提」と「整合性の条件」は異なるレベルの要求だが、形式化が必要
+
+### Lean 4 対応
+- 既存: `path_independent_set_count` (パスグラフの独立集合数 = F_{n+2}) [Lean 証明済]
+- 必要: n-cell tower を Lean 4 のグラフとしてエンコードし、独立集合定理を適用
+- 代替: Paper III の Grassmann 代数の幂零性 ξ∧ξ=0 を直接 Lean 4 で形式化
+
+### 期待出力
+- Step 3 のギャップを埋める形式的論証
+- Lean 4 型シグネチャ (可能なら)
+- F2.1 の信頼度を [推定 75%] → [推定 90%+] に引き上げるか、反例を発見
+
+### 難易度: 中。推定工数: GPT-5.4 で 1-2 セッション
+
+---
+
+## Open 3: OP-I-2 の橋 — Φ=0 → ker(G)={0} の直接導出の精密化
+
+### 問題の定式化
+
+**OP-I-2** (Paper I §9.5): 「Φ→0 で標準圏が回復する」
+
+dictionary.md §2.B の修正版証明スケッチ:
+```
+Φ = 0 ⟹ ker(G) = {0} ⟹ δ = 0 ⟹ Hom_Φ ∈ {0,1}
+```
+
+**既に閉じている部分**:
+- (a)→(c) Φ=0 → ker(G)={0}: G が恒等に退化 → 忠実。✅
+- (c)→(d) ker(G)={0} → δ=0: 忠実関手の合成保存 (C_Φ 固有の条件で)。✅
+
+**残る Open**:
+- (d)→(e) δ=0 → Hom_Φ ∈ {0,1}: **OP-I-3 (C_Φ の well-definedness) に依存**
+- 予想 9.5.2 (離散→連続リフト): X_∞(λ) の profinite 位相で δ_∞(λ) の連続性
+
+### 攻略方向
+
+**OP-I-3 の解決** (C_Φ の well-definedness):
+- 忘却豊穣圏 C_Φ の定義: 対象 = 統計多様体上の分布、Hom_Φ(A,B) ∈ [0,1]
+- well-definedness の条件: Hom の合成が [0,1] に閉じること
+- **戦略**: Φ=0 のとき Hom_Φ は自動的に {0,1} に退化する (中間値がない) ことを示す
+- これは「忘却がなければ精度は maximal → Hom は離散化」という FEP 的直観の形式化
+
+**予想 9.5.2 の解決** (離散→連続リフト):
+- X_m(λ) を定義: No11 制約の強度を λ ∈ [0,1] で連続パラメータ化
+- δ_m(λ) が λ に関して連続であることを示す (各有限 m で)
+- X_∞(λ) = varprojlim X_m(λ) で δ_∞(λ) の well-definedness を示す
+- **戦略**: automath の carry defect κ は Fibonacci 閾値に依存。λ が閾値を連続的に動かすなら、κ の遷移は step function → δ の連続性は「ほぼ」成立するが、step function の不連続点の処理が必要
+
+### Lean 4 対応
+- 既存: automath の (a)→(c)→(d)→(e) 全鎖 [Lean 証明済]
+- 必要: λ パラメータ付き X_m(λ) の定義と δ_m(λ) の連続性
+- 依存: Mathlib の `Topology.Algebra.InfiniteSum`, `Order.Filter.Basic`
+
+### 期待出力
+- OP-I-3 の解決方向の判定 (解決可能 / 追加公理が必要 / 反例あり)
+- 予想 9.5.2 の step function 問題の処理方法
+- (d)→(e) の条件付き→無条件化の経路
+
+### 難易度: 高。推定工数: GPT-5.4 で 2-3 セッション (OP-I-3 の深さに依存)
+
+---
+
+## 委譲の優先順位
+
+| Open | 難易度 | インパクト | 委譲先 | 優先度 |
+|:---|:---|:---|:---|:---|
+| **Open 2** (F2.1) | 中 | 高 — φ の導出を確定 | copilot (GPT-5.4:xhigh) | **1st** |
+| **Open 3** (OP-I-2) | 高 | 最高 — Paper I の未証明予想の解決 | copilot (GPT-5.4:xhigh) | **2nd** |
+| **Open 1** (D の関手性) | 高 | 中 — 方法論的基盤 | codex-mcp (自律実行) | **3rd** |
+
+Open 2 を最優先する理由: F2.1 が確定すれば C4 (φ) の [推定 75%] が [推定 90%+] に上がり、論文の核主張が全て高信頼度になる。難易度も最低。
+
+---
+
+## 委譲時の注意
+
+- dictionary.md v0.4 と curvature_is_the_carry_of_oblivion.md を全文コンテキストとして渡すこと
+- Lean 4 の型シグネチャレベルを要求する (自然言語の「証明」ではなく)
+- automath の既存 Lean 4 コードを参照させる (GitHub URL を渡す)
+- 反例が見つかった場合は即座に報告させる (Open は「閉じる」より「反例」の方が価値が高い)

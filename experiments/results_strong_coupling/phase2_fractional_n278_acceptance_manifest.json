@@ -1,0 +1,49 @@
+{
+  "block_size": 8,
+  "formal_n": [
+    2.78
+  ],
+  "lambda_like_grid": [
+    0.8,
+    0.9,
+    0.95,
+    1.0,
+    1.05,
+    1.1,
+    1.2
+  ],
+  "mass_like_grid": [
+    0.8,
+    0.9,
+    0.95,
+    1.0,
+    1.05,
+    1.1,
+    1.2
+  ],
+  "measure": 240,
+  "proposal_scale": 0.65,
+  "proxy_kind": "t_projected_direct",
+  "seed": 171,
+  "selected_rows": {
+    "2.780000": {
+      "eta_anchor_de2": 0.032,
+      "eta_proxy": 0.3304472399,
+      "lambda_like": 1.2,
+      "mass_like": 1.0,
+      "score_de2": 0.2984472399,
+      "status_de2": "out_of_anchor_band",
+      "status_lpa": "out_of_anchor_band",
+      "susceptibility_values": "0.2305883776|0.4024026878|19.2545867094|0.3277192309",
+      "xi_values": "0.0000000000|0.1049230843|0.2606116982|0.0000000000",
+      "xi_window_pass": true
+    }
+  },
+  "sizes": [
+    6,
+    8,
+    10,
+    12
+  ],
+  "warmup": 120
+}

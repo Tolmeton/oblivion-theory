@@ -1,0 +1,42 @@
+{
+  "probe_name": "paper_xi_third_model_main_bench_scaffold",
+  "status": "SOURCE_IMPORT_REQUIRED",
+  "readiness": "BLOCKED_UNTIL_EXACT_PROMPT_SOURCES_ARE_VERSIONED",
+  "note": "This scaffold intentionally avoids fabricated T1-T5 A/B prompt text. Import the exact Claude/Gemini benchmark prompts into versioned files before switching status to READY.",
+  "execution_contract": {
+    "required_status": "READY",
+    "blocked_reason": "Exact T1-T5 A/B prompt sources are not present in the repo yet."
+  },
+  "topics": [
+    {
+      "topic_id": "T1",
+      "condition_a_source_ref": "IMPORT_EXACT_PLAIN_PROMPT_FROM_EXISTING_CLAUDE_GEMINI_BENCHMARK",
+      "condition_b_source_ref": "IMPORT_EXACT_CCL_PROMPT_FROM_EXISTING_CLAUDE_GEMINI_BENCHMARK",
+      "source_status": "source_import_required"
+    },
+    {
+      "topic_id": "T2",
+      "condition_a_source_ref": "IMPORT_EXACT_PLAIN_PROMPT_FROM_EXISTING_CLAUDE_GEMINI_BENCHMARK",
+      "condition_b_source_ref": "IMPORT_EXACT_CCL_PROMPT_FROM_EXISTING_CLAUDE_GEMINI_BENCHMARK",
+      "source_status": "source_import_required"
+    },
+    {
+      "topic_id": "T3",
+      "condition_a_source_ref": "IMPORT_EXACT_PLAIN_PROMPT_FROM_EXISTING_CLAUDE_GEMINI_BENCHMARK",
+      "condition_b_source_ref": "IMPORT_EXACT_CCL_PROMPT_FROM_EXISTING_CLAUDE_GEMINI_BENCHMARK",
+      "source_status": "source_import_required"
+    },
+    {
+      "topic_id": "T4",
+      "condition_a_source_ref": "IMPORT_EXACT_PLAIN_PROMPT_FROM_EXISTING_CLAUDE_GEMINI_BENCHMARK",
+      "condition_b_source_ref": "IMPORT_EXACT_CCL_PROMPT_FROM_EXISTING_CLAUDE_GEMINI_BENCHMARK",
+      "source_status": "source_import_required"
+    },
+    {
+      "topic_id": "T5",
+      "condition_a_source_ref": "IMPORT_EXACT_PLAIN_PROMPT_FROM_EXISTING_CLAUDE_GEMINI_BENCHMARK",
+      "condition_b_source_ref": "IMPORT_EXACT_CCL_PROMPT_FROM_EXISTING_CLAUDE_GEMINI_BENCHMARK",
+      "source_status": "source_import_required"
+    }
+  ]
+}

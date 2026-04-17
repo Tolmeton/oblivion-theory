@@ -1,0 +1,120 @@
+# 論文 X — ContextRot は忘却である `.meta.md`
+
+> 本ファイルは calculations 棚卸しにより新規作成された meta ファイルである。
+> §M1–§M6 は body (v0.1) から後付けで整備した骨格版である。
+> body が安定した時点で著者が精査・拡充すること。
+
+---
+
+## §M1 F⊣G 宣言 (固定日: 2026-04-16)
+
+- **F (発散関手)** = AgentSwing CM 戦略 (DA/Sum/KLN) を Hom 集合の同値関係 R による商関手族 {U_R} として定式化し、忘却論の忘却関手 U₀ および Hyphē の boot⊣bye 随伴と同一の抽象パターン AP を共有することを展開する操作。三者合流 (忘却論 / Hyphē / AgentSwing) を軸に、Case Study (N=2) と N=240 統計から「条件付き不可逆性テーゼ」と「状態依存最適忘却」を導く。文体ガイドの §3 メタファー三連と §10 Type α+δ 合成を採用。
+- **G (収束関手)** = 商関手族の半順序構造 (Thm 3.1) と因子分解定理 (Thm 6.1) を proof_cm_categorical 文書で閉じる。統計的随伴 η/ε (Thm 4.4/4.5) は pointwise ではなく統計的に成立すること (Table 2 全エントリ) を数値根拠として収束させる。確信度マップ §8 による自己校正。文体ガイド §4 数式裏付け + AgentSwing SOURCE (Appendix C, Table 2, Fig 9) 照合。
+- **主要随伴**: F_par ⊣ G_route (AgentSwing) / boot ⊣ bye (Hyphē) の二層構造。
+- **固定日**: 2026-04-16 (body v0.1 後付け整備)
+
+---
+
+## §M2 核主張リスト (L3 対象)
+
+- **C1**: AgentSwing CM 戦略 (DA/Sum/KLN) は軌道圏 C_traj 上の同値関係 R による商関手族 {U_R} として圏論的に well-defined である。半順序構造 (U_DA > U₀ > {U_KLN, U_Sum} > Id, Thm 3.1) と因子分解 (U₀ = Π_R ∘ U_R, Thm 6.1) が成立する。[確信 90%]
+- **C2**: 条件付き不可逆性テーゼ (命題 X.1): 忘却の不可逆性による性能劣化は状態型 (Type 1: recent useful clue / Type 2: dead-end loop / Type 3: correct hypothesis, wrong action) に依存する。最適な忘却強度は状態の関数である。[推定 75%]
+- **C3**: 状態依存最適忘却 (命題 X.2): AgentSwing routing G_route は Q_k(I) を最大化する U_R を状態依存的に選択する適応的忘却である。統計的随伴 F_par ⊣ G_route は E[Q(G(F(I)))] ≥ E[Q(I)] (η 条件) を Table 2 全エントリで満たす。[推定 80%]
+- **C4**: 三者合流 (命題 Thm 5.1): 忘却論の U₀、Hyphē の boot⊣bye、AgentSwing の {U_R} + F_par⊣G_route は同一の抽象パターン AP (abstract forgetting pattern) のインスタンスである。AP は (1) 商関手的忘却、(2) 統計的随伴、(3) 状態依存最適化の三要素を共有する。[推定 80%]
+
+---
+
+## §M3 Kalon 判定履歴
+
+| 日付 | 対象 | 判定 | 根拠 |
+|:---|:---|:---|:---|
+| 2026-04-03 | C1 (圏論的定式化) | ◯ Kalon△ | proof_cm_categorical 文書を実際に書くことで、P2 (CM = U parameterization) が [仮説 55%] → [推定 80%] に格上げ (§8.3 教訓 CD-15)。「棄却は証明の失敗後にのみ許される」という原則の自己適用。 |
+| 2026-04-03 | C3 (統計的随伴) | △ | η が pointwise ではなく統計的にのみ成立 (Thm 4.4) という制約が明示されており、過大主張を自己抑制。N=240 という具体的 SOURCE がある。ただし確率的 Galois 接続の一般理論 (OP-X-2) は Open。 |
+
+---
+
+## §M4 ±3σ ゲート履歴
+
+| 日付 | 対象 | 入口 σ | 出口 σ | 判定 |
+|:---|:---|:---|:---|:---|
+| 2026-04-03 | C1 (商関手 well-definedness) | +3σ | +3σ | proof_cm_categorical で Def 1.1-1.3 + Thm 3.1/6.1 を構成的に示した。「対応がある」一般論から「射が well-defined」まで射程を縮めず達成。 |
+| 2026-04-03 | C3 (統計的随伴) | +3σ | +3σ | 「F⊣G 的に機能する」一般論ではなく「N=240, Table 2 全エントリで η 成立」という具体的数値に落とした。pointwise 随伴を主張せず統計的随伴に限定したことで射程を守った。 |
+| 2026-04-03 | C2 (条件付き不可逆性) | ±3σ | ±3σ | N=2 Case Study + N=240 統計から [推定 75%]。Type 1/2/3 の分類が N≥10 Case Study で 60% 以上の予測精度を持つかどうかは未検証 (OP-X-5)。一般化の射程は保留中。 |
+
+---
+
+## §M5 Refutation Gauntlet ログ
+
+### C1 — 2026-04-03 Round 1 (CD-15 起源)
+- **反論 r**: 「AgentSwing CM と忘却関手の "数学的対応" は形式的であり、実質的対応がないのでは」(初期 /kat+ による棄却)
+- **SFBT**: 「できないのではなく、数学を書いていないだけではないか」(Creator 2026-04-03)
+- **前提強化**: proof_cm_categorical 文書で Def 1.1-2.4 + Thm 3.1/4.4/6.1 を構成的に示した
+- **結果**: 射程維持 ✓ — 商関手の well-definedness が確立。P2 [仮説 55%] → [推定 80%] に昇格 (§8 較正履歴)
+
+### C3 — 2026-04-03 Round 1 (pointwise vs 統計的)
+- **反論 r**: 「η (E[Q(G(F(I)))] ≥ E[Q(I)]) が個別タスクで全戦略失敗する可能性があるなら、随伴は成立しないのではないか」
+- **SFBT**: 「pointwise 随伴ではなく統計的随伴として定式化できないか」
+- **前提強化**: Thm 4.4 (η は統計的 — 個別タスクでは全戦略失敗がありうる) を明示的に本文に載せ、Table 2 N=240 を根拠とした
+- **結果**: 射程維持 ✓ — 「統計的随伴」として主張を精密化。確率的 Galois 接続の一般理論は OP-X-2 として開放
+
+### C2 — 2026-04-03 Round 1 (CD-14 撤回前)
+- **反論 r**: 「Case 1+2 は N=2 の over-generalization (CD-14) ではないか。Type 1/2/3 分類は単純化しすぎでは」
+- **SFBT**: 「N=240 統計で独立に支持されているか確認できないか」
+- **前提強化**: Table 2 (3 モデル × N=240, aligned) で非一様な遷移分布を確認 (Fig 9)。Phase C v3 実験 (§2.3 備考 X.1a) で条件依存性を独立確認。CD-14 撤回
+- **結果**: 射程維持 ✓ — [推定 75%] を維持。ただし Type 3 (correct hypothesis, wrong action) は Case Study 未確認 — 未解決 blocker として保持
+
+### 補助射 (symbolic-level 加筆) — 2026-04-17 Round 1
+
+- **反論 r**: 「context-level (§4.2) と weight-level (§4.5) の 2 層で persistent compression は十分では。symbolic layer を新たに立てる必要があるか」
+- **SFBT**: 「できないのではなく、3 層化していないだけではないか。symbolic 層の経験的事例は何か」
+- **前提強化**: Karpathy (2025) の LLM Wiki gist 実装事例 + Zenn (dely_jp 2025) schema 明文化例で symbolic layer (`Wiki_i`) を `boot⊣bye` と同一抽象パターンへ接続。§4.6 で 3 層対比テーブルを構成
+- **結果**: 射程維持 ✓ — 既存 2 層対比に symbolic 層を追加して 3 層構造が完成。命題 X.9 (symbolic-level drift 制御の優位性) を [推定 60%] で導入。大規模 wiki での weight-level 同等 drift を撤回条件として明示
+
+---
+
+## §M6 棄却された代替案
+
+- **棄却 1**: 「CM 戦略の数学的対応は棄却」(初期 /kat+ 判定)。proof_cm_categorical で Thm 3.1/6.1 が構成されたことで撤回。棄却は証明の失敗後にのみ許される (CD-15 教訓)。
+- **棄却 2**: 「pointwise 随伴 G∘F = Id が成立する」。ker(U_DA) = Hom×Hom (全忘却) の構造から pointwise 随伴は不可能。統計的随伴 (η 条件, Thm 4.4) に限定。
+- **棄却 3**: 「DA が全状態で最優 CM 戦略である」。Case 1 (Mando) で KLN が最適、Case 2 (live-crickets) で DA が最適という非一様性が確認済み。固定戦略論は状態依存最適化命題 X.2 により棄却。
+- **棄却 4**: 「τ ↔ r 逆関数関係 (命題 X.4) は [確信] レベルである」。データポイントが 2 つのみ (τ=0.70→r=0.4, 推定 τ=0.85→r=0.2)。OP-X-3 の実験的決定前は [仮説 50%] に留める。
+- **棄却 5**: 「Hyphē の boot⊣bye と AgentSwing CM は全く別構造」。§4 (4.1-4.5) で構造的同型を示した: bye = R_strategy, boot = continue, Mem_i = Compressed_i。三者合流 AP は Thm 5.1 として proof_cm_categorical に収録。
+
+---
+
+## §M7 Donor 統合メモ (calculations 棚卸し)
+
+以下は `calculations/` 配下の作業文書から Paper X に関連する donor の棚卸し結果である。いずれも本文 (body) への直接吸収は行わず、meta 参照として記録する。
+
+以下は `calculations/` 配下の作業文書から Paper X に関連する donor の棚卸し結果である。いずれも本文 (body) への直接吸収は行わず、meta 参照として記録する。
+
+### D1: CM 戦略の圏論的定式化 (B-class)
+- **donor**: `calculations/証明_CM戦略の圏論的定式化.md` (531 lines)
+- **donor status**: 証明試行 (proof attempt)。C_traj well-defined [確信 90%]、CM=商関手 [推定 80%]、半順序 Thm 3.1 [確信 90%]、因子分解 Thm 6.1 [確信 90%]、η 統計的 [推定 80%]、ε non-increase [推定 75%]、AP identity [推定 75%]
+- **内容**: 軌道圏 C_traj (Def.1.1)、前順序圏 D_traj (Def.1.2)、忘却関手 U₀ (Def.1.3) を構成。CM 戦略 (Discard-All=U_DA, Summary=U_Sum, Keep-Last-N=U_KLN) を商関手族 {U_R} として定式化 (Def.2.1-2.4)。半順序構造 Thm 3.1 (U_DA > U₀ > {U_KLN, U_Sum} > Id)、因子分解 Thm 6.1 (U₀ = Π_R ∘ U_R)。η は統計的 (pointwise ではない): 個別タスクでは全戦略失敗がありうる (Thm 4.4)。Hyphē / AgentSwing / 忘却論が同一 Abstract Pattern AP を instantiate (Thm 5.1)。
+- **本文との関係**: Paper X body (v0.1) は §3-§4 で CM 戦略を商関手族 {U_R} として定式化しており、本 donor (proof_cm_categorical) を直接引用・基盤としている。donor の Thm 3.1 (半順序) と Thm 6.1 (因子分解) は Paper X §3-§4 の圏論的枠組みの構成的証明を提供。
+- **判定**: Paper X の圏論的基盤として最も直接的な donor。ただし η は統計的 (pointwise でない) であり U_Sum の弱合成保存は [推定 70%]。Q は直接計算不能 (Lookahead 近似)。確率的 Galois 接続の形式理論は未完。本文 v0.1 が安定した時点で body 統合を再評価。
+
+### D2: AgentSwing 忘却 Hyphē 接続 (B-class)
+- **donor**: `calculations/調査_AgentSwing忘却Hyphē接続.md` (155 lines)
+- **donor status**: 調査 (investigation)。E1 [仮説 40%]、E2 [推定 70%→80%]、E3 [推定 60%]、E4 [推定 55%]
+- **内容**: AgentSwing × Hyphē × 忘却論の4方向 MECE 分類。E1: τ↔r 臨界密度 (Hyphē τ_cos=0.70 ↔ AgentSwing r∈{0.2,0.4})、E2: 不可逆性テーゼ → AgentSwing 限界予測 (→D3 に詳細)、E3: AY metrics → routing quality、E4: Multi-scale Nucleator → Lookahead correspondence。E2 から3つの検証可能命題: P-E2a (Summary Fixation Theorem)、P-E2b (Discard-All Amnesia Theorem)、P-E2c (Routing Ceiling Theorem)。
+- **本文との関係**: Paper X body §2 (case studies: N=2, N=240)、§6 (predictions)、§7 (limitations: router self-limitation) に対応。E2 (不可逆性テーゼ) のみ §6 predictions に直結。E1 (τ↔r) は empirical data が不足 (feasibility 低)。
+- **判定**: 4方向のうち E2 のみ Paper X に直結。E1 は AgentSwing raw data 必要、E4 は proof 必要。cross-paper reference として記録。撤回条件が各仮説に明示されている。
+
+### D3: AgentSwing 不可逆性テーゼ (B-class)
+- **donor**: `calculations/予測_AgentSwing不可逆性テーゼ.md` (278 lines)
+- **donor status**: 証明ノート→構成的証明に格上げ (proof_cm_categorical により CD-14 撤回)。P-E2a [推定 80%]、P-E2b [推定 80%]、P-E2c [推定 75%]
+- **内容**: U の非単射性 (∃x₁≠x₂: U(x₁)=U(x₂)) から3つの操作的限界を導出。P-E2a Summary Fixation Theorem: 多数派の誤仮説が要約に固定され不可逆化 (Lil Durk case, Turn 1-22)。P-E2b Discard-All Amnesia Theorem: 全忘却は ε 近傍から遠方へ退行。P-E2c Routing Ceiling Theorem: AgentSwing の上限 = router の U 非単射性検出能力。最適忘却強度関数 U* = argmin[Cost_info_loss(U) + Cost_context_rot(¬U)]。
+- **本文との関係**: Paper X body §6 (predictions) に直接対応。body の「条件付き不可逆性テーゼ」は本 donor の核心。不可逆性の本質は非可換性ではなく U の非単射性 (right adjoint N は部分復元のみ: N∘U ≠ Id_C)。
+- **判定**: Paper X §6 の prediction の理論的裏付け。N=1 過般化リスク (CD-14, CD-3) は CD-14 撤回により軽減。ε 近傍での CM トリガーが最もリスクが高い。本文 v0.1 安定後に body 統合を再評価。
+
+### D4: Brevity Constraint と自己誘発的 Context Rot (A-class external)
+- **donor**: `arXiv:2604.00025 Brevity Constraints Reverse Performance Hierarchies in Language Models`
+- **donor status**: 外部経験的ソース。[確信 90%] 要旨レベルでは、31 モデル・1,485 問で大規模モデルの spontaneous scale-dependent verbosity を同定し、brevity 制約で精度が最大 26pt 改善、数学推論・科学知識で性能階層が逆転。
+- **内容**: Context Rot を「長い履歴に irrelevant information が堆積する現象」と見る Paper X に対し、本 donor は **単一ターン内部での overelaboration も rot を起こしうる**ことを示唆する。brevity 制約は `U_DA / U_Sum / U_KLN` のような事後 CM ではなく、出力生成の直前に不要枝を切り落とす **予防的忘却 (prophylactic forgetting)** として解釈可能。
+- **本文との関係**: Paper X body の直接証拠ではない。半順序 Thm 3.1 や因子分解 Thm 6.1 を補強するものではなく、むしろ §1.1 Context Rot 定義と §4.4 Drift-Performance トレードオフの**左枝** (`Drift ≈ 0` 側の性能劣化) に新しい読みを与える donor。さらに `router 自身が verbosity により自己劣化する` なら §6.3 命題 X.7 (メタ二重天井) の外部傍証候補になる。
+- **判定**: 現段階では **meta 保留**が妥当。本文昇格前に少なくとも 2 点が必要:
+  1. brevity prompt の実物確認 — それが純粋な書式指定か、探索制約としての $C$ か
+  2. brevity が効かなかった/逆効果だった task の確認 — 条件付き不可逆性テーゼ (Type 1/2/3) と接続するため
+  上記未確認のまま本文に統合すると、「静的な一律制約」と「状態依存 routing」を混同する危険がある。

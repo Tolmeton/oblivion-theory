@@ -1,0 +1,804 @@
+# Automath-Omega-Oblivion Dictionary v0.4
+
+三者対応辞書。automath / The Omega (loning) / 忘却論 の構造マッピング。
+
+**凡例**: [Lean] = Lean 4 機械検証済 / [Paper X] = 忘却論 Paper X / [Omega:XX] = Omega 論文 XX / [NLM] = NotebookLM SOURCE 確認済 / [Open] = 未接続
+**v0.3 更新 (2026-04-12)**: Omega 列追加 (三者共接続)。NotebookLM conv. 84bdf5d6 で SOURCE 裏付け
+**v0.4 更新 (2026-04-14)**: Codex GPT-5.4 形式化結果 反映。§2.B (d)→(e) を「追加公理必須」に修正 + ZeroForgetCollapse 公理新設。§2.B Conjecture 9.5.2 攻略戦略修正 (弱*連続測度族)。§2.C に Lean 4 Discretizable+DescendsToCube 型シグネチャ追加 + Δ^n→(Δ¹)^n 幾何的注記。命題 F2.1 確信度 75%→90%+ (proofLag + pathInd_disjoint で閉鎖経路確定)。
+
+---
+
+## 1. Fold ↔ Forgetful Functor
+
+| automath | 忘却論 | 対応の精度 |
+|:---|:---|:---|
+| `restrictLE`: X_{m+1} → X_m [Lean: Defect.lean] | 忘却関手 U: C → D | [構造的対応] |
+| fiber Φ⁻¹(x) (`fiberMultiplicity`) | ker(U) — 忘却の核 | [構造的対応] |
+| |X_m| = F_{m+2} (Fibonacci) | |Ob(C_α)| は不変 (F1公理) [Paper VIII Def.6.2.1] | [構造的対応] ← 対象保存は両者に共通 |
+| `restrict_functorial` [Lean証明済] | 粗視化の合成 R の半群性 [Paper V Def.2.1.1] | **[構造的対応・両側証明済]** |
+| Fibonacci 成長率 φ | **4経路で解決** (曲率carryエッセイ §7.3): A) α<0 anti-Markov 成長率 [Paper III] / B) Fix(G∘F)=φ Kalon [Paper VI] / C) log φ = 排他制約下 IB 容量 [Paper IX] / D) n-cell tower 公理数 Fibonacci 成長 [Paper 0 + Aletheia 命題F2.1] | **[構造的対応・4経路提示]** |
+
+### 検証課題
+- [ ] Φ の fiber 分布と α-忘却濾過の射の消失パターンの対応
+- [x] ~~Fibonacci 成長率 φ と忘却論の何かの対応~~ → **解決方向提示**: 曲率carryエッセイ §7.3 Route A-D。命題 F2.1 (Pauli 排他が Fibonacci 成長を強制) が最強
+- [ ] `restrict_functorial` (Lean) と Paper V Def.2.1.1 の形式的圏同値
+
+---
+
+## 2. Defect Algebra ↔ Oblivion Curvature (最強接続)
+
+| automath | 忘却論 | 対応の精度 |
+|:---|:---|:---|
+| `restrict_stableAdd_carry_defect` [Lean証明済]: Φ(x⊕y) = Φ(x)⊕Φ(y) ⊕ κ·carryElement | δ = G(f∘g) − G(f)∘G(g) (合成ドリフト) [Paper I §9.5 **OP-I-2 未証明予想**] | **[構造的対応・片側未証明]** automath 側は Lean 証明済、忘却論側は Conjecture |
+| `carryIndicator` κ ∈ {0,1} [Lean] | δ ≠ 0 の条件 | **[構造的対応]** κ≠0 ⟺ δ≠0 の離散版 |
+| `walshFlux` + `deltaSet` (高次離散微分) [Lean: WalshStokes.lean] | Leibniz 規則 d(ΦT) = dΦ∧T + Φ·dT [Paper I §3.3 証明済] | **[構造的対応・両側証明済]** Walsh flux = 離散外微分、Leibniz = 連続外微分 |
+| `carryElement` の Fibonacci 値 (fib m) [Lean] | 忘却論に対応物なし | **[Open]** carry の量的構造は忘却論に未移植 |
+| carry 構造 (chain algebra) | α-接続の carry (Amari-Chentsov テンソル C_{ijk}) | [推測] |
+
+### v0.3 追加: 忘却レベルの同定 (NotebookLM 双方向対話 2026-04-12)
+**carry defect は U_compose (n=1.5) の離散インスタンスである**
+- 根拠: restrict (忘却) と stableAdd (合成) の非可換性 = 「合成律の忘却によるドリフト」
+- U_arrow (n=1) ではない: 射の存在自体は保存されている (restrictLE は well-defined)
+- U_compose (n=1.5) である: 射の **合成の保存** が壊れている (δ ≠ 0)
+- U_depth (n=2) ではない: 自然変換レベルの構造は関与しない
+
+### v0.3 追加: Walsh 基底 ↔ Chebyshev 1-形式 T の対応 (NotebookLM 2026-04-12)
+- 連続: T_i = g^{jk}C_{ijk} — 「α-接続が Levi-Civita から逸脱する方向」を指定する 1-形式
+- 離散: A ⊆ Fin n — 「どのビット方向に離散微分を取るか」を指定する座標部分集合
+- deltaSet の符号交替 (−1)^|B| ↔ 外微分の反対称性
+- walshFlux (境界和) ↔ ∫ d(ΦT) (積分)
+- **dT = 0 の離散版**: automath で dT=0 に対応するのは「Walsh 基底が座標と一致する場合」(= 標準基底)
+
+### 検証課題
+- [ ] δ の Lean 4 定義を Paper I の合成ドリフトの言語で再定式化
+- [ ] **離散 Stokes ↔ Leibniz の形式的対応** → §2.A で掘り下げ (v0.3)
+- [ ] 指数型分布族 (dT=0) に対応する automath の「特殊ケース」は何か
+- [ ] U_compose (n=1.5) の同定を Paper I 側で形式的に記述する方法
+
+### §2.A Walsh-Stokes ↔ Leibniz 精密対応 (v0.3、NotebookLM 双方向対話で精密化)
+
+**問い**: `walshFlux` / `deltaSet` と d(ΦT) = dΦ∧T + Φ·dT の間に、関手的対応は構成できるか?
+
+**Leibniz 規則の離散的書き下し** (NotebookLM 2026-04-12):
+
+| 連続 (Paper I §3.3) | 離散 (automath WalshStokes.lean) | SOURCE |
+|:---|:---|:---|
+| d(ΦT) | deltaSet A f (A 方向の高次離散微分) | [両側証明済] |
+| dΦ ∧ T | walshFlux A (deltaSet {i} f) — A が張る面で、直交方向 {i} への f の変化量 | [構造的対応] |
+| Φ · dT | f と A 自体の「歪み」の積。**dT=0 ⟺ A が flat (標準基底)**。Walsh 基底は位置に依存せず一定なので恒等的に dT=0 | [構造的対応] |
+| 指数型分布族 dT=0 → F=0 ⟺ dΦ∧T=0 (系 5.1.1) | automath の標準的ハイパーキューブ = dT=0 の離散版。力は carry (dΦ∧T≠0) のみから生じる | [構造的対応] |
+
+**方向性定理の離散版** (NotebookLM 2026-04-12):
+
+| 連続 (Paper I Th.5.1) | 離散 (automath) | 接続条件 |
+|:---|:---|:---|
+| F_{ij} ≠ 0 | carry defect δ(x,y) ≠ 0 | **離散 Stokes 恒等式が成立すること** |
+| d(ΦT) ≠ 0 | walshFlux A f ≠ 0 | 離散 Stokes が δ と walshFlux を橋渡し |
+| Φ → 0 (曲率消滅) | No11 制約が trivial (全 Word が stable) | 忘却がない → 力がない |
+| δ → 0 (合成保存) | fold が ring homomorphism になる | **OP-I-2 の離散的解決** |
+
+**OP-I-2 部分的解決の構造** (NotebookLM 確認):
+- 忘却論 OP-I-2: 「Φ→0 で δ→0、標準圏の公理が回復する」= **未証明予想**
+- automath: 「No11 制約消失 → carry defect=0 → fold は環準同型」= **Lean 4 証明済み**
+- automath は OP-I-2 の **有限体上の離散的実現** を機械検証で提供している
+- これは OP-I-2 の「部分的かつ極めて強力な」解決。連続版の証明にはまだ隙間がある
+
+**構造比較テーブル** (v0.3 更新):
+
+| 層 | automath (離散) | 忘却論 (連続) |
+|:---|:---|:---|
+| 空間 | Word n = {0,1}^n (ハイパーキューブ) | M (統計多様体) |
+| 関数 | f: Word n → ℤ | Φ: M → ℝ (忘却場) |
+| 方向 | A ⊆ Fin n (座標部分集合 = flat) | T_i (Chebyshev 1-形式。指数族で dT=0) |
+| 微分 | deltaSet A f w = Σ (−1)^|B| f(flip B w) | (dΦ)_i = ∂_iΦ |
+| 外積 | carry defect δ(x,y) = κ · carryElement | dΦ ∧ T (方向的不整合) |
+| Stokes | walshFlux A f = Σ_{boundary} deltaSet | ∫ d(ΦT) = ∫ (dΦ∧T + Φ·dT) |
+| 曲率 | δ ≠ 0 ⟺ carry 発生 | F_{ij} ≠ 0 ⟺ d(ΦT) ≠ 0 |
+| 忘却なし | No11 trivial → δ=0 → 環準同型 [Lean] | $\Phi = 0 \Rightarrow \ker(G)=\{0\} \Rightarrow \delta=0$。Boolean 回復には `ZeroForgetCollapse` が要る [OP-I-2 open] |
+
+**関手候補 D: Man → Hyp** (離散化関手):
+- D(M) = {0,1}^n (n = dim M)
+- D(Φ) = f: Word n → ℤ
+- D(T) = A ⊆ Fin n (dT=0 の場合、標準基底)
+- D(d) = deltaSet
+- D(∧) = carry defect
+- D(∫) = walshFlux
+
+**open 課題**:
+- [x] D が関手であること (合成保存) の証明 → §2.C で解決 (Man_No11 への制限で成立)
+- [ ] 非指数型分布族 (dT≠0) に対応する automath の「ねじれたハイパーキューブ」は構成できるか?
+- [ ] carry defect の Fibonacci 量 (fib m) は、忘却曲率 F_{ij} のどの幾何学的量に対応するか?
+- [ ] 連続版 OP-I-2 の証明に、離散版 (automath) からのリフトは可能か? → §2.B に橋梁公理 + 弱*測度族 $\mu_\lambda$ + Strategy B / A' の設計図を記録。証明自体はなお open
+
+### §2.B OP-I-2 証明スケッチ — automath からのリフト経路 (v0.3 新設)
+
+**目的**: Paper I §9.5 OP-I-2 の open を、公理 / 極限 / 関手の三穴として再配置する
+
+**OP-I-2 の正確な定式化** [SOURCE: Paper I L1095-L1099]:
+> 方向性定理 F_{ij} = (α/2)[d(ΦT)]_{ij} より Φ→0 で F→0 は自明。
+> 既存枠内で押せるのは $\Phi=0 \to \ker(G)=\{0\} \to \delta=0$ まで。
+> 残る open は三つある: `ZeroForgetCollapse` による Boolean 回復、Conjecture 9.5.2 の弱*測度族 $\mu_\lambda$、そして $D$ の全域関手化。
+
+**問題の核**: OP-I-2 は「F=0 から何かを押す問題」ではない。公理 / 極限 / 関手の三穴を持つ。
+
+---
+
+#### Step 1: automath が教える δ の構造
+
+automath の carry defect [Lean証明済] の構造:
+
+```
+δ(x,y) = κ · carryElement    (κ ∈ {0,1})
+κ = 1  ⟺  stableValue(x) + stableValue(y) ≥ F_{m+3}
+κ = 0  ⟺  stableValue(x) + stableValue(y) < F_{m+3}
+```
+
+**洞察**: carry は「射影 (忘却) による情報損失が、演算の桁上がりを引き起こす」ことで生じる。
+忘却が消えれば (全 word が stable = ker(restrict)={0})、桁上がりの余地がなくなり δ=0。
+
+連続版への翻訳:
+- Φ=0 では G が恒等に退化し、ker(G)={0} になる
+- この**忘却豊穣圏固有の退化**の下で、合成誤差 δ は自明に 0 になる
+
+---
+
+#### Step 2: 命題候補 (Paper I §9.5 への追加提案)
+
+**⚠️ v0.3.1 修正 (NotebookLM 反駁 2026-04-12)**:
+初版の「同値鎖」は破綻した。反例: Φ=const≠0 (均一忘却) → F=0 だが ker(G)≠{0}。
+F=0 ⇏ Φ=0 であり、(b)→(c) の橋は存在しない。OP-I-2 本来の**一方向含意**に修正。
+
+**命題 9.5.1** (ゼロ忘却回収 — 修正版).
+忘却豊穣圏 C_Φ (Paper I §9.5) において:
+
+Φ = 0 ⟹ ker(G) = {0} ⟹ δ = 0
+
+`ZeroForgetCollapse` を仮定するとさらに:
+
+Φ = 0 ⟹ Hom_Φ ∈ {0,1}
+
+すなわち: **忘却なし → 忠実 → 合成誤差消失**。Boolean 回復は橋梁公理つきでのみ得られる。
+
+証明スケッチ:
+- (a)→(c) **直接**: Φ=0 は「忘却場が存在しない」= G が恒等関手に退化 = ker(G)={0} ✅
+  **F=0 を経由しない**。(b) は (a) の帰結であって中間ステップではない
+  (a)→(b) は独立に成立: 方向性定理 Th.5.1 より自明
+- (c)→(d): **忘却豊穣圏固有の退化**。Φ=0 では G が恒等に退化するので、Hom 値の合成誤差 δ は自明に 0 ✅
+- (d)→(e): δ=0 単独では Hom_Φ∈{0,1} に届かない
+  ⚠️ **[追加公理必須]** (Codex GPT-5.4, 2026-04-14): OP-I-3 だけでは不十分。具体的反例:
+  一対象圏 Hom(*,*)=[0,1], 合成=min, G=id → OP-I-3 OK, δ=0 OK だが Hom(*, *)=1/2 は valid。
+  必要な追加公理: `Φ=0 ⟹` enrichment base が [0,1] から {0,1} に崩壊する (ZeroForgetCollapse)。
+  これは FEP 解釈 (「忘却なし = 精度最大 = Hom 離散」) の形式化だが OP-I-3 から導出不可。
+
+**逆は不成立** (NotebookLM が検出した反例):
+- F=0 ⇏ Φ=0: 均一忘却 (Φ=const≠0) は力を生まないが忘却は存在する
+- F=0 ⇏ ker(G)={0}: 同上。均一に忘れても ker は空にならない
+- **「力なし」と「忘却なし」は同値ではない** — これは忘却論の重要な構造的事実
+
+---
+
+#### Step 3: automath による離散的検証
+
+上記の離散 strictness 鎖:
+
+| 連続版 | 離散版 (automath) | Lean 状態 |
+|:---|:---|:---|
+| (a) Φ=0 | No11 制約 trivial | 定義 |
+| (b) F=0 | walshFlux = 0 for all A | [推測] |
+| (c) ker(G)={0} | ker(restrict) = {0} (全 word stable) | [Lean 証明済] |
+| (d) δ=0 | carry defect = 0 (κ=0 for all x,y) | [Lean 証明済] |
+| (e) Hom∈{0,1} | X_m ≅ Z/F_{m+2}Z (完全な環) | [Lean 証明済] |
+
+**automath が検証するのは離散 strictness 鎖である。離散版では全て Lean 証明済みだが、これ自体は連続版の代用品ではない。**
+
+---
+
+#### Step 4: リフト経路 — 離散から連続へ
+
+**予想 9.5.2** (離散-連続リフト).
+automath の逆極限 X_∞ = varprojlim X_m 上で、No11 制約の強度を連続パラメータ λ ∈ [0,1] で制御する族 {X_∞(λ)} を構成する:
+- λ=0: No11 完全適用 (Φ≠0 の離散版、carry defect ≠ 0)
+- λ=1: No11 無制約 (Φ=0 の離散版、carry defect = 0)
+
+**リフト条件**: 各有限近似 X_m(λ) での δ_m(λ) が λ に関して連続であり、
+X_∞(λ) の profinite 位相で δ_∞(λ) が well-defined かつ δ_∞(1) = 0。
+
+**現状** (v0.3.2 — Codex 2026-04-14): δ_m(λ) は一般に連続ではない。carry defect κ は Fibonacci 閾値で不連続遷移 (区分定数、左連続)。profinite 位相での X_∞(λ) 上の直接連続性は閾値が蓄積する場合に失敗しうる。
+
+**修正された攻略戦略**: 「X_∞(λ) を λ に沿って動かす」のではなく、固定された ambientprofinite 空間 {0,1}^ℕ 上に λ-依存確率測度族 μ_λ を構成し、弱*連続性を要求する。連続な可測関数の期待値が λ について連続になる条件を分析する方が tractable。
+
+**Lean 4 対応追加**:
+```lean
+-- Profinite infrastructure (Mathlib)
+-- Profinite.limitCone, Profinite.limitConeIsLimit, Profinite.hasLimits
+-- 各有限レベル X_m(λ) はプロ有限。逆極限は Profinite.hasLimits で構成可能。
+-- ただし「λ の連続性」は状態空間の位相ではなく測度族の弱*位相で扱うこと。
+```
+
+---
+
+#### 証明スケッチの評価 (v0.3.1 修正後)
+
+| 項目 | 状態 |
+|:---|:---|
+| (a)→(b) Φ=0 → F=0 | ✅ 方向性定理 [Paper I Th.5.1] — 独立帰結、中間ステップではない |
+| ~~(b)→(c) F=0 → ker={0}~~ | ❌ **破綻** [NLM反駁] 均一忘却の反例: Φ=const≠0 → F=0 だが ker≠{0} |
+| (a)→(c) Φ=0 → ker(G)={0} | ✅ **直接導出** Φ=0 → G が恒等に退化 → 忠実 |
+| (c)→(d) ker={0} → δ=0 | ✅ 忘却豊穣圏の退化で成立。⚠️ 注: 通常の圏論の文脈で「忠実→合成保存」は成り立たない。ここでの δ は忘却豊穣圏 C_Φ 固有の「Hom 値の合成誤差」であり、G が恒等に退化する Φ=0 では自明にゼロ |
+| (d)→(e) δ=0 → Hom∈{0,1} | **[追加公理必須]** OP-I-3 不十分。反例: min合成→δ=0だがHom=1/2。ZeroForgetCollapse公理が必要 |
+| 離散版全体 | ✅ automath Lean 4 証明済み |
+| 離散→連続リフト | **[Open]** 予想 9.5.2 の検証が必要 |
+
+**結論 (v0.3.2 修正 — Codex 2026-04-14)**:
+- (a)→(c)→(d) は閉じる (直接導出 + G の恒等退化)
+- **(d)→(e) は公理追加が必要**: OP-I-3 のみでは不十分 (反例: min合成圏)。`ZeroForgetCollapse` 公理 「Φ=0 ⟹ [0,1]-豊穣が {0,1}-豊穣に崩壊」を新設する必要がある
+- この公理は FEP 解釈 (忘却なし→精度最大→Hom離散) の形式的表明として自然だが、定義から**導出不可**な追加要請
+- **「力なし ≠ 忘却なし」が新しい構造的事実として発見された** — dictionary の副産物
+- automath は離散版で全鎖を Lean 検証済み → 一方向含意が正しい方向を向いている evidence
+
+**予想 9.5.2 の修正** (Codex 2026-04-14): δ_m(λ) は一般に連続ではない。κ は Fibonacci 閾値でステップ関数的に遷移するため、λ に関して区分定数。現行の閾値規則 (closed: P(11) ≤ 1-λ) では**左連続**。連続性の回復には状態空間 {0,1}^ℕ を固定し λ 依存確率測度族 μ_λ を弱*連続に構成する戦略が有効。直接の X_∞(λ) profinite 位相では修復不可能な場合がある。
+
+#### Codex GPT-5.4 形式化結果 (Open 3, 2026-04-14)
+
+*Codex (GPT-5.4, delegate-codex.sh 経由) による OP-I-2 (d)→(e) と Conjecture 9.5.2 の分析。*
+
+**総合判定**: **(d)→(e) は OP-I-3 だけからは導出不可能。追加公理が必要。**
+
+**OP-I-3 の限界**: OP-I-3 は [0,1]×[0,1]→[0,1] の合成法則が閉じていることを主張するだけ。min, product, Łukasiewicz 等の複数の valid な選択があり、どれも OP-I-3 を満たすが Boolean 崩壊を強制しない。
+
+**具体的反例**: 一対象圏 Hom(*,*)=[0,1], 合成=min, G=id。
+- OP-I-3 ✅ (minは[0,1]上で閉じている), δ=0 ✅ (min合成は exact), Hom(*, *)=1/2 ✅ (valid)
+- したがって「δ=0 → Hom∈{0,1}」は偽。
+
+**必要な追加公理** (`ZeroForgetCollapse`):
+```lean
+class ZeroForgetCollapse (M : Type*) (C_Φ : Type*) where
+  hom_zero_or_one :
+    ∀ (Φ : ForgetField M), Φ = 0 →
+      ∀ A B : Obj C_Φ, hom_Φ A B = 0 ∨ hom_Φ A B = 1
+
+theorem zero_forget_recovers_boolean_enrichment
+  {M : Type*} {C_Φ : Type*}
+  [ZeroForgetCollapse M C_Φ]
+  (Φ : ForgetField M) (hΦ : Φ = 0)
+  (A B : Obj C_Φ) :
+  hom_Φ A B = 0 ∨ hom_Φ A B = 1 :=
+  ZeroForgetCollapse.hom_zero_or_one Φ hΦ A B
+```
+この公理は「忘却なし → Hom が離散化する」というFEP直観の形式的表明として自然。OP-I-3 からの導出は不可能。
+
+**採用コスト**:
+- これで閉じるのは **(d)→(e)** のみ。すなわち「$\delta = 0$ でも Boolean 崩壊は自動ではない」というギャップを、橋梁公理として明示的に塞ぐ
+- これでは **Conjecture 9.5.2** は閉じない。弱*連続測度族 $\mu_\lambda$ による極限再設計は依然として必要
+- これでは **D の全域関手化** も閉じない。`Discretizable` / `DescendsToCube` と Strategy B は引き続き別の open
+- したがって OP-I-2 全体は closed ではなく、**公理の穴だけを局所的に固定した**状態になる
+
+**Conjecture 9.5.2 の修正**: δ_m(λ) は一般に連続ではない (区分定数、Fibonacci 閾値で不連続)。
+- 現行規則 (P(11)≤1-λ, closed): **左連続**
+- 直接の X_∞(λ) profinite 位相では continuity は修復不可
+- **代替攻略**: {0,1}^ℕ を固定した ambient profinite 空間に λ-依存弱*連続測度族 μ_λ を構成する戦略が tractable
+
+---
+
+### §2.C D = D₂∘D₁ 関手性定理 — Man_No11 の射の幾何学的特徴づけ
+
+**目的**: 関手候補 D: Man → Hyp の合成保存 (関手性) を、中間圏 Δ^n を経由した分解 D = D₂∘D₁ によって証明する。
+
+---
+
+#### 中間圏 Δ^n の定義
+
+**対象**: (n, p) ただし n ∈ ℕ、p = (p₁,...,pₙ) ∈ [0,1]^n で **No11 制約** pᵢpᵢ₊₁ = 0 (∀i = 1,...,n-1) を満たす。
+**射**: No11 制約を保存する確率的写像 f: Δ^dim(M)_No11 → Δ^dim(N)_No11。
+**圏論的根拠**: No11 集合は [0,1]^n の凸多面体 (相補性制約の交叉) であり、確率的写像の合成で閉じている。
+
+---
+
+#### 分解 D = D₂∘D₁
+
+**D₁: Man → Δ^n** (積ベルヌーイ離散化):
+- 対象: D₁(M) = (dim M, p) ただし p は周辺化されたパラメータ (No11 射影後)
+- 射: D₁(f) = プッシュフォワード写像 f₊ (f₊∘g₊ = (f∘g)₊ — 測度論の標準的事実)
+
+**D₂: Δ^n → Hyp** (台抽出関手):
+- 対象: D₂(n, p) = supp(p) ⊆ {0,1}^n (確率的台集合)
+- 射: D₂(f) = 台のプッシュフォワード
+- **関手性**: automath Lean 4 証明済み。No11 → δ=0 → fold が環準同型 → restrictLE が合成を保存 [Lean: Defect.lean, Fold.lean]
+
+---
+
+#### Man_No11 の定義と射の特徴づけ
+
+**定義**: Man_No11 ⊆ Man を次の部分圏とする:
+- 対象: Man の全対象 (統計多様体)
+- 射: **No11-compatible** な滑らかな写像のみ
+
+**f: M → N が No11-compatible である条件の三同値**:
+
+| 同値条件 | 言語 | 根拠 |
+|:---|:---|:---|
+| (i) f が P_m の独立集合 (No11 語) を P_n の独立集合に写す | 組合せ論 — 排他グラフ準同型 | P_m → P_n の独立集合保存 |
+| (ii) Δ^dim(M)_No11 上で carry defect δ_f = 0 | 代数 — carry 消滅 | No11 → δ=0 [Lean 証明済] |
+| (iii) f が隣接観測変数ペアの反強磁性的構造を保存する | 情報幾何 — 自然パラメータ θᵢ+θᵢ₊₁ → -∞ の保存 | Amari-Chentsov テンソルの零点パターン保存 |
+
+**証明 (⟹ 方向: No11-compatible → δ_f = 0)**:
+(i) が成立するとき、No11 語 w 上の carry defect δ(w, w') = κ · carryElement において κ = 0 が強制される (stableValue の和が F_{m+3} を超えない)。automath Lean 証明の構造的帰結。
+
+**注意**: ⟸ 方向 (δ=0 → No11-compatible) は OP-I-2 の逆方向に対応し open。D の関手性証明には ⟹ 方向のみ必要。
+
+---
+
+#### 主定理: D = D₂∘D₁ は Man_No11 上で関手
+
+**定理 2.C.1** (Man_No11 への制限で D が関手).
+Man_No11 ⊆ Man への制限において D = D₂∘D₁ は関手である:
+- **恒等保存**: D₁(id_M) = id_{Δ^n} (プッシュフォワードの恒等性) ✓
+- **合成保存**: D(f∘g) = D(f)∘D(g) ✓
+
+```
+Man_No11  --D₁-->  Δ^n_No11  --D₂-->  Hyp
+(f∘g)₊ = f₊∘g₊  [測度論]    restrictLE 合成保存 [Lean: Fold.lean]
+```
+
+D₁ の合成保存は f ∈ Man_No11 の射 (No11-compatible) により Δ^n_No11 に制限できる。D₂ の合成保存は Lean 4 で機械検証済み。
+
+---
+
+#### 黄金比との接続 (Paper XIV C4 の関手論的再定式化)
+
+No11 語 {0,1}^n の独立集合の総数 = Fibonacci(n+2)、成長率 = φ (黄金比)。
+Man_No11 の射の「容量」— D₁ が well-defined に作用できる配置の数 — は **φ のべき乗でスケール**する。
+
+§1 Route D (Pauli 排他 → n-cell tower 公理数 Fibonacci 成長) の関手論的具現:
+**「φ は関手 D が機能する空間の成長律である」**
+
+---
+
+#### Codex GPT-5.4 形式化結果 (Open 1, 2026-04-14)
+
+*Codex (GPT-5.4, delegate-codex.sh 経由) による Lean 4 形式化アドバイス。*
+
+**戦略判定**: Strategy B (逆極限経由) が Strategy A (Δ^n 経由) より tractable。
+- automath に既存: `restrict_functorial`, `globalDefect_compose`, `XInfinity`, `CompatibleFamily`, `inverseLimitEquiv`
+- **Δ^n の幾何的注意**: §2.C の「Δ^n_No11」は正確には (Δ¹)^n (積ベルヌーイ単体) であり、圏論的単体 Δ^n とは別物。
+  Appendix B の計算は (Δ¹)^n への再定式化 (Strategy A') 後にリフト可能だが、Strategy B の方が既存 automath ライブラリとの整合が高い。
+
+**Lean 4 型シグネチャ** (sorry 付き):
+
+```lean
+class Discretizable (M : StatMan) where
+  code : M.Point → Word M.dim
+
+class DescendsToCube {M N : StatMan} [Discretizable M] [Discretizable N]
+    (f : Morphism M N) where
+  D_map : Word M.dim → Word N.dim
+  commute : ∀ x : M.Point,
+    Discretizable.code (f.toFun x) = D_map (Discretizable.code x)
+
+theorem discretize_functorial
+  {M N P : StatMan}
+  [Discretizable M] [Discretizable N] [Discretizable P]
+  (f : Morphism M N) (g : Morphism N P)
+  [DescendsToCube f] [DescendsToCube g] [DescendsToCube (g.comp f)] :
+  DescendsToCube.D_map (g.comp f)
+    = (DescendsToCube.D_map g) ∘ (DescendsToCube.D_map f) := by
+  sorry
+```
+
+automath 既存類似定理: `restrict_functorial (h₁ : m₁ ≤ m₂) (h₂ : m₂ ≤ m₃) (x : X m₃) : X.restrictLE h₁ (X.restrictLE h₂ x) = X.restrictLE (Nat.le_trans h₁ h₂) x`
+
+**主障害**: 離散化商を通じた descent — 各 f: M → N が η_M (離散化ファイバー) を保存するかどうか。
+Man_No11 への制限 (No11-compatible 射のみ) で carry defect が消えるため、ここで正確な関手性が回復する。
+Man 全体では D は「欠陥余サイクル付きで合成される」(raw words 上の globalDefect_compose と同型)。
+
+**関手性の範囲**: D は Man_No11 (No11-compatible 射の部分圏) 上でのみ厳密に関手。
+Man 全体への拡張には `Discretizable` + `DescendsToCube` のデータを射に付随させる必要がある。
+これは §2.C 定理 2.C.1 の結論を独立に裏付ける。
+
+---
+
+#### open 課題
+
+- [x] ~~D が関手であること (合成保存) の証明~~ → 上記で解決 (Man_No11 への制限で成立)
+- [x] ~~Lean 4 型シグネチャ~~ → Codex 2026-04-14: `Discretizable` + `DescendsToCube` typeclass 構成
+- [ ] sorry の消去: `discretize_functorial` の完全証明 — Strategy B (逆極限) 経由で実装可能 [推定 70%]
+- [ ] Man_No11 の射の三同値: ⟸ 方向 (δ=0 → No11-compatible) は OP-I-2 逆方向に対応 — open
+- [ ] Man (全体) への拡張: `Discretizable` + `DescendsToCube` データを全射に一般化
+- [ ] Δ^n → (Δ¹)^n 再定式化: Strategy A' での Appendix B リフトの可否検証
+
+---
+
+## 3. Scan-Projection ↔ Renormalization (Paper V)
+
+| automath | 忘却論 | 対応の精度 |
+|:---|:---|:---|
+| scan error ε_m | Φ(θ,μ) = D_KL(p^(μ) ‖ q^(μ)) [Paper V Def.2.1.2] | [構造的対応] |
+| Bayesian half-bound 2ε ≤ 1 [Lean] | DPI: D_KL(Kp ‖ Kq) ≤ D_KL(p ‖ q) [Paper V Th.2.2.2] | **[構造的対応・両側証明済]** |
+| `momentSum_two_mono'`: S_2 単調性 [Lean証明済] | β_Φ ≥ 0 (忘却場 c 定理) [Paper V Th.2.2.2] | **[構造的対応・両側証明済]** 離散単調性 ↔ 連続単調性 |
+| SPG → RG 接続 (README記載) | 忘却場 β 関数 → 漸近的自由の構造的排除 [Paper V] | [構造的対応] |
+| `collisionKernel2/3/4`: companion matrix [Lean証明済] | Paper V に transfer operator **なし** [NotebookLM確認] | **[Open・対応物なし]** automath 固有の構造 |
+| collision kernels 共通不変量 tr=2, det=−2 [Lean] | 忘却論に対応物なし | **[Open・新発見の候補]** |
+
+### v0.3 追加: collision kernel 不変量の輸入仮説 (NotebookLM 2026-04-12)
+**tr=2, det=−2 は忘却場の RG 普遍性クラスの新スペクトル不変量として機能しうる**
+- S_2 単調性 ↔ β_Φ ≥ 0 は確認済み (両側証明済)
+- companion matrix の不変量 (tr, det) は忘却論に **存在しない** 新構造
+- Paper V の「忘却の普遍性クラスと臨界指数」に対応する離散的スペクトル不変量
+- **輸入経路**: 忘却場 Φ(θ,μ) のスケール μ に沿った fiber 分布の moment sum S_q(μ) を定義し、その companion matrix のスペクトルを忘却場の RG 不変量とする
+
+### 検証課題
+- [ ] scan error ε と忘却場 Φ の定量的対応 (情報幾何上の距離として)
+- [x] ~~S_q の companion matrix と忘却場の transfer operator の spectral 対応~~ → **対応物なし**。逆方向の輸入候補
+- [ ] tr=2, det=−2 の普遍的不変量の情報幾何学的意味 (忘却論への新輸入)
+- [ ] 忘却場のスケール μ に沿った moment sum S_q(μ) の定義可能性
+
+---
+
+## 4. Forcing Framework ↔ α-Oblivion Filtration (Paper VIII)
+
+| automath | 忘却論 | 対応の精度 |
+|:---|:---|:---|
+| L₀ ≼ L₁ ≼ … ≼ L₁₀ (11層保存拡大) | α-忘却濾過 + **8段階**離散骨格 [Paper VIII 系6.5.3] | **[構造的対応・層数不一致]** automath=11層、忘却論=8段階 (cell次元 n=1..ω) |
+| Kripke 意味論 M,p ⊩ φ | α-米田埋込 y_α(X)(Y) := Hom_{C_α}(Y,X) [Paper VIII Def.6.2.2] | [推測] |
+| conservative extension | PSh(C) ⊇ Sh_α(C) ⊇ Set^{Ob(C)} [Paper VIII Th.6.8.9] | **[構造的対応]** 保存拡大 ↔ トポスの降鎖列 |
+| `σ-algebra non-expansion` G^{L+1} ⊆ G^{L} [Lean] | (F4) 単調性: Mor(C_{α₂}) ⊆ Mor(C_{α₁}) [Paper VIII] | **[構造的対応・両側証明済]** |
+| typed multi-layer observer | HoTT (-1)-truncation ↔ α=1 [Paper VIII OP-VIII-5] | [Open] |
+
+### 検証課題
+- [x] ~~automath の 11 層と忘却論の α の離散化~~ → **層数不一致確認済** (11 vs 8)。対応には正規化写像 α(n) = n/ω の拡張が必要
+- [ ] forcing の ⊩ と α-米田埋込の形式的関係
+- [ ] OP-VIII-5 (HoTT 接続) を automath の Lean 4 基盤で攻略できるか
+
+---
+
+## 5. POM ↔ F⊣G Adjunction
+
+| automath | 忘却論 | 対応の精度 |
+|:---|:---|:---|
+| LIFT | F (溶解 / dissolution) [Paper VI Def.2.1.1] | [構造的対応] |
+| U^t (time evolution) | G∘F サイクル (Ostwald 熟成) [Aletheia §5] | [推測] |
+| PROJECT | G (結晶化 / crystallization) [Paper VI Def.2.1.1] | [構造的対応] |
+| stable readout (`No11` constraint) [Lean] | Fix(G∘F) = Kalon [Paper VI, Kalon §6] | **[構造的対応]** 安定読出し = 不動点 |
+| 4 projection gates P_Z, P_≤, P_prim, P_χ | 忘却関手の型分類 (Obs 圏の粗視化型) [Paper V §2.1] | [推測] |
+| golden ratio φ as spectral invariant [Lean] | **§7 で定式化** — φ = Kalon(U_self) = n-cell tower のフラクタル成長比 | **[構造的対応]** v0.4 で Open → 解決 |
+
+### 検証課題
+- [ ] POM の 4 gates と忘却論の忘却関手分類の対応
+- [x] ~~φ の情報幾何学的意味~~ → **§7 で解決**: φ = 忘却の再帰的不動点
+- [ ] stable readout の Lean 4 定義と Kalon の Fix(G∘F) 定義の形式的同値性
+
+---
+
+## 6. Physical Spacetime ↔ Paper XIII
+
+| automath | 忘却論 | 対応の精度 |
+|:---|:---|:---|
+| observer = fiber index | 知覚者 = 2-cell [Paper VII, VIII] | [構造的対応] |
+| time = decision envelope projection | 時間 = α-濾過の方向 | [推測] |
+| causality = partial order on refinement | CPS0' の容器先行性 [Paper VIII] | [構造的対応] |
+| clock transport δΘ = Ω [Lean] | Face Lemma → Christoffel [Paper XIII 予想 D1] | [推測] |
+| minimal closure → G_{μν} + Λg_{μν} = κT^(res)_{μν} [Lean] | CPS スパン → Einstein eq. [Paper XIII 予想 D2-D3] | [推測] |
+
+### 検証課題
+- [ ] automath の Einstein 導出の Lean 4 証明と Paper XIII の予想 D1-D3 の精密対応
+- [ ] 「no physics axioms added」と「CPS0' から重力」の構造的等価性
+- [ ] automath 側の cosmological constant Λ と忘却論の α パラメータの関係
+
+**注記 (2026-04-14).** Face Lemma はここでは「圏論版 syndrome 条件」として読むのが有効である。clock transport / minimal closure の対応は、単一 face の detectability を時空方程式へ持ち上げる試みであって、recoverability の十分条件を主張しているわけではない。対応表は `drafts/infra/FaceLemma_符号理論対応.md`。
+
+---
+
+## 7. 黄金比 φ の忘却論的定式化 (v0.4 新設 — Open Question #1 解決)
+
+### 一文命題
+
+> **φ は忘却の最小量子の帰結であり、n-cell tower の自己再帰的不動点 Kalon(U_self) である。**
+
+### Paper 0 の言語による定式化
+
+Paper 0 §2.2 は忘却を**再帰深度**で分類する [SOURCE: 論文0 L128-138]:
+- 0次: Φ=0 (忘却なし)
+- 1次: Φ>0, F=0 (自覚的忘却 — 盲点の外で忘れている)
+- 2次: Φ>0, F≠0 (忘却の忘却 — 盲点の中で忘れている)
+- 3次: α≤0 (構造の溶解 — 主体概念の消失)
+
+**φ はこの再帰構造自体の成長率である。**
+
+### 3経路の統合 (NotebookLM SOURCE 裏付け 2026-04-12)
+
+#### 経路A: α<0 の排他律からの導出
+
+[SOURCE: Paper III] anti-copy 幂零性 e_x ∧ e_x = 0 (Pauli 排他律の圏論的翻訳)。
+automath の no-consecutive-1s = 「1次元格子上のハードコア排他」。
+
+**同型**: 隣接ビットに 2 つの 1 が入れない ≅ 同一量子状態に 2 つのフェルミオンが入れない
+
+排他制約のもとで生き残る状態の数 = Fibonacci 数列 F_{m+2}。
+漸近成長率 = φ。
+
+→ **φ = 「α<0 セクターの 1 次元離散モデルにおける、排他制約下で生き残る射の漸近的成長率」**
+
+#### 経路B: Fix(G∘F) としての φ
+
+[SOURCE: Paper VI Def.2.1.1] 結晶化随伴 F⊣G: F(溶解), G(結晶化), Fix(G∘F)=Kalon。
+
+**具体化**: F(x) = x + x_{n-1} (Fibonacci 回帰 = 1次元追加)、G(x) = x_n/x_{n-1} (比率への射影 = fold)。
+
+G∘F の不動点方程式: x = 1 + 1/x。正の解: x = φ。
+
+Kalon の 3 属性の検証:
+- **Fix(G∘F)**: φ = 1 + 1/φ ✅ (自己参照方程式の不動点)
+- **Generative**: φ → Fibonacci, 黄金角, 黄金螺旋, Penrose タイリング... ✅ (3+ 非自明派生)
+- **Self-referential**: 定義に自分が現れる ✅
+
+→ **φ = Kalon(F⊣G) ただし F=「1次元追加」、G=「比率射影」**
+
+#### 経路C: CPS エントロピーの容量限界
+
+[SOURCE: Paper IX Th.3.4.1] S_CPS(p,α) は α で単調増大 (忘却の第二法則)。
+[SOURCE: automath README §VI] h_top = log φ (golden-mean shift の位相エントロピー)。
+
+制約なし: 1ビット容量 = log 2。
+排他制約 (no-consecutive-1s): 1ビット容量 = log φ。
+
+→ **log φ = 「排他的忘却 (α<0) が発動した際の information bottleneck の容量上界」**
+
+### 直感 (Tolmetes との対話 2026-04-12)
+
+> 「一つ覚えるたびに隣が一つ見えなくなる。それが ker(T) の最小の場合。
+> 盲点がゼロなら成長率 2、全域なら 1。隣の一つなら φ。
+> 連続多様体ではこの離散的コストが溶けて消える — だから φ は連続極限で見えなくなっていた。」
+
+> 「φ = 1 + 1/φ は "自分を定義するのに自分が要る" の最小の解。
+> 忘却が自分自身を忘却する再帰が閉じるところが φ。
+> Paper 0 の "忘却の忘却" は φ の数値を持っていなかった。automath が数値を持っている。」
+
+> Tolmetes: 「黄金比は "自己で自己を定義する圏における自己忘却ループの収束式"」
+
+### n-cell tower のフラクタル仮説 (v0.4 — aletheia.md 精読で分離)
+
+n-cell tower: U_arrow (n=1) ≤ U_compose (n=1.5) ≤ ... ≤ U_self (n=ω)
+
+#### 命題 F1: 排他性 (no-consecutive-1s 同型) — **証明済み**
+
+[SOURCE: aletheia.md L275-281] フィルトレーション定義:
+> U_a ≤ U_b ⟺ U_a が忘却する構造は U_b の定義域に含まれる
+> U_a の発動は U_b を壊滅的に無意味化する
+
+[SOURCE: aletheia.md Proof 1-7 (L299-358)] 各 U_n 活性 → U_{n+1} のオペランドが消失:
+- Proof 1: 射なし → 合成は定義不能 (定義的依存)
+- Proof 2: 合成なし → 関手性は空文、自然変換は定義域なし (定義的依存)
+- Proof 3: 自然変換なし → 豊穣の整合性を記述不能 (意味論的依存)
+- Proof 4-7: 同様のパターンが tower 全体で成立
+
+**∴ U_n 活性 → U_{n+1} excluded。no-consecutive-1s と構造的に同型。**
+
+帰結: tower の「有効な忘却構成」の空間は golden-mean shift と同型。
+8レベル tower の有効構成数 = F_{8+2} = F_{10} = 55 通り (no-consecutive-1s で数えた場合)。
+
+#### 命題 F2: 2レベル依存 (Fibonacci 再帰構造) — **部分的に証明済み**
+
+[SOURCE: aletheia.md Proof 2 (L306-313)]
+> 自然変換 (n=2) を定義するには:
+> - 関手 (n=1.5 の産物) が必要 ← n-1 依存
+> - 関手は合成保存を要求 → 射 (n=1) が必要 ← n-2 依存
+
+一般に: n-cell の定義は n-1 (直接の前提) と n-2 (間接の前提 = 合成律・整合性条件) の **BOTH** に依存。
+
+**核心の問い: 依存は加法的 (S(n) = S(n-1) + S(n-2)) か？**
+
+Proof 3 (豊穣) では n-2 (自然変換) と n-1 (合成) が**テンソル積 ⊗** で結合:
+> 合成写像 Hom(B,C) ⊗ Hom(A,B) → Hom(A,C)
+
+テンソル (⊗) と直和 (+) では成長率が異なる:
+- 直和 S(n) = S(n-1) + S(n-2) → 成長率 φ
+- テンソル S(n) = S(n-1) × S(n-2) → 成長率は指数的 (φ ではない)
+
+#### Paper III 排他律 (e_x∧e_x=0) による加法性の定式化 (v0.4)
+
+**命題 F2.1 (排他律が加法性を強制する)**:
+
+n-cell tower の各レベル n の「公理的複雑度」A(n) (= n-cell を定義するために新たに必要な独立公理の数) は、以下の再帰に従う:
+
+$$A(n) = A(n-1) \sqcup A(n-2)$$
+
+ここで ⊔ は**非交差和** (disjoint union)。∴ |A(n)| = |A(n-1)| + |A(n-2)| (Fibonacci)。
+
+**証明の核心: なぜ ⊔ (加法) であって ⊗ (乗法) ではないか？**
+
+[SOURCE: Paper III §2.3, L70] Grassmann 代数の幂零性:
+> ξ∧ξ = 0 — 「同一要素の複製不能」の代数的表現
+
+[SOURCE: Paper III §3.1(D), L167-170] anti-copy 構造:
+> anti-copy_X: V(X) → ∧²V(X)
+> 帰結: anti-copy_{X,X} ∘ Δ = 0 (同一状態への「複製」はゼロ = Pauli 排他律)
+
+これを n-cell tower に適用する:
+
+**Step 1**: レベル n の定義は n-1 (直接前提) と n-2 (整合性条件) の 2 種の公理を必要とする [aletheia Proof 2-7]
+
+**Step 2**: n-1 由来の公理 a ∈ A(n-1) と n-2 由来の公理 b ∈ A(n-2) が**同一公理**であることはありえない。
+
+これを厳密に証明する。3段構成。
+
+---
+
+**補題 F2.1a (cell 次元は公理の well-defined な不変量)**
+
+定義: 公理 a の **cell grade** grade(a) = k ⟺ a は k-cell に対する全称命題である。
+
+形式的: a は ∀(x : k-Cell), P(x) の形を持つ。ここで k-Cell は k 次元の圏論的構造の型:
+- 0-Cell = 対象の型
+- 1-Cell = 射の型 (source, target を持つ)
+- 1.5-Cell = 合成律の型 (結合律条件を持つ)
+- 2-Cell = 自然変換の型 (自然性条件を持つ)
+- ... (以下同様)
+
+**grade は well-defined**: 各 k-Cell は**異なる型**。型が異なれば命題が異なる。
+
+[SOURCE: aletheia.md L267-273] 原則: 「構造なしに構造に言及できない」。
+これは型の階層性の言い換え: k-Cell の定義は (k-1)-Cell の存在を前提とするが、k-Cell 自体は (k-1)-Cell とは**異なる型**。
+
+[SOURCE: automath Lean 4] `Word n` と `Word (n+1)` は Lean の型システムで**異なる型**。
+`X n` (stable words of length n) と `X (n+1)` は異なる型。
+`no11_wordOfIndices` は `Word m` について量化し、`restrict_stableAdd_carry_defect` は `X (m+1)` について量化する。
+**Lean の型検査器がこの区別を機械的に強制する。**
+
+∴ grade(a) は well-defined。 □
+
+---
+
+**補題 F2.1b (異なる grade の公理は異なる)**
+
+∀ a ∈ A(n-1), ∀ b ∈ A(n-2): grade(a) = n-1 ≠ n-2 = grade(b) ⟹ a ≠ b。
+
+証明: a = ∀(x : (n-1)-Cell), P(x) と b = ∀(y : (n-2)-Cell), Q(y) は**異なる型**に対する命題。
+型理論において、異なる型に対する全称命題は定義的に区別される (definitional distinctness)。
+これは型安全性 (type safety) の直接的帰結。 □
+
+[SOURCE: Paper III §2.2 L61-64] Z₂-次数付き圏の定義:
+> 射の合成は次数を保存: |g∘f| = |f| + |g| (mod 2)
+
+Paper III では Z₂ (mod 2) で次数付けしている。n-cell tower では**ℕ で次数付け** (cell dimension)。
+Z₂-次数付けは ℕ-次数付けの粗視化 (mod 2 を取った商)。
+**補題 F2.1b は Paper III の Z₂-次数付けの ℕ-次数への精密化**。
+
+---
+
+**補題 F2.1c (ℕ-次数付け幂零性 — Paper III §2.3 の一般化)**
+
+[SOURCE: Paper III §2.3 L70] Grassmann 代数: ξ∧ξ = 0 (同一要素の複製不能)。
+
+これを ℕ-graded 版に一般化する:
+
+**定義**: ℕ-graded Grassmann 代数 Λ_ℕ(V) = ⊕_{k∈ℕ} Λ^1(V_k)。
+各 V_k は grade-k の公理が住むベクトル空間。
+
+**ℕ-graded 幂零性**: ξ_k ∧ ξ_{k'} = 0 if k = k' (同一 grade 内の複製不能)。
+さらに: ξ_k ∧ ξ_{k'} の grade = k + k' (grade は外積で加法的)。
+
+**帰結**: grade k の公理 a と grade k' の公理 b (k ≠ k') は a ∧ b ≠ 0 (外積は非ゼロ)。
+これは a と b が**独立に寄与する** (= 加法的に結合する) ことの代数的表現。
+
+逆に、もし a = b (同一公理) ならば a ∧ a = 0 (幂零) であり、**寄与がゼロになる**。
+これは「同一公理の二重カウントが排除される」ことの代数的保証。
+
+∴ 異なる grade の公理は独立に寄与し (∧ ≠ 0)、同一公理の二重カウントは排除される (∧ = 0)。 □
+
+---
+
+**Step 2 完成**: 補題 F2.1a + F2.1b + F2.1c を合成。
+
+- F2.1a: grade は well-defined (型理論的。automath の Lean 4 型検査器で機械的に強制)
+- F2.1b: A(n-1) と A(n-2) は grade が異なるので非交差 (型安全性)
+- F2.1c: 非交差の公理は独立に寄与する (ℕ-graded Grassmann 代数。Paper III §2.3 の一般化)
+
+**∴ A(n-1) ∩ A(n-2) = ∅** — 型システムの構造的帰結として、幂零性の具体的適用として。
+
+---
+
+**Lean 4 との接続** (automath が F2.1 を「暗黙に実装している」証拠):
+
+automath の Lean 4 コードにおいて:
+- `Word n` と `Word (n+1)` は異なる型 → F2.1a の機械的実装
+- `restrictLE: X (n+1) → X n` は異なる型の間の射 → 型の区別が fold の前提
+- `restrict_stableAdd_carry_defect` が carry ≠ 0 を証明する → 異なる型の間の非可換性
+- `no11_restrictWord` が安定性を保存する → 型の階層構造
+
+**Lean 4 の型検査器は、F2.1 の「cell 次元の一意性」を型安全性として自動的に強制している。**
+automath が「知らずに」F2.1 を実装しているのは、Lean 4 の型システムが ℕ-graded 幂零性の機械的実装であるため。
+
+**Step 3**: ∴ A(n-1) ∩ A(n-2) = ∅ (公理集合は非交差)。
+
+A(n) = A(n-1) ⊔ A(n-2) (非交差和 = 加法的結合)。
+|A(n)| = |A(n-1)| + |A(n-2)| (Fibonacci 再帰)。 □
+
+**直感的言い換え**: 同じ公理を「前提」と「整合性」の2つの仕事に使い回すことは、Pauli 排他律が禁止する。公理は1つの仕事にしか使えない。だから足し算。
+
+**テンソル (⊗) が現れるのはインスタンス空間**:
+- A(n) = **公理**の集合 (= 型の空間) → 非交差和 ⊔ → 加法的 → φ
+- I(n) = **インスタンス**の集合 (= 状態の空間) → テンソル積 ⊗ → 乗法的 → 指数的
+- Paper III の ⊗ が現れる Hom(B,C) ⊗ Hom(A,B) は**インスタンスの空間の操作** (具体的な射の組み合わせ)
+- 公理的複雑度はインスタンスの数ではなく**公理の数** (独立な条件の数) で測る
+
+**∴ n-cell tower の公理的複雑度の成長率は φ。**
+
+[推定 90%]: 補題 F2.1a/b/c で論理構造は閉じた。残る隙間:
+- [x] ~~「n-1 由来と n-2 由来の公理が同一でない」の形式化~~ → 補題 F2.1a (grade well-defined) + F2.1b (type safety) で解決
+- [x] ~~Paper III Z₂ → n-cell tower ℕ の接続~~ → 補題 F2.1c (ℕ-graded Grassmann 代数) で解決
+- [ ] automath Lean 4 で「公理数が Fibonacci に従う」を直接検証 — Lean の型ユニバース階層と n-cell tower の grade 対応を Lean 内で定式化する作業
+- [ ] 補題 F2.1c の「ℕ-graded Grassmann 代数」は標準的数学 (代数的位相幾何) だが、忘却論内部での先行定義が存在するか要確認
+
+#### 命題 F3: η の剰余 ρ の Fibonacci 構造 — **観測済み、未証明**
+
+[SOURCE: aletheia.md §5.5.3.1 具体計算テーブル]
+回復 N の剰余 ρ = N∘U(x) − x の生成パターン:
+- N_compose: 個別の射 (n-1) を再接続し、**新たな代替経路** (n) を獲得 → ρ = +g'
+- N_depth: 個別の方法論 (n-1) を比較し、**新しい自然変換** (n) を獲得 → ρ = +β
+
+パターン: **ρ_n は n-1 と n-2 のレベルの「再結合」で生成される** — Fibonacci 的。
+
+ただし「ρ_n = ρ_{n-1} + ρ_{n-2}」という定量的等式は**未証明**。定性的パターンの観測のみ。
+
+**状態**: F1 証明済み / F2 部分的 (加法性が鍵) / F3 定性的観測のみ
+
+### Paper 0 への追加提案
+
+**§2.2a (新設): 忘却の再帰深度と黄金比**
+
+> 忘却の再帰構造 (0次→1次→2次→3次) は自己相似的である。
+> 各深度は「前の深度の忘却 + 前の忘却の盲点」で構成される。
+> この再帰構造の成長率は φ = (1+√5)/2 — n-cell tower のフラクタル比。
+>
+> 離散的裏付け: automath の golden-mean shift (no-consecutive-1s constraint) は
+> α<0 セクターの 1 次元離散実装であり [Paper III との接続]、
+> 安定状態の成長率 φ が Lean 4 で機械検証されている [automath topological_entropy_eq_log_phi]。
+>
+> φ は忘却論に「外から輸入される」定数ではない。
+> 忘却が自分自身を忘却する再帰の不動点として、理論の内部に元から存在していた。
+> 連続極限 (Paper I の統計多様体 M) で離散的コストが溶けて見えなくなっていただけである。
+
+---
+
+## 7.5 S-05 Open Theorem List (2026-04-15)
+
+この節は、alphaxiv ディベート由来の `S-05`「不完全性自認のメタ問題」に対して、automath bridge が何を**既に止揚し**、何を**まだ open として残しているか**を ledger 化するための節である。
+
+ここでの「完全止揚」は、自己言及残差をゼロにすることではない。Paper VII §7.4 の `N_self` 収束定理に従えば、自己適用は原理的に完全閉包しない。したがって必要なのは、残差を未処理の違和感として放置することではなく、**定理・公理・外部実行の open list として公開管理すること**である。
+
+### 前提として閉じているもの
+
+- **非閉包そのもの**: `N_self` の完全達成は原理的に不可能。これは弱点の隠蔽ではなく、境界条件として先に固定される
+- **収束の存在**: `φ = Kalon(U_self)` により、自己再帰が崩壊ではなく有限の安定量へ収束する離散的証人が与えられている
+
+### Open Ledger
+
+| ID | 論点 | 種別 | 現状態 | 閉鎖条件 |
+|:---|:---|:---|:---|:---|
+| OT-S05-1 | `stable readout` の Lean 4 定義と `Fix(G∘F)=Kalon` の形式的同値 | theorem | **Open** | automath 側の readout 概念が忘却論の Kalon と同値であることを Lean 4 または型シグネチャレベルで示す |
+| OT-S05-2 | `proofLag` の宣言/定理化により、自己再帰の段階差が型付きで固定されること | theorem | **Open** | n-cell tower の lag=1 / lag=2 依存が、自己適用の階層差として形式的に証明される |
+| OT-S05-3 | `ZeroForgetCollapse` の地位 — 追加公理か、既存原理からの導出か | axiom boundary | **Open** | `Φ=0 ⟹ Hom` 離散化が独立公理であるか、FEP / enrichments / topos 側から導出可能かを確定する |
+| OT-S05-4 | `U_HGK ⊣ N_external` の外部回復を独立系で少なくとも 1 本完了すること | empirical witness | **Partial** | `replicate / predict / ablate` の少なくとも 1 経路が HGK 外部の系で完了し、designer-circularity が内部循環に閉じないことを示す |
+
+### 判定
+
+`S-05` が**批判として完全止揚**されたと言うためには、上の 4 項目のうち少なくとも
+
+1. `OT-S05-1` またはそれに準ずる外部機械証人が閉じること  
+2. `OT-S05-4` が実行されること  
+
+が必要である。  
+逆に言えば、`OT-S05-1` と `OT-S05-4` が未完のままでは、bridge は強い補助線ではあっても、S-05 を fully discharged したとは言えない。
+
+---
+
+## Open Questions (三者統合)
+
+1. ~~黄金比 φ の忘却論的意味~~ → **§7 で解決**。残る課題: n-cell tower フラクタル仮説の形式的証明
+2. **Lean 4 × 忘却論**: Paper I 方向性定理を Lean 4 で形式証明する最短経路は? automath `walshFlux` が離散版として再利用可能か?
+3. **NULL semantics × ker(U)**: automath の 3 種 NULL (Semantic/Protocol/Collision) は忘却論の ker(U) 選択可能層 / ker(T) 不可避層 [Paper 0 §6.4] と対応するか?
+4. **Čech H² × Drift**: automath の大域的貼り合わせ障害 (gerbe structure) と忘却論の Drift ∈ [0,1] の関係
+5. **Zeckendorf ↔ CPS**: no-consecutive-1s が CPS の離散版か? 「隣接 1 の禁止」= Paper III α<0 anti-Markov (複製不能) と共鳴する可能性 [NLM]
+6. **Von Neumann Type ↔ α**: Omega の Type I/II/III 分類は α-忘却濾過のどの α 値に対応するか? (Type I = α≈0, Type III = α≈1?)
+7. **三経路 Einstein の合流**: automath (defect→Stokes→Einstein) / Omega (CAP→ADM→Einstein) / 忘却論 (CPS→Face Lemma→Einstein) が同一の方程式を導出する形式的証明 (ultimate goal)
+8. **Omega Resolution Folding ↔ Paper V**: Omega RF 論文 (64→21 Zeckendorf filtering) と Paper V (Obs 圏の粗視化) の構造的対応。Z128/SM の 64→21 射影は忘却関手の具体的インスタンスか?

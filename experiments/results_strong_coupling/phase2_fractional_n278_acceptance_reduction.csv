@@ -1,0 +1,2 @@
+formal_n,coupling_id,sizes,eta_proxy,eta_stderr,eta_anchor_lpa,gamma_anchor_lpa,gamma_phi_proxy_lpa,status_lpa,eta_anchor_de2,gamma_anchor_de2,gamma_phi_proxy_de2,status_de2,target_ratio_lpa,target_ratio_de2
+2.780000,n2.78_m1.000_lam1.200,"6,8,10,12",0.3304472424,0.2993303821,0.0160000000,0.4270000000,,out_of_anchor_band,0.0320000000,0.4620000000,,out_of_anchor_band,,
