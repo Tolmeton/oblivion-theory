@@ -26,40 +26,62 @@ from strong_coupling_common import (
     validate_scan_csv,
 )
 
+ETA_ESTIMATOR_SPECS = {
+    "chi_connected": {
+        "observable": "susceptibility",
+        "fit_method": "fractional chi ~ L^(2-eta)",
+    },
+    "kmin_structure": {
+        "observable": "structure_factor_kmin",
+        "fit_method": "fractional S(k_min) ~ L^(2-eta)",
+    },
+}
 
 def fractional_eta_proxies(scan_rows: list[dict[str, str]]) -> list[dict[str, object]]:
-    grouped: dict[tuple[str, str], list[tuple[int, float, float]]] = {}
+    grouped: dict[tuple[str, str, str], list[tuple[int, float, float]]] = {}
     for row in scan_rows:
-        if row.get("observable") != "susceptibility":
-            continue
         if not row.get("formal_n"):
             continue
-        key = (row["formal_n"], row["coupling_id"])
-        grouped.setdefault(key, []).append(
-            (
-                int(row["L"]),
-                float(row["mean"]),
-                max(float(row["stderr"]), 1e-6),
+        for estimator_name, spec in ETA_ESTIMATOR_SPECS.items():
+            if row.get("observable") != spec["observable"]:
+                continue
+            key = (row["formal_n"], row["coupling_id"], estimator_name)
+            grouped.setdefault(key, []).append(
+                (
+                    int(row["L"]),
+                    float(row["mean"]),
+                    max(float(row["stderr"]), 1e-6),
+                )
             )
-        )
 
     proxies: list[dict[str, object]] = []
-    for (formal_n, coupling_id), entries in sorted(grouped.items(), key=lambda item: (float(item[0][0]), item[0][1])):
+    for (formal_n, coupling_id, estimator_name), entries in sorted(
+        grouped.items(),
+        key=lambda item: (float(item[0][0]), item[0][1], item[0][2]),
+    ):
         if len(entries) < 2:
             continue
         entries.sort(key=lambda item: item[0])
         sizes = [entry[0] for entry in entries]
         values = [entry[1] for entry in entries]
         errors = [entry[2] for entry in entries]
-        fit = fit_power_law(sizes, values, errors, method="fractional chi ~ L^(2-eta)")
+        fit = fit_power_law(
+            sizes,
+            values,
+            errors,
+            method=str(ETA_ESTIMATOR_SPECS[estimator_name]["fit_method"]),
+        )
         eta_proxy = 2.0 - fit.slope if fit.slope == fit.slope else float("nan")
         proxies.append(
             {
                 "formal_n": float(formal_n),
                 "coupling_id": coupling_id,
+                "eta_estimator": estimator_name,
+                "source_observable": str(ETA_ESTIMATOR_SPECS[estimator_name]["observable"]),
                 "sizes": ",".join(str(size) for size in sizes),
                 "eta_proxy": float(eta_proxy),
                 "eta_stderr": float(fit.stderr),
+                "fit_method": fit.method,
             }
         )
     return proxies
@@ -75,6 +97,9 @@ def build_reduction_rows(scan_rows: list[dict[str, str]]) -> list[dict[str, obje
             {
                 "formal_n": f"{eta_row['formal_n']:.6f}",
                 "coupling_id": eta_row["coupling_id"],
+                "eta_estimator": eta_row["eta_estimator"],
+                "source_observable": eta_row["source_observable"],
+                "fit_method": eta_row["fit_method"],
                 "sizes": eta_row["sizes"],
                 "eta_proxy": f"{eta_row['eta_proxy']:.10f}",
                 "eta_stderr": f"{eta_row['eta_stderr']:.10f}",

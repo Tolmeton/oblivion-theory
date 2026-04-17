@@ -89,6 +89,11 @@ def estimate_connected_xi(
     )
 
 
+def estimate_structure_factor_kmin(samples: dict[str, np.ndarray]) -> float:
+    sk = np.asarray(samples["sk"], dtype=np.float64)
+    return max(float(np.mean(sk)), 0.0)
+
+
 def site_action(phi: float, weighted_neighbor_sum: float, mass_like: float, lambda_like: float) -> float:
     return 0.5 * mass_like * phi * phi + 0.25 * lambda_like * phi**4 - phi * weighted_neighbor_sum
 
@@ -325,6 +330,12 @@ def simulate_fractional_proxy(
         lambda data: estimate_connected_xi(data, L, projection["transverse_weight"], volume),
         block_size=block_size,
     )
+    structure_mean, structure_stderr = block_bootstrap_estimate(
+        bootstrap_rng,
+        {"sk": sk},
+        estimate_structure_factor_kmin,
+        block_size=block_size,
+    )
     split_stability = split_connected_susceptibility(
         magnetization=magnetization,
         observable_volume=volume,
@@ -340,6 +351,7 @@ def simulate_fractional_proxy(
             "binder": (binder_mean, binder_stderr, tau_mag),
             "xi_over_L": (xi_mean, xi_stderr, tau_mag),
             "susceptibility": (susceptibility_mean, susceptibility_stderr, tau_mag),
+            "structure_factor_kmin": (structure_mean, structure_stderr, tau_mag),
             "magnetization_abs": (mag_abs_mean, mag_abs_stderr, tau_mag),
             "acceptance_rate": (float(np.mean(acceptance)), acceptance_stderr, 0.5),
         },
@@ -456,6 +468,12 @@ def simulate_direct_t_projected_proxy(
         lambda data: estimate_connected_xi(data, L, transverse_weight, observable_volume),
         block_size=block_size,
     )
+    structure_mean, structure_stderr = block_bootstrap_estimate(
+        bootstrap_rng,
+        {"sk": sk},
+        estimate_structure_factor_kmin,
+        block_size=block_size,
+    )
     split_stability = split_connected_susceptibility(
         magnetization=magnetization,
         observable_volume=observable_volume,
@@ -473,6 +491,7 @@ def simulate_direct_t_projected_proxy(
             "binder": (binder_mean, binder_stderr, tau_mag),
             "xi_over_L": (xi_mean, xi_stderr, tau_mag),
             "susceptibility": (susceptibility_mean, susceptibility_stderr, tau_mag),
+            "structure_factor_kmin": (structure_mean, structure_stderr, tau_mag),
             "magnetization_abs": (mag_abs_mean, mag_abs_stderr, tau_mag),
             "acceptance_rate": (float(np.mean(acceptance)), acceptance_stderr, 0.5),
         },
@@ -493,20 +512,30 @@ def simulate_direct_t_projected_proxy(
     )
 
 
-def load_schedule_map(schedule_path: Path) -> dict[str, dict[str, float]]:
+def normalize_schedule_entries(payload: object) -> list[dict[str, float]]:
+    raw_entries = payload if isinstance(payload, list) else [payload]
+    entries: list[dict[str, float]] = []
+    for raw_entry in raw_entries:
+        if not isinstance(raw_entry, dict):
+            raise ValueError("Each schedule row must be a dict with mass_like/lambda_like.")
+        if "mass_like" not in raw_entry or "lambda_like" not in raw_entry:
+            raise ValueError("Each schedule row must contain mass_like and lambda_like.")
+        entries.append(
+            {
+                "mass_like": float(raw_entry["mass_like"]),
+                "lambda_like": float(raw_entry["lambda_like"]),
+            }
+        )
+    return entries
+
+
+def load_schedule_map(schedule_path: Path) -> dict[str, list[dict[str, float]]]:
     payload = json.loads(schedule_path.read_text(encoding="utf-8"))
     if not isinstance(payload, dict):
         raise ValueError("schedule JSON must be a dict keyed by formal_n.")
-    schedule: dict[str, dict[str, float]] = {}
+    schedule: dict[str, list[dict[str, float]]] = {}
     for key, value in payload.items():
-        if not isinstance(value, dict):
-            raise ValueError("Each schedule row must be a dict with mass_like/lambda_like.")
-        if "mass_like" not in value or "lambda_like" not in value:
-            raise ValueError("Each schedule row must contain mass_like and lambda_like.")
-        schedule[f"{float(key):.6f}"] = {
-            "mass_like": float(value["mass_like"]),
-            "lambda_like": float(value["lambda_like"]),
-        }
+        schedule[f"{float(key):.6f}"] = normalize_schedule_entries(value)
     return schedule
 
 
@@ -538,7 +567,10 @@ def resolve_schedule_entries(
     if schedule_path is not None:
         schedule_map = load_schedule_map(schedule_path)
     elif proxy_kind == "t_projected_direct":
-        schedule_map = DEFAULT_DIRECT_T_PROJECTED_SCHEDULE
+        schedule_map = {
+            key: normalize_schedule_entries(value)
+            for key, value in DEFAULT_DIRECT_T_PROJECTED_SCHEDULE.items()
+        }
     else:
         raise ValueError("per_n schedule without --schedule-path is only supported for t_projected_direct.")
 
@@ -546,11 +578,12 @@ def resolve_schedule_entries(
     missing: list[str] = []
     for formal_n in formal_ns:
         key = f"{formal_n:.6f}"
-        payload = schedule_map.get(key)
-        if payload is None:
+        payloads = schedule_map.get(key)
+        if payloads is None:
             missing.append(key)
             continue
-        entries.append((formal_n, float(payload["mass_like"]), float(payload["lambda_like"])))
+        for payload in payloads:
+            entries.append((formal_n, float(payload["mass_like"]), float(payload["lambda_like"])))
     if missing:
         raise ValueError(f"Missing per_n schedule rows for formal_n={missing}")
     return entries
@@ -639,7 +672,7 @@ def build_scan_rows(
                         "mean": f"{mean:.10f}",
                         "stderr": f"{stderr:.10f}",
                         "tau_int": f"{tau_int:.10f}",
-                        "seed": seed,
+                        "seed": run_seed,
                         "formal_n": f"{projection['formal_n']:.6f}",
                         "n_eff": f"{projection['n_eff']:.6f}",
                         "transverse_weight": f"{projection['transverse_weight']:.6f}",

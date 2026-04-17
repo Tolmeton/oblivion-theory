@@ -388,7 +388,7 @@ def scan_sanity_issues(rows: list[dict[str, str]]) -> list[str]:
             issues.append(f"{label}: binder left the expected finite-size range [-0.25, 0.75]")
         elif observable == "xi_over_L" and not (0.0 <= mean <= 1.0):
             issues.append(f"{label}: xi_over_L left the expected range [0, 1]")
-        elif observable in {"susceptibility", "magnetization_abs"} and mean < 0.0:
+        elif observable in {"susceptibility", "magnetization_abs", "structure_factor_kmin"} and mean < 0.0:
             issues.append(f"{label}: {observable} must stay non-negative")
         elif observable == "acceptance_rate" and not (0.0 <= mean <= 1.0):
             issues.append(f"{label}: acceptance_rate must stay inside [0, 1]")

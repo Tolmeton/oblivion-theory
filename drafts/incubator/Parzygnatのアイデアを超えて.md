@@ -10,7 +10,7 @@
 <:context:
   - [file] 論文I_力としての忘却_草稿.md (方向性定理, α-動力学, FEP対応)
   - [file] 論文II_相補性は忘却である_草稿.md (CPS圏, Face Lemma, Blanket生成定理, FEP包含)
-  - [file] drafts/infra/FaceLemma_符号理論対応.md (Face Lemma の Hamming / LDPC / n-cell tower 再読)
+  - [file] drafts/infra/FaceLemma_技術設計.md (Face Lemma の Hamming / LDPC / n-cell tower 再読)
   - [knowledge] Parzygnat [21] の3層階層: inverse ⊃ disintegration ⊃ Bayesian inversion
   - [knowledge] Fritz [16] の Markov category: copy/del 構造 + 条件付き独立性
   - [knowledge] 起源: 2026-03-27 セッション /u+ 評価

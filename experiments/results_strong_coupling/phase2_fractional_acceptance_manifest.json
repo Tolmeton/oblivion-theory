@@ -1,11 +1,23 @@
 {
   "block_size": 8,
-  "blocking_reason": "Metropolis-family exhausted",
+  "blocking_reason": "reduction_or_criticality_failure",
+  "calibrated_stable_row_count": 0,
+  "chain_stable_row_count": 11,
   "component_summary": {
-    "blocking_reason": "Metropolis-family exhausted",
+    "blocking_reason": "reduction_or_criticality_failure",
+    "calibrated_stable_row_count": 0,
+    "chain_stable_row_count": 11,
     "largest_calibrated_component_size": 0,
     "local_foothold": false,
-    "per_formal_n": {},
+    "per_formal_n": {
+      "2.780000": {
+        "calibrated_stable_count": 0,
+        "chain_stable_count": 11,
+        "largest_component_size": 0,
+        "selected_component_couplings": [],
+        "selected_component_rows": []
+      }
+    },
     "selected_component_couplings": [],
     "selected_component_formal_n": null
   },
@@ -40,6 +52,12 @@
       "eta_proxy": 1.8705877187,
       "lambda_like": 1.05,
       "mass_like": 1.05,
+      "production_couplings": [
+        {
+          "lambda_like": 1.05,
+          "mass_like": 1.05
+        }
+      ],
       "proposal_scale_final_by_L": "0.6597624565|0.6868261472|0.7007715000|0.7007715000",
       "score_de2": 1.8385877187,
       "split_stability_pass": true,

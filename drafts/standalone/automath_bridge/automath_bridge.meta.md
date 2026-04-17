@@ -33,6 +33,7 @@
   - NotebookLM 裏付け: 3経路 (A/B/C) + 統合判定 (conversation 84bdf5d6, 2026-04-12)
 - C5 (S-05 橋渡し): automath bridge はメタ自己言及問題を消去するのではなく、「未処理のパラドックス」を**定理化され外部監査可能な残差**へ変換する
   - SOURCE: README 「S-05 完全止揚条件」(2026-04-15)
+  - SOURCE: `OT-S05-4_外部回復プロトコル.md` — `replicate 1本 + predict 1本` を最小単位とする実行固定面
   - SOURCE: Paper VII §7.4 `N_self` 収束定理 — 完全閉包は原理的に不可能
   - SOURCE: dictionary §7 — `φ = Kalon(U_self)` を離散的外部証人の入口として定式化
   - SOURCE: `LLMに身体はあるか` §7.5.6 — `U_HGK ⊣ N_external` による自己診断の外部回復
@@ -100,8 +101,8 @@
 SFBT 問い: できないのではなく、やっていないだけではないか?
 前提強化:
   1. NotebookLM 対話で確認: 忘却論内部に架橋関手 B: CPS^{Z₂} → Filt([0,1], WdSub(C)) が既に構成済み [Paper VIII Def.6.7.3]。正規化写像 η(α_III) = 1/(1+e^{-α_III}) でパラメータ空間を接続。離散-連続の橋は「原理的に構成不能」ではなく「この特定の対に対して未構成」にすぎない
-  2. dictionary.md §2.A で離散化関手候補 D: Man → Hyp を6層 (空間/関数/方向/微分/外積/積分) で明示的に定義済み。D の関手性証明が Open だが、各層の対応は [構造的対応・両側証明済] レベル
-  3. dictionary.md §2.B で OP-I-2 証明スケッチを再編: $(a)\to(c)\to(d)$ は既存枠内、$(d)\to(e)$ は `ZeroForgetCollapse` を要する追加公理、連続極限は Conjecture 9.5.2 の弱*測度族 $\mu_\lambda$ として再設計。automath は離散側の strictness 回復を Lean で支持
+  2. 三者対応辞書.md §2.A で離散化関手候補 D: Man → Hyp を6層 (空間/関数/方向/微分/外積/積分) で明示的に定義済み。D の関手性証明が Open だが、各層の対応は [構造的対応・両側証明済] レベル
+  3. 三者対応辞書.md §2.B で OP-I-2 証明スケッチを再編: $(a)\to(c)\to(d)$ は既存枠内、$(d)\to(e)$ は `ZeroForgetCollapse` を要する追加公理、連続極限は Conjecture 9.5.2 の弱*測度族 $\mu_\lambda$ として再設計。automath は離散側の strictness 回復を Lean で支持
   4. NotebookLM が確認: 粗視化-濾過互換公理 CFC [信頼度85%] が Paper V × VIII の間で連続-離散を接続。「原理的に不可能」という反論は成立しない
   5. [SESSION-2 追加] NotebookLM (conv. 84bdf5d6) で確認: **カテゴリカルシンプレックス Δ^n (離散確率分布) 上で方向性定理の具体計算が Paper I Appendix B に存在する**。
      - T_i = 1 − (n+1)p_i (カテゴリカル分布上の Chebyshev 1-形式)
@@ -327,7 +328,17 @@ Man_No11 (No11-compatible 射のみ) への制限で carry defect = 0 → 正確
 
 ---
 
-## §M6 棄却された代替案
+## §M6 虚→実変換面
+
+### C1
+- 野望: [§M2 C1 の核主張を 1 文で言い直す]
+- 現在まだ虚な点: [未証明・未観測・未形式化・未反駁処理の核]
+- 実へ引くための SOURCE: [読むべき原典 / 必要データ / 必要定理]
+- 実化の判定条件: [何が揃えば『実へ近づいた』と言えるか]
+- 次の実化操作: [Sourcing / 定義追加 / 証明 / 実験 / 反論吸収]
+- 最新状態: 変換中
+
+## §M7 棄却された代替案
 
 - 棄却 1: 「automath と忘却論は表面的な類似にすぎない」→ NotebookLM 対話で SOURCE 裏付けされた 6 接続点のうち、defect algebra ↔ 合成ドリフト (§2) と σ-algebra non-expansion ↔ (F4) 単調性 (§4) は**両側で証明済み**。表面的類似を超えている
 - 棄却 2: 「Omega は忘却論と無関係」→ QCA 粗視化 = Obs 圏 (Paper V)、Von Neumann 型 = α-濾過 (Paper VIII)、自己参照 = End(Cat_i) (Paper VII) の 3 点で構造的対応。ただし automath ほどの精度ではない (Omega は形式検証の途上)

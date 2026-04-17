@@ -2,9 +2,9 @@
 
 Paper XIV — v0.1 (2026-04-13) — 忘却論 (Force is Oblivion) シリーズ
 
-英語版正本: curvature_is_the_carry_of_oblivion.md (v0.1, 2026-04-12)
+外部橋渡しの standalone 面: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/曲率は忘却のcarryである_草稿.md` (v0.3, 2026-04-13)
 
-概要. 射影は合成を壊す。三次元の物体を二次元に射影すれば、三次元で成立していた演算は二次元では成立しなくなる。その「ズレ」は消えない。蓄積し、構造を歪め、力として現れる。2026年、二つの独立プロジェクトが同じ構造を異なる言語で証明した。忘却論 (Paper I) は統計多様体上の忘却場 Φ と Chebyshev 1-形式 T から忘却曲率 F_{ij} を導出し、力は忘却の方向的不均一から創発されることを方向性定理として証明した。The Omega Project (automath) は有限バイナリ列の no-consecutive-1s 制約から出発し、fold 演算子 Φ と加算 ⊕ の非可換性を carry defect δ として形式化し、Lean 4 で 3,427 以上の定理を機械検証した。本稿は両者の構造的同型を示す: carry defect は方向性定理の離散・有限体インスタンスであり、Walsh-Stokes 恒等式は Leibniz 規則の離散版であり、「忘却なしに力なし」の離散版は Lean 4 で証明済みである。さらに、黄金比 φ は外部からの輸入ではなく、n-cell tower の公理的複雑度の成長率として忘却論の内部に存在する。本稿でその theorem spine として直接に立てるのは Route D — Pauli 排他律 (e_x ∧ e_x = 0) が公理の加法的成長を強制し、Fibonacci 再帰を生むという線 — である。Route A は離散証人、Route C は容量系、Route B は Kalon 読みとして働く。φ は忘却の文法の成長率である。
+概要. 射影は合成を壊す。三次元の物体を二次元に射影すれば、三次元で成立していた演算は二次元では成立しなくなる。その「ズレ」は消えない。蓄積し、構造を歪め、力として現れる。2026年、二つの独立プロジェクトが同じ構造を異なる言語で証明した。忘却論 (Paper I) は統計多様体上の忘却場 Φ と Chebyshev 1-形式 T から忘却曲率 F_{ij} を導出し、力は忘却の方向的不均一から創発されることを方向性定理として証明した。The Omega Project (automath) は有限バイナリ列の no-consecutive-1s 制約から出発し、fold 演算子 Φ と加算 ⊕ の非可換性を carry defect δ として形式化し、Lean 4 で 3,427 以上の定理を機械検証した。本稿は両者の構造的同型を示す: carry defect は方向性定理の離散・有限体インスタンスであり、Walsh-Stokes 恒等式は Leibniz 規則の離散版であり、「忘却なしに力なし」の離散版は Lean 4 で証明済みである。さらに、黄金比 φ は外部からの輸入ではなく、n-cell tower の公理的複雑度の成長率として忘却論の内部に存在する。本稿でその proof spine として先に固定するのは Route D — Pauli 排他律 (e_x ∧ e_x = 0) が公理の加法的成長を強制し、Fibonacci 再帰を生むという線 — である。ここで本稿が先に押すのは tower 全体の具体列ではなく、seed に依存しない漸近主張 `growth rate = φ` である。Route A は離散証人、Route C は容量系、Route B は Kalon 読みとして働く。φ は忘却の文法の成長率である。
 
 先行論文との関係: Paper I (力としての忘却) — 方向性定理 Th.5.1、合成ドリフト §9.5 OP-I-2。Paper V (繰り込みは忘却である) — c 定理、β 関数。Paper VIII (存在は忘却に先行する) — α-忘却濾過。Paper III (Markov 圏の向こう側) — Z₂ 次数付き構造、Pauli 排他律。Paper VI (行為可能性は忘却である) — G∘F 結晶化、Kalon。Paper IX (エントロピーは忘却である) — CPS エントロピー単調性。
 外部参照: The Omega Project (automath) — Lean 4, 3,427+ theorems, axioms=0.
@@ -33,7 +33,7 @@ Paper XIV — v0.1 (2026-04-13) — 忘却論 (Force is Oblivion) シリーズ
 
 3. **OP-I-2 の離散鎖は Lean 4 で強く支持される** — no-consecutive-1s 制約が消えると carry defect は消え、fold は厳密な環準同型へ戻る。だが連続側では $\delta = 0 \Rightarrow \mathrm{Hom}_\Phi \in \{0,1\}$ は既存公理だけでは出ない。ここには追加公理 `ZeroForgetCollapse` と、離散から連続へのリフトが残る
 
-4. **黄金比 $\varphi$ は忘却論の内部に存在する** — ただし本稿で theorem spine として直接に立てるのは Route D である。Pauli 排他律 ($e_x \wedge e_x = 0$) が公理の加法的成長を強制し、$|A(n)| = |A(n-1)| + |A(n-2)|$ (Fibonacci 再帰) を生む。Route A はその離散証人、Route C は容量版の系、Route B は Kalon 読みである。$\varphi$ は忘却の文法の成長率である
+4. **黄金比 $\varphi$ は忘却論の内部に存在する** — ただし本稿で proof spine として先に固定するのは Route D である。Pauli 排他律 ($e_x \wedge e_x = 0$) が公理の加法的成長を強制し、$|A(n)| = |A(n-1)| + |A(n-2)|$ (Fibonacci 再帰) を生む。ここで直接に押すのは tower 全体の具体列ではなく、seed 非依存の漸近主張 `growth rate = \varphi` である。Route A はその離散証人、Route C は容量版の系、Route B は Kalon 読みである。$\varphi$ は忘却の文法の成長率である
 
 これらの主張を、以降の節で順に示す。
 
@@ -381,48 +381,64 @@ $\log \varphi$ は、最小 fermionic 制約の下での情報ボトルネック
 
 $$U_{\text{arrow}}(1) \leq U_{\text{compose}}(1.5) \leq U_{\text{depth}}(2) \leq \cdots \leq U_{\text{self}}(\omega)$$
 
-には、nilpotency が強制する内部 Fibonacci 構造がある。本稿の C3 の本体はここにある。
+には、nilpotency が強制する内部 Fibonacci 構造がある。本稿の C3 の proof spine はここにある。
 
-**Proposition F2.1** (排他は加法性を強制する)。$A(n)$ を、$n$-cell を定義するために新たに必要な独立公理集合とする。このとき:
+**Lemma F2.1a** (grade の一意性). 各公理 $a$ には、ただ一つの cell grade が割り当てられる。すなわち $a$ が直接に量化する構造の次元は一意であり、同じ公理が同時に二つの cell 次元に属することはない。
+
+*Reason.* n-cell tower の各段は異なる型の構造を対象にする。1.5-cell の合成律、2-cell の自然変換、3-cell の豊穣整合性は、それぞれ別の型を量化する。異なる型に対する命題は、型安全性のもとで定義的に区別される。したがって grade は well-defined である。
+
+**Lemma F2.1b** (役割の非重複). 同一公理は、「直接前提」(grade $n-1$) と「coherence 条件」(grade $n-2$) を同時に担えない。
+
+*Reason.* grade が異なるだけでなく、同じ構造単位が tower の隣接位置を二重占有することになるからである。これは anti-copy nilpotency $e_a \wedge e_a = 0$ (Paper III §2.3, §3.1(D)) に反する。公理は一つの仕事にしか使えない。
+
+**Proposition F2.1** (排他は加法性を強制する). $A(n)$ を、$n$-cell を定義するために新たに必要な独立公理集合とする。このとき:
 
 $$A(n) = A(n-1) \sqcup A(n-2) \quad \text{(disjoint union)}$$
 
-したがって $|A(n)| = |A(n-1)| + |A(n-2)|$ である。Fibonacci 再帰である。漸近成長率は $\varphi$ である。
+したがって $|A(n)| = |A(n-1)| + |A(n-2)|$ である。Fibonacci 再帰である。
 
 *Proof sketch.* 各層 $n$ は、二つの公理プールから公理を引く。$A(n-1)$ は直接前提である。関係づけられる構造そのものである。$A(n-2)$ は coherence 条件である。合成法則が成り立つための条件である。Alētheia の証明 (Proof 1–7) は、この二層依存を確立している。
 
-鍵は次である。$A(n-1)$ の公理は、同時に $A(n-2)$ の公理にはなれない。二つのプールが異なる cell 次元に住むからである。ある公理 $a$ が、「直接前提」(次元 $n-1$ の役割) と「coherence 条件」(次元 $n-2$ の役割) を同時に担うなら、同じ構造単位が tower の隣接位置を二重占有することになる。これは anti-copy nilpotency $e_a \wedge e_a = 0$ (Paper III §2.3, §3.1(D)) に反する。
+補題 F2.1a により、公理の grade は一意である。補題 F2.1b により、同一公理が grade $n-1$ と grade $n-2$ の役割を兼任することはできない。ゆえに $A(n-1)$ と $A(n-2)$ は非交差であり、各層の新公理数は足し算になる。
 
 ゆえに $A(n-1) \cap A(n-2) = \varnothing$ である。和は互いに素である。$\square$
 
 *なぜ tensor product ($\times$) でなく disjoint union ($+$) なのか。* enrichment に現れる tensor product $\text{Hom}(B,C) \otimes \text{Hom}(A,B)$ (Paper III §2.4, Proof 3) は、**インスタンス空間 (instance space)**、すなわち具体的射の空間に作用する。これに対し、公理数 $|A(n)|$ は、instance 数ではなく、独立条件の数を測る。nilpotency は、公理を単一役割に固定する。ゆえに成長は加法になる。インスタンス空間は乗法的に増えうる。だが文法、すなわち公理数は Fibonacci 的に増える。
 
-以上で C3-core は
+**Corollary F2.2** (seed 非依存の漸近率). 正の初期値 $|A(1)|, |A(1.5)| > 0$ が与えられ、命題 F2.1 の Fibonacci 再帰が以後の階層で成り立つならば、
+
+$$\lim_{n \to \infty} \frac{|A(n)|}{|A(n-1)|} = \varphi$$
+
+である。特に、seed の確定は tower 全体の**具体列**を与えるためには必要だが、`growth rate = \varphi` という**漸近主張**には不要である。
+
+*Reason.* Fibonacci 型線形漸化式の漸近比は、特性方程式 $x^2 = x + 1$ の正の根 $\varphi$ に収束する。seed は係数を決めるが、支配根は変えない。$\square$
+
+以上で C3-core の骨格は
 
 > 排他性  
 > grade 分離  
 > `A(n)=A(n-1)\sqcup A(n-2)`  
 > Fibonacci  
-> growth rate = `\varphi`
+> seed-free asymptotic growth rate = `\varphi`
 
-の順に閉じる。Route A はこの core の離散証人、Route C はその容量版の系、Route B は得られた $\varphi$ を Kalon と読む解釈である。
+の順に定まる。Route A はこの core の離散証人、Route C はその容量版の系、Route B は得られた $\varphi$ を Kalon と読む解釈である。
 
-**黄金比は忘却の文法の成長率である。**
+**黄金比は忘却の文法の seed 非依存の成長率である。**
 
 これが連続定式化 (Paper I) に現れなかったのは、離散的な公理計数構造が連続極限で溶けるからである。格子ゲージ理論の格子間隔が、連続極限で消えるのと同じである。automath は格子上にとどまる。だから $\varphi$ を直接に見る。
 
 **C3-core の残る proof debt.**
 
 1. **`ℤ_2 \to \mathbb{N}` の次数拡張** — Paper III の反可換構造を、n-cell tower の grade へどう持ち上げるか。補題 F2.1c の内部構成が要る。  
-2. **seed の確定** — `|A(1)|`, `|A(1.5)|` を実際に数え、再帰を成長率だけでなく具体列へ落とす必要がある。  
+2. **seed の確定** — `|A(1)|`, `|A(1.5)|` を実際に数え、再帰を tower 全体の具体列へ落とす必要がある。これは Corollary F2.2 の漸近主張とは別の debt である。  
 3. **連続極限リフト** — 「連続では見えないだけ」を slogan で終えず、なぜ公理計数が微分幾何へ溶けるかの橋を作る必要がある。
 
 Lean 4 による autoformalization は、この三件が見えた後の **verification layer** である。本体ではない。先に spine を閉じ、その後に機械検証へ渡す。
 
 ### 7.4 展望
 
-- **C3-core (theorem spine)**: Route D を完全定理にする。具体的には、`ℤ_2 \to \mathbb{N}` の次数拡張、seed `|A(1)|, |A(1.5)|` の確定、連続極限リフトの三件を順に潰す
-- **C3 verification layer**: C3-core が閉じた後に、命題 F2.1 とその補題群を Lean 4 へ落とす。autoformalization は proof debt の代用品ではなく、閉じた spine の検証器である
+- **C3-core (proof spine)**: Route D を recurrence / seed-free asymptotic / concrete-sequence の三層に分ける。先に閉じるべきは命題 F2.1 と系 F2.2 であり、その後に `ℤ_2 \to \mathbb{N}` の次数拡張、seed `|A(1)|, |A(1.5)|` の確定、連続極限リフトを潰す
+- **C3 verification layer**: C3-core の recurrence と系 F2.2 を Lean 4 へ落とし、その後で具体列と連続リフトを追加する。autoformalization は proof debt の代用品ではなく、閉じた spine の検証器である
 - **C2 (forcing $\leftrightarrow$ $\alpha$-filtration)**: automath の 11-layer conservative extension と、忘却論の $\alpha$-忘却濾過 (Paper VIII) の対応を精密化する。layer 数の不一致 (11 vs. 8) を解く正規化写像を構成する
 - **三者統合**: automath の Rosetta Stone (Lean 4) × The Omega (Von Neumann algebras + QCA) × 忘却論 (category theory + information geometry) を統合する。三つの独立言語が同じ構造を記述するなら、その構造こそが物理学の文法である
 
@@ -438,9 +454,9 @@ automath が Lean 4 で証明したのは、この命題の離散版である。
 
 これは偶然ではない。
 
-黄金比 $\varphi$ が連続定式化に現れなかったのは、それが不要だからでない。格子現象だからである。忘却の階層の各公理は、ただ一つの構造役割しか担えない (Pauli 排他律: $e_x \wedge e_x = 0$)。この事実が、公理数を各層で加法的に成長させる。$|A(n)| = |A(n-1)| + |A(n-2)|$ である。Fibonacci である。成長率が $\varphi$ である。連続極限では、公理計数は微分幾何へ溶け、$\varphi$ は消える。格子ゲージ理論の連続極限で、格子間隔が消えるのと同じである。
+黄金比 $\varphi$ が連続定式化に現れなかったのは、それが不要だからでない。格子現象だからである。忘却の階層の各公理は、ただ一つの構造役割しか担えない (Pauli 排他律: $e_x \wedge e_x = 0$)。この事実が、公理数を各層で加法的に成長させる。$|A(n)| = |A(n-1)| + |A(n-2)|$ である。Fibonacci である。成長率が $\varphi$ である。ここで seed が未確定でも壊れないのは、本稿の主張が tower の具体列ではなく、その seed 非依存の漸近比にかかっているからである。連続極限では、公理計数は微分幾何へ溶け、$\varphi$ は消える。格子ゲージ理論の連続極限で、格子間隔が消えるのと同じである。
 
-本稿で直接に閉じる spine は Route D である。Route A はその離散証人であり、Route C は容量としての系であり、Route B は得られた $\varphi$ を Kalon として読む。順序を誤ってはならない。先に証明を閉じ、その後に意味を読む。
+本稿で直接に閉じる spine は Route D のうち recurrence と seed-free asymptotic corollary までである。Route A はその離散証人であり、Route C は容量としての系であり、Route B は得られた $\varphi$ を Kalon として読む。順序を誤ってはならない。先に証明を閉じ、その後に意味を読む。
 
 automath は格子上にとどまる。だから $\varphi$ を見る。忘却論は早く連続極限へ進みすぎた。だから $\varphi$ を見落とした。両者の橋渡しが、その欠落を回復する。
 

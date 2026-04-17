@@ -5,7 +5,7 @@
 **対象**: 論文II_相補性は忘却である_草稿.md (v1.1)
 **修正箇所**: 8箇所
 
-**後続注記 (2026-04-14)**: v1.2 以後の reader-facing 補助線として、Face Lemma を Hamming / LDPC / n-cell tower の語彙で再読するノート `drafts/infra/FaceLemma_符号理論対応.md` を追加した。これは本パッチの厳密化を変更しないが、「なぜ 3射が detectability の最小条件なのか」を説明する補助線になる。
+**後続注記 (2026-04-14)**: v1.2 以後の reader-facing 補助線として、Face Lemma を Hamming / LDPC / n-cell tower の語彙で再読するノート `drafts/infra/FaceLemma_技術設計.md` を追加した。これは本パッチの厳密化を変更しないが、「なぜ 3射が detectability の最小条件なのか」を説明する補助線になる。
 
 ---
 

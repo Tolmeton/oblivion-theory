@@ -16,9 +16,11 @@ SCAN_SCRIPT = EXPERIMENTS_DIR / "strong_coupling_mc_scan.py"
 FRACTIONAL_SCRIPT = EXPERIMENTS_DIR / "strong_coupling_fractional_proxy.py"
 CALIBRATION_SCRIPT = EXPERIMENTS_DIR / "strong_coupling_fractional_calibration.py"
 ACCEPTANCE_SCRIPT = EXPERIMENTS_DIR / "strong_coupling_fractional_acceptance.py"
+CRITICAL_LINE_SCRIPT = EXPERIMENTS_DIR / "strong_coupling_fractional_critical_line.py"
 REDUCTION_SCRIPT = EXPERIMENTS_DIR / "strong_coupling_gamma_reduction.py"
 COMPARE_SCRIPT = EXPERIMENTS_DIR / "strong_coupling_compare.py"
 COMMON_SCRIPT = EXPERIMENTS_DIR / "strong_coupling_common.py"
+METROLOGY_SCRIPT = EXPERIMENTS_DIR / "strong_coupling_fractional_metrology.py"
 
 
 def run_python(script: Path, *args: str, check: bool = True) -> subprocess.CompletedProcess[str]:
@@ -76,6 +78,53 @@ def test_gamma_phi_reduction_out_of_anchor_band() -> None:
     reduced = module.gamma_phi_reduction_from_eta(2.78, eta_proxy=0.2, method="de2_t")
     assert reduced.status == "out_of_anchor_band"
     assert not np.isfinite(reduced.gamma_proxy)
+
+
+def test_metrology_transfer_detects_stable_factor() -> None:
+    module = load_module(METROLOGY_SCRIPT, "fractional_metrology_module")
+    reduction_rows = [
+        {
+            "formal_n": "2.780000",
+            "coupling_id": "c1",
+            "eta_estimator": "chi_connected",
+            "source_observable": "susceptibility",
+            "fit_method": "fractional chi ~ L^(2-eta)",
+            "sizes": "6,8,10,12",
+            "eta_proxy": "1.9200000000",
+            "eta_stderr": "0.10",
+            "eta_anchor_lpa": "0.0160000000",
+            "gamma_anchor_lpa": "0.4270000000",
+            "gamma_phi_proxy_lpa": "",
+            "status_lpa": "out_of_anchor_band",
+            "eta_anchor_de2": "0.0320000000",
+            "gamma_anchor_de2": "0.4620000000",
+            "gamma_phi_proxy_de2": "",
+            "status_de2": "out_of_anchor_band",
+        },
+        {
+            "formal_n": "2.780000",
+            "coupling_id": "c2",
+            "eta_estimator": "chi_connected",
+            "source_observable": "susceptibility",
+            "fit_method": "fractional chi ~ L^(2-eta)",
+            "sizes": "6,8,10,12",
+            "eta_proxy": "1.9800000000",
+            "eta_stderr": "0.10",
+            "eta_anchor_lpa": "0.0160000000",
+            "gamma_anchor_lpa": "0.4270000000",
+            "gamma_phi_proxy_lpa": "",
+            "status_lpa": "out_of_anchor_band",
+            "eta_anchor_de2": "0.0320000000",
+            "gamma_anchor_de2": "0.4620000000",
+            "gamma_phi_proxy_de2": "",
+            "status_de2": "out_of_anchor_band",
+        },
+    ]
+    summary_rows, transfer_rows = module.build_transfer_rows(reduction_rows, anchor_method="de2", max_cv=0.10)
+    assert summary_rows
+    assert summary_rows[0]["transfer_stability_pass"] == "True"
+    assert transfer_rows[0]["status_transfer"] == "stable_transfer_candidate"
+    assert float(transfer_rows[0]["eta_transfer_corrected"]) > 0.0
 
 
 def test_adaptive_proposal_moves_toward_target_band() -> None:
@@ -150,6 +199,111 @@ def test_calibrated_component_detector_accepts_three_point_cluster() -> None:
     assert summary["largest_calibrated_component_size"] == 3
     assert summary["local_foothold"] is True
     assert len(summary["selected_component_couplings"]) == 3
+
+
+def test_xi_window_passes_rejects_zero_collapse() -> None:
+    module = load_module(CALIBRATION_SCRIPT, "fractional_calibration_xi")
+    assert module.xi_window_passes([0.1, 0.2, 0.3]) is True
+    assert module.xi_window_passes([0.1, 0.0, 0.3]) is False
+
+
+def test_critical_line_detector_finds_synthetic_crossing() -> None:
+    module = load_module(CRITICAL_LINE_SCRIPT, "fractional_critical_line")
+    scan_rows = [
+        {"mass_like": "0.90", "lambda_like": "1.00", "L": "6", "observable": "xi_over_L", "mean": "0.40", "coupling_id": "a", "seed": "1", "proposal_scale_final": "0.6"},
+        {"mass_like": "0.90", "lambda_like": "1.00", "L": "8", "observable": "xi_over_L", "mean": "0.20", "coupling_id": "a", "seed": "2", "proposal_scale_final": "0.6"},
+        {"mass_like": "1.00", "lambda_like": "1.00", "L": "6", "observable": "xi_over_L", "mean": "0.10", "coupling_id": "b", "seed": "3", "proposal_scale_final": "0.6"},
+        {"mass_like": "1.00", "lambda_like": "1.00", "L": "8", "observable": "xi_over_L", "mean": "0.30", "coupling_id": "b", "seed": "4", "proposal_scale_final": "0.6"},
+        {"mass_like": "0.90", "lambda_like": "1.00", "L": "6", "observable": "binder", "mean": "0.50", "coupling_id": "a", "seed": "1", "proposal_scale_final": "0.6"},
+        {"mass_like": "0.90", "lambda_like": "1.00", "L": "8", "observable": "binder", "mean": "0.30", "coupling_id": "a", "seed": "2", "proposal_scale_final": "0.6"},
+        {"mass_like": "1.00", "lambda_like": "1.00", "L": "6", "observable": "binder", "mean": "0.20", "coupling_id": "b", "seed": "3", "proposal_scale_final": "0.6"},
+        {"mass_like": "1.00", "lambda_like": "1.00", "L": "8", "observable": "binder", "mean": "0.40", "coupling_id": "b", "seed": "4", "proposal_scale_final": "0.6"},
+        {"mass_like": "0.90", "lambda_like": "1.00", "L": "6", "observable": "susceptibility", "mean": "1.0", "coupling_id": "a", "seed": "1", "proposal_scale_final": "0.6"},
+        {"mass_like": "0.90", "lambda_like": "1.00", "L": "8", "observable": "susceptibility", "mean": "1.2", "coupling_id": "a", "seed": "2", "proposal_scale_final": "0.6"},
+        {"mass_like": "1.00", "lambda_like": "1.00", "L": "6", "observable": "susceptibility", "mean": "1.3", "coupling_id": "b", "seed": "3", "proposal_scale_final": "0.6"},
+        {"mass_like": "1.00", "lambda_like": "1.00", "L": "8", "observable": "susceptibility", "mean": "1.5", "coupling_id": "b", "seed": "4", "proposal_scale_final": "0.6"},
+    ]
+    summary = module.summarize_scan_rows(scan_rows)
+    crossings = module.detect_crossing_records(summary, 2.78, [0.9, 1.0], [1.0], [6, 8])
+    assert len(crossings) == 2
+    candidates = module.build_line_candidates(summary, crossings, 2.78, [0.9, 1.0], [1.0], [6, 8])
+    assert candidates[0]["crossing_support"] == 2
+    assert candidates[0]["selected_coupling_id"]
+
+
+def test_fractional_critical_line_cli_smoke(tmp_path: Path) -> None:
+    reference_out = tmp_path / "reference.json"
+    grid_scan_out = tmp_path / "critical_grid.csv"
+    crossings_out = tmp_path / "critical_crossings.csv"
+    candidates_out = tmp_path / "critical_candidates.csv"
+    schedule_out = tmp_path / "critical_schedule.json"
+    scan_out = tmp_path / "critical_scan.csv"
+    reduction_out = tmp_path / "critical_reduction.csv"
+    analysis_out = tmp_path / "critical_analysis.md"
+
+    run_python(
+        REFERENCE_SCRIPT,
+        "--L",
+        "4,6",
+        "--warmup",
+        "10",
+        "--measure",
+        "20",
+        "--seed",
+        "17",
+        "--beta-window",
+        "0.004",
+        "--beta-points",
+        "5",
+        "--block-size",
+        "4",
+        "--out",
+        str(reference_out),
+    )
+    promote_reference_gate(reference_out)
+
+    run_python(
+        CRITICAL_LINE_SCRIPT,
+        "--reference",
+        str(reference_out),
+        "--L",
+        "4,6",
+        "--formal-n",
+        "2.78",
+        "--mass-like",
+        "0.9,1.0",
+        "--lambda-like",
+        "1.0,1.1",
+        "--warmup",
+        "5",
+        "--measure",
+        "10",
+        "--block-size",
+        "4",
+        "--grid-scan-out",
+        str(grid_scan_out),
+        "--crossings-out",
+        str(crossings_out),
+        "--candidates-out",
+        str(candidates_out),
+        "--schedule-out",
+        str(schedule_out),
+        "--scan-out",
+        str(scan_out),
+        "--reduction-out",
+        str(reduction_out),
+        "--analysis-out",
+        str(analysis_out),
+    )
+
+    assert grid_scan_out.exists()
+    assert crossings_out.exists()
+    assert candidates_out.exists()
+    schedule = json.loads(schedule_out.read_text(encoding="utf-8"))
+    assert "2.780000" in schedule
+    assert analysis_out.exists()
+    analysis = analysis_out.read_text(encoding="utf-8")
+    assert "Crossing Candidates" in analysis
 
 
 def test_reference_cli_smoke(tmp_path: Path) -> None:
@@ -304,10 +458,15 @@ def test_fractional_proxy_cli_smoke_and_schema(tmp_path: Path) -> None:
     assert {row["metro_hits"] for row in rows} == {"4"}
     assert {row["measure_stride"] for row in rows} == {"5"}
     assert {row["site_order"] for row in rows} == {"shuffled"}
+    structure_rows = [row for row in rows if row["observable"] == "structure_factor_kmin"]
+    assert structure_rows
+    assert float(structure_rows[0]["mean"]) >= 0.0
     acceptance_rows = [row for row in rows if row["observable"] == "acceptance_rate"]
     assert acceptance_rows
     acceptance = float(acceptance_rows[0]["mean"])
     assert 0.0 <= acceptance <= 1.0
+    seeds = {int(row["seed"]) for row in rows}
+    assert len(seeds) >= 2
 
 
 def test_fractional_proxy_auto_schedule_uses_per_n_direct_defaults(tmp_path: Path) -> None:
@@ -404,6 +563,9 @@ def test_gamma_reduction_cli_smoke(tmp_path: Path) -> None:
     required = {
         "formal_n",
         "coupling_id",
+        "eta_estimator",
+        "source_observable",
+        "fit_method",
         "sizes",
         "eta_proxy",
         "gamma_phi_proxy_lpa",
@@ -412,6 +574,63 @@ def test_gamma_reduction_cli_smoke(tmp_path: Path) -> None:
         "status_de2",
     }
     assert required.issubset(rows[0].keys())
+    assert {"chi_connected", "kmin_structure"}.issubset({row["eta_estimator"] for row in rows})
+
+
+def test_metrology_cli_smoke(tmp_path: Path) -> None:
+    scan_out = tmp_path / "fractional.csv"
+    reduction_out = tmp_path / "reduction.csv"
+    summary_out = tmp_path / "metrology_summary.csv"
+    transfer_out = tmp_path / "metrology_transfer.csv"
+    analysis_out = tmp_path / "metrology_analysis.md"
+    run_python(
+        FRACTIONAL_SCRIPT,
+        "--L",
+        "4,6",
+        "--formal-n",
+        "2.78",
+        "--mass-like",
+        "6.0",
+        "--lambda-like",
+        "1.0",
+        "--warmup",
+        "5",
+        "--measure",
+        "10",
+        "--seed",
+        "31",
+        "--block-size",
+        "4",
+        "--out",
+        str(scan_out),
+    )
+    run_python(
+        REDUCTION_SCRIPT,
+        "--scan",
+        str(scan_out),
+        "--out",
+        str(reduction_out),
+    )
+    run_python(
+        METROLOGY_SCRIPT,
+        "--reduction",
+        str(reduction_out),
+        "--summary-out",
+        str(summary_out),
+        "--transfer-out",
+        str(transfer_out),
+        "--analysis-out",
+        str(analysis_out),
+    )
+    with summary_out.open("r", encoding="utf-8", newline="") as fh:
+        summary_rows = list(csv.DictReader(fh))
+    with transfer_out.open("r", encoding="utf-8", newline="") as fh:
+        transfer_rows = list(csv.DictReader(fh))
+    assert summary_rows
+    assert transfer_rows
+    assert "transfer_factor_median" in summary_rows[0]
+    assert "status_transfer" in transfer_rows[0]
+    assert "Estimator Stability" in analysis_out.read_text(encoding="utf-8")
 
 
 def test_fractional_calibration_cli_smoke(tmp_path: Path) -> None:
@@ -527,14 +746,19 @@ def test_fractional_acceptance_cli_smoke(tmp_path: Path) -> None:
     schedule = json.loads(schedule_out.read_text(encoding="utf-8"))
     manifest = json.loads(manifest_out.read_text(encoding="utf-8"))
     assert sorted(schedule.keys()) == ["2.780000", "2.900000"]
+    assert isinstance(schedule["2.780000"], list)
     assert "selected_rows" in manifest
     for key in [
+        "chain_stable_row_count",
+        "calibrated_stable_row_count",
         "largest_calibrated_component_size",
         "selected_component_couplings",
         "local_foothold",
         "blocking_reason",
     ]:
         assert key in manifest
+    assert manifest["blocking_reason"] in {"none", "chain_stability_failure", "reduction_or_criticality_failure"}
+    assert "production_couplings" in manifest["selected_rows"]["2.780000"]
 
     with scan_out.open("r", encoding="utf-8", newline="") as fh:
         rows = list(csv.DictReader(fh))
@@ -547,6 +771,7 @@ def test_fractional_acceptance_cli_smoke(tmp_path: Path) -> None:
         reduction_rows = list(csv.DictReader(fh))
     assert reduction_rows
     assert "eta_proxy" in reduction_rows[0]
+    assert "eta_estimator" in reduction_rows[0]
 
     analysis = analysis_out.read_text(encoding="utf-8")
     assert "ready_for_fractional_proxy" in analysis
@@ -778,6 +1003,7 @@ def test_compare_accepts_fractional_scan_when_reference_gate_is_open(tmp_path: P
     )
     report = analysis_out.read_text(encoding="utf-8")
     assert "Gamma Reduction Surface" in report
+    assert "chi_connected" in report
     assert "ready_for_fractional_proxy: True" in report
     assert "ready_for_gamma_comparison: True" in report
     assert "scan_mode: fractional_proxy" in report

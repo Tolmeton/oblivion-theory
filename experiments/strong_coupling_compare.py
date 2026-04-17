@@ -63,6 +63,9 @@ def read_reduction(path: Path) -> tuple[list[dict[str, str]], list[str]]:
     required = [
         "formal_n",
         "coupling_id",
+        "eta_estimator",
+        "source_observable",
+        "fit_method",
         "sizes",
         "eta_proxy",
         "eta_stderr",
@@ -222,8 +225,8 @@ def build_markdown(
                     [
                         "",
                         "## Gamma Reduction Surface",
-                        "| formal_n | coupling_id | sizes | eta_proxy | LPA' γ proxy | LPA' status | DE2 γ proxy | DE2 status |",
-                        "|:---:|:---|:---|---:|---:|:---|---:|:---|",
+                        "| formal_n | coupling_id | estimator | source | sizes | eta_proxy | LPA' γ proxy | LPA' status | DE2 γ proxy | DE2 status |",
+                        "|:---:|:---|:---|:---|:---|---:|---:|:---|---:|:---|",
                     ]
                 )
                 calibrated_rows = 0
@@ -233,8 +236,9 @@ def build_markdown(
                     if row["status_lpa"] == "calibrated" or row["status_de2"] == "calibrated":
                         calibrated_rows += 1
                     lines.append(
-                        f"| {float(row['formal_n']):.2f} | {row['coupling_id']} | {row['sizes']} "
-                        f"| {float(row['eta_proxy']):.4f} | {lpa_proxy} | {row['status_lpa']} | {de2_proxy} | {row['status_de2']} |"
+                        f"| {float(row['formal_n']):.2f} | {row['coupling_id']} | {row['eta_estimator']} "
+                        f"| {row['source_observable']} | {row['sizes']} | {float(row['eta_proxy']):.4f} "
+                        f"| {lpa_proxy} | {row['status_lpa']} | {de2_proxy} | {row['status_de2']} |"
                     )
                 lines.append(f"- calibrated_rows: {calibrated_rows} / {len(reduction_rows)}")
                 lines.append("- note: これは η = γ の同一視ではなく、Paper V の FRG 表を anchor にした calibrated reduction surface である。")

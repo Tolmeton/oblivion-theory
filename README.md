@@ -28,7 +28,7 @@
 - 出版順・系列番号・公開境界の正本は `plans/出版計画_忘却論シリーズ.md`。
 - 記号・定理索引の正本は `drafts/infra/リファレンス/統一記号表.md`。
 - 新規参加者向け導入は `drafts/infra/リファレンス/忘却論オンボーディング.md`。
-- Face Lemma の符号理論線は `drafts/infra/リファレンス/FaceLemma_符号理論対応.md`、その先の recoverability 足場は `drafts/infra/リファレンス/FaceLemma_修復可能性設計.md`。
+- Face Lemma の概念入口は `drafts/infra/リファレンス/FaceLemma.md`。符号理論対応・修復可能性設計・calculations 進捗を含む backstage は `drafts/infra/FaceLemma_技術設計.md`。
 - モノグラフ線は `drafts/infra/リファレンス/モノグラフ構成設計.md` で管理するが、現時点では内部制作線であり公開正本ではない。
 
 ### 4. インキュベータ

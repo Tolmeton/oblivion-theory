@@ -104,9 +104,14 @@ def detect_calibrated_components(calibration_rows: list[dict[str, object]]) -> d
     best_component_rows: list[dict[str, object]] = []
     best_formal_n: str | None = None
     per_formal_n: dict[str, dict[str, object]] = {}
+    total_chain_stable_rows = 0
+    total_calibrated_stable_rows = 0
 
     for formal_n, rows in grouped.items():
         all_rows = grouped_all[formal_n]
+        chain_stable_rows = [row for row in all_rows if row_bool(row, "stability_gate_pass")]
+        total_chain_stable_rows += len(chain_stable_rows)
+        total_calibrated_stable_rows += len(rows)
         mass_values = sorted({float(row["mass_like"]) for row in all_rows})
         lambda_values = sorted({float(row["lambda_like"]) for row in all_rows})
         mass_index = {value: idx for idx, value in enumerate(mass_values)}
@@ -151,6 +156,8 @@ def detect_calibrated_components(calibration_rows: list[dict[str, object]]) -> d
 
         selected = components[0]
         component_payload = {
+            "chain_stable_count": len(chain_stable_rows),
+            "calibrated_stable_count": len(rows),
             "largest_component_size": len(selected),
             "selected_component_couplings": [
                 build_coupling_id(float(formal_n), float(row["mass_like"]), float(row["lambda_like"]))
@@ -181,6 +188,19 @@ def detect_calibrated_components(calibration_rows: list[dict[str, object]]) -> d
             best_component_rows = selected
             best_formal_n = formal_n
 
+    for formal_n, all_rows in grouped_all.items():
+        if formal_n in per_formal_n:
+            continue
+        chain_stable_rows = [row for row in all_rows if row_bool(row, "stability_gate_pass")]
+        total_chain_stable_rows += len(chain_stable_rows)
+        per_formal_n[formal_n] = {
+            "chain_stable_count": len(chain_stable_rows),
+            "calibrated_stable_count": 0,
+            "largest_component_size": 0,
+            "selected_component_couplings": [],
+            "selected_component_rows": [],
+        }
+
     selected_component_couplings = (
         [
             build_coupling_id(best_formal_n and float(best_formal_n) or 0.0, float(row["mass_like"]), float(row["lambda_like"]))
@@ -191,7 +211,12 @@ def detect_calibrated_components(calibration_rows: list[dict[str, object]]) -> d
     )
     largest_component_size = len(best_component_rows)
     local_foothold = largest_component_size >= 3
-    blocking_reason = "none" if local_foothold else "Metropolis-family exhausted"
+    if local_foothold:
+        blocking_reason = "none"
+    elif total_chain_stable_rows == 0:
+        blocking_reason = "chain_stability_failure"
+    else:
+        blocking_reason = "reduction_or_criticality_failure"
 
     return {
         "largest_calibrated_component_size": largest_component_size,
@@ -199,6 +224,8 @@ def detect_calibrated_components(calibration_rows: list[dict[str, object]]) -> d
         "selected_component_formal_n": best_formal_n,
         "local_foothold": local_foothold,
         "blocking_reason": blocking_reason,
+        "chain_stable_row_count": total_chain_stable_rows,
+        "calibrated_stable_row_count": total_calibrated_stable_rows,
         "per_formal_n": per_formal_n,
     }
 
@@ -206,12 +233,14 @@ def detect_calibrated_components(calibration_rows: list[dict[str, object]]) -> d
 def select_schedule_rows(
     calibration_rows: list[dict[str, object]],
     formal_ns: list[float],
-) -> tuple[dict[str, dict[str, float]], dict[str, dict[str, object]]]:
+    component_summary: dict[str, object],
+) -> tuple[dict[str, list[dict[str, float]]], dict[str, dict[str, object]]]:
     grouped: dict[str, list[dict[str, object]]] = {}
     for row in calibration_rows:
         grouped.setdefault(str(row["formal_n"]), []).append(row)
 
-    schedule_map: dict[str, dict[str, float]] = {}
+    per_formal_n = component_summary.get("per_formal_n", {})
+    schedule_map: dict[str, list[dict[str, float]]] = {}
     selected_manifest: dict[str, dict[str, object]] = {}
     missing: list[str] = []
     for formal_n in formal_ns:
@@ -221,10 +250,22 @@ def select_schedule_rows(
             missing.append(key)
             continue
         best = min(candidates, key=selected_row_rank)
-        schedule_map[key] = {
-            "mass_like": float(best["mass_like"]),
-            "lambda_like": float(best["lambda_like"]),
-        }
+        component_rows = list(per_formal_n.get(key, {}).get("selected_component_rows", []))
+        if component_rows:
+            schedule_map[key] = [
+                {
+                    "mass_like": float(row["mass_like"]),
+                    "lambda_like": float(row["lambda_like"]),
+                }
+                for row in component_rows
+            ]
+        else:
+            schedule_map[key] = [
+                {
+                    "mass_like": float(best["mass_like"]),
+                    "lambda_like": float(best["lambda_like"]),
+                }
+            ]
         selected_manifest[key] = {
             "mass_like": float(best["mass_like"]),
             "lambda_like": float(best["lambda_like"]),
@@ -241,6 +282,7 @@ def select_schedule_rows(
             "acceptance_by_L": str(best["acceptance_by_L"]),
             "proposal_scale_final_by_L": str(best["proposal_scale_final_by_L"]),
             "stability_gate_pass": row_bool(best, "stability_gate_pass"),
+            "production_couplings": schedule_map[key],
         }
     if missing:
         raise SystemExit(f"missing calibration rows for formal_n={missing}")
@@ -290,6 +332,8 @@ def build_acceptance_appendix(component_summary: dict[str, object]) -> str:
         [
             "",
             "## Local Foothold",
+            f"- chain_stable_row_count: {component_summary['chain_stable_row_count']}",
+            f"- calibrated_stable_row_count: {component_summary['calibrated_stable_row_count']}",
             f"- largest_calibrated_component_size: {component_summary['largest_calibrated_component_size']}",
             f"- selected_component_formal_n: {component_summary['selected_component_formal_n'] or 'none'}",
             f"- selected_component_couplings: {couplings_text}",
@@ -344,7 +388,7 @@ def main() -> None:
     csv_write(calibration_rows, args.calibration_out)
 
     component_summary = detect_calibrated_components(calibration_rows)
-    schedule_map, selected_manifest = select_schedule_rows(calibration_rows, formal_ns)
+    schedule_map, selected_manifest = select_schedule_rows(calibration_rows, formal_ns, component_summary)
     json_dump(schedule_map, args.schedule_out)
     json_dump(
         {
@@ -359,6 +403,8 @@ def main() -> None:
             "block_size": args.block_size,
             "proxy_kind": args.proxy_kind,
             "selected_rows": selected_manifest,
+            "chain_stable_row_count": component_summary["chain_stable_row_count"],
+            "calibrated_stable_row_count": component_summary["calibrated_stable_row_count"],
             "largest_calibrated_component_size": component_summary["largest_calibrated_component_size"],
             "selected_component_couplings": component_summary["selected_component_couplings"],
             "local_foothold": component_summary["local_foothold"],

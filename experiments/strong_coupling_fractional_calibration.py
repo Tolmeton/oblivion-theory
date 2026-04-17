@@ -33,6 +33,13 @@ def spike_ratio(values: list[float]) -> float:
     return float(np.max(arr) / baseline)
 
 
+def xi_window_passes(values: list[float], min_xi: float = 1e-6) -> bool:
+    arr = np.asarray(values, dtype=np.float64)
+    if arr.size == 0:
+        return False
+    return bool(np.all(np.isfinite(arr)) and np.all((arr > min_xi) & (arr <= 1.0)))
+
+
 def build_rows(
     sizes: list[int],
     formal_ns: list[float],
@@ -104,7 +111,7 @@ def build_rows(
                     lpa = gamma_phi_reduction_from_eta(formal_n, eta_proxy, method="lpa_t")
                     de2 = gamma_phi_reduction_from_eta(formal_n, eta_proxy, method="de2_t")
                     score_de2 = abs(eta_proxy - de2.eta_anchor) if eta_proxy == eta_proxy else float("nan")
-                    xi_window_pass = all(0.0 <= value <= 1.0 for value in xi_values)
+                    xi_window_pass = xi_window_passes(xi_values)
                     susceptibility_spike_ratio = spike_ratio(susceptibility_values)
                     split_stability_pass = all(split_stability_values)
                     stability_gate_pass = bool(

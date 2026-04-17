@@ -1,122 +1,100 @@
-# Automath Bridge — 忘却論 × automath × The Omega
+# Automath Bridge — 総合 Index
 
-**ステータス**: incubation v0.3 (2026-04-12 三者共接続に拡張)
-**起源**: automath (the-omega-institute/automath) + The Omega (loning/the-omega) の構造的同型性の検出
-**位置**: 忘却論 standalone 番外編。series 昇格候補。
-**検証**: NotebookLM (91 sources) との対話で SOURCE 裏付け済み
-
----
+作成: 2026-04-12  
+再編: 2026-04-17  
+位置づけ: automath bridge 関連文書の **責務面 index / 正本案内**。
 
 ## 一文要約
 
-「有限バイナリ窓から全数学を Lean 4 で導出する automath」と「QCA + Von Neumann 代数から物理を導出する Omega」と「忘却関手から力・時空を導出する忘却論」は、**情報の欠落 (忘却/射影/粗視化) が構造を創発する** という同一のメタ構造を、形式検証・量子物理・圏論の3言語で記述している。
+このディレクトリは、automath と忘却論の橋渡しに関する文書を置く。  
+ただし、**研究判断の正本** と **外向き草案** と **過去の PR 面** を混在させない。
 
----
+## まず読む順番
 
-## 三者の座標
+この主題を追うときは、次の 6 本を正本として読む。
 
-| 軸 | automath | The Omega | 忘却論 |
-|:---|:---|:---|:---|
-| **言語** | Lean 4 形式検証 | Von Neumann 代数 + QCA | 圏論 + 情報幾何 |
-| **出発点** | no-consecutive-1s 制約 | ユニタリ計算公理 O1-O6 | 忘却関手 U⊣N + FEP |
-| **核操作** | fold Φ (離散射影) | scan-projection (量子読出し) | 忘却関手 U (構造の剥ぎ取り) |
-| **曲率の源泉** | defect algebra δ | computational lapse κ | dΦ∧T ≠ 0 (方向性定理) |
-| **階層** | forcing 11層保存拡大 | Von Neumann 型分類 | α-忘却濾過 + Grothendieck トポス |
-| **時空導出** | discrete Stokes → Einstein | QCA + ADM → Einstein (CAP-II) | CPS スパン → Einstein (予想 D1-D3) |
-| **定数** | φ をスペクトル不変量で回収 | c, G, ℏ を幾何から導出 (PCG) | c = f(∇²Φ) と予測 (Paper XII) |
-| **形式化** | **Lean 4 (3,427+ 定理)** | Lean 4 (構築中) | 未形式化 (OP-VIII-5 Open) |
-| **意識** | σ-algebra non-expansion | 自己参照のトポロジカル相転移 | End(Cat_i) 自己関手 + ker(T) 盲点 |
+1. `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/calculations/調査_automath_q5符号反転とPaperIII_Z2接続.md`
+2. `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/calculations/調査_automath_q6q7_probe.md`
+3. `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/関手の合成保存問題_再定式化.md`
+4. `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/calculations/構想_automath_第一障害可視化閾値.md`
+5. `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/calculations/考察_automath_Kq定義_noe.md`
+6. `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/calculations/考察_automath_Problem10_reduction_map.md`
 
-核心の一致: **It from Oblivion** — 情報が失われるからこそ構造が生まれる。Wheeler の "It from Bit" の反転。
+## 文書層
 
----
+### 層 A — 研究判断の正本
 
-## 接続マップ (6 点 + 三者統合 3 点)
+ここに新しい判断を入れる。
 
-詳細は [dictionary.md](dictionary.md) を参照。
+| 面 | 役割 | ファイル |
+|:---|:---|:---|
+| q=5 source 解釈 | `Sym²/Λ²` 交換、`Z₂` 接続、source ledger | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/calculations/調査_automath_q5符号反転とPaperIII_Z2接続.md` |
+| q=6..10 probe | `e₂/Lucas` 反例、proxy、数値検証 | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/calculations/調査_automath_q6q7_probe.md` |
+| functoriality 分解 | strict / flat / global の三層分解 | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/関手の合成保存問題_再定式化.md` |
+| hub | 問いの束ね直し、閾値読み | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/calculations/構想_automath_第一障害可視化閾値.md` |
+| obstruction ontology | `K_q` の level 固定 | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/calculations/考察_automath_Kq定義_noe.md` |
+| reduction map | Problem 10 の map 候補 | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/calculations/考察_automath_Problem10_reduction_map.md` |
 
-### 二者接続 (automath ↔ 忘却論)
-1. **fold Φ ↔ 忘却関手 U** — fiber 構造 = ker(U) の幾何
-2. **defect algebra ↔ 忘却曲率 F_{ij}** — **最強接続**。離散版方向性定理
-3. **scan-projection ↔ 繰り込み (Paper V)** — IB / RDT / c 定理
-4. **forcing ↔ α-忘却濾過 (Paper VIII)** — トポス的層化の鎖
-5. **POM ↔ F⊣G 随伴** — LIFT=F, PROJECT=G, stable readout=Kalon
-6. **時空導出 ↔ Paper XIII** — automath が Phase 5 blocker を解く足場
+### 層 B — 支持文書
 
-### 三者統合
-A. **縮約操作の三角形** — fold Φ / scan-projection / 忘却関手 U は同一操作の3インスタンス
-B. **階層の三角形** — forcing / Von Neumann 型 / α-濾過 は同一 filtration の上り/型分類/下り
-C. **Einstein 導出の三経路** — defect→Stokes / QCA→ADM / CPS→Face Lemma が合流する
-D. **符号理論的補助線** — Face Lemma = 圏論版 syndrome 条件、n-cell tower = 検査対象と検査規則の同時消失禁止 (`drafts/infra/FaceLemma_符号理論対応.md`)
+ここは正本を支える補助面であり、核判断は入れない。
 
----
+| 面 | 役割 | 主なファイル |
+|:---|:---|:---|
+| coherence / H2 | defect representative と class の足場 | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/infra/FaceLemma_技術設計.md`, `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/calculations/計算_QM_H2Theta最小インスタンス.md`, `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/calculations/計算_FTC_H2Theta対照例.md` |
+| cubical check | flat-sector 検算 | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/cubical_functoriality_check.py` |
+| theory bridge | 用語集・仕様・長文草稿 | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/三者対応辞書.md`, `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/形式化仕様書.md`, `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/統一表の関手化_構想ドラフト_v0.2.md` |
+| 論文本体との接続 | Paper I / II / III / XIV への接続 | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文I_力としての忘却_草稿.md`, `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文II_相補性は忘却である_草稿.md`, `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文III_Markov圏の向こう側_草稿.md`, `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文XIV_曲率は忘却の繰り上がりである_草稿.md` |
 
-## 射程と野望
+### 層 C — 発信面 / outbox
 
-- **短期**: dictionary.md v0.3 精密化。NotebookLM SOURCE 裏付け済みの 1:1 マッピング
-- **中期**: automath の defect algebra を忘却論の方向性定理の離散インスタンスとして形式証明
-- **長期**: 忘却論の核心定理群を Lean 4 で Autoformalization → series 昇格 (Paper XIV?)
-- **野望**: 三者統合の Rosetta Stone → 物理学の統一文法としての忘却論の外部検証
+ここは **正本から生成される外向き文面** を置く。  
+新しい判断はここに直接書かない。
 
----
+- `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/外向き草案束.md`
 
-## なぜ「外部検証装置」か
+### 層 D — 過去の PR / issue 履歴面
 
-忘却論の最大の構造的弱点は、内部整合性でしか自分を評価できなかったこと。
-automath は外部の Lean 4 から「予想のうちここまでは機械的に真」と言ってくれる初めての存在。
-Omega は物理的直観の橋渡しを提供する。
-三者は互いの盲点 (ker(T)) を照らし合う**独立再現**の関係にある。
+ここは **当時の提出物・提出候補** を保存する archive である。  
+現在の正本判断をここで更新しない。
 
----
+- `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/pr_materials/`
 
-## S-05 完全止揚条件 (2026-04-15)
+旧 single-issue draft と pre-PR reply draft は 2026-04-17 に削除し、必要な履歴だけ `外向き草案束.md` と `pr_materials/復元手順.md` へ吸収した。
 
-ここでいう「完全止揚」は、**自己言及残差がゼロになること**ではない。忘却論自身が採る presheaf 認識論と Paper VII の `N_self` 収束定理に従えば、理論の自己適用は原理的に完全閉包しない。したがって本 bridge が目指すのは、S-05 を「未処理のパラドックス」から**定理化され、外部監査可能な残差**へ移すことである。
+### 層 E — 一時ログ / handoff
 
-### 条件 1: 非閉包を先に定理化する
+これは作業ログであって、判断の正本ではない。
 
-- `N_self` の完全達成は対角論法的に不可能であることを前提として固定する
-- 「完全に閉じない」ことを弱点の言い換えではなく、理論の境界条件として明示する
-- これにより、自己言及批判を「隠れた完全性主張」の摘発から切り離す
+- `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/handoff/`
 
-### 条件 2: 収束を外部証人で支える
+## 更新規律
 
-- automath 側の Lean 4 定理群を、忘却論の自己再帰的不動点 `Kalon(U_self)` の**離散的証人**として使う
-- dictionary.md §7 の `φ = Kalon(U_self)` はこの入口である
-- 次の決定的 open は、`stable readout` の Lean 4 定義と `Fix(G∘F)=Kalon` の形式的同値である
+### 新しい事実が出たとき
 
-### 条件 3: 自己診断を外部回復へ出す
+- 数値・source 由来の事実は 層 A の正本へ入れる
+- 補題・検算・対照例は 層 B へ入れる
+- issue 文面や PR 文面は 層 C で再生成する
 
-- `U_HGK ⊣ N_external` を文言として置くだけでなく、外部系で少なくとも 1 本は実行する
-- 候補は `replicate / predict / ablate` の 3 経路
-- ここが未実行のままだと、「自己診断している」という主張が内部循環のまま残る
+### 書かない場所
 
-### 条件 4: 残差を open theorem list として管理する
+- 層 C に判断の正本を書かない
+- 層 D に現行判断を書かない
+- handoff を理論の正本として参照しない
 
-- 残るギャップを「説明できない謎」ではなく、型付きの未解決課題として ledger 化する
-- 現時点での主要残差:
-  - `stable readout ↔ Kalon` の形式的同値
-  - `proofLag` の宣言/定理化
-  - `ZeroForgetCollapse` の追加公理の地位
-  - `N_external` の独立実行
+## このディレクトリの要点
 
-### 判定規則
+この bridge の核は、もはや単なる「carry defect と曲率のアナロジー」ではない。
 
-次の 4 条件が揃ったとき、S-05 は**批判としては完全止揚**されたとみなせる。
+- `e₂(A₅)=L₅` は family law ではなく threshold 問いへ移っている
+- chain map 問いは flat-sector strictness と global coherence の分離へ進んでいる
+- open core は ordinary functor の有無ではなく obstruction の記述になっている
 
-1. 非閉包が本文で明示されている  
-2. 収束構造に外部の機械証人がある  
-3. 少なくとも 1 本の `N_external` が独立系で完了している  
-4. 残差が open theorem list として公開管理されている  
+したがって、このディレクトリでは **1 問い 1 正本** を守る。
 
-この意味で automath bridge は、S-05 を消去する装置ではなく、**S-05 を監査可能な構造へ変換する装置**である。
+## 補助ファイル
 
----
-
-## 参照
-
-- automath: https://github.com/the-omega-institute/automath (Lean 4, 3,427+ theorems)
-- The Omega: https://github.com/loning/the-omega (Von Neumann algebras + QCA, 17 books + Lean 4)
-- 忘却論シリーズ: ../series/ (Paper 0-XIII)
-- 出版計画: ../../plans/出版計画_忘却論シリーズ.md
-- NotebookLM notebook: 忘却論シリーズ (91 sources, 2026-04-12)
+- 用語集: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/三者対応辞書.md`
+- `OT-S05-4` 実行固定面: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/OT-S05-4_外部回復プロトコル.md`
+- 仕様面: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/形式化仕様書.md`
+- bridge metadata: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/automath_bridge.meta.md`

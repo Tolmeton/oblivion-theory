@@ -109,7 +109,7 @@ Paper II §2.5.6 のリマーク (忘却関手の計量装備) から:
 | **忘却場勾配正則化** | **$\Phi$ の方向が力を決定** → **CPS 非対称性の直接最適化** | **Oblivion-Aware SAM (方向2)** |
 
 **Face Lemma との関係.** Paper II §3.4 の Face Lemma は、忘却の方向が測定可能になるには最低3つの独立な生成射 (2-simplex) が必要であることを示す。dim Ξ ≥ 2 のとき ∂_i Ξ ≠ 0 → F ≠ 0。Oblivion-Aware SAM の $\|\nabla \Phi\|^2$ はこの Ξ の方向構造を、勾配ノルムとして計算可能な量に操作化する。
-符号理論の語彙では、$\|\nabla \Phi\|^2$ は「欠損が detectability を持つか」を測る局所強度であり、単独では recoverability を保証しない。複数の検査面の貼り合わせと縦の整合条件は `drafts/infra/FaceLemma_符号理論対応.md` に分離して整理した。
+符号理論の語彙では、$\|\nabla \Phi\|^2$ は「欠損が detectability を持つか」を測る局所強度であり、単独では recoverability を保証しない。複数の検査面の貼り合わせと縦の整合条件は `drafts/infra/FaceLemma_技術設計.md` に分離して整理した。
 
 ### ガウス族上の Worked Example
 

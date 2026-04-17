@@ -4,7 +4,7 @@ Cubical functoriality sanity check
 ==================================
 
 Verifies two exact finite identities used in
-`drafts/standalone/automath_bridge/functoriality_reduction.md`.
+`drafts/standalone/automath_bridge/関手の合成保存問題_再定式化.md`.
 
 1. Coordinate restrictions compose strictly.
 2. For multilinear observables on [0,1]^n and boundary words w on A,

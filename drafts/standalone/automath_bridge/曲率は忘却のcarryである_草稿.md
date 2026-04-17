@@ -110,7 +110,7 @@ strict functor は合成を完全に保存する — $G(f \circ g) = G(f) \circ 
 
 **Face Lemma (Paper II)**: 合成 $h = g \circ f$ が 2-simplex (三角形) として閉じるかどうかの検証は、忘却の不均一性 (曲率) を測定する最小条件だ。automath で carry defect が非ゼロになるのは、まさに fold と加算の「三角形」が閉じないからだ。Face Lemma の 3 射の最小性は、carry indicator $\kappa \in \{0,1\}$ の二値性と対応する — 三角形は閉じるか閉じないか、carry は発生するかしないか。
 
-符号理論的には、ここでの 2-simplex は Hamming 的な単一検査式に最も近い。$\kappa$ は syndrome の最小版であり、carry defect は「検出された欠損」に対応する。ただし忘却論が最終的に必要とするのは単一 face ではなく、複数 face の貼り合わせによる LDPC 的修復網である。したがって Face Lemma は detectability の最小条件、n-cell tower の排他性はその detectability が意味を失わないための縦の整合条件と読める。詳細は `drafts/infra/FaceLemma_符号理論対応.md`。
+符号理論的には、ここでの 2-simplex は Hamming 的な単一検査式に最も近い。$\kappa$ は syndrome の最小版であり、carry defect は「検出された欠損」に対応する。ただし忘却論が最終的に必要とするのは単一 face ではなく、複数 face の貼り合わせによる LDPC 的修復網である。したがって Face Lemma は detectability の最小条件、n-cell tower の排他性はその detectability が意味を失わないための縦の整合条件と読める。詳細は `drafts/infra/FaceLemma_技術設計.md`。
 
 **ker(T) と盲点 (Paper 0)**: Paper 0 は、Chebyshev 1-形式 $T$ の核 $\ker(T)$ が系の**構造的盲点** — 忘却しても検出できない方向 — を定義することを示した。automath の世界で $\ker(T)$ に対応するのは、fold $\Phi$ が区別できない語のペア — 同じファイバーに落ちる異なる語だ。carry defect は $\ker(\Phi)$ の外で発生し、盲点の中では発生しない。忘却の力は盲点の外にしかない。
 

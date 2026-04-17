@@ -11,25 +11,25 @@
 - C1: automath の carry defect は、忘却論の合成ドリフト / 忘却曲率の離散・有限体インスタンスである
 - C2: OP-I-2 は単一の未証明問題ではなく、`ZeroForgetCollapse` を要する公理の穴、弱*連続測度族 `μ_λ` を要する極限の穴、`Discretizable` / `DescendsToCube` を要する関手の穴に分かれる
 - C3: 黄金比 φ は外部からの輸入ではなく、排他制約と n-cell tower の成長率として忘却論の内部に現れる
-  - **C3-core (Route D)**: 排他性 + grade 分離により `A(n)=A(n-1)\sqcup A(n-2)` が閉じ、growth rate が φ になる
+  - **C3-core (Route D)**: 排他性 + grade 分離により `A(n)=A(n-1)\sqcup A(n-2)` の recurrence が立ち、Cor. F2.2 として seed 非依存に `growth rate = φ` が従う
   - **Route A**: C3-core の離散証人。反 Markov セクターと no-consecutive-1s 制約が同じ排他則を示す
   - **Route C**: C3-core の entropic corollary。排他制約の下で容量上限が `log φ` に落ちる
   - **Route B**: C3-core で得られた φ を `Fix(G∘F)` と読む Kalon 解釈。一次証明ではなく解釈層
-  - **残る proof debt**: `ℤ₂→ℕ` の次数拡張 / seed `|A(1)|, |A(1.5)|` の確定 / 連続極限リフト。Lean は verification layer であって本体ではない
+  - **残る proof debt**: `ℤ₂→ℕ` の次数拡張 / seed `|A(1)|, |A(1.5)|` の確定 / 連続極限リフト。ここで seed は具体列の debt であり、漸近主張の debt ではない。Lean は verification layer であって本体ではない
 
 ## §M3 Kalon 判定履歴
 
 | 日付 | 対象 | 判定 | 根拠 |
 |:---|:---|:---|:---|
 | 2026-04-14 | C2 | ◯ Kalon△ | `δ=0 ⇒ Hom∈{0,1}` を無条件主張から切り離し、橋梁公理・弱*リフト・全域関手化の三穴へ分解。射程を縮めずに論理を精密化 |
-| 2026-04-17 | C3 | ◯ Kalon△ | Route D を theorem spine、A/C/B を支線へ再配置。射程は維持されたが、`ℤ₂→ℕ`、seed、連続極限リフトが残る |
+| 2026-04-17 | C3 | ◯ Kalon△ | Route D を proof spine、A/C/B を支線へ再配置。さらに recurrence と seed 非依存の漸近主張を切り分け、seed debt を具体列側へ押し込んだ。残るのは `ℤ₂→ℕ`、具体列、連続極限リフト |
 
 ## §M4 ±3σ ゲート履歴
 
 | 日付 | 対象 | 入口 σ | 出口 σ | 判定 |
 |:---|:---|:---|:---|:---|
 | 2026-04-14 | C2 | ±3σ | ±3σ | 維持 — 「連続版は未証明」を超えて「どこが穴か」を三分割し、μ への後退を回避 |
-| 2026-04-17 | C3 | +4σ | +4σ | 維持 — 四並列のエッセイ束を一本の theorem spine へ整理しつつ、μ へ後退しなかった |
+| 2026-04-17 | C3 | +4σ | +4σ | 維持 — 四並列のエッセイ束を一本の proof spine へ整理しつつ、`growth rate = φ` を concrete sequence から分離して μ への後退を回避 |
 
 ## §M5 Refutation Gauntlet ログ
 
@@ -54,7 +54,7 @@
 ### C3 — 2026-04-17 Round 1
 - 反論 r: Route A-D を並べるだけでは「四本のエッセイ」が併置されているだけで、何が証明本体か分からない
 - SFBT: できないのではなく、並べ方を変えていないだけではないか?
-- 前提強化: Route D を **C3-core / theorem spine** に固定し、Route A を離散証人、Route C を entropic corollary、Route B を Kalon 読みへ後退させる
+- 前提強化: Route D を **C3-core / proof spine** に固定し、Route A を離散証人、Route C を entropic corollary、Route B を Kalon 読みへ後退させる
 - 結果: 射程維持 ✓ — 新しい第五経路を足さずに、既存四経路の地位を整理するだけで論証剛性が上がった
 
 ### C3 — 2026-04-17 Round 2
@@ -63,7 +63,47 @@
 - 前提強化: proof debt を三件へ限定する。`ℤ₂→ℕ` の次数拡張、seed `|A(1)|, |A(1.5)|` の確定、連続極限リフト。Lean は proof debt の代用品でなく verification layer と明記
 - 結果: 射程維持 ✓ — C3 は「路線が多い」状態から「主線が見え、残差も数えられる」状態へ移行
 
-## §M6 棄却された代替案
+### C3 — 2026-04-17 Round 3
+- 反論 r: seed が未確定なら `φ` を本文の核主張に据えるのは早すぎるのではないか
+- SFBT: できないのではなく、漸近主張と具体列を分けていないだけではないか?
+- 前提強化: 命題 F2.1 を recurrence、系 F2.2 を seed 非依存の漸近主張として露出させる。seed debt は tower 全体の具体列に限定し、`growth rate = φ` から切り離す
+- 結果: 射程維持 ✓ — `φ` は「種が決まったら出る数」ではなく、「再帰が立った時点で出る支配根」として防衛可能になった
+
+## §M6 虚→実変換面
+
+### C1
+- 野望: [§M2 C1 の核主張を 1 文で言い直す]
+- 現在まだ虚な点: [未証明・未観測・未形式化・未反駁処理の核]
+- 実へ引くための SOURCE: [読むべき原典 / 必要データ / 必要定理]
+- 実化の判定条件: [何が揃えば『実へ近づいた』と言えるか]
+- 次の実化操作: [Sourcing / 定義追加 / 証明 / 実験 / 反論吸収]
+- 最新状態: 変換中
+
+### C2
+- 野望: [§M2 C2 の核主張を 1 文で言い直す]
+- 現在まだ虚な点: [未証明・未観測・未形式化・未反駁処理の核]
+- 実へ引くための SOURCE: [読むべき原典 / 必要データ / 必要定理]
+- 実化の判定条件: [何が揃えば『実へ近づいた』と言えるか]
+- 次の実化操作: [Sourcing / 定義追加 / 証明 / 実験 / 反論吸収]
+- 最新状態: 変換中
+
+### C3
+- 野望: 黄金比 φ が forgetting theory の外部装飾ではなく、理論内部の排他制約から必然的に出ることを示す
+- 現在まだ虚な点: `φ` の出現が「離散 n-cell tower における seed 非依存の漸近主張」なのか、「tower 全体の具体列」なのかが混線すると、一撃で弱くなる
+- 実へ引くための SOURCE: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文0_忘却の忘却_草稿.md` §2.2a、`/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文III_Markov圏の向こう側_草稿.md` §3.1(D)
+- 実化の判定条件: recurrence と seed 非依存の漸近主張が本文内で分離され、seed が具体列にだけ必要であると明示される
+- 次の実化操作: recurrence / asymptotic / concrete-sequence の三層分解を保持したまま、`ℤ₂→ℕ` の次数拡張へ進む
+- 最新状態: 変換中
+
+### C3-core
+- 野望: Pauli 排他律から `A(n)=A(n-1)\sqcup A(n-2)` を導き、Cor. F2.2 として `growth rate = φ` を seed 非依存に押す
+- 現在まだ虚な点: `ℤ₂→ℕ` の正準持ち上げと連続極限リフトは未閉。seed も concrete sequence の面では未確定
+- 実へ引くための SOURCE: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文0_忘却の忘却_草稿.md` §2.2a、`/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文XIV_曲率は忘却の繰り上がりである_草稿.md` §7.3
+- 実化の判定条件: recurrence が補題列で支えられ、`φ` の主張が concrete sequence から独立に防衛できる
+- 次の実化操作: 補題 F2.1c の内部構成と seed 決定を切り分け、先に `ℤ₂→ℕ` の bridge を閉じる
+- 最新状態: 変換中
+
+## §M7 棄却された代替案
 
 - 棄却 1: `OP-I-3` 単独で `δ=0 ⇒ Hom∈{0,1}` を押し切る。反例により不可能
 - 棄却 2: `D* : Hyp → Man` を主経路に据える。現時点では補助的展望であり、主経路は弱*測度族 `μ_λ` と Strategy B
@@ -73,7 +113,7 @@
 
 ---
 
-## §M7 Donor 統合メモ (calculations 棚卸し)
+## §M8 Donor 統合メモ (calculations 棚卸し)
 
 以下は `calculations/` 配下の作業文書から Paper XIV に関連する donor の棚卸し結果である。いずれも本文 (body) への直接吸収は行わず、meta 参照として記録する。
 

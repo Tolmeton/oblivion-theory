@@ -56,8 +56,10 @@
 - rationale: Phase 0 gate is open and the fractional scan already satisfies the shared schema.
 
 ## Local Foothold
+- chain_stable_row_count: 11
+- calibrated_stable_row_count: 0
 - largest_calibrated_component_size: 0
 - selected_component_formal_n: none
 - selected_component_couplings: none
 - local_foothold: False
-- blocking_reason: Metropolis-family exhausted
+- blocking_reason: reduction_or_criticality_failure

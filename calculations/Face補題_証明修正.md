@@ -79,7 +79,7 @@ $$\dim \Xi(x) := \max\{k \mid \text{St}(x) \text{ が非退化 } k\text{-simplex
 - **旧**: 「概念 x の安定性」（形式的定義なし）
 - **新**: (S1) + (S2) の組合せ論的条件
 
-**符号理論的読み.** (S2) の「非退化 2-simplex を含む」は、そのまま圏論版 syndrome 条件と読める。すなわち CPS-安定性は persistence ではなく、欠損が defect として露出しうる最小検査面の存在を要求している。stable / detectable / recoverable の三分法は `drafts/infra/FaceLemma_符号理論対応.md` に整理した。
+**符号理論的読み.** (S2) の「非退化 2-simplex を含む」は、そのまま圏論版 syndrome 条件と読める。すなわち CPS-安定性は persistence ではなく、欠損が defect として露出しうる最小検査面の存在を要求している。stable / detectable / recoverable の三分法は `drafts/infra/FaceLemma_技術設計.md` に整理した。
 
 ---
 

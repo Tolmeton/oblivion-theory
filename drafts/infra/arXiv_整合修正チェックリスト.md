@@ -33,7 +33,7 @@
 | 11 | I-O3 / CAN→MUST | 注記で吸収 | Paper I §9 に Paper V への前方参照を追加 |
 | 12 | I-O4 / IV-O1 / スケーリング指数 | 注記で吸収 | Paper I §9 と Paper IV 結論で Paper V の `n^{-1}` 精密化へ前方参照 |
 | 13 | II-O2 / Face Lemma スコープ | 注記で吸収 | Paper II §3.4 に `F×` 精密化への前方参照を追加 |
-| 13a | II-O2b / Face Lemma の符号理論的再読 | 注記で吸収 | `drafts/infra/FaceLemma_符号理論対応.md` を追加し、stable / detectable / recoverable を区別 |
+| 13a | II-O2b / Face Lemma の符号理論的再読 | 注記で吸収 | `drafts/infra/FaceLemma_技術設計.md` を追加し、stable / detectable / recoverable を区別 |
 | 14 | II-O3 / CPS3 の地位 | 注記で吸収 | Paper II §3.2 に VIII / IX での再解釈への言及を追加 |
 | 15 | II-O4 / 意識定義の精密化 | 注記で吸収 | Paper II §6.2 に `F≠0 かつ α<0` への前方参照を追加 |
 | 16 | III-D1 / α≤0 エントロピー不可能性 | 注記で吸収 | Paper III §5.3.4 後に Perrone エントロピー不可能性の範囲注を追加 |

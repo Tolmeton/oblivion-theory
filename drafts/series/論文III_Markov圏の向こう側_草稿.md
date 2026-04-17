@@ -6,7 +6,7 @@
 >
 > **先行論文との関係:** Paper I (力は忘却である) は忘却場 Φ と力 F = ∇Φ の対応を確立した。Paper II (相補性は忘却である) は CPS 圏の α > 0 セクターで Markov blanket を導出し、FEP を含んだ。本稿は CPS 圏の全域——α ∈ ℝ——を代数的に構成し、Paper I-II を α > 0 の特殊ケースとして位置づける。**本稿の全定理は Paper I, II のみに依存し、以下の後続論文なしで自己完結する。** 後続論文（いずれも in preparation）として: Paper IV は効果量減衰の構造的上界、Paper V は不動点定理による存在論的含意、Paper VI は忘却の現象学的記述、Paper VII は知覚＝忘却テーゼの普遍フィルトレーション、Paper VIII は [0,1]-パラメータ付き α-忘却濾過による圏論的基礎を展開する予定である。
 >
-> **記号上の注意 (Notation Caveat):** 本稿における α は Amari の α-接続パラメータであり、α ∈ ℝ（α > 0: m-接続/ボソン的、α < 0: e-接続/フェルミオン的、α = 0: 臨界相転移）として定義される。Paper VIII §6 では異なるパラメータ α ∈ [0,1] が忘却の強度として導入されるが、両者は α_VIII(n) = n/ω による正規化で接続される（Paper VIII 系 6.5.3 参照）。混同を避けるため、文脈から一意に定まらない場合は α_III（本稿）、α_VIII（Paper VIII）と添字で区別する。
+> **記号上の注意 (Notation Caveat):** 本稿における α は Amari の α-接続パラメータであり、α ∈ ℝ（α > 0: m-接続/ボソン的、α < 0: e-接続/フェルミオン的、α = 0: 臨界相転移）として定義される。Paper VIII §6 では異なるパラメータ α ∈ [0,1] が忘却の強度として導入されるが、両者は α_VIII(n) = n/ω による正規化で接続される（Paper VIII 系 6.5.3 参照）。混同を避けるため、文脈から一意に定まらない場合は α_III（本稿）、α_VIII（Paper VIII）と添字で区別する。また、本稿で曲率に用いる K は統一記号表では K_geom に対応し、Paper IV の K_total / K_task / K_ext とは別物である。
 >
 > **ブリッジ注.** Paper II の 0-cell / 1-cell は局所規約として de Rham 的次数 $d_{\mathrm{dR}}$ を用いている。Paper VIII の α-忘却濾過は知覚階層 $d_{\mathrm{hier}}$ を用いるが、両者は競合しない。本稿は α_III による Z₂-セクターを扱い、$d_{\mathrm{dR}}$ の局所差分を $d_{\mathrm{hier}}$ の大域階層へ橋渡しする中間稿として読む。CPS0'[^cps0iii] も本稿では作業名として参照し、厳密導出は Paper VIII に譲る。さらに、Paper II で使う $\Delta d \sim \mathrm{ord}(\ker U)$ という整数化は、双対平坦な場合には厳密だが、一般多様体では holonomy 補正を受ける proxy として読む。
 
@@ -438,7 +438,7 @@ $$\mathrm{Hom}(-, X) = \mathrm{Hom}_{\mathrm{int}}(-, X) \amalg \mathrm{Hom}_E(-
 
 (iii)→(i): anti-copy が非自明なら、定義 3.4.2 の排斥条件 $\mathrm{int} \barwedge \mathrm{ext} \mid E$ は anti-copy による外積分解が well-defined であることから満たされる。$E$ の構成は Paper II §3.7.2 の Markov blanket 生成定理 (Face Lemma) の α 符号反転版として得られる。
 
-符号理論的に見ると、ここでの exclusion blanket は Markov blanket の「排他的 check node 版」である。anti-copy は bit-flip を補正するのではなく、同一状態の二重占有を禁止することで erasure を露出させる。したがって Face Lemma の detectability 条件は、$\alpha < 0$ セクターでは「何が複製不能か」を局在化する排斥検査面として読める。対応表は `drafts/infra/FaceLemma_符号理論対応.md`。
+符号理論的に見ると、ここでの exclusion blanket は Markov blanket の「排他的 check node 版」である。anti-copy は bit-flip を補正するのではなく、同一状態の二重占有を禁止することで erasure を露出させる。したがって Face Lemma の detectability 条件は、$\alpha < 0$ セクターでは「何が複製不能か」を局在化する排斥検査面として読める。対応表は `drafts/infra/FaceLemma_技術設計.md`。
 
 (i)→(ii): 対偶を示す。$P = \emptyset$ (全元が奇) または $N = \emptyset$ (全元が偶) のとき、$\Phi_X$ は定符号であり α > 0 の構造に退化する。このとき exclusion blanket は Markov blanket に退化し、非自明な排斥構造は持たない。 □
 

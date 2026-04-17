@@ -1,0 +1,24 @@
+{
+  "2.780000": [
+    {
+      "lambda_like": 1.0,
+      "mass_like": 1.0
+    },
+    {
+      "lambda_like": 1.05,
+      "mass_like": 1.0
+    },
+    {
+      "lambda_like": 1.2,
+      "mass_like": 1.0
+    },
+    {
+      "lambda_like": 1.1,
+      "mass_like": 1.0
+    },
+    {
+      "lambda_like": 1.15,
+      "mass_like": 1.05
+    }
+  ]
+}
