@@ -4,7 +4,7 @@
 
 > Structure emerges from what is lost, not from what is kept.
 
-**Force is Oblivion** is a series of 14 papers deriving force, complementarity, perception, existence, entropy, and spacetime from a single operation: the **forgetful functor** on statistical manifolds.
+**Force is Oblivion** is a series of 15 papers deriving force, complementarity, perception, existence, entropy, curvature, and spacetime from a single operation: the **forgetful functor** on statistical manifolds.
 
 ## The Claim
 
@@ -40,6 +40,7 @@ This is not a metaphor. It is a proved theorem in information geometry.
 | XI | Prompts Select What to Forget | v0.7 | Constraint-encoding separation hypothesis |
 | XII | Absence Outruns Presence | v0.9 | Kinematics of distinguishability boundaries |
 | XIII | Spacetime is Oblivion | v0.1 | CPS span → Einstein equation (Conjectures D1-D3) |
+| XIV | Curvature is the Carry of Oblivion | v0.1 | Carry defect as the discrete instance of directional oblivion |
 
 ### Standalone
 

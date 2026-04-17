@@ -6,7 +6,7 @@
 
 *概要.* Paper VIII で確立した α-忘却濾過の公理系 (F1)-(F4) が、統計力学の基本構造——エントロピー、第二法則、データ処理不等式——を自然に内包することを示す。中心的構成は **CPS エントロピー** $S_{\mathrm{CPS}}(p, \alpha)$: Perrone [P1] が Markov 圏上で定義したエントロピー（確定的射からの divergence の下限）を、CPS($\alpha > 0$) が Markov 圏であること（Paper II 互換性補題 §3.7.1）を通じて α-忘却濾過に輸入する。主定理（CPS エントロピー単調性定理）は、(F4) 公理から直接従う: 忘却が進む（α が増大する）ほど確定的射の集合が縮小し、したがってエントロピーが単調に増大する。これは Paper VIII 定理 6.10.3（射計数版）の Perrone 枠組みへの精密化であり、Shannon/Rényi/Gini-Simpson エントロピーを統一的に回収する。
 
-> **記号規約.** α は Paper VIII の忘却強度パラメータ $\alpha_{\mathrm{VIII}} \in [0, 1]$。Paper III/V の $\alpha_{\mathrm{III}} \in \mathbb{R}$（Amari の α-接続）とは異なる。CPS($\alpha$) は忘却パラメータ $\alpha$ における CPS 圏を指す。$D$ は固定された divergence 関数。統一記号表 (unified_symbol_table.md) を参照。
+> **記号規約.** α は Paper VIII の忘却強度パラメータ $\alpha_{\mathrm{VIII}} \in [0, 1]$。Paper III/V の $\alpha_{\mathrm{III}} \in \mathbb{R}$（Amari の α-接続）とは異なる。CPS($\alpha$) は忘却パラメータ $\alpha$ における CPS 圏を指す。$D$ は固定された divergence 関数。統一記号表 (`drafts/infra/リファレンス/統一記号表.md`) を参照。
 
 ---
 

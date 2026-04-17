@@ -2,7 +2,7 @@
 
 **Paper X — v0.1 (2026-04-03) — 忘却論 (Force is Oblivion) シリーズ**
 
-*概要.* 長距離 Web エージェントにおける Context Rot (Feng et al. 2026) が、忘却論の忘却関手 U の具体的インスタンスであることを示す。AgentSwing の 3 つの Context Management (CM) 戦略 — Discard-All, Summary, Keep-Last-N — を Hom 集合上の同値関係 R による商関手族 {U_R} として定式化し (proof_cm_categorical_2026-04-03.md)、その半順序構造と因子分解定理を確立する。2 つの Case Study と N=240 の aligned 統計から「条件付き不可逆性テーゼ」を提示し、Hyphē の boot⊣bye 随伴との三者合流を定式化する。AgentSwing の routing parameter r と Hyphē の τ 閾値の逆関数関係を予測する。
+*概要.* 長距離 Web エージェントにおける Context Rot (Feng et al. 2026) が、忘却論の忘却関手族 U₀ / U_R の具体的インスタンスであることを示す。AgentSwing の 3 つの Context Management (CM) 戦略 — Discard-All, Summary, Keep-Last-N — を Hom 集合上の同値関係 R による商関手族 {U_R} として定式化し (proof_cm_categorical_2026-04-03.md)、その半順序構造と因子分解定理を確立する。2 つの Case Study と N=240 の aligned 統計から「条件付き不可逆性テーゼ」を提示し、Hyphē の boot⊣bye 随伴との三者合流を定式化する。AgentSwing の routing parameter r と Hyphē の τ 閾値の逆関数関係を予測する。
 
 > **依存関係.** 本稿は以下に依存する:
 > - Paper VIII: α-忘却濾過の公理系 (F1)-(F4)
@@ -10,7 +10,7 @@
 > - linkage_hyphe.md: Hyphē F⊣G 随伴の定義
 > - AgentSwing (Feng et al. 2026, Tongji Lab/Alibaba): 実験データの SOURCE
 
-> **記号規約.** U₀ は軌道圏 C_traj から前順序圏 D_traj への忘却関手。U_R は同値関係 R による商関手。Q は品質関数。σ は LLM 要約関数。τ は Hyphē の意味的密度閾値。r は AgentSwing の CM トリガー比率。統一記号表 (unified_symbol_table.md) を参照。
+> **記号規約.** U₀ は軌道圏 C_traj から前順序圏 D_traj への忘却関手。U_R は同値関係 R による商関手。本稿で文脈上 generic に U と書く場合は U₀ または U_R を指し、Paper IV の U_SH や U^T とは別である。Q は品質関数。σ は LLM 要約関数。τ は Hyphē の意味的密度閾値。r は AgentSwing の CM トリガー比率。統一記号表 (`drafts/infra/リファレンス/統一記号表.md`) を参照。
 
 ---
 
@@ -30,7 +30,7 @@ AgentSwing (Feng et al. 2026) は、長距離 Web エージェントが直面す
 
 | 理論的枠組み | 概念 | 数学的対応 |
 |:---|:---|:---|
-| 忘却論 | 忘却関手 U: 豊穣圏 → 前順序圏 | 商関手族 {U_R} |
+| 忘却論 | 忘却関手族 U₀ / U_R: 軌道圏 → 前順序圏 | 商関手族 {U_R} |
 | Hyphē | boot⊣bye 随伴 (L⊣R) | R = Ses→Mem 圧縮 = 忘却 |
 | AgentSwing | CM 戦略 (DA/Sum/KLN) + Routing | {U_R} + F_par⊣G_route |
 
@@ -46,7 +46,7 @@ AgentSwing (Feng et al. 2026) は、長距離 Web エージェントが直面す
 
 ---
 
-## §2. Case Study 分析 — U の非単射性 N≥2 検証
+## §2. Case Study 分析 — CM 商関手族 {U_R} の非単射性 N≥2 検証
 
 > SOURCE: AgentSwing Appendix C (Tables 4-9), Table 2, Figure 9
 
@@ -54,7 +54,7 @@ AgentSwing (Feng et al. 2026) は、長距離 Web エージェントが直面す
 
 **タスク**: allrecipes.com で "Mando" レシピを検索。
 
-| 戦略 | 結果 | U の挙動 |
+| 戦略 | 結果 | 各 U_R の挙動 |
 |:---|:---|:---|
 | KLN | ✅ 成功 | tail_N が最近の有望な手がかり (レシピ結果) を保存 |
 | Summary | ❌ 失敗 | σ が "Lil Durk" (誤仮説 h_wrong) に固着。Turn 1-22 の複数探索パスが同一要約に縮退 |
@@ -70,7 +70,7 @@ AgentSwing (Feng et al. 2026) は、長距離 Web エージェントが直面す
 
 **タスク**: Google Flights で DCA→MDW のフライト検索。
 
-| 戦略 | 結果 | U の挙動 |
+| 戦略 | 結果 | 各 U_R の挙動 |
 |:---|:---|:---|
 | DA | ✅ 成功 | 全リセットにより dead-end PDF ループから脱出 |
 | KLN | ❌ 失敗 | tail_N が dead-end ループの最近 N ステップを保存。ループを脱出できない |
@@ -84,7 +84,7 @@ AgentSwing (Feng et al. 2026) は、長距離 Web エージェントが直面す
 
 ### 2.3 Case 1 + Case 2 = 条件付き不可逆性
 
-| 状態型 | 特徴 | 最適戦略 | U の強度 |
+| 状態型 | 特徴 | 最適戦略 | 忘却の強度 |
 |:---|:---|:---|:---|
 | Type 1: recent useful clue | 直近に有望な手がかりがある | KLN | 弱い忘却 |
 | Type 2: dead-end loop | 繰り返しのループに陥っている | DA | 強い忘却 |
@@ -96,7 +96,7 @@ AgentSwing (Feng et al. 2026) は、長距離 Web エージェントが直面す
 確信度: [推定 75%]  
 撤回条件: N≥10 の大規模 Case Study で Type 1/2 分類が予測精度 < 60% のとき
 
-**備考 X.1a (Phase C v3 による独立的支持).** Phase C v3 実験は命題 X.1 の変種を fine-tuning の文脈で独立に確認した。ξ 正則化パラメータ λ の効果は入力条件に依存する: CCL 情報が直接入力される条件 A (偏ρ_ccl=0.548) では λ の効果は非有意 (ε=0.006) であり、CCL 情報が完全に欠落する条件 D (偏ρ_ccl=0.371) でのみ λ が有意な改善を示す (p=0.017)。これは「最適な忘却強度は状態の関数である」という命題 X.1 の主張を、CM 戦略選択 (KLN/DA/Sum) ではなく正則化強度 (λ) の文脈で再現したものと解釈できる。情報欠損下 (ker(U) が大きい状態) でのみ追加的制約が有効であるという構造は、Type 2 (dead-end loop) で DA が最適となるのと同型——いずれも「現在の情報が不十分なとき、外部からの介入が有効になる」という原理の具体化である。
+**備考 X.1a (Phase C v3 による独立的支持).** Phase C v3 実験は命題 X.1 の変種を fine-tuning の文脈で独立に確認した。ξ 正則化パラメータ λ の効果は入力条件に依存する: CCL 情報が直接入力される条件 A (偏ρ_ccl=0.548) では λ の効果は非有意 (ε=0.006) であり、CCL 情報が完全に欠落する条件 D (偏ρ_ccl=0.371) でのみ λ が有意な改善を示す (p=0.017)。これは「最適な忘却強度は状態の関数である」という命題 X.1 の主張を、CM 戦略選択 (KLN/DA/Sum) ではなく正則化強度 (λ) の文脈で再現したものと解釈できる。情報欠損下（有効忘却関手の核 ker(U_R) が大きい状態）でのみ追加的制約が有効であるという構造は、Type 2 (dead-end loop) で DA が最適となるのと同型——いずれも「現在の情報が不十分なとき、外部からの介入が有効になる」という原理の具体化である。
 
 ### 2.4 N=240 統計による補強 (Table 2)
 
@@ -450,7 +450,7 @@ g(τ) = τ^α  (α > 0, power law)
 |:---|:---|:---|:---|:---|
 | 共通テーマ | [推定 80%] | [推定 80%] | [推定 80%] | [推定 80%] |
 | P1 (Context Rot 対応) | "同型" | [仮説 55%] | [仮説 55%] | [仮説 55%] |
-| P2 (CM = U parameterization) | "対応" | [仮説 55%] | **[推定 80%]** | [推定 80%] |
+| P2 (CM = U₀ / U_R parameterization) | "対応" | [仮説 55%] | **[推定 80%]** | [推定 80%] |
 | P3 (F⊣G on trajectory) | "実現" | [仮説 50%] | **[推定 75%]** | [推定 75%] |
 
 ### 8.3 教訓
