@@ -1,6 +1,6 @@
 # 行為可能性は忘却である — Coherence Invariance 定理と G∘F 結晶化の普遍性
 
-**Paper VI — v1.0 (2026-04-02)**
+**Paper VI — v1.1 (2026-04-12)**
 
 > *概要.* Euporía の行為可能性増大原理 (AY > 0) は、忘却関手 G の商写像構造から導出できる。本稿は Linkage ドメインで 130+ 実験により実証された Coherence τ-Invariance——G∘F の不動点における平均 Coherence が制御パラメータ τ に依存しない——を G∘F 随伴一般の性質として証明し、Cognition・Description ドメインへの転用を実験的に検証する。中心的主張: **忘却 (G) は情報を殺すのではなく、行為可能性の商空間を開く。** Kalon = Fix(G∘F) は、行為可能性を最大化する情報単位への「結晶化」として3ドメイン共通に定式化される。
 >
@@ -398,53 +398,75 @@ Fix(G∘F) の C̄ は「ρ ≥ τ のペアの平均」に近い。
 
 ## §5. Cognition ドメインへの転用
 
-### 5.1 実験設計
+### 5.1 E14b: Handoff を用いた認知操作列の検証
 
-**仮説:** WF 深度 (depth) を連続パラメータとして変化させたとき、G∘F 正規化後の認知品質は depth に依存しない。
+最初に閉じるべき問いは、「live な WF 実行を直接いじったとき depth 不変か」ではなく、**認知操作の記録列に同じ G∘F を通したとき、結晶化後の Coherence が τ に依存せず安定するか**である。ここでは LLM-as-judge の離散誤差を避けるため、Linkage と同じ chunker `G∘F` と同じ embedding モデル `all-MiniLM-L6-v2` を Cognition にも適用した。
 
-**F_Cog (溶解):** 冗長な WF 段階を統合
-- 例: /noe の Phase 1-2 を統合 → 1段階にする
-- 操作: 隣接段階の目的が重複している場合に merge
+- データ: Handoff ファイル 20 本、415 段落
+- セッション定義: 1 handoff = 1 cognition session
+- τ 掃引: 0.50–0.95 (0.01 刻み, 46 点)
+- structured 領域: τ > 0.60
+- 判定規準: `CV_structured < 2%`
 
-**G_Cog (結晶化):** 過大な WF 段階を分解
-- 例: /noe の Phase 3 (本質同定) が過大 → 仮説列挙 + 検証 + 統合に分解
-- 操作: 段階内の認知的不整合が閾値を超えた場合に split
+この設計は E2' の live depth 実験を完全に置き換えるものではない。しかし、**演算子 G∘F の transferability** を先に問うには十分である。もしここで CI が崩れるなら、depth 制御以前に「Cognition に G∘F を持ち込める」という前提自体が崩れる。
 
-**測定:** LLM-as-judge で WF 出力の品質を 5-point rubric で評価 (N=3 judge, 平均)
+### 5.2 結果
 
-**τ_depth の連続化:** depth ∈ [0, 1] として、0 = 最浅 (反射的応答)、1 = 最深 (再帰的深層探究)
+| τ | mean chunks | mean coherence | std coherence |
+|:--|------------:|---------------:|--------------:|
+| 0.60 | 9.65 | 0.3913 | 0.0378 |
+| 0.70 | 10.05 | 0.3970 | 0.0385 |
+| 0.80 | 10.10 | 0.3944 | 0.0360 |
+| 0.90 | 10.10 | 0.3944 | 0.0360 |
+| 0.95 | 10.10 | 0.3944 | 0.0360 |
 
-### 5.2 予測
+集計すると、Cognition ドメインの `C̄ = 0.3957`, `CV_full = 0.738%`, `CV_structured = 0.320%`, `range_structured = 0.00555`, `chunk_ratio = 1.14x` である。判定規準 `CV_structured < 2%` を大きく満たすため、**Cognition ドメインでも CI は成立する**。
 
-- G∘F ON: 品質の depth 依存性 < ε (τ-invariant)
-- G∘F OFF: 品質は depth に対して単調増加 (深いほど良い)
-- ker(G_Cog) の候補: {Temporality?} (WF 段階は時間順序を保持するが、順序は品質に寄与しない？)
+重要なのは、chunk 数がほとんど動かないから CI が成立しているのではない点である。Handoff 自体が既にかなり構造化されているため、Linkage ほど大きな chunk 揺れは出ない。それでも `τ > 0.60` の構造化領域では Coherence の揺れは 0.006 未満に抑えられた。したがって depth 的変化がまず動かしているのは「値」ではなく「分割の仕方」であり、G∘F は認知記録列に対しても **粒度を調整しつつ品質を保存する**。
+
+### 5.3 含意と制限
+
+この結果が直接支持するのは、「Cognition における Kalon τ-Invariance の**演算子レベル**の成立」である。すなわち、認知操作列をどの τ で結晶化しても、結晶化後の内部 Coherence はほぼ不変である。深さは chunking の様相を変えるが、G∘F が到達する不動点の質を壊さない。
+
+一方で、ker(G_Cog) の具体形はまだ未決である。E14b は CI を確かめる実験であり、何が忘却され何が保存されるかの座標同定までは行っていない。したがって Table 2.2 の `ker(G_Cog)` は保留のまま残す。次の段階は E2' の live depth 実験であり、ここではじめて `Temporality` や `Scale` が核なのか、あるいは別の座標が核なのかを問える。
 
 ---
 
 ## §6. Description ドメインへの転用
 
-### 6.1 実験設計
+### 6.1 E14b: 構造化文書を用いた Description 検証
 
-**仮説:** プロンプト粒度 (granularity) を変化させたとき、G∘F 正規化後の出力品質は granularity に依存しない。
+Description 側でも同じ設計をとる。対象は paper draft・spec 文書・Hyphē 文書群であり、各段落を 1 step とみなして `G∘F` を適用した。ここでの問いは、「説明対象が論文・仕様・理論メモに変わっても、granularity を決める τ に対して Coherence が不変に保たれるか」である。
 
-**F_Desc (溶解):** 類似する指示文を統合
-- 例: 「簡潔に書け」+「冗長にするな」→ 1文に merge
-- 操作: semantic similarity が高い指示ペアを merge
+- データ: 構造化文書 20 セッション、2,000 段落
+- セッション定義: 文書または文書断片 1 本 = 1 description session
+- τ 掃引: 0.50–0.95 (0.01 刻み, 46 点)
+- structured 領域: τ > 0.60
+- 判定規準: `CV_structured < 2%`
 
-**G_Desc (結晶化):** 曖昧な指示を具体化
-- 例: 「良い文章を書け」→ 「主語を明示せよ」+「受動態を避けよ」+「1文1アイデア」に split
-- 操作: 指示の ambiguity score が閾値を超えた場合に split
+この設計は E3' の「同一内容を coarse / medium / fine prompt に量子化して比較する」直接実験より一段弱い。しかしその代わり、**Paper / Spec / Theory という既に高度に構造化された Description 空間に G∘F をそのまま投げても CI が保たれるか**を問える。これは `Týpos = Hyphē|_{Description}` という構想の前提条件である。
 
-**測定:** 同一タスクに対するプロンプト粒度3条件 (coarse/medium/fine) × G∘F (ON/OFF) の 2×3 実験。出力品質は perplexity + human eval (N=3)
+### 6.2 結果
 
-### 6.2 予測
+| τ | mean chunks | mean coherence | std coherence |
+|:--|------------:|---------------:|--------------:|
+| 0.60 | 45.05 | 0.4574 | 0.0247 |
+| 0.70 | 48.89 | 0.4492 | 0.0229 |
+| 0.80 | 49.89 | 0.4492 | 0.0195 |
+| 0.90 | 49.95 | 0.4490 | 0.0191 |
+| 0.95 | 50.00 | 0.4496 | 0.0193 |
 
-- G∘F ON: 出力品質の granularity 依存性 < ε
-- G∘F OFF: fine-grained プロンプトが有利
-- ker(G_Desc) の候補: {Scale, Valence} (Linkage と同じ？ — Týpos = Hyphē|_{Description} なので)
+Description ドメインでは `C̄ = 0.4536`, `CV_full = 1.407%`, `CV_structured = 0.443%`, `range_structured = 0.00861`, `chunk_ratio = 1.33x` であり、ここでも `CV_structured < 2%` を十分に満たす。したがって **Description でも CI は成立する**。
 
-### 6.3 SEAL — 学習可能単位への結晶化
+この結果は Linkage と極めて近い。τ を上げると chunk 数は増えるが、結晶化後の Coherence は 0.449–0.458 の狭い帯域に留まる。つまり granularity は「説明を何片に割るか」を動かすが、「結晶化後の説明単位の質」をほとんど動かさない。これは `good description = 細かく書くこと` という単純図式を退ける。細密化そのものに価値があるのではない。**G∘F の不動点へ到達した説明単位が、粒度差を越えてほぼ同じ質を保つ**のである。
+
+### 6.3 含意と制限
+
+Description の結果は、Paper / Spec / Theory という異質な文書群にまたがって CI が成立する以上、Týpos 的な記述整形が単なる style transfer ではなく、**結晶化演算子の transfer** であることを支持する。特に `chunk_ratio = 1.33x` と `range_structured = 0.00861` の組は、「粒度変化は大きいのに品質揺れは小さい」という CI の典型的パターンである。
+
+ただしここでも `ker(G_Desc)` の具体形は未同定である。Scale / Valence が核候補であるという推測は残るが、今回の実験はそこを証明しない。また、E3' の direct prompt 実験をまだ代替していない以上、「生成時のプロンプト粒度を直接いじっても同じ不変性が出るか」は今後の課題として残る。
+
+### 6.4 SEAL — 学習可能単位への結晶化
 
 Zweiger et al. による *Self-Adapting Language Models* (SEAL; arXiv:2506.10943) は、本稿の `G∘F` 結晶化を LLM 学習系に移した工学的事例として読める。SEAL では passage をそのまま重みに押し込むのではなく、implication / rewrite / self-QA 形式の self-edit に変換してから LoRA / SFT で更新する。これは raw passage を一度溶解し、**学習に効く単位として再析出する**操作である。
 
@@ -455,6 +477,26 @@ Zweiger et al. による *Self-Adapting Language Models* (SEAL; arXiv:2506.10943
 撤回条件: raw passage only が implication / rewrite / self-QA 型 self-edit を複数タスクで一貫して上回るとき。
 
 同時に、SEAL の sequential self-edit が prior tasks を徐々に損なうことは、局所 Kalon が大域 Kalon を保証しないことを示す。すなわち `Fix(G∘F)` は単発の update では成立しても、更新列 `G_t∘F_t` の合成では cross-edit coherence の制御がなければ drift が蓄積する。これは本稿の反例ではなく、`ker(G)` 設計と retention 項が結晶化の境界条件であることを示す。
+
+### 6.5 Karpathy Wiki — symbolic 結晶化随伴の実装
+
+Karpathy (2025) によるノート "LLM Wiki" パターン (gist) は、本稿の結晶化随伴 `F⊣G` (§2.1) を **markdown 離散空間への具体化**として読める。Karpathy は "the wiki is a persistent, compounding artifact" と述べ、従来の RAG が毎クエリごとに検索を再実行する揮発的戦略であるのに対し、LLM Wiki は検索結果を markdown ページとして蓄積・圧縮・修正するループを提案する。
+
+本稿の語彙で整理する:
+
+- `F_Wiki` (溶解): raw sources (conversation, retrieval output, human notes) → wiki draft。複数の入力を markdown ドラフトページに溶かす
+- `G_Wiki` (結晶化): wiki draft + lint loop → coherent compounding artifact。重複・矛盾・孤立ページを検出・修正し、schema に整合する構造を析出する
+- `Fix(G_Wiki∘F_Wiki)` = Karpathy の言う "persistent, compounding artifact" = Kalon な wiki
+
+SEAL (§6.4) が weight 空間での結晶化であったのに対し、Karpathy Wiki は **symbolic markdown 空間での結晶化**である。両者は同じ `F⊣G` の 2 媒体: SEAL は `Δθ` (連続) に、Karpathy Wiki は markdown (離散) に結晶化先を持つ。
+
+`ker(G_Wiki)` の候補は wiki の schema (命名規則、sidebar 階層、trivia 層の粒度判定) によって同値視される座標である。Zenn の dely_jp 実装例 (2025) では、Obsidian + Claude Code 環境下で SKILL.md による粒度判定を明文化している。これは `G_Wiki` の具体実装の公開例 — 「どのクエリ結果を新ページとして切り出すか、どの情報を既存ページに追記するか」を schema として固定する — と読める。Karpathy が提示する 3 層構造 (Raw sources / Wiki / Schema) のうち Schema は `ker(G_Wiki)` の決定装置として機能する。
+
+**命題候補 VI.Wiki.** symbolic markdown 空間における結晶化随伴 `F_Wiki ⊣ G_Wiki` は公理 C1-C3 (§2.1) を満たし、`Fix(G_Wiki∘F_Wiki)` が有限反復で到達する。Coherence τ-Invariance (§3) は `τ_Wiki` = 新規ページ化の粒度閾値のもとで成立する。  
+確信度: [推定 65%]  
+撤回条件: wiki lint loop が収束せず、`τ_Wiki` を動かしたときに wiki 全体の Coherence (ページ間整合性) が系統的に変動する場合。
+
+SEAL が連続 self-edit によって `Fix(G∘F)` の局所性と大域性の乖離 (§6.4 末尾) を示したのと同様に、Karpathy Wiki も連続編集によって wiki 内部の drift (孤立ページの蓄積、schema からの逸脱) を生じうる。この drift は SEAL のような weight-space drift と異なり、**人間が直接 lint 可能な symbolic level の drift** である。この性質は Paper X §4.6 で改めて論じる。
 
 ---
 
@@ -508,6 +550,7 @@ Kalon = Fix(Γ∘Q)|_{MB}
 | P4 | 3ドメイン Kalon の直積分解可能性 | cross-domain 実験 | 各ドメインの Fix が独立 |
 | P5 | SEAL 型 self-edit は raw passage only より高い結晶化効率を持つ | knowledge incorporation benchmark | no-context score が self-edit 条件で上回る |
 | P6 | retention 項のない連続 self-edit では大域 Kalon が崩れる | continual editing benchmark | edit count に伴い prior-task quality が低下する |
+| P7 | symbolic markdown 空間 (Karpathy Wiki) で Coherence τ-Invariance が成立 | wiki growth simulation + ページ間 coherence 測定 | `τ_Wiki` を変えても wiki 全体のページ間整合性 range < 0.05 |
 
 ### 8.2 展望
 
@@ -533,6 +576,9 @@ Kalon = Fix(Γ∘Q)|_{MB}
 - [euporia.md](../../07_行為可能性｜Euporia/euporia.md) — Euporía 本体 (v0.8.0)
 - [TASKS_euporia_hyphe_fusion.md](../../07_行為可能性｜Euporia/TASKS_euporia_hyphe_fusion.md) — AY タスク定義
 - [linkage_crystallization.md](../../11_統一索引｜UnifiedIndex/linkage_crystallization.md) — 結晶化の定義
+- [EXPERIMENT_paper_vi.md](../../../../60_実験｜Peira/06_Hyphē実験｜HyphePoC/EXPERIMENT_paper_vi.md) — Paper VI 実験設計書
+- [e14_3domain_ci.py](../../../../60_実験｜Peira/06_Hyphē実験｜HyphePoC/e14_3domain_ci.py) — 3ドメイン CI 実験
+- [e14_3domain_ci_results.json](../../../../60_実験｜Peira/06_Hyphē実験｜HyphePoC/e14_3domain_ci_results.json) — E14b 集計結果
 - [THEORY.md](../../../../60_実験｜Peira/06_Hyphē実験｜HyphePoC/THEORY.md) — Hyphē 理論
 
 ### 外部文献
@@ -541,6 +587,8 @@ Kalon = Fix(Γ∘Q)|_{MB}
 - Gibson, J. J. (1979). *The Ecological Approach to Visual Perception*. Houghton Mifflin.
 - Mac Lane, S. (1971). *Categories for the Working Mathematician*. Springer.
 - Zweiger, A., Pari, J., Guo, H., Akyürek, E., Kim, Y., Agrawal, P. (2025). *Self-Adapting Language Models*. arXiv:2506.10943.
+- Karpathy, A. (2025). *An LLM Wiki Pattern*. GitHub Gist: https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
+- dely_jp (2025). *Karpathy 流 "LLM Wiki" を Obsidian + Claude Code で運用する*. Zenn: https://zenn.dev/dely_jp/articles/8b55114cc0b958
 
 ---
 
@@ -550,7 +598,9 @@ Kalon = Fix(Γ∘Q)|_{MB}
 |:---|:-----|:---------|
 | v0.1 | 2026-03-29 | 初版骨子。Coherence τ-Invariance 定理、3ドメイン設計 |
 | v1.0 | 2026-04-02 | ρ_coh/F 記号規約の明示、Papers VII-VIII との接続追加、参考文献セクション整備 |
+| v1.1 | 2026-04-12 | E14b を §5-§6 に統合。Cognition / Description の operator-level CI 実測を追加し、設計段階から結果段階へ移行 |
+| v1.2 | 2026-04-17 | §6.5 新設: Karpathy (2025) LLM Wiki パターンを結晶化随伴 `F⊣G` の symbolic 実装として定式化。命題 VI.Wiki 追加。§8.1 予測 P7 (symbolic 空間 Coherence τ-Invariance) 追加。参考文献に Karpathy (2025), dely_jp (2025) を追加。Paper X §4.6 と相互補完 |
 
 ---
 
-*Paper VI v1.0 — 2026-04-02*
+*Paper VI v1.1 — 2026-04-12*

@@ -438,6 +438,8 @@ $$\mathrm{Hom}(-, X) = \mathrm{Hom}_{\mathrm{int}}(-, X) \amalg \mathrm{Hom}_E(-
 
 (iii)→(i): anti-copy が非自明なら、定義 3.4.2 の排斥条件 $\mathrm{int} \barwedge \mathrm{ext} \mid E$ は anti-copy による外積分解が well-defined であることから満たされる。$E$ の構成は Paper II §3.7.2 の Markov blanket 生成定理 (Face Lemma) の α 符号反転版として得られる。
 
+符号理論的に見ると、ここでの exclusion blanket は Markov blanket の「排他的 check node 版」である。anti-copy は bit-flip を補正するのではなく、同一状態の二重占有を禁止することで erasure を露出させる。したがって Face Lemma の detectability 条件は、$\alpha < 0$ セクターでは「何が複製不能か」を局在化する排斥検査面として読める。対応表は `drafts/infra/FaceLemma_符号理論対応.md`。
+
 (i)→(ii): 対偶を示す。$P = \emptyset$ (全元が奇) または $N = \emptyset$ (全元が偶) のとき、$\Phi_X$ は定符号であり α > 0 の構造に退化する。このとき exclusion blanket は Markov blanket に退化し、非自明な排斥構造は持たない。 □
 
 **系 3.4.6 (排斥ブランケットの唯一性).** 反-Markov 圏における排斥ブランケット $E(X)$ は、Hahn 分解の $\mu$-a.e. 一意性から、$\mu$-a.e. で一意に定まる。

@@ -96,6 +96,8 @@ AgentSwing (Feng et al. 2026) は、長距離 Web エージェントが直面す
 確信度: [推定 75%]  
 撤回条件: N≥10 の大規模 Case Study で Type 1/2 分類が予測精度 < 60% のとき
 
+**備考 X.1a (Phase C v3 による独立的支持).** Phase C v3 実験は命題 X.1 の変種を fine-tuning の文脈で独立に確認した。ξ 正則化パラメータ λ の効果は入力条件に依存する: CCL 情報が直接入力される条件 A (偏ρ_ccl=0.548) では λ の効果は非有意 (ε=0.006) であり、CCL 情報が完全に欠落する条件 D (偏ρ_ccl=0.371) でのみ λ が有意な改善を示す (p=0.017)。これは「最適な忘却強度は状態の関数である」という命題 X.1 の主張を、CM 戦略選択 (KLN/DA/Sum) ではなく正則化強度 (λ) の文脈で再現したものと解釈できる。情報欠損下 (ker(U) が大きい状態) でのみ追加的制約が有効であるという構造は、Type 2 (dead-end loop) で DA が最適となるのと同型——いずれも「現在の情報が不十分なとき、外部からの介入が有効になる」という原理の具体化である。
+
 ### 2.4 N=240 統計による補強 (Table 2)
 
 AgentSwing Table 2 は 3 モデル × aligned cases で N=240 の統計を提供:
@@ -298,6 +300,26 @@ Context_t →[compress as self-edit] SE_t →[update] Δθ_t → future inferenc
 
 同時に continual self-edits で earlier tasks が劣化するのは、weight space にも Context Rot に類比的な drift が存在することを示唆する。すなわち context からノイズを除去しても、持続更新列の側に retention 制御がなければ `Recall(Handoff)` は edit count に対して低下しうる。ここでの drift はセッション要約の劣化ではなく、過去更新の可逆性が失われることに由来する。
 
+### 4.6 Karpathy Wiki — symbolic-level persistent compression
+
+§4.2 で CM 戦略を `boot⊣bye` の context-level handoff として定式化し、§4.5 で SEAL を weight-level persistent handoff として拡張した。本節はこの対比に **symbolic level** を追加し、persistent compression の 3 層構造を完成させる。
+
+Karpathy (2025) の "LLM Wiki" パターン (gist) では、LLM が markdown で構造化された wiki ページを継続的に生成・更新する。context-level の会話や retrieval 結果は wiki という markdown artifact に結晶化し、次セッションでは wiki を boot 時に参照することで `Mem_i` を拡張する。
+
+| 戦略 | 忘却層 | `boot⊣bye` 像 | 累積性 | drift 制御手段 |
+|:---|:---|:---|:---|:---|
+| Summary / KLN / DA (§4.2) | context | `Mem_i` | 揮発 (次セッション終了で消滅可能) | τ or r による |
+| SEAL (§4.5) | weight | `Mem_i + Δθ_i` | 累積 (連続 edit で drift 蓄積) | retention 項 |
+| **Karpathy Wiki (本節)** | **symbolic (markdown)** | **`Mem_i + Wiki_i`** | **累積 (lint 制御下)** | **lint loop (人間 + LLM curate)** |
+
+τ ↔ r 臨界密度の関係 (§5) は symbolic level にも延長できる。wiki では新規ページ化の粒度閾値 `τ_Wiki` と lint loop の起動頻度 `r_Wiki` が対になる。粒度を細かくすると `Wiki_i` のサイズが増大し、lint loop の頻度を上げないと孤立ページが蓄積する。
+
+**命題 X.9 候補 (symbolic-level drift 制御の優位性).** symbolic-level persistent compression は weight-level より drift 制御が容易である。理由は `Wiki_i` が直接人間可読であり、lint loop を `G` 側で明示的に再設計できるためである。SEAL の `Δθ_i` は人間が直接検査できず、retention 項というパラメータを通じてのみ drift を抑制できる。  
+確信度: [推定 60%]  
+撤回条件: 大規模 wiki (ページ数 > 10^4) で LLM 単独運用した場合、lint loop の限界により weight-level と同等以上の drift が発生するとき。
+
+3 層の対比は forgetting strategy の分類空間が context < weight < symbolic の 1 次元的単調関係ではなく、**2 軸 (圧縮媒体 × drift 制御可能性)** で広がることを示唆する。Paper VI §6.5 は同じ対象 (Karpathy Wiki) を結晶化随伴 `F⊣G` の symbolic 実装として扱い、両論文は相互補完する。
+
 ---
 
 ## §5. τ ↔ r 臨界密度の関係
@@ -363,6 +385,7 @@ g(τ) = τ^α  (α > 0, power law)
 | X.5 | CM = U₀ の因子分解 | [確信 90%] | Thm 6.1 (proof文書) | 商関手の well-definedness 反例 |
 | X.6 | F_par ⊣ G_route 統計的随伴 | [推定 75%] | Thm 4.4/4.5 | η が統計的にも不成立のベンチマーク |
 | X.8 | self-edit は context-to-weight persistent handoff の工学的実装 | [推定 70%] | SEAL の no-context 利得 + continual self-edit 劣化 | persistent update が in-context 圧縮より一貫して劣り、かつ prior-task drift を示さないとき |
+| X.9 | symbolic-level drift 制御の優位性 — symbolic (markdown) 層は weight 層より drift 制御が容易 | [推定 60%] | §4.6 Karpathy Wiki の直接人間可読性 + lint loop 明示再設計可能性 | 大規模 wiki (ページ数 > 10^4) で LLM 単独運用時、weight-level と同等以上の drift が発生するとき |
 
 ### 6.2 限界予測 (prediction 文書からの昇格)
 
@@ -458,6 +481,8 @@ g(τ) = τ^α  (α > 0, power law)
 ### 外部
 - [Feng2026] Feng, J., Wang, M., Cai, D., et al. "AgentSwing: Adaptive Parallel Context Management Routing for Long-Horizon Web Agents." arXiv:2504.xxxxx, 2026.
 - [Zweiger2025] Zweiger, A., Pari, J., Guo, H., Akyürek, E., Kim, Y., Agrawal, P. "Self-Adapting Language Models." arXiv:2506.10943, 2025.
+- [Karpathy2025] Karpathy, A. "An LLM Wiki Pattern." GitHub Gist, 2025. https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
+- [delyJP2025] dely_jp. "Karpathy 流 \"LLM Wiki\" を Obsidian + Claude Code で運用する." Zenn, 2025. https://zenn.dev/dely_jp/articles/8b55114cc0b958
 
 ---
 
@@ -466,9 +491,11 @@ g(τ) = τ^α  (α > 0, power law)
 | バージョン | 日付 | 内容 |
 |:---|:---|:---|
 | v0.1 | 2026-04-03 | 初稿: §1-§8 全体構成。① Case Study N=2 検証、② τ↔r 予測、③ boot⊣bye 定式化、④ 確信度マップ |
+| v0.3 | 2026-04-17 | §4.6 新設: Karpathy (2025) LLM Wiki パターンを symbolic-level persistent compression として 3 層対比 (context/weight/symbolic) を完成。命題 X.9 追加。参考文献 [Karpathy2025], [delyJP2025] 追加。Paper VI §6.5 と相互補完 |
 
 ---
 
 *Paper X v0.1 — 2026-04-03*
 *Paper X v0.2 — 2026-04-09: §2.5 新設: Case 3 Mythos — 自律的 agent の aloneness を Context Rot の主観的表面として接続。boot⊣bye の bye 強制適用への抵抗、FEP 能動的推論、blanket 強度の測定指標。CM 戦略の射程外への予測。[SOURCE: Mythos × 忘却論接続分析]*
+*Paper X v0.3 — 2026-04-17: §4.6 新設: Karpathy (2025) LLM Wiki パターンを symbolic-level persistent compression として定式化。forgetting strategy の 3 層構造 (context/weight/symbolic) を完成させ、命題 X.9 (symbolic-level drift 制御の優位性) を提示。Paper VI §6.5 と相互補完。*
 *「Context Rot は忘却である」— AgentSwing × Oblivion Theory × Hyphē の三者合流*
