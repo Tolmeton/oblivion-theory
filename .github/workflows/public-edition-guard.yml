@@ -1,0 +1,31 @@
+name: Public Edition Guard
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  boundary-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Reject internal ledger files
+        run: |
+          set -euo pipefail
+          matches="$(find . -type f -name '*.meta.md' | sort)"
+          if [ -n "$matches" ]; then
+            echo "Internal meta documents are not allowed in the public edition."
+            echo "$matches"
+            exit 1
+          fi
+
+      - name: Reject backstage language
+        run: |
+          set -euo pipefail
+          forbidden='読者には見せない|共同作業の台帳|internal working draft|内部作業文書として参照'
+          if grep -RInE "$forbidden" README*.md START_HERE*.md papers; then
+            echo "Backstage language leaked into the public edition."
+            exit 1
+          fi
