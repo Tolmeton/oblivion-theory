@@ -1,6 +1,6 @@
 # Predictions Descend — 理解関手の普遍的限界
 
-**版**: v0.5 (2026-04-25, §8 redesign — Predictions Descend Theorem として再陳述、Gödel 第二不完全性定理対応 / 自己診断は付録 A に分離)
+**版**: v0.6 (2026-04-25, §8.4 Predictions Descend Theorem の形式証明試行 追加 — Lawvere fixed-point theorem への reduction + Joyal arithmetic universe 経路同定、G-θ → G-θ'-1〜4 細分化、達成度 60-70% で honest 較正)
 **メタファイル**: `予測_下降_理解関手の普遍的限界_メタデータ.md` (本稿の F⊣G 台帳 / 核主張レジャー / Gauntlet ログ / 虚→実変換面)
 **主張水準ラベル**: 構成的命題 / 命題 / 仮説 / 構造的類似 (本稿内較正、論文間比較禁止)
 **SOURCE 強度ラベル**: 強 (PDF verbatim 直接 Read) / 強候補 (subagent verbatim 抽出, 査読時独立検証推奨) / 中 (triangulation) / TAINT (記憶/web 要約)
@@ -775,6 +775,110 @@ Predictions Descend Theorem が主張するのは次の 1 文である:
 
 科学はそれでも進むが、進む方向は予測₁ の精度競争ではなく、$L$ (上昇関手) で真理₀ に接近する方向であって、$R$ (下降関手) の像を測る方向ではない。これが本稿が科学哲学に提出する命題である。
 
+### §8.4 Predictions Descend Theorem の形式証明試行
+
+§8.3 で構造的不可能性命題として陳述した Predictions Descend Theorem を、Gödel 第二不完全性定理の categorical proof (Joyal arithmetic universe 経路 + Lawvere fixed-point theorem) に類比する形式証明として試行する。本節の目的は、形式化の **到達面と境界面** を構造的に開示することにあり、Gödel 級の完全形式証明を達成することではない。届かない部分は §8.4.5 で G-θ' として honest に開示する (本稿の道 C 宣言 §M0.3 「Gödel と並ぶ認識論的定理」との対応で達成度を 60-70% に明示固定する)。
+
+#### §8.4.1 形式設定
+
+**圏 $\mathbf{Sci}$ の構成**:
+
+- 対象: 科学理論 $T$ (= 真理₀ への接近 $L$、真理₁ における整合 $R$、予測₁ への下降 $R$ の組)
+- 射: 理論間の関手 (= 体系間の構造保存写像、cf. §3.4 数論の Peano 圏拡張)
+
+各 $T \in \mathbf{Sci}$ は §1.1 構成的定義に従い、随伴対 $L_T \dashv R_T$ を内在化する関手的操作とみなす。
+
+**随伴対 $L_T \dashv R_T$ の存在保証**:
+
+- $L_T$ が連続 (small limit 保存) かつ Solution Set Condition (SSC) を満たすとき、Mac Lane CWM §V.6 GAFT により左随伴 $R_T$ が存在 [SOURCE 中: §2.4 引用、Buzzard 2012 triangulation 経由 / G-ζ 査読時独立検証義務]
+- §2.4 で「GAFT を満たさない $L_i$ は射程外」と宣言済 (overclaim 予防)
+
+**$\eta_{\text{unit}, T}: \text{Id} \Rightarrow R_T \circ L_T$ の非同型性**:
+
+- aletheia §1 L99-L107 随伴定理 U0' から $N \circ U \neq \text{Id}$、対応で $R_T \circ L_T \neq \text{Id}$ [SOURCE 強: HGK 内部一次]
+- $\text{Ker}(\eta_{\text{unit}, T}) > 0$ は **Paper VII §6.2 構造保存定理** から帰結する (§1.2 C2、本稿 §3.6) [SOURCE 強: HGK 内部一次]
+
+**真理₀ / 真理₁ / 予測₁ の関手的関係** (§2.1 4 型分けに従う):
+
+```text
+真理₀ ---R_{th→ph}---> 真理₁ ---R_{ph→da}---> 予測₁
+   <---L_{ph→th}---       <---L_{da→ph}---
+```
+
+下降合成 $R = R_{\text{ph→da}} \circ R_{\text{th→ph}}$、上昇合成 $L = L_{\text{ph→th}} \circ L_{\text{da→ph}}$ で本稿の $L \dashv R$ を構成。各層で独立に随伴成立 (§2.2 多層随伴構造)。
+
+#### §8.4.2 核命題の形式陳述
+
+**Predictions Descend Theorem (形式陳述)**:
+
+> $\mathbf{Sci}$ 内の任意の理論 $T$ について、随伴対 $L_T \dashv R_T$ が $\eta_{\text{unit}, T}$ 非同型 ($\text{Ker} > 0$) を満たすとき、$R_T$ の像 $R_T(T_0(T)) = R(T) \subset \text{予測}_1$ から $T$ の真理₀ 性 $T_0(T)$ を一意復元する関手 $S: \text{予測}_1 \to \text{真理}_0$ で $S \circ R_T = \text{Id}_{真理_0}$ を満たすものは存在しない。
+
+**論理鎖** ($\eta_{\text{unit}}$ 非同型 → $R$ の faithful but not full → $R^{-1}$ 不可能):
+
+1. **仮定**: 完全 retraction $S: \text{予測}_1 \to \text{真理}_0$ が存在し、$S \circ R_T = \text{Id}_{真理_0}$ を満たすとする
+2. このとき $R_T$ は **split monomorphism** (右逆を持つ単射)、すなわち full and faithful かつ essentially injective on objects
+3. §1.2 C2 構造保存定理 ($\eta_{\text{unit}, T}$ 非同型) より、$R_T \circ L_T \neq \text{Id}$。すなわち $R_T$ は essential image を持たない方向で情報損失を起こす
+4. しかし $S$ が完全 retraction なら、$S \circ R_T \circ L_T = L_T$ から $L_T$ が $R_T$ 経由で完全復元できることになり、$\eta_{\text{unit}, T}$ は同型と帰結する
+5. (3) と (4) は矛盾。∴ 完全 retraction $S$ は存在しない $\square$
+
+> [SOURCE 強: aletheia.md §1 L99-L107 + 本稿 §1.2 C2 + §5.6 NRFT 骨格、HGK 内部一次]
+
+**関手的書き下し** (Yoneda embedding を用いた弱形): $R_T$ が full and faithful でも essentially surjective でない場合、Yoneda embedding $y: \text{真理}_0 \hookrightarrow [\text{真理}_0^{op}, \mathbf{Set}]$ と同様に、$R_T$ の image は $\text{予測}_1$ の真部分圏に留まる。Yoneda embedding が一般に retraction を持たないことは標準事実 [SOURCE 中候補: nLab "Yoneda embedding" subagent verbatim 抽出 / G-ζ 独立検証義務]。本稿の $R_T$ も同型の構造的非可逆性を持つ。
+
+#### §8.4.3 Gödel 対角化との関手論的対応
+
+Gödel 第二不完全性定理の categorical proof (Joyal arithmetic universe 経路 + Lawvere fixed-point theorem) と本稿の形式装置を対応づける。
+
+**Lawvere fixed-point theorem (1969)** [SOURCE 中候補: nLab + Wikipedia subagent verbatim / G-ζ 独立検証義務]:
+
+> Cartesian closed category $\mathcal{C}$ で $f: A \to B^A$ が point-surjective ならば、任意の endomorphism $g: B \to B$ は fixed point を持つ。
+
+**対偶**: $g: B \to B$ が fixed point を持たないなら、$f: A \to B^A$ は point-surjective でない。
+
+この対偶が Cantor / Gödel 第一不完全性 / Tarski 真理定義不可能性の **共通構造** を与える。
+
+**形式装置の対応表**:
+
+| | Gödel 第二不完全性定理 (Joyal-Lawvere 経路) | Predictions Descend Theorem (本稿) |
+|:---|:---|:---|
+| 体系 | Arithmetic universe $\mathcal{A}$ (list-arithmetic pretopos) | 圏 $\mathbf{Sci}$ + 内在化随伴対 $L_T \dashv R_T$ |
+| 体系内の自己内在化 | $\mathcal{A}$ は内部に自身のコピーを含む (initial AU の自己言及性) | $\mathbf{Sci}$ の各 $T$ は自身の予測生成 $R_T$ を内部に含む |
+| 対角化操作 | Lawvere $f: A \to \Omega^A$ の point-surjectivity を仮定し $\neg: \Omega \to \Omega$ の fixed point を導出 | $S: \text{予測}_1 \to \text{真理}_0$ の retraction 性を仮定し $\eta_{\text{unit}}$ の同型性を導出 |
+| 不可能性の根拠 | $\neg$ は fixed point を持たないため、$f$ は point-surjective でない | $\eta_{\text{unit}}$ は非同型のため、$S$ は retraction でない |
+| 体系の核 | $\text{Con}(T) = T$ の無矛盾性 | $T_0(T) = T$ の真理₀ 性 |
+| 形式不可能性 | $T \nvdash \text{Con}(T)$ | $S \circ R_T \neq \text{Id}_{真理_0}$ (構成不能) |
+
+> [SOURCE 中候補: arxiv 2004.10482 (van Dijk-Gietelink Oldenziel 2020 "Gödel's Incompleteness after Joyal") + Lawvere 1969 "Diagonal arguments and Cartesian closed categories" — subagent verbatim 抽出 (本セッションで PDF binary 失敗) / G-ζ Tolmetes 経由 PDF Read で「強候補」昇格義務]
+
+**自己言及構造の翻訳**: Gödel は「証明計算 $\text{Prov}_T$ が自身の無矛盾性を表現する」= $T$ 内の syntactic functor が semantic に retract できない、として自己言及不可能性を示す。本稿は「予測₁ 生成 $R_T$ が自身の真理₀ 性を表現する」= $\mathbf{Sci}$ 内の下降関手が上昇に retract できない、として同型構造を提示する。両者の **共通構造**: 体系内の operation が体系自身の核を識別するための retraction が、構造的不等式 (Gödel: 対角化の fixed point 不在 / 本稿: $\eta_{\text{unit}}$ 非同型) によって阻まれる。
+
+#### §8.4.4 honest 較正 (G-θ' 最終状態)
+
+**達成範囲**:
+
+1. **Predictions Descend Theorem の形式陳述化** ✓ — §8.4.2 で関手的書き下し + 5 ステップ論理鎖を提示
+2. **Lawvere fixed-point theorem への reduction** ✓ — §8.4.3 対応表で $\eta_{\text{unit}}$ 非同型 → retraction 不可能の論理鎖を Lawvere 対偶の特殊化として位置づけ
+3. **Joyal arithmetic universe 経路の同定** ✓ — §8.4.3 で Gödel 第二不完全性 categorical proof への接続点を明示
+
+**継続課題** (G-θ' = 旧 G-θ の精細化):
+
+| ギャップ | 内容 | 解消経路 |
+|:---|:---|:---|
+| **G-θ'-1** | 圏 $\mathbf{Sci}$ の list-arithmetic pretopos 構成 | Joyal AU の構成 (Skolem theory → predicate category → exact completion) を $\mathbf{Sci}$ に適用、本稿外の本格的圏論研究プログラム |
+| **G-θ'-2** | $R_T$ の Cantor 対角化との直接対応 | Lawvere $f: A \to \Omega^A$ の point-surjectivity を仮定する対角化を、本稿 $R_T$ の $\eta_{\text{unit}}$ 非同型から再構成、骨格は §8.4.3 で示したが完全形は未達 |
+| **G-θ'-3** | 自己言及の syntactic-semantic adjoint への翻訳 | 「Gödel numbering = adjoint pair between syntactic and semantic categories」が言及されたが、原典未到達 (TAINT)。本稿への適用は本格的圏論研究 |
+| **G-θ'-4** | 1 次 SOURCE への完全昇格 | Lawvere 1969 原典 / Joyal arithmetic universe 原稿 / van Dijk-Gietelink Oldenziel 2020 PDF を Tolmetes 経由で Read (本セッション PDF binary 失敗、G-ζ 経由独立検証義務) |
+
+**「Gödel 級」と「本稿実装」の境界**:
+
+- **Gödel 級が要求するもの**: (a) 形式系の syntactic 表現、(b) Gödel numbering による self-reference 内在化、(c) provability predicate $\text{Prov}_T$ の体系内表現可能性、(d) 対角化補題による fixed point sentence 構成、(e) $T \nvdash \text{Con}(T)$ の純粋形式証明
+- **本稿が達成したもの**: (a') 圏 $\mathbf{Sci}$ の構造的定義、(b') $\eta_{\text{unit}}$ 非同型による構造的自己言及不可能性、(c') Lawvere fixed-point theorem への reduction 骨格、(d') retraction $S$ の構成不能性論理鎖
+- **本稿が達成していないもの**: (e') 純粋形式証明 (= G-θ'-1 〜 G-θ'-4)
+
+**境界の明示**: 本 §8.4 は **Gödel 第二不完全性定理に類比される構造的不可能性命題の categorical reduction** として読むべきであり、純粋形式証明としては Lawvere fixed-point theorem 級への reduction で止まる。Gödel 級は arithmetic universe の本稿への完全適用 (G-θ'-1) を経由してのみ到達可能であり、これは本稿の射程外の本格的圏論研究プログラムである。
+
+**§M0.3 道 C 宣言との照合**: 「Gödel と並ぶ認識論的定理」の野望は、(a) Lawvere reduction で **同型構造** を確認 (達成度 60%)、(b) Joyal AU 経路の同定で **形式化への道筋** を確定 (達成度 70%)、(c) 純粋形式証明は射程外として開示 (達成度 70% で固定、100% は scope 外)。これは後退ではなく、形式化の境界を構造的に明示する操作 (Yugaku 規律 §M6 「罪は何がまだ虚かを伏せたまま実を装うこと」に従う)。
+
 ---
 
 ## 付録 A: 自己診断 (Kalon△ 判定 / 残虚開示 / 達成と未達成)
@@ -804,7 +908,7 @@ Predictions Descend Theorem が主張するのは次の 1 文である:
 | **G-ε** | Tishby 1999 Gaussian 閉形式 | SSL cert 失敗で本セッション TAINT 残、本体起票後に再取得義務 |
 | **G-ζ** | subagent SOURCE 独立検証 | Riehl / Cartwright / van Fraassen / Bogen-Woodward / Buzzard / arxiv abstract を Tolmetes または独立 reviewer が直接 WebFetch / 物理書籍 Read で「強候補」→「強」昇格 |
 | **G-η** | 5 分野同型の形式同型射 (functor + natural transformation) 具体構成 | 本稿は並列例示に留まる。Yoneda 埋め込みでの functor 構成と各分野間の natural transformation 具体形は本稿外の継続課題 |
-| **G-θ** | Predictions Descend Theorem (§8.3) の形式証明強度 | §8.3 で $\eta_{\text{unit}}$ 非同型から $R^{-1}$ 不可能性を主張するが、Gödel 第二不完全性定理レベルの形式証明 (再帰関数 + 算術化 + 対角化) は提示していない。Predictions Descend Theorem は **構造的不可能性命題** として書かれているが、その形式証明の Tarski 真理理論 / カテゴリカル algebra による厳密化は本稿外の継続課題 |
+| **G-θ'** | Predictions Descend Theorem (§8.3) の形式証明強度 | §8.4 で **Lawvere fixed-point theorem への reduction** + Joyal arithmetic universe 経路同定により部分達成 (達成度 60-70%)。残ギャップは **G-θ'-1** ($\mathbf{Sci}$ の list-arithmetic pretopos 構成) / **G-θ'-2** ($R_T$ の Cantor 対角化との直接対応完全形) / **G-θ'-3** (syntactic-semantic adjoint 翻訳) / **G-θ'-4** (Lawvere 1969 + Joyal AU + arxiv 2004.10482 PDF の 1 次到達)。詳細は §8.4.4 |
 | **G-ι** | IIT (Tononi 2008 / IIT 4.0 2023) 同型の SOURCE 確保 | §6 で IIT 同型を主張するが subagent verbatim 未取得 = SOURCE 完全欠如、本稿外の継続課題 |
 | **G-κ** | Bogen-Woodward 三層への過度依存 | §1.5 / §8.1 で「最強同型 anchor」とした Bogen-Woodward 1988 を Hacking, Daston, Massimi 等の批判文献で位置づけ直す必要。本稿固有の貢献を「関手的読み替え」というメタ層に留めず、本稿が Bogen-Woodward に何を **新たに加える** かの明示は継続課題 |
 
@@ -819,7 +923,7 @@ Predictions Descend Theorem が主張するのは次の 1 文である:
 
 本稿が達成していない事項:
 
-1. **Predictions Descend Theorem (§8.3) の形式証明** — 構造的命題として書かれているが、Gödel レベルの形式化 (再帰関数 + 算術化 + 対角化に類比される操作) は提示していない (G-θ)
+1. **Predictions Descend Theorem (§8.3) の Gödel 級完全形式証明** — §8.4 で Lawvere fixed-point theorem への reduction + Joyal arithmetic universe 経路同定 (達成度 60-70%) まで到達したが、$\mathbf{Sci}$ の list-arithmetic pretopos 構成 (G-θ'-1) を経由する純粋形式証明は射程外
 2. **5 分野間の natural transformation 具体構成** — 並列例示のみ (G-η)
 3. **IIT 同型の SOURCE 確保** — 主張のみ (G-ι)
 4. **Bogen-Woodward への critical 位置づけ** — anchor として依存 (G-κ)
