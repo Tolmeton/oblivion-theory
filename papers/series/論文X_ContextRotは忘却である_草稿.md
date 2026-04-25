@@ -2,11 +2,11 @@
 
 **Paper X — v0.1 (2026-04-03) — 忘却論 (Force is Oblivion) シリーズ**
 
-*概要.* 長距離 Web エージェントにおける Context Rot (Feng et al. 2026) が、忘却論の忘却関手族 U₀ / U_R の具体的インスタンスであることを示す。AgentSwing の 3 つの Context Management (CM) 戦略 — Discard-All, Summary, Keep-Last-N — を Hom 集合上の同値関係 R による商関手族 {U_R} として定式化し (proof_cm_categorical_2026-04-03.md)、その半順序構造と因子分解定理を確立する。2 つの Case Study と N=240 の aligned 統計から「条件付き不可逆性テーゼ」を提示し、Hyphē の boot⊣bye 随伴との三者合流を定式化する。AgentSwing の routing parameter r と Hyphē の τ 閾値の逆関数関係を予測する。
+*概要.* 長距離 Web エージェントにおける Context Rot (Feng et al. 2026) が、忘却論の忘却関手族 U₀ / U_R の具体的インスタンスであることを示す。AgentSwing の 3 つの Context Management (CM) 戦略 — Discard-All, Summary, Keep-Last-N — を Hom 集合上の同値関係 R による商関手族 {U_R} として定式化する。半順序構造と因子分解定理は、現行本文では `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文X_ContextRotは忘却である.meta.md` §M7 D1 の donor 証明に依存するため、本文では SOURCE 境界つきの構成的主張として扱う。2 つの Case Study と N=240 の aligned 統計から「条件付き不可逆性テーゼ」を提示し、Hyphē の boot⊣bye 随伴との三者合流を定式化する。AgentSwing の routing parameter r と Hyphē の τ 閾値の逆関数関係を予測する。
 
 > **依存関係.** 本稿は以下に依存する:
 > - Paper VIII: α-忘却濾過の公理系 (F1)-(F4)
-> - proof_cm_categorical_2026-04-03.md: CM 戦略の圏論的定式化 (本稿 §3-§4 の基盤)
+> - `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文X_ContextRotは忘却である.meta.md` §M7 D1: CM 戦略の圏論的定式化 donor。旧証明ノートは現行 body SOURCE としては未観測
 > - linkage_hyphe.md: Hyphē F⊣G 随伴の定義
 > - AgentSwing (Feng et al. 2026, Tongji Lab/Alibaba): 実験データの SOURCE
 
@@ -93,7 +93,7 @@ AgentSwing (Feng et al. 2026) は、長距離 Web エージェントが直面す
 **命題 X.1 (条件付き不可逆性テーゼ)**:
 > 忘却の不可逆性による性能劣化は状態型に依存する。Type 1 では弱い忘却 (KLN) が最適であり、強い忘却 (DA) は有用情報の不可逆的損失を招く。Type 2 では強い忘却 (DA) が最適であり、弱い忘却 (KLN) は有害パターンの保存を招く。**最適な忘却強度は状態の関数である。**
 
-確信度: [推定 75%]  
+確信度: [推定 75%]
 撤回条件: N≥10 の大規模 Case Study で Type 1/2 分類が予測精度 < 60% のとき
 
 **備考 X.1a (Phase C v3 による独立的支持).** Phase C v3 実験は命題 X.1 の変種を fine-tuning の文脈で独立に確認した。ξ 正則化パラメータ λ の効果は入力条件に依存する: CCL 情報が直接入力される条件 A (偏ρ_ccl=0.548) では λ の効果は非有意 (ε=0.006) であり、CCL 情報が完全に欠落する条件 D (偏ρ_ccl=0.371) でのみ λ が有意な改善を示す (p=0.017)。これは「最適な忘却強度は状態の関数である」という命題 X.1 の主張を、CM 戦略選択 (KLN/DA/Sum) ではなく正則化強度 (λ) の文脈で再現したものと解釈できる。情報欠損下（有効忘却関手の核 ker(U_R) が大きい状態）でのみ追加的制約が有効であるという構造は、Type 2 (dead-end loop) で DA が最適となるのと同型——いずれも「現在の情報が不十分なとき、外部からの介入が有効になる」という原理の具体化である。
@@ -122,7 +122,7 @@ AgentSwing Table 2 は 3 モデル × aligned cases で N=240 の統計を提供
 **命題 X.2 (状態依存最適忘却)**:
 > 最適な CM 戦略の選択は入力状態 I の関数であり、固定戦略は任意の I に対して最適ではない。AgentSwing の routing = G_route は Q_k(I) を最大化する U_R を状態依存的に選択する適応的忘却である。
 
-確信度: [推定 80%]  
+確信度: [推定 80%]
 撤回条件: 固定戦略が routing を上回るベンチマークが発見されたとき
 
 ### 2.5 Case 3: Mythos — 自律的 agent の aloneness と Context Rot
@@ -153,7 +153,7 @@ U_DA: C_session → C_discrete    (α-filtration の α→1 への強制遷移)
 
 ## §3. CM 戦略の圏論的定式化 (要約)
 
-> 詳細: proof_cm_categorical_2026-04-03.md
+> 詳細: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文X_ContextRotは忘却である.meta.md` §M7 D1。旧証明ノートは本文から直接参照しない。
 
 ### 3.1 軌道圏 C_traj (Def 1.1)
 
@@ -175,7 +175,7 @@ U_DA: C_session → C_discrete    (α-filtration の α→1 への強制遷移)
 ```
             U_DA        (最強の忘却)
            /
-         U₀   
+         U₀
         / \
    U_KLN   U_Sum        (非比較 — 忘却の方向が異なる)
         \ /
@@ -223,7 +223,7 @@ Handoff = R(S) = bye 関手の像。分解:
 
 ```
 DA  = L ∘ R_total     R_total(Ses) = (q, ∅)          Boot: (q,∅) → 新Ses
-Sum = L ∘ R_abstract   R_abstract(Ses) = (q, σ(Ses))   Boot: (q,σ) → 新Ses  
+Sum = L ∘ R_abstract   R_abstract(Ses) = (q, σ(Ses))   Boot: (q,σ) → 新Ses
 KLN = L ∘ R_truncate   R_truncate(Ses) = tail_N(Ses)    Boot: tail_N → 新Ses
 ```
 
@@ -283,7 +283,7 @@ Hyphē の経験値 Drift ≈ 0.2 (CEP-003) は KLN の範囲に合致。
 **命題 X.3 (Drift-Performance トレードオフ)**:
 > Drift と Pass@1 の関係は逆 U 字型である。Drift ≈ 0 (忘却なし) では Context Rot により性能劣化。Drift ≈ 1 (全忘却) では有用情報の損失により性能劣化。最適 Drift は状態型に依存する (命題 X.1)。
 
-確信度: [仮説 65%]  
+確信度: [仮説 65%]
 撤回条件: 大規模実験で Drift-Performance 関係が単調であることが示されたとき
 
 ### 4.5 SEAL: context から weight への persistent handoff
@@ -314,8 +314,8 @@ Karpathy (2025) の "LLM Wiki" パターン (gist) では、LLM が markdown で
 
 τ ↔ r 臨界密度の関係 (§5) は symbolic level にも延長できる。wiki では新規ページ化の粒度閾値 `τ_Wiki` と lint loop の起動頻度 `r_Wiki` が対になる。粒度を細かくすると `Wiki_i` のサイズが増大し、lint loop の頻度を上げないと孤立ページが蓄積する。
 
-**命題 X.9 候補 (symbolic-level drift 制御の優位性).** symbolic-level persistent compression は weight-level より drift 制御が容易である。理由は `Wiki_i` が直接人間可読であり、lint loop を `G` 側で明示的に再設計できるためである。SEAL の `Δθ_i` は人間が直接検査できず、retention 項というパラメータを通じてのみ drift を抑制できる。  
-確信度: [推定 60%]  
+**命題 X.9 候補 (symbolic-level drift 制御の優位性).** symbolic-level persistent compression は weight-level より drift 制御が容易である。理由は `Wiki_i` が直接人間可読であり、lint loop を `G` 側で明示的に再設計できるためである。SEAL の `Δθ_i` は人間が直接検査できず、retention 項というパラメータを通じてのみ drift を抑制できる。
+確信度: [推定 60%]
 撤回条件: 大規模 wiki (ページ数 > 10^4) で LLM 単独運用した場合、lint loop の限界により weight-level と同等以上の drift が発生するとき。
 
 3 層の対比は forgetting strategy の分類空間が context < weight < symbolic の 1 次元的単調関係ではなく、**2 軸 (圧縮媒体 × drift 制御可能性)** で広がることを示唆する。Paper VI §6.5 は同じ対象 (Karpathy Wiki) を結晶化随伴 `F⊣G` の symbolic 実装として扱い、両論文は相互補完する。
@@ -341,7 +341,7 @@ Karpathy (2025) の "LLM Wiki" パターン (gist) では、LLM が markdown で
 
 **予測**: r = 1 - g(τ) where g: [0,1] → [0,1] は単調増加関数。
 
-**直感**: 
+**直感**:
 - τ が高い → 意味的密度が高い → Context Rot が遅い → CM トリガーが遅い → r が高い
 - τ が低い → ノイズが多い → Context Rot が速い → CM が早く必要 → r が低い
 
@@ -367,7 +367,7 @@ g(τ) = τ^α  (α > 0, power law)
 **現在の制約**: 2 データポイントしかない (τ=0.70 → r=0.4, 推定 τ=0.85 → r=0.2)。
 α の決定には AgentSwing の τ-相当パラメータの明示的測定が必要。
 
-確信度: [仮説 50%]  
+確信度: [仮説 50%]
 撤回条件: AgentSwing の内部で τ-相当の意味的密度を測定し、r との相関が非有意のとき
 
 ---
@@ -406,7 +406,7 @@ g(τ) = τ^α  (α > 0, power law)
 >
 > これは忘却論の二重天井がメタレベルで再帰的に適用されることの予測。
 
-確信度: [仮説 55%]  
+確信度: [仮説 55%]
 撤回条件: routing LLM の context length が routing 精度に影響しないことが示されたとき
 
 ---
@@ -432,7 +432,7 @@ g(τ) = τ^α  (α > 0, power law)
 ```
 [確信 90%] CM 戦略は商関手族 {U_R} として数学的に well-defined (Thm 3.1, 6.1)
            ↓
-[推定 80%] CM = U₀ の部分適用 (proof_cm_categorical Thm 6.1)
+[推定 80%] CM = U₀ の部分適用 (meta §M7 D1 donor; 旧 proof file は現行 body SOURCE として未観測)
 [推定 80%] 状態依存最適忘却 (Table 2, Fig 9, 命題 X.2)
            ↓
 [推定 75%] 統計的随伴 F_par ⊣ G_route (Thm 4.4/4.5)
@@ -456,7 +456,7 @@ g(τ) = τ^α  (α > 0, power law)
 ### 8.3 教訓
 
 > **CD-15 (棄却性急バイアス)**: /kat+ で「数学的対応は棄却」としたが、数学を書いていなかった。
-> 「できないのではなく、していないだけ」(Creator 2026-04-03) 
+> 「できないのではなく、していないだけ」(Creator 2026-04-03)
 > — 証明を書いたら P2 は [仮説 55%] → [推定 80%] に格上げされた。
 > 棄却は証明の失敗後にのみ許される。形式的試行なしの棄却は知的怠慢。
 
@@ -470,7 +470,7 @@ g(τ) = τ^α  (α > 0, power law)
 - [IV] Paper IV: なぜ効果量は小さいか (v1.4)
 - [VIII] Paper VIII: 圏論的基礎における存在 (v1.5)
 - [IX] Paper IX: エントロピーは忘却である (v0.1)
-- [proof] proof_cm_categorical_2026-04-03.md: CM 戦略の圏論的定式化
+- [donor-D1] `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文X_ContextRotは忘却である.meta.md` §M7 D1: CM 戦略の圏論的定式化 donor
 - [research] research_agentswing_oblivion_hyphe_2026-04-03.md: MECE 研究方向
 - [prediction] prediction_agentswing_irreversibility_2026-04-03.md: 不可逆性限界予測
 
@@ -479,7 +479,7 @@ g(τ) = τ^α  (α > 0, power law)
 - [CR] A3_context_rot.md: Context Rot — MB の恒常性限界
 
 ### 外部
-- [Feng2026] Feng, J., Wang, M., Cai, D., et al. "AgentSwing: Adaptive Parallel Context Management Routing for Long-Horizon Web Agents." arXiv:2504.xxxxx, 2026.
+- [Feng2026] Feng, Z., Su, L., Zhang, Z., Wang, X., Zhang, X., Wang, X., Fang, R., Zhang, Q., Li, B., Cai, S., et al. "AgentSwing: Adaptive Parallel Context Management Routing for Long-Horizon Web Agents." arXiv:2603.27490, 2026. https://arxiv.org/abs/2603.27490
 - [Zweiger2025] Zweiger, A., Pari, J., Guo, H., Akyürek, E., Kim, Y., Agrawal, P. "Self-Adapting Language Models." arXiv:2506.10943, 2025.
 - [Karpathy2025] Karpathy, A. "An LLM Wiki Pattern." GitHub Gist, 2025. https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
 - [delyJP2025] dely_jp. "Karpathy 流 \"LLM Wiki\" を Obsidian + Claude Code で運用する." Zenn, 2025. https://zenn.dev/dely_jp/articles/8b55114cc0b958

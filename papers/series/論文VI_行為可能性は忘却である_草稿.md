@@ -2,7 +2,7 @@
 
 **Paper VI — v1.1 (2026-04-12)**
 
-> *概要.* Euporía の行為可能性増大原理 (AY > 0) は、忘却関手 G の商写像構造から導出できる。本稿は Linkage ドメインで 130+ 実験により実証された Coherence τ-Invariance——G∘F の不動点における平均 Coherence が制御パラメータ τ に依存しない——を G∘F 随伴一般の性質として証明し、Cognition・Description ドメインへの転用を実験的に検証する。中心的主張: **忘却 (G) は情報を殺すのではなく、行為可能性の商空間を開く。** Kalon = Fix(G∘F) は、行為可能性を最大化する情報単位への「結晶化」として3ドメイン共通に定式化される。
+> *概要.* Euporía の行為可能性増大原理 (AY > 0) は、忘却関手 G の商写像構造から導出できる。本稿は Linkage ドメインで観測された Coherence τ-Invariance——G∘F の不動点における平均 Coherence が制御パラメータ τ に依存しない——を G∘F 随伴一般の性質として定式化し、Cognition・Description ドメインへの転用を検証する。Linkage 130+ 実験の本文統合、Cognition / Description の `ker(G)` 同定、τ-invariance の十分条件の完全証明は §2.2・§2.3.4・§4・§6.3 の実証 debt として分離する。中心的主張: **忘却 (G) は情報を殺すのではなく、行為可能性の商空間を開く。** Kalon = Fix(G∘F) は、行為可能性を最大化する情報単位への「結晶化」として3ドメイン共通に定式化される。
 >
 > **先行論文との関係:** Paper I (力は忘却である) — 忘却場 Φ と力 F_{ij}。Paper II (相補性は忘却である) — CPS, Drift, d = ker(d) への商写像。Paper III (Markov 圏の向こう側) — α ≤ 0 セクター。Paper IV (効果量減衰) — 効果量 √ρ_spec の減衰。Paper V (繰り込みは忘却である) — RG 不変性。本稿は「忘却が力を生む」メカニズムの**認知科学的インスタンス**を3ドメインで構成する。
 >
@@ -87,7 +87,7 @@ G: C → C/ker(G)
 | **F (溶解)** | merge (小チャンクを結合) | 浅い段階の統合 | 類似指示の統合 |
 | **G (結晶化)** | split (低 coherence を分割) | 過大段階の分解 | 曖昧指示の具体化 |
 | **τ** | similarity threshold (連続) | depth (連続) | granularity (連続) |
-| **ker(G)** | {Scale, Valence} | [要実験] | [要実験] |
+| **ker(G)** | {Scale, Valence} | [未同定] | [未同定] |
 | **AY の意味** | |Act_1(c)| − |Act_0(c)| | WF 行為増分 | 読者行為増分 |
 
 **注 (τ の連続性):** WF depth (L0-L3) は便宜的離散化。実際の depth は連続量 (注意資源の配分比)。Description の granularity も同様に連続。離散表現は連続量の量子化にすぎない。
@@ -165,9 +165,9 @@ F ⊣ G にも同じ障害が存在する:
 
 | ker の性質 | d | G (Linkage) | G (Cognition) | G (Description) |
 |:--|:--|:--|:--|:--|
-| **次元** | 1 (ℝ) | 2 ({Scale, Valence}) | [要実験] | [要実験] |
-| **余次元** | ∞ − 1 ≈ ∞ | 4 (残り4座標) | [要実験] | [要実験] |
-| **忘却の割合** | 1/∞ → 0% (ほぼ何も忘れない) | 2/6 = 33% | [要実験] | [要実験] |
+| **次元** | 1 (ℝ) | 2 ({Scale, Valence}) | [未同定] | [未同定] |
+| **余次元** | ∞ − 1 ≈ ∞ | 4 (残り4座標) | [未同定] | [未同定] |
+| **忘却の割合** | 1/∞ → 0% (ほぼ何も忘れない) | 2/6 = 33% | [未同定] | [未同定] |
 | **行為可能性の源** | 微分方程式の解空間 | チャンク間の新しい連結 | WF の新しい分岐 | 読者の新しい解釈 |
 
 **Paper V (繰り込みは忘却である) との接続**: ker(G) の次元は Paper V の β 関数 β_Φ = dΦ/d(ln μ) の固定点構造と対応する。ker(G) が小さい (= 忘却が少ない) ほど商空間が元の空間に近く、τ-invariance が成立しやすい。ker(G) が大きすぎると商空間が退化し、結晶化が意味を持たなくなる (Paper III の α < 0 セクター = copy 不能)。
@@ -382,7 +382,7 @@ Fix(G∘F) の C̄ は「ρ ≥ τ のペアの平均」に近い。
 
 ## §4. Linkage ドメイン: 130+ 実験のまとめ
 
-> **[要実験データ]** 本節は Hyphē PoC の Linkage ドメイン実験結果を統合する予定である。完成には以下のデータが必要:
+> **[実証 debt]** 本節は Hyphē PoC の Linkage ドメイン実験結果を統合する予定である。現行本文では、以降の (a)–(d) が揃うまで Linkage 130+ 実験を本文の完成済み SOURCE として使わない。完成には以下のデータが必要:
 >
 > (a) Hyphē PoC results_analysis.md からの主要結果（ker(G) = {Scale, Valence} の FIM 分析）
 >
@@ -472,8 +472,8 @@ Zweiger et al. による *Self-Adapting Language Models* (SEAL; arXiv:2506.10943
 
 本稿の語彙で言えば、`F_SEAL` は raw passage の表層を溶かし、`G_SEAL` は downstream update utility が高い atomic facts / QA 単位へ結晶化する作用である。raw passage only の利得が小さく、self-edit の方が no-context 想起を大きく押し上げるという結果は、`AY(G)` が単なる情報量の多さではなく、**将来の推論を変形できる行為可能な単位の開口**によって増大することの外部接地を与える。ここでの行為可能性は読者の解釈や WF 分岐ではなく、重み更新を通じて将来の応答を変えることに対応する。
 
-**命題候補 VI.SEAL.** 学習対象がそのままでは十分な update utility を持たないとき、`G∘F` による再表現を経た単位の方が raw context より高い結晶化効率を持つ。  
-確信度: [推定 75%]  
+**命題候補 VI.SEAL.** 学習対象がそのままでは十分な update utility を持たないとき、`G∘F` による再表現を経た単位の方が raw context より高い結晶化効率を持つ。
+確信度: [推定 75%]
 撤回条件: raw passage only が implication / rewrite / self-QA 型 self-edit を複数タスクで一貫して上回るとき。
 
 同時に、SEAL の sequential self-edit が prior tasks を徐々に損なうことは、局所 Kalon が大域 Kalon を保証しないことを示す。すなわち `Fix(G∘F)` は単発の update では成立しても、更新列 `G_t∘F_t` の合成では cross-edit coherence の制御がなければ drift が蓄積する。これは本稿の反例ではなく、`ker(G)` 設計と retention 項が結晶化の境界条件であることを示す。
@@ -492,8 +492,8 @@ SEAL (§6.4) が weight 空間での結晶化であったのに対し、Karpathy
 
 `ker(G_Wiki)` の候補は wiki の schema (命名規則、sidebar 階層、trivia 層の粒度判定) によって同値視される座標である。Zenn の dely_jp 実装例 (2025) では、Obsidian + Claude Code 環境下で SKILL.md による粒度判定を明文化している。これは `G_Wiki` の具体実装の公開例 — 「どのクエリ結果を新ページとして切り出すか、どの情報を既存ページに追記するか」を schema として固定する — と読める。Karpathy が提示する 3 層構造 (Raw sources / Wiki / Schema) のうち Schema は `ker(G_Wiki)` の決定装置として機能する。
 
-**命題候補 VI.Wiki.** symbolic markdown 空間における結晶化随伴 `F_Wiki ⊣ G_Wiki` は公理 C1-C3 (§2.1) を満たし、`Fix(G_Wiki∘F_Wiki)` が有限反復で到達する。Coherence τ-Invariance (§3) は `τ_Wiki` = 新規ページ化の粒度閾値のもとで成立する。  
-確信度: [推定 65%]  
+**命題候補 VI.Wiki.** symbolic markdown 空間における結晶化随伴 `F_Wiki ⊣ G_Wiki` は公理 C1-C3 (§2.1) を満たし、`Fix(G_Wiki∘F_Wiki)` が有限反復で到達する。Coherence τ-Invariance (§3) は `τ_Wiki` = 新規ページ化の粒度閾値のもとで成立する。
+確信度: [推定 65%]
 撤回条件: wiki lint loop が収束せず、`τ_Wiki` を動かしたときに wiki 全体の Coherence (ページ間整合性) が系統的に変動する場合。
 
 SEAL が連続 self-edit によって `Fix(G∘F)` の局所性と大域性の乖離 (§6.4 末尾) を示したのと同様に、Karpathy Wiki も連続編集によって wiki 内部の drift (孤立ページの蓄積、schema からの逸脱) を生じうる。この drift は SEAL のような weight-space drift と異なり、**人間が直接 lint 可能な symbolic level の drift** である。この性質は Paper X §4.6 で改めて論じる。
