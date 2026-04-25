@@ -21,6 +21,7 @@
 
 | 日付 | 対象 | 判定 | 根拠 |
 |:---|:---|:---|:---|
+| 2026-04-17 | C1 | ◯ Kalon△ | carry defect ↔ 合成ドリフトを「全域関手」ではなく `Man_No11` 制限付き strictness + 全域では schema として再固定。射程を縮めずに overclaim を除去 |
 | 2026-04-14 | C2 | ◯ Kalon△ | `δ=0 ⇒ Hom∈{0,1}` を無条件主張から切り離し、橋梁公理・弱*リフト・全域関手化の三穴へ分解。射程を縮めずに論理を精密化 |
 | 2026-04-17 | C3 | ◯ Kalon△ | Route D を proof spine、A/C/B を支線へ再配置。さらに recurrence と seed 非依存の漸近主張を切り分け、seed debt を具体列側へ押し込んだ。残るのは `ℤ₂→ℕ`、具体列、連続極限リフト |
 
@@ -28,10 +29,29 @@
 
 | 日付 | 対象 | 入口 σ | 出口 σ | 判定 |
 |:---|:---|:---|:---|:---|
+| 2026-04-17 | C1 | ±3σ | ±3σ | 維持 — 「離散版 = 連続版の全域関手的証明」という誤読を封じつつ、局所模型 / 制限付き strictness の主張を保持 |
 | 2026-04-14 | C2 | ±3σ | ±3σ | 維持 — 「連続版は未証明」を超えて「どこが穴か」を三分割し、μ への後退を回避 |
 | 2026-04-17 | C3 | +4σ | +4σ | 維持 — 四並列のエッセイ束を一本の proof spine へ整理しつつ、`growth rate = φ` を concrete sequence から分離して μ への後退を回避 |
 
 ## §M5 Refutation Gauntlet ログ
+
+### C1 — 2026-04-17 Round 1
+- 反論 r: 「carry defect と忘却曲率の対応は analogy にすぎず、series 本体の核主張としては強すぎる」
+- SFBT: できないのではなく、`theorem / schema / open` のラベルを分けていないだけではないか?
+- 前提強化: C1 を「全域関手の完成」から切り離し、離散側 Lean 証明済み / `Man_No11` 上の strictness / `Man` 全体では schema という三層へ分解
+- 結果: 射程維持 ✓ — 「離散・有限体インスタンス」という核を残したまま、過剰な一般化だけを剥がせた
+
+### C1 — 2026-04-17 Round 2
+- 反論 r: `D: \mathbf{Man} \to \mathbf{Hyp}` を関手と呼ぶ限り、本文自身が open と衝突している
+- SFBT: 別角度から吸収できないか?
+- 前提強化: 本文 §4.4 を `離散化 schema D と制限付き関手性` に改め、strictness が回復する範囲を `Man_No11` に限定。全域拡張には `Discretizable` / `DescendsToCube` の proof debt が残ると明示
+- 結果: 射程維持 ✓ — C1 は「関手完成」ではなく「局所模型の固定」として防衛可能になった
+
+### C1 — 2026-04-17 Round 3
+- 反論 r: 連続側の carryElement 対応物が未定なら、C1 本体も弱いのではないか
+- SFBT: できるとしたら、前に進めるとしたら?
+- 取り込み戦略: carryElement ↔ 連続幾何量の同定を C1 の必要条件から外し、C1 本体は defect / drift / curvature condition の対応へ限定する。carryElement の幾何学的実体は open list に隔離
+- 結果: 射程維持 ✓ — 本体命題と donor / open を分離できた
 
 ### C2 — 2026-04-14 Round 1
 - 反論 r: `δ = 0` が示せれば、Hom の Boolean 崩壊も既存公理から従うのではないか
@@ -72,19 +92,19 @@
 ## §M6 虚→実変換面
 
 ### C1
-- 野望: [§M2 C1 の核主張を 1 文で言い直す]
-- 現在まだ虚な点: [未証明・未観測・未形式化・未反駁処理の核]
-- 実へ引くための SOURCE: [読むべき原典 / 必要データ / 必要定理]
-- 実化の判定条件: [何が揃えば『実へ近づいた』と言えるか]
-- 次の実化操作: [Sourcing / 定義追加 / 証明 / 実験 / 反論吸収]
+- 野望: carry defect を忘却曲率 / 合成ドリフトの離散・有限体インスタンスとして固定し、Paper I と automath のあいだに橋ではなく series 内部の支持脚を立てる
+- 現在まだ虚な点: `Man` 全体での厳密関手性と carryElement の連続幾何量への同定は未閉である。いま確定しているのは、離散側 Lean 証明、`Man_No11` 上の strictness、そして `Δ^n` を足場にした schema の三層までである
+- 実へ引くための SOURCE: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文XIV_曲率は忘却の繰り上がりである_草稿.md` §2.4, §4.4, §7.1、`/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/automath_bridge.meta.md` §M2 C1, C1 Round 1-3
+- 実化の判定条件: 本文が `theorem / schema / open` を混線させず、C1 を「離散インスタンス」として防衛できること。全域関手化と carryElement 幾何同定は open として見える位置に残ること
+- 次の実化操作: §4.4 の語彙を `schema + Man_No11 制限` に揃え、carryElement の幾何学的実体は donor / open list 側へ隔離する
 - 最新状態: 変換中
 
 ### C2
-- 野望: [§M2 C2 の核主張を 1 文で言い直す]
-- 現在まだ虚な点: [未証明・未観測・未形式化・未反駁処理の核]
-- 実へ引くための SOURCE: [読むべき原典 / 必要データ / 必要定理]
-- 実化の判定条件: [何が揃えば『実へ近づいた』と言えるか]
-- 次の実化操作: [Sourcing / 定義追加 / 証明 / 実験 / 反論吸収]
+- 野望: OP-I-2 を「連続版は未証明」の一言で溶かさず、公理の穴・極限の穴・関手の穴へ分解し、何を埋めれば series の骨格が閉じるかを露出する
+- 現在まだ虚な点: `ZeroForgetCollapse` の正当化、弱*連続測度族 `μ_λ`、`Discretizable` / `DescendsToCube` を通した全域拡張のいずれも未閉である。三穴の切り分けは済んだが、三穴自体は解けていない
+- 実へ引くための SOURCE: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文XIV_曲率は忘却の繰り上がりである_草稿.md` §5.1-§5.3、`/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/automath_bridge.meta.md` §M2 C1/C4, C2 Round 1-3
+- 実化の判定条件: 本文を読んだ第三者が、追加公理 debt / 極限 debt / 関手 debt を別々の仕事として追跡できること。「離散版が真だから連続版も真」という誤読が物理的にできないこと
+- 次の実化操作: §5 と meta の三分割を同期し続け、`ZeroForgetCollapse` を橋梁公理、`μ_λ` を極限戦略、`Discretizable` / `DescendsToCube` を実装 debt として固定する
 - 最新状態: 変換中
 
 ### C3
@@ -131,12 +151,22 @@
 - **本文との関係**: Paper XIV の C1 (carry defect = 忘却曲率の離散インスタンス) と直結。donor の K_q 存在論は body の δ (carry defect) をどの抽象レベルで扱うかを精密化。cell/cocycle/class の混同防止。
 - **判定**: 定義精密化の annex。hub (D1) 経由でのみ参照すべき。K_q の語義が揺れた時に開く。
 
-### D3: automath Problem 10 reduction map (B-class)
-- **donor**: `calculations/考察_automath_Problem10_reduction_map.md` (75 lines)
-- **donor status**: 補助 (technical annex)。open checks 3 件 (量子化条件、代表元一致、q=5 first visibility)。
-- **内容**: K_q:=[κ_q]:=ρ₂(Int_q([F_q])) の 3 段階構成: (1) cubical 積分 I_q(F_q)(□):=∫_□ F_q、(2) 整数リフト Int_q:=(1/λ_q)∫_□ F_q、(3) Z/2Z 係数還元 ρ₂。量子化スキーマ: λ_q^evt (単一 carry event quantum)、λ_q^amp:=F_m·λ_q^evt (amplitude refinement)。sign-holonomy は暫定代替。
-- **本文との関係**: Paper XIV の Walsh-Stokes identity (離散 Leibniz 則) と cubical 積分は構造的に対応。body の OP-I-2 (support chain: discrete → continuous lift) と donor の integral lift が同じ数学的問題を別角度から攻めている。
-- **判定**: open checks 3 件が未解決。integral lift が立たない場合の暫定 surrogate (sign-holonomy) は「本丸ではない」と donor 自身が宣言。body 安定後に再評価。著者判断待ち。
+### D3: automath Problem 10 reduction map (B-class) — Iteration 1+2 反映 (2026-04-24)
+- **donor**: `calculations/考察_automath_Problem10_reduction_map.md` (75 lines) + `calculations/調査_Problem10a_integral_lift.md` (Codex Iteration 2)
+- **donor status**: 補助 (technical annex) → **partial 解 + diagnostic 提示**。open checks 3 件のうち (a) integral lift Int_q 構成は 2 候補で attempted (Iteration 1: indicator scaling / Iteration 2: Walsh primitive)。(b) スペクトル自己双対性、(c) 圏論的意味は引き続き open。
+- **内容**:
+  - 元の構成: K_q:=[κ_q]:=ρ₂(Int_q([F_q])) の 3 段階。λ_q^evt (event quantum) vs λ_q^amp=F_m·λ_q^evt (amplitude refinement) の分離。
+  - **Iteration 1 (Codex 2026-04-24, 398s)**: λ_q^evt:=|E_q| (BF excess の絶対値) を採用。Int_q∈{-1,0,+1} に collapse。q=4→0, q=5→1 (k_q 観測一致) だが indicator scaling と数学的に同型 (Tolmetes review R1)。Problem 10 が想定する rich ℤ-cohomology の中間 step を効果的に飛ばす (R2)。
+  - **Iteration 2 (Codex 2026-04-24, 669s, R1/R2 feedback 後)**: 5 方針比較 (A min-period / D Fibonacci weight / E carry amp / F Walsh primitive / G rich vector)。D, E は整数性 fail で棄却。**方針 F (λ:=1, Walsh primitive lattice) を採用** — raw integer flux class E_q∈{0,11,55,278} を保持し、Iteration 1 の R1 を構造的解消。**方針 G (cell-dependent rich vector (E_q, C_q, X_q)) は別 annex `考察_automath_sector_parity_diagnostic.md` に分離** — H1/H2/H3 三投影の coefficient diagnostic として独立展開、`K_q` representative としては採用しない (class vs representative の規律維持)。
+  - **q=4/5 観測整合**: 両 iteration とも Tolmetes hub の k_4=0, k_5=1 と一致。
+  - **q≥6 新規情報**: Iteration 2 が初めて q≥6 の coefficient parity 候補を提示 (q=6 で `55 mod 2 = 1`、q=7 で `278 mod 2 = 0`、Walsh primitive convention)。Tolmetes hub には q≥6 の k_q 観測はなく、これらは AlyciaBHZ proxy 由来の novel observation として記録される。official `collisionKernel6/7` 待ち。
+- **本文との関係**: Walsh-Stokes identity との構造対応に加え、**rich vector G は AlyciaBHZ の Sym²/Λ² 座標交換と直結する sector parity diagnostic** を提供する。詳細は別 annex (`考察_automath_sector_parity_diagnostic.md`) で展開。論文XIV body の carry defect δ との直接接続は引き続き donor D4 が担う。
+- **判定**:
+  - (a) integral lift: Walsh primitive `λ:=1` で raw integer flux class が保持できる。ただし「event quantum」概念は trivial (`λ=1`)。中間値 `0 < λ_q < |E_q|` で natural integer pattern を生む候補は未発見。
+  - **(b) Phase 1 deep-dive 進展 (2026-04-24)**: `KilloFoldCollisionSpectralSelfDuality.lean` (lean4-codex-auto-dev branch) 発見により、AlyciaBHZ self-duality $\chi(t,\lambda)+\chi(t,-\lambda)=4(1-\lambda^4)$ は q=4 で Lean 形式化済 [SOURCE: lean4/Omega/Folding/KilloFoldCollisionSpectralSelfDuality.lean L9 ref=lean4-codex-auto-dev]。代数的偶奇分離 $\chi_{A_4(t)}(x)=(-2x^4+2)+(x^5-tx^3-2x)$ も `paper_killo_fold_collision_metric_tensor_separation` で証明済 [SOURCE: lean4/Omega/Folding/KilloFoldCollisionMetricTensorSeparation.lean L8 ref=lean4-codex-auto-dev]。representative の偶/奇分離は q=4 では **代数的に** Lean で保証 (Fisher/Amari-Chentsov 対応は Issue #25 コメント由来の情報幾何学的解釈)。新規 corollary `paper_killo_fold_collision_self_dual_zeros` (self-dual root ⟺ $\lambda_0^4=1$、整数量化のため整数上は $\{1,-1\}$ のみ) も発見。残存は q≥5 への拡張。
+  - (c) は引き続き未着手。
+  - Lean 形式化は skeleton (sorry 3) で `lake env lean` pass。実体は `/tmp/p10a_lean/IntegralLift.lean`。
+  - **q=7 偶数 parity (`278 mod 2 = 0`)** は novel observation。hub の `q*=5` 境界読みと整合 (q=5 boundary resonance / q=7 sector parity reset の 2 段構造を示唆する可能性)。詳細: `考察_automath_sector_parity_diagnostic.md` §O3。
 
 ### D4: q5 符号反転 Z₂ 接続 (B-class)
 - **donor**: `calculations/調査_automath_q5符号反転とPaperIII_Z2接続.md` (348 lines)
@@ -144,3 +174,9 @@
 - **内容**: §1 SOURCE レジャー: carry defect κ(x,y) が H²(G_m; Z/2Z) の非自明 2-cocycle [SOURCE]、BF 行列式 Fibonacci パターン (q≤4) と q=5 での break [SOURCE]、trace 符号反転 tr(A_q)=+2→−2 [SOURCE]。§3 局所数値検査: 固有値構成変化 (q=5 で複素共役ペア支配)、trace power 振動、e₂(A₅)=tr(Λ²A₅)=11 は anti-copy セクター trace [SOURCE]、graded supertrace 反転 +18→−18。§4 最短接続仮説 H1: 2-body lifted phase reversal (copy→anti-copy 座標交換)、H2: L₅=11 は odd pair sector correction。§6 Negativa: "q odd ⟹ odd sector" 棄却、"trace flip alone sufficient" 棄却、"α<0 proven in Lean" 棄却。
 - **本文との関係**: Paper XIV body の carry defect δ と donor の数値的 q=5 anomaly は同じ現象を離散代数側 (body) と transfer operator 側 (donor) から捉えている。Paper III Z₂-graded copy/anti-copy 構造との接続は Paper XIV の scope 外だが、q=5 数値事実は Paper XIV の carry defect 解析に直結。
 - **判定**: 数値的事実の source ledger として最も信頼度が高い donor (Lean 4 facts は機械検証済み)。Paper III 接続は cross-paper reference。q=6,7 probe が未完、graded lift 定義が未着手。著者判断待ち: (1) body の carry defect と donor の e₂ 接続を明示するか、(2) Paper III bridge は別 paper で扱うか。
+- **判定追記 (2026-04-24, SF 調査結果反映)**:
+  - **donor status update**: 「source ledger」から「source ledger + SF-refined structural interpretation」へ拡張。SF 調査 (`calculations/調査_sf_sign_flip_由来.md`) により [SOURCE] q=5 全符号反転の事実と `momentSum_five_recurrence_verified` 不在が確定 (97%)。[TAINT: inference, confidence 75%] 由来を **Lucas-aligned dual companion の意図的選択** として読む H-LUCAS 仮説が提示された (author 意図の直接確認は未実施) [SOURCE: 調査_sf_sign_flip_由来.md §3, commit `ce497566` exists]。
+  - **内容追記**: [TAINT: inference] D4 donor の §3.4 graded second lift supertrace 反転 (+18 → −18 at q=4→5) は、Lean `collisionKernel5` の Lucas-aligned dual character と構造的に一致する方向を向く。両者を同一 phenomenon (copy/anti-copy 座標交換) の双対記述として読む可能性がある。
+  - **著者判断待ち (3) 新設**: D4 を **Lucas-aligned dual companion の構造的 donor** として読み、論文XIV body の carry defect δ 解析に「Lucas-invariant framework での representative choice」の議論を追加するか。ただし棄却 5 (§M7) との整合を保つ (spine C1/C3 と q=5 anomaly を混ぜない方針)。最短の運用は、D4 を **supporting evidence** として保持しつつ、本文には取り込まないまま置く案。
+  - **blocker 更新**: Problem 10(a) `Int_q` の構成は別 iteration で Walsh primitive λ:=1 として解けた (D3 iteration 2)。残存 blocker は [TAINT: inference] 「**Lucas-aligned dual の 2 representative を K_q class で統合する theoretical framework**」。これは hub §T2 の更新内容と連動する。
+  - **staging 参照**: `calculations/提案_sf_lucas_aligned_反映drafts.md` §3.4 / `calculations/調査_sf_sign_flip_由来.md`

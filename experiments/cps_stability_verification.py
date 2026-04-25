@@ -269,7 +269,7 @@ def plot_n_scaling(results: list) -> str:
     ax.grid(True, alpha=0.3, color=COLORS['grid'])
     
     plt.tight_layout()
-    path = RESULTS_DIR / "CPS_n_scaling.png"
+    path = RESULTS_DIR / "画像_3832.png"
     fig.savefig(path, dpi=150, bbox_inches='tight')
     plt.close(fig)
     
@@ -324,7 +324,7 @@ def plot_phase_transition(pt_result: dict) -> str:
     ax.grid(True, alpha=0.3, color=COLORS['grid'])
     
     plt.tight_layout()
-    path = RESULTS_DIR / "CPS_phase_transition.png"
+    path = RESULTS_DIR / "シーピーエス_段階_遷移.png"
     fig.savefig(path, dpi=150, bbox_inches='tight')
     plt.close(fig)
     return str(path)
@@ -366,7 +366,7 @@ def plot_liouville(result_n2: dict, result_n50: dict) -> str:
         ax.grid(True, alpha=0.3, color=COLORS['grid'])
     
     plt.tight_layout()
-    path = RESULTS_DIR / "CPS_liouville_potential.png"
+    path = RESULTS_DIR / "画像_3831.png"
     fig.savefig(path, dpi=150, bbox_inches='tight')
     plt.close(fig)
     return str(path)

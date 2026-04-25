@@ -243,7 +243,7 @@ def parse_args() -> argparse.Namespace:
         "--manifest",
         type=Path,
         default=Path(
-            "/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/paper_xi_third_model_probe_manifest.json"
+            "/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/データ_3830.json"
         ),
         help="Path to the probe manifest JSON",
     )

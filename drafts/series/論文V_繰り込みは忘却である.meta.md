@@ -104,3 +104,13 @@
 - **内容**: Zamolodchikov 計量 G_{IJ} から κ = G_ΘΘ/G_αα を導出。SU(2) では κ = d_R/(C₂(G)·d_A) = 2/6 = 1/3。全パラメータ消滅と5つの数値予測 P1–P5。
 - **降格理由**: v3.5 の作用 (line 182) で κ は使用されているが無導出。Zamolodchikov 導出は v2 の対角的2場系 S[α, Θ] を前提とする。v3.5 では Φ の運動項が F_{ij}F^{ij} (非対角的) であるため、κ = G_ΘΘ/G_αα の直接適用に field reparametrization の考慮が必要。
 - **判定**: κ=1/3 (SU(2)) は本文の open parameter を埋める最有力候補。ただし v3.5 kinetic structure での再導出を経て初めて body 吸収可能。§7.2 ロードマップへの追記候補。著者判断待ち。
+
+## §M9 Donor Absorption Ledger (2026-04-18)
+
+### D-V-01: TriAttention×忘却論_考察
+
+- **donor path**: `drafts/incubator/TriAttention×忘却論_考察.md`
+- **receiver surfaces**: `論文IV_なぜ効果量は小さいか_草稿.md` §8.12-§8.13、`論文V_繰り込みは忘却である_草稿.md` §6.5-§6.8、Paper IV/V meta
+- **kept**: 離散 RG 作用素としての TriAttention、`ρ_budget` と `ρ_eff` の分離、RG 不変性主張の引き締め
+- **discarded**: donor 単独稿としての叙述順のみ
+- **final disposition**: donor file を削除し、RG 側の provenance を Paper V meta に固定

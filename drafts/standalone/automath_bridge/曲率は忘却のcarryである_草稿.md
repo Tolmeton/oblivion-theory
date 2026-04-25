@@ -1,8 +1,8 @@
 # 曲率は忘却の carry である
 ## — 離散 defect algebra と忘却場の方向性定理
 
-Standalone — v0.3 (2026-04-13)
-忘却論シリーズ番外編。series 昇格候補。
+Bridge surface — v0.3 (2026-04-13)
+Paper XIV の外向き補助面。series 正本は `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文XIV_曲率は忘却の繰り上がりである_草稿.md`。
 
 先行論文: Paper I (力としての忘却) — 方向性定理 Th.5.1、合成ドリフト §9.5 OP-I-2。Paper 0 (基礎石) — U⊣N 四項組、ker(T)。Paper II (CPS) — Face Lemma。Paper VIII (α-忘却濾過) — (F1)-(F4)。
 外部参照: The Omega Project (automath) — Lean 4, 3,427+ 定理, axioms=0。

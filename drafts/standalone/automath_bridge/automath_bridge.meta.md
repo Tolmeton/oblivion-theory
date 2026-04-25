@@ -328,6 +328,25 @@ Man_No11 (No11-compatible 射のみ) への制限で carry defect = 0 → 正確
 
 ---
 
+### C1 — 2026-04-24 Phase 1 deep-dive 反映 (Problem 10 (b) 進展)
+
+Codex GPT-5.5 xhigh (direct codex exec, MCP bypass 経路) に automath branch 網羅探索を依頼。
+
+**発見**: `lean4-codex-auto-dev` branch の `lean4/Omega/Folding/` 配下に **AlyciaBHZ self-duality が Lean 形式化済**。
+
+**主要 Lean theorems**:
+- `paper_killo_fold_collision_spectral_self_duality` [SOURCE: lean4/Omega/Folding/KilloFoldCollisionSpectralSelfDuality.lean L9 ref=lean4-codex-auto-dev]: $\chi(t,\lambda)+\chi(t,-\lambda)=4(1-\lambda^4)$ (q=4, 整数量化)
+- `paper_killo_fold_collision_metric_tensor_separation` [SOURCE: lean4/Omega/Folding/KilloFoldCollisionMetricTensorSeparation.lean L8 ref=lean4-codex-auto-dev]: $\chi_{A_4(t)}(x) = (-2x^4+2)+(x^5-tx^3-2x)$ (代数的偶奇分離)
+- `paper_killo_fold_collision_self_dual_zeros` (cor) [SOURCE: lean4/Omega/Folding/KilloFoldCollisionSpectralSelfDuality.lean L18 ref=lean4-codex-auto-dev]: self-dual root ⟺ $\lambda_0^4=1$ (整数量化のため整数上 $\{1,-1\}$ のみ、複素拡張で 4 次単位根 $\{1,-1,i,-i\}$)
+
+**Problem 10 (b) との関係**: 論文 XIV §M8 D3 の open checks (b) 「AlyciaBHZ self-duality が representative の偶/奇分離を保証するか」は、**q=4 で代数的に Lean 確定**。Fisher/Amari-Chentsov 対応は Issue #25 コメント由来の情報幾何学的解釈であり、Lean 定理本体の含意ではない。残存は q≥5 への拡張。
+
+**統一表 v0.2 への反映**: v0.23 (2026-04-24) で §5 層 C 解決 paragraph と §7 Problem 10 (b) に反映済。
+
+**dictionary 連携**: 三者対応辞書 §2.A に self-duality の Lean 化事実を追加すべき (未着手)。
+
+---
+
 ## §M6 虚→実変換面
 
 ### C1

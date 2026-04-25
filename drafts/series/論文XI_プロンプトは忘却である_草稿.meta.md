@@ -14,6 +14,8 @@
 ## §M3 Kalon 判定履歴
 | 日付 | 対象 | 判定 | 根拠 |
 |:---|:---|:---|:---|
+| 2026-04-24 | C2/C3 | ◯ 精密化 | Adam's Law (Lu et al. 2026, arXiv:2604.02176) により、同義パラフレーズでも高頻度表現が task performance を改善する外部証拠が追加された。これは「E が平均品質を直接押し上げる」という反証ではなく、$E$ を $E_{\text{struct}}$ と $E_{\text{freq}}$ に分け、後者が $C_{\text{intended}}\to C_{\text{eff}}$ の摩擦を下げると読むことで H₃ に吸収できる。C2/C3 の骨格は維持されるが、従来の「E は平均品質に効かない」は $E_{\text{struct}}$ の残差効果に限定して書く必要がある。 |
+| 2026-04-22 | C3 | ◯ 維持 | Chen et al. (2026) の task-type 分解と Liu & Chu (2026) のトークン分布層証拠で、`E` が平均品質ではなく別の層に作用するという骨格は補強された。ただし前者は task-type 層、後者は logit 分布層であり、内部 precision との一意橋渡しは依然として未完である。したがって支持増にはなるが Kalon 昇格の根拠にはまだ足りない。 |
 | 2026-04-16 | C1 | ◎△ | Step 1: FEP / Chollet / virtual NN の 3 面で収束しても主張が不変。Step 2: 関手論・精度加重・program space を往復しても「prompt = forgetting」が崩れない。Step 3: prompt engineering 全体、Sapir-Whorf、skill 設計へ 3 方向以上の非自明派生を持つ。 |
 | 2026-04-16 | C2 | ◎△ | A/B 実験、CC Agent 再現、Gemini 検証を通しても「平均品質帰無 + 語彙変化」の骨格が維持される。理論と実験が同一点に収束している。 |
 | 2026-04-16 | C3 | ◯ | 方向は強いが、$\pi_v \leftrightarrow 1/\mathrm{Var}[Q]$ は本文でも類推接続と明記されており、Fix(G∘F) の最終閉包にはまだ届いていない。 |
@@ -64,6 +66,12 @@
 - 前提強化 = `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文XI_プロンプトは忘却である_草稿.md` §7.10.5 で `c_fmt` を structural effect size と独立な compliance 校正面として導入し、`/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/infra/論文XI_第3モデル条件_実験計画書.md` に三者比較プロトコルを分離した。これで「第 3 点を足す」と「循環を壊す」が初めて同じ操作になった。
 - 結果 = 射程維持 ✓ (要実行)
 
+### C2/C3 — 2026-04-24 Round 1
+- 反論 r = 「Adam's Law は、同じ意味でも高頻度表現の方が性能を上げると示す。これは『C 固定時に E は平均品質を上げない』という H₃ と衝突するのではないか」
+- SFBT = 「衝突しているのではなく、E の内部をまだ分けていないだけではないか」
+- 前提強化 = `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文XI_プロンプトは忘却である_草稿.md` §7.7.5 に $E_{\text{struct}}/E_{\text{freq}}$ 分解を追加した。$E_{\text{struct}}$ は語彙空間・分散構造・検証可能性へ作用し、$E_{\text{freq}}$ は $C_{\text{intended}}\to C_{\text{eff}}$ の回収摩擦を下げる。さらに Paper I §5.9 の「射が密な構造ほど忘却に生き残る」を言語運用圏へ移し、表現頻度を射密度の corpus proxy として位置づけた。
+- 結果 = 射程維持 ✓
+
 ## §M6 虚→実変換面
 
 ### C1
@@ -103,3 +111,4 @@
 - 棄却 2 = 「プロンプトは情報を追加するだけで、忘却とは無関係である」。FEP の精度加重に照らすと、曖昧部を prior に返す操作が核心であり不十分。
 - 棄却 3 = 「Claude と Gemini の差は単なるモデル癖であり理論化不要」。この読みでは model-invariant な $C$ 帰無の情報量を捨てる。
 - 棄却 4 = 「briefly answer のような書式は純粋な $E$ である」。本稿では探索制約としての $C$ の境界事例とみなし、純粋な書式変更とは切り分ける。
+- 棄却 5 = 「Adam's Law は H₃ を反証する」。同論文が示すのは $E_{\text{freq}}$ による制約回収摩擦の低下であり、構造記法 $E_{\text{struct}}$ の残差的変更が平均品質を直接押し上げるという主張ではない。

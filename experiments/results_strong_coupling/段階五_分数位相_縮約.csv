@@ -1,0 +1,5 @@
+surface_id,formal_n,topology_proxy_kind,surface_selector,crossing_records,selected_couplings,selected_scan_rows,reduction_rows,de2_calibrated_rows,stable_transfer_estimators,eta_proxy_min,eta_proxy_max,status_h3_h4
+n2.78_direct_crossing,2.780000,t_projected_direct,crossing,20,5,90,10,0,,1.5150554396,2.6225144191,out_of_anchor_band
+n2.78_direct_rg_invariant,2.780000,t_projected_direct,rg_invariant,0,5,90,10,0,,1.5150554396,2.2293504357,out_of_anchor_band
+n2.78_embedding_crossing,2.780000,t_projected_fractional_embedding,crossing,29,4,72,8,0,,1.0739534903,2.1250067523,out_of_anchor_band
+n2.78_embedding_rg_invariant,2.780000,t_projected_fractional_embedding,rg_invariant,0,4,72,8,0,,1.2229102931,2.4283618673,out_of_anchor_band

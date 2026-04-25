@@ -37,6 +37,29 @@
 2. `2-cocycle` を本体にすると、coboundary の取り替えで representative が動き、official / exact の規約差にも弱い。  
 3. obstruction class に置くと、local witness と global invariant を両方保持できる。
 
+## 2026-04-25 追記: 同一 obstruction class と呼ぶ条件
+
+Issue #38 Corollary 7 は、signed companion の Fibonacci fusion-ring shadow から monoidal / braided category へ昇格する際に未証の locus として associator, F-symbols, braiding maps, pentagon/hexagon coherence を指名する。これは Problem 10 の Open C と同じく degree-2 obstruction の候補面だが、ただちに `K_q=[\kappa_q]` と同一 class であるとは言えない。
+
+強い同一性主張:
+
+`K_q^{carry} = K_q^{fusion}`
+
+を許すには、少なくとも次の比較データが必要である。
+
+| 条件 | 内容 | 現状 |
+|:---|:---|:---|
+| common target | carry defect 側と fusion coherence 側が同じ cohomology group、または明示された共通 target に入ること | 未構成 |
+| comparison map | fusion coherence obstruction から `H^2(G_m; Z/2Z)` への写像、または逆向き/zigzag の比較写像 `Ξ_q` があること | 未構成 |
+| representative compatibility | carry 2-cocycle と associator / F-symbol / braiding / pentagon-hexagon の obstruction representative が `Ξ_q` の下で同じ class に落ちること | 未証 |
+| gauge invariance | basis, convention, coboundary 変更で同一性が壊れないこと | 未証 |
+| calibration | q≤4 では同じ理由で zero、q=5 では同じ理由で nonzero になること | 未証 |
+| index discipline | q=5 first visibility と q=6 persistence refutation の 1 index 差が、parameter mismatch ではなく比較写像で説明されること | 未証 |
+
+したがって現時点で許される表現は **candidate dual face** または **同じ degree-2 問題圏に属する候補対応** までである。「同一 cohomology class」とは書かない。
+
+反証基準も明確である。比較写像 `Ξ_q` が構成できない、または構成しても carry 側の `K_q` と fusion 側の obstruction が異なる class に落ちるなら、両者は独立した degree-2 obstruction として扱う。この場合、q=5 と q=6 の 1 index 差は structural gap ではなく、persistence-test / parameter / proxy boundary の artifact と読む。
+
 ## 記法
 
 - `K_q := [\kappa_q]`

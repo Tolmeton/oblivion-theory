@@ -1,0 +1,9 @@
+surface_id,topology_proxy_kind,surface_selector,eta_estimator,anchor_method,n_rows,transfer_factor_median,transfer_factor_mean,transfer_factor_cv,transfer_stability_pass,eta_transfer_min,eta_transfer_max,status_transfer
+n2.78_direct_crossing,t_projected_direct,crossing,chi_connected,de2,5,68.1030103344,66.6987324206,0.1969193398,False,,,unstable_transfer_candidate
+n2.78_direct_crossing,t_projected_direct,crossing,kmin_structure,de2,5,52.8432896563,56.3052864837,0.1270311516,False,,,unstable_transfer_candidate
+n2.78_direct_rg_invariant,t_projected_direct,rg_invariant,chi_connected,de2,5,58.1529302500,59.1215494912,0.1267020239,False,,,unstable_transfer_candidate
+n2.78_direct_rg_invariant,t_projected_direct,rg_invariant,kmin_structure,de2,5,54.2743485094,56.4104465669,0.1109264482,False,,,unstable_transfer_candidate
+n2.78_embedding_crossing,t_projected_fractional_embedding,crossing,chi_connected,de2,4,38.0405510531,44.0121524219,0.2969013578,False,,,unstable_transfer_candidate
+n2.78_embedding_crossing,t_projected_fractional_embedding,crossing,kmin_structure,de2,4,58.2858670562,56.0800273992,0.1390497718,False,,,unstable_transfer_candidate
+n2.78_embedding_rg_invariant,t_projected_fractional_embedding,rg_invariant,chi_connected,de2,4,67.3503919328,62.2007597195,0.2340818439,False,,,unstable_transfer_candidate
+n2.78_embedding_rg_invariant,t_projected_fractional_embedding,rg_invariant,kmin_structure,de2,4,47.2275496406,47.9407402164,0.1866520766,False,,,unstable_transfer_candidate

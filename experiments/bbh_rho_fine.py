@@ -10,7 +10,7 @@ TASKS = ["temporal_sequences", "formal_fallacies", "boolean_expressions"]
 N_SAMPLES = 30
 MODEL = "gemini-3.1-flash-lite-preview"
 OUT_DIR = r"c:\Users\makar\Sync\oikos\01_ヘゲモニコン｜Hegemonikon\10_知性｜Nous\04_企画｜Boulēsis\12_遊学｜Yugaku\03_忘却論｜Oblivion\experiments\results"
-LOG_PATH = os.path.join(OUT_DIR, "experiment_log.txt")
+LOG_PATH = os.path.join(OUT_DIR, "実験_記録.txt")
 
 os.makedirs(OUT_DIR, exist_ok=True)
 

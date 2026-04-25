@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 560" font-family="serif" font-size="14">
+  <!-- Background -->
+  <rect width="1400" height="560" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="700" y="32" text-anchor="middle" font-size="22" font-weight="bold" fill="#222">
+    P₅ → J₂ : 5 等分割の立体化と頂点高さ H = 1/φ
+  </text>
+  <text x="700" y="55" text-anchor="middle" font-size="13" fill="#666" font-style="italic">
+    平面の 5 等分割 (頂角 72°) を立体に持ち上げると、頂角は 60° に正則化される
+  </text>
+
+  <!-- ============================================================ -->
+  <!-- Panel ①: 平面 P₅ -->
+  <g transform="translate(240, 290)">
+    <text x="0" y="-200" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a4480">
+      ① 平面 P₅: 5 個の二等辺三角形
+    </text>
+    <text x="0" y="-180" text-anchor="middle" font-size="12" fill="#666">
+      頂角 72° / 底角 54° × 2
+    </text>
+
+    <!-- Pentagon (R=100, vertex up at top) -->
+    <polygon points="0,-100 -95.106,-30.902 -58.779,80.902 58.779,80.902 95.106,-30.902"
+             fill="#e8f0ff" stroke="#1a4480" stroke-width="2.5"/>
+
+    <!-- Spokes O → V_k -->
+    <line x1="0" y1="0" x2="0" y2="-100" stroke="#1a4480" stroke-width="1.5"/>
+    <line x1="0" y1="0" x2="-95.106" y2="-30.902" stroke="#1a4480" stroke-width="1.5"/>
+    <line x1="0" y1="0" x2="-58.779" y2="80.902" stroke="#1a4480" stroke-width="1.5"/>
+    <line x1="0" y1="0" x2="58.779" y2="80.902" stroke="#1a4480" stroke-width="1.5"/>
+    <line x1="0" y1="0" x2="95.106" y2="-30.902" stroke="#1a4480" stroke-width="1.5"/>
+
+    <!-- 72° arc at O between V0 (top) and V4 (upper-right) -->
+    <path d="M 0,-30 A 30,30 0 0,1 28.53,-9.27" fill="none" stroke="#cc6600" stroke-width="2"/>
+    <text x="22" y="-32" font-size="13" fill="#cc6600" font-weight="bold">72°</text>
+
+    <!-- Center O -->
+    <circle cx="0" cy="0" r="4" fill="#cc0000"/>
+    <text x="-16" y="6" font-size="14" font-weight="bold" fill="#cc0000">O</text>
+
+    <!-- Vertex labels -->
+    <text x="0" y="-108" text-anchor="middle" font-size="11" fill="#444">A</text>
+    <text x="-103" y="-30" text-anchor="end" font-size="11" fill="#444">B</text>
+    <text x="-65" y="93" text-anchor="end" font-size="11" fill="#444">C</text>
+    <text x="65" y="93" font-size="11" fill="#444">D</text>
+    <text x="103" y="-30" font-size="11" fill="#444">E</text>
+
+    <!-- Caption -->
+    <text x="0" y="125" text-anchor="middle" font-size="12" fill="#333">
+      R = 1 (外接円半径), L = 2 sin 36° ≈ 1.176 (辺長)
+    </text>
+    <text x="0" y="145" text-anchor="middle" font-size="12" fill="#333">
+      対称群 D₅ (10 元), φ = d/s が対角線/辺比に発現
+    </text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- Panel ②: 立体 J₂ -->
+  <g transform="translate(700, 310)">
+    <text x="0" y="-220" text-anchor="middle" font-size="17" font-weight="bold" fill="#0a6b0a">
+      ② 立体 J₂: 5 個の正三角形 (頂角 60°)
+    </text>
+    <text x="0" y="-200" text-anchor="middle" font-size="12" fill="#666">
+      O を高さ H = 1/φ に持ち上げ → 側面が正則化
+    </text>
+
+    <!-- Filled visible faces -->
+    <!-- Front V2-A-V3 -->
+    <polygon points="-38.55,35.03 0,-61.8 79.01,35.03"
+             fill="#d0f0d0" stroke="#0a6b0a" stroke-width="2"/>
+    <!-- Left V1-A-V2 -->
+    <polygon points="-102.83,-13.4 0,-61.8 -38.55,35.03"
+             fill="#b8e8b8" stroke="#0a6b0a" stroke-width="2"/>
+    <!-- Right V3-A-V4 -->
+    <polygon points="79.01,35.03 0,-61.8 87.38,-13.4"
+             fill="#b8e8b8" stroke="#0a6b0a" stroke-width="2"/>
+
+    <!-- Hidden back edges -->
+    <line x1="-25" y1="-43.3" x2="-102.83" y2="-13.4" stroke="#888" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <line x1="-25" y1="-43.3" x2="87.38" y2="-13.4" stroke="#888" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <line x1="-25" y1="-43.3" x2="0" y2="-61.8" stroke="#888" stroke-width="1.2" stroke-dasharray="4,3"/>
+
+    <!-- Hidden back vertex V0 marker -->
+    <circle cx="-25" cy="-43.3" r="3" fill="none" stroke="#888" stroke-width="1.2"/>
+
+    <!-- Vertical line apex → O (YELLOW = H) -->
+    <line x1="0" y1="-61.8" x2="0" y2="0" stroke="#cc8800" stroke-width="7" opacity="0.7"/>
+    <line x1="0" y1="-61.8" x2="0" y2="0" stroke="#ffdd33" stroke-width="3"/>
+
+    <!-- Apex -->
+    <circle cx="0" cy="-61.8" r="5" fill="#cc0000"/>
+    <text x="10" y="-62" font-size="13" font-weight="bold" fill="#cc0000">頂点</text>
+
+    <!-- Center O on base -->
+    <circle cx="0" cy="0" r="4" fill="#cc0000"/>
+    <text x="10" y="16" font-size="13" font-weight="bold" fill="#cc0000">O</text>
+
+    <!-- H label with leader -->
+    <line x1="3" y1="-30" x2="60" y2="-40" stroke="#aa6600" stroke-width="1"/>
+    <rect x="58" y="-52" width="80" height="18" fill="white" opacity="0.9" stroke="#aa6600" stroke-width="0.5"/>
+    <text x="98" y="-39" text-anchor="middle" font-size="13" fill="#aa6600" font-weight="bold">
+      H = 1/φ
+    </text>
+
+    <!-- 60° label at apex -->
+    <text x="0" y="-78" text-anchor="middle" font-size="12" fill="#0a6b0a" font-weight="bold">
+      頂角 60° (正則化)
+    </text>
+
+    <!-- Caption -->
+    <text x="0" y="98" text-anchor="middle" font-size="12" fill="#333">
+      Johnson J₂ (正五角錐) = 正二十面体の頂点近傍
+    </text>
+    <text x="0" y="116" text-anchor="middle" font-size="12" fill="#333">
+      5 × 60° = 300° &lt; 360° ⟹ 60° の余りで折り畳み可能
+    </text>
+    <text x="0" y="134" text-anchor="middle" font-size="12" fill="#333">
+      対称群 D₅ → A₅ (60 元) に昇格 (12 個合わせて icosahedron)
+    </text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- Panel ③: 直角三角形断面 -->
+  <g transform="translate(1140, 310)">
+    <text x="0" y="-220" text-anchor="middle" font-size="17" font-weight="bold" fill="#aa6600">
+      ③ 直角三角形断面: H = 1/φ ≈ 0.618
+    </text>
+    <text x="0" y="-200" text-anchor="middle" font-size="12" fill="#666">
+      O・頂点・底面頂点 を通る垂直断面
+    </text>
+
+    <!-- Triangle interior shading -->
+    <polygon points="-200,0 0,0 0,-123.6" fill="#fff5e0" stroke="none"/>
+
+    <!-- Slant edge L (base vertex → apex) -->
+    <line x1="-200" y1="0" x2="0" y2="-123.6" stroke="#1a4480" stroke-width="2"/>
+
+    <!-- Horizontal R (O → base vertex) -->
+    <line x1="-200" y1="0" x2="0" y2="0" stroke="#1a4480" stroke-width="2"/>
+
+    <!-- Vertical H (YELLOW, O → apex) -->
+    <line x1="0" y1="0" x2="0" y2="-123.6" stroke="#cc8800" stroke-width="9" opacity="0.75"/>
+    <line x1="0" y1="0" x2="0" y2="-123.6" stroke="#ffdd33" stroke-width="4"/>
+
+    <!-- Right angle marker at O -->
+    <polyline points="-15,0 -15,-15 0,-15" fill="none" stroke="#1a4480" stroke-width="1.2"/>
+
+    <!-- Points -->
+    <circle cx="0" cy="-123.6" r="5" fill="#cc0000"/>
+    <text x="10" y="-124" font-size="13" font-weight="bold" fill="#cc0000">頂点</text>
+
+    <circle cx="0" cy="0" r="5" fill="#cc0000"/>
+    <text x="10" y="17" font-size="13" font-weight="bold" fill="#cc0000">O</text>
+
+    <circle cx="-200" cy="0" r="5" fill="#1a4480"/>
+    <text x="-210" y="17" font-size="13" font-weight="bold" fill="#1a4480" text-anchor="end">
+      底面頂点
+    </text>
+
+    <!-- Edge labels -->
+    <text x="-100" y="22" text-anchor="middle" font-size="14" fill="#1a4480" font-weight="bold">
+      R = 1
+    </text>
+    <text x="15" y="-62" font-size="16" fill="#aa6600" font-weight="bold">
+      H = 1/φ
+    </text>
+    <text x="-115" y="-78" font-size="13" fill="#1a4480" font-style="italic" text-anchor="middle">
+      L = 2 sin 36° ≈ 1.176
+    </text>
+
+    <!-- Pythagorean derivation -->
+    <text x="-100" y="98" text-anchor="middle" font-size="12" fill="#333">
+      H² + R² = L²  ⟹  H² = 4 sin²36° − 1
+    </text>
+    <text x="-100" y="116" text-anchor="middle" font-size="12" fill="#333">
+      = (3 − √5)/2 = 2 − φ = 1/φ²
+    </text>
+    <text x="-100" y="138" text-anchor="middle" font-size="13" fill="#aa6600" font-weight="bold">
+      ∴ H = 1/φ ≈ 0.6180  (黄金比の逆数)
+    </text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- Bottom caption -->
+  <rect x="60" y="495" width="1280" height="50" fill="#fff8e0" stroke="#cc8800" stroke-width="1" rx="4"/>
+  <text x="700" y="515" text-anchor="middle" font-size="13" fill="#333">
+    黄色線 H = 1/φ は <tspan font-weight="bold" fill="#aa6600">「種④ 黄金忘却率 = 種⑩a J₂ 頂点高さ = quantum dimension の 1 例」</tspan>
+  </text>
+  <text x="700" y="534" text-anchor="middle" font-size="13" fill="#333">
+    すなわち <tspan font-style="italic">立体化の最適忘却量</tspan> — Pentagon ⇄ Pyramid ⇄ Icosahedron の幾何的接続点
+  </text>
+</svg>

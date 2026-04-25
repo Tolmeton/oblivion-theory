@@ -94,27 +94,28 @@ probe script は、まず source-backed prefix を再現するかを検査した
 
 この段階で、local 実装は `Fold` / `weight` / `X.ofNat` の SOURCE を正しく再現しているとみなせる。
 
-### 2.2 `q=5` の裂け目
+### 2.2 `q=5` の裂け目 — Lucas-aligned dual と exact moment companion の 2 面性
 
-ただしここで重要な anomaly が出る。
+`q=5` では companion matrix の 2 層が併存する。
 
-`Fold` から exact に引いた `S_5` recurrence は
+| layer | last row | char poly の e₂ | 意味 |
+|:---|:---|:---|:---|
+| **Lucas-aligned dual (official)** | `[10, -20, -8, -11, -2]` | **+11 = L_5** | Lean `collisionKernel5`、Lucas-invariant 前面の representative |
+| **exact moment companion** | `[-10, 20, 8, 11, 2]` | −11 | `Fold` / Berlekamp-Massey で回収、`S_5` の直接 recurrence を与える |
 
-`[-10, 20, 8, 11, 2]`
+両者は **element-wise 全符号反転** の関係にある。代数的指紋:
 
-であり、source の `collisionKernel5` の last row
+`p_lean(x) + p_python(x) = 2x^5`
 
-`[10, -20, -8, -11, -2]`
+この anti-reflection identity は、[TAINT: inference] 両 companion が **同一の obstruction class `K_q = [κ_q]` の 2 代表元**として振る舞う可能性を示唆する [SOURCE: 調査_エスエフ_符号_反転_由来.md §2.2, 計算_エスエフ_符号_反転_由来.py phase1]。
 
-とは **ちょうど全符号反転**になった。
+source row を exact `S_5` sequence に代入すると m=0..4 の全点で `-S_5(m+5)` になる (ratio = −1.00 一定)。しかしこれは単純な全体符号反転や parity twist では吸収できない [SOURCE: Codex Phase 0, T1-T4 transform test 全 reject]。
 
-しかも source row を exact `S_5` sequence に代入すると、各点で右辺が `-S_5(m+5)` になる。  
-したがって `q=5` には、
+**SF 調査 (2026-04-24) で確定した事実** [SOURCE]: `momentSum_five_recurrence_verified` 相当の定理は現在の Lean ソースに不在 (q=2,3,4 は `CollisionKernel.lean` L29/57/125 に verification 定理あり)。`collisionKernel5` の初出は commit `ce497566` (2026-03-28, loning, subject: "feat: Add new theorems and properties related to Fibonacci and Lucas numbers"、body item #1: "Introduced Lucas-Fibonacci squared identities for even and odd n")。同 commit および後続 A5 関連 commit (R140 trace powers / R142 trace recurrence / R254 Newton e₂ family / R258 A5 Newton) の message はいずれも Lucas-invariant formalization を指している。
 
-- SOURCE の「official kernel」面
-- `Fold` から exact に出る「moment companion」面
+[TAINT: inference, confidence 75%] 上記事実を踏まえた解釈: 2 面性は「convention 差」や「実装ミス」というより、**Lucas-aligned dual companion choice の構造的帰結**として読む方が既存 Yugaku 資産 (q5 符号反転 donor §3.4 graded second lift / 統一表 v0.2 §5 Λ²=F5 実現) との整合性が高い。ただし author 意図の直接確認は未実施であり、単純な sign typo の可能性を 100% 排除はしていない。
 
-の二層がある。
+詳細: [文書_0016.md](./文書_0016.md) §3.1 / [調査_エスエフ_符号_反転_由来.md](./調査_エスエフ_符号_反転_由来.md)
 
 ---
 

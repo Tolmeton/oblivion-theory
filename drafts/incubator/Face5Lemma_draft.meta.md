@@ -1,7 +1,13 @@
 # Face5 Lemma 試作 — メタデータ
 
 **役割**: Face5Lemma_draft.md の Kalon 判定を anchor する独立 §M1 F⊣G を宣言する台帳。
-**関係**: 本 draft は σ 統一論文 (`../standalone/比較射σの統一定理_v0.1.md`) の姉妹 incubator であり、σ 論文の §M1 F⊣G (BridgeDat 始対象性) とは **独立の F⊣G** で評価される。σ 論文が Face5 を C-claim として引用する場合は、σ 論文側の F⊣G で再評価する。
+**軌道**: `比較射σの統一定理_v0.6.md` 親クラスタにおける **proof-incubator-meta**。`Face5Lemma_draft.md` を補助証明稿として運用するための判定面・棄却面・昇格面を保持し、整理済み結論だけを本流へ送る。
+**関係**: 本 draft は σ 統一論文 (`../standalone/比較射σの統一定理_v0.6.md` + `../standalone/比較射σの統一定理_v0.6.meta.md`) の姉妹 incubator であり、σ 論文の §M1 F⊣G (BridgeDat 始対象性) とは **独立の F⊣G** で評価される。σ 論文が Face5 を C-claim として引用する場合は、σ 論文側の F⊣G で再評価する。
+
+**運用注記 (2026-04-21)**:
+- 下位節に残る `σ 論文 v0.3` などの番号は歴史的導出位置の記録である。
+- 現在の実質正本は `比較射σの統一定理_v0.6.md` / `比較射σの統一定理_v0.6.meta.md` の 2 面であり、実行面ではそちらを優先する。
+- 本ファイルは `比較射σの統一定理_v0.6.meta.md` §M8 の orbit table でいう `proof-incubator-meta` に対応する。
 
 ---
 
@@ -108,9 +114,26 @@
 
 ---
 
-## §M8 親文書への接続 / 今後の open
+## §M8 Orbit 接続 / 今後の open
 
-### 親文書への接続候補
+### 周辺衛星との接続
+
+| orbit | ファイル | 本ファイルとの関係 |
+|:--|:--|:--|
+| core | `../standalone/比較射σの統一定理_v0.6.md` | ここで安定化した定理 face / claim face を受け取る本流 |
+| core-meta | `../standalone/比較射σの統一定理_v0.6.meta.md` | orbit 管制面。どの結論を本流へ送るかの境界条件を共有する |
+| proof-incubator | `./Face5Lemma_draft.md` | 本ファイルが判定・棄却・昇格を支える直接の相方 |
+| seed-bag | `./pentagon_sigma_conjecture.md` | 未成熟な直感や種がここから流入する |
+| fork-note | `../standalone/5cell_phi_sector_FORK_v0.1.md` | 旧本流から分岐した検証・棄却・残差をこちらで隔離する |
+
+### 運用規則
+
+1. `pentagon_sigma_conjecture.md` の種は、証明可能性が見えた時点で `Face5Lemma_draft.md` に送る。
+2. `Face5Lemma_draft.md` で安定した結論だけを、本ファイルの判定面を経由して `比較射σの統一定理_v0.6.md` へ送る。
+3. q=5 / automath 由来の tested scope は `5cell_phi_sector_FORK_v0.1.md` に隔離し、本ファイルはその戻し条件だけを受け持つ。
+4. 本ファイルは試行錯誤ログの倉庫ではなく、**proof-incubator を本流へ接続する関所** として振る舞う。
+
+### 本流への接続候補
 
 - **σ 論文 v0.3 §2.0 三軸分離** (種⑥): 本 draft の「3 軸 F (次元/族/ドメイン)」と整合。σ 論文側の「群/スペクトル/位相」軸とは軸の命名が異なるが、共に軸分離のアプローチを取る
 - **σ 論文 v0.3 §5.bis スペクトル軸 endpoint identity**: F5-γ' / K3'' を具体例として提供
@@ -133,3 +156,21 @@
 ---
 
 *v0.1 — 2026-04-17 Face5Lemma_draft.md の Kalon 判定 frame を独立 §M1 として固定。σ 論文 §M1 との独立性を明示し、両者は直交する軸系を持つ姉妹 incubator 関係にあることを確定。*
+
+## §M10 Donor Absorption Ledger (2026-04-18)
+
+### D-F5-01: Face7Lemma_draft
+
+- **donor path**: `drafts/incubator/Face7Lemma_draft.md`
+- **receiver surfaces**: `Face5Lemma_draft.md` §21.1、`Face5Lemma_draft.meta.md` 本節
+- **kept**: Face7 の目的、MTC 自動帰結 vs A_∞-圏族の非自明性、`F7-ε` 仮説、`A_5 requirement` 反証、SOURCE/TAINT 台帳の要点
+- **discarded**: donor 単独での round-by-round prose のみ
+- **final disposition**: donor file を削除し、higher-face annex と meta ledger に再配置
+
+### D-F5-02: bridge_spectrum_axiom_draft
+
+- **donor path**: `drafts/incubator/bridge_spectrum_axiom_draft.md`
+- **receiver surfaces**: `Face5Lemma_draft.md` §21.2、`Face5Lemma_draft.meta.md` 本節
+- **kept**: open #20 の三候補比較、`BridgeDat -> FusCat` 骨格、ENO × cartesian section 読解、tower/cell-wise 合流点
+- **discarded**: donor 単独の問題設定の再掲だけ
+- **final disposition**: donor file を削除し、Open#20 annex と meta ledger に再配置

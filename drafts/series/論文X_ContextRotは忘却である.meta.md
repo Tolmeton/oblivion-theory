@@ -152,3 +152,32 @@
   1. brevity prompt の実物確認 — それが純粋な書式指定か、探索制約としての $C$ か
   2. brevity が効かなかった/逆効果だった task の確認 — 条件付き不可逆性テーゼ (Type 1/2/3) と接続するため
   上記未確認のまま本文に統合すると、「静的な一律制約」と「状態依存 routing」を混同する危険がある。
+
+### D5: Brevity テンプレートの logit-level 実証 (A-class external, C境界事例確定)
+- **donor**: `arXiv:2604.18389 Liu & Chu (2026) "Understanding the Prompt Sensitivity of Large Language Models"`
+- **donor status**: 外部経験的ソース。[確信 90%] 11モデル × 4データセットで系統的検証済み。
+- **内容**: Liu & Chu (2026) RQ2 「Fewer」条件 — template トークン数を削減した際に何が起きるか。
+  - `||Δh^(l)||`（内部表現の divergence ノルム）が減少することを Qwen / Llama / Gemma 系列で実測。
+  - logit 分散の低下: ロジット層での `|Δlog π(y_t|h)|` 低下が Cauchy-Schwarz 上界の縮小から予測される。
+  - 因果的証拠: Activation Steering (Appendix G) により `||Δh||` の logit への因果役割を介入実験で確認。
+  - **brevity 制約の忘却論的解釈**: テンプレートを短縮する (`brevity 制約`) = 入力情報の一部を出力前に切り落とす予防的操作 = D4 (Hakim 2026) が意味品質層で同定した **prophylactic forgetting** を、**トークン分布層** で独立に実証する。
+- **本文との関係**:
+  - D4 (Hakim 2026) の **logit-level 外部補強**: D4 は意味品質層 (精度 26pt 改善) で brevity = prophylactic forgetting を同定。本 donor はそれとは独立に、token 確率分布層 (`|Δlog π|`) で同じ操作の力学的機構を与える。2 層の独立した証拠が合流する点で D4 の確信度を補強。
+  - **条件付き不可逆性 (C2/C3) との接続**: テンプレート適用後は `||Δh^(l)||` の軌跡が全層にわたって定まり、質問内容 (`C`) のみからは回復できない (RQ4: テンプレート寄与 >> 質問寄与)。これは Type 1 条件付き不可逆性 (入力構造が固定されると質問のみで状態を変更できない) の logit-level 実例。
+  - **論文XI §7.7.4 (接続 A) との連動**: 論文XI の H₃ 分解 (P=(C,E), ∂Q/∂E≈0) と本 donor の RQ4 (template > question logit contribution) は測定層は異なるが同じ構造を指す。論文XI §7.7.4 に接続済み。
+- **D4 との差異 (測定層)**:
+  - D4 (Hakim 2026): 意味品質層 — 精度・性能階層の逆転
+  - D5 (Liu & Chu 2026): トークン分布層 — `||Δh||`・`|Δlog π|` の介入実験
+  - 二層は独立に計測されており、相互に補強するが同値ではない (測定層差異 = MISMATCH 解消済み)
+- **判定**: **C境界事例として確定**。D4 の meta 保留とは異なり、本 donor は以下を満たす:
+  1. brevity prompt の実物確認: RQ2「Fewer」条件が template token 削減の書式指定として使用されている
+  2. 条件付き不可逆性テーゼとの接続: Type 1 (template 固定後の質問-only 復元不可) として接続可能
+  本文昇格前の 2 条件を両方満たすため、C境界事例として本 meta に確定記録する。本文昇格は D4 の meta 保留解除と同時に再評価すること。
+
+### D6: Persona Steering とタスク依存的な選択的忘却 (A-class external, meta保留)
+- **donor**: `arXiv:2604.11048 Chen et al. (2026) "A Systematic Analysis of the Impact of Persona Steering on LLM Capabilities"`
+- **donor status**: 外部経験的ソース。[推定 80%] NPTI (FFN neuron-level) + DPR (TF-IDF anchor routing) で Big Five 性格特性を誘導。6 認知ベンチマーク × 複数モデルで評価。
+- **内容**: ペルソナ誘導は「表面的文体変化を超えた安定した認知タスク性能シフトを生成する」。タスク依存性が顕著: instruction-following (IFEval: +10.9–15.1% 向上) vs complex reasoning (BBH: 全ペルソナで低下、最大 −39.5%)。73.68% の方向的一貫性 (14/19 比較) が人間の性格-認知関係と一致。"reasoning capabilities consolidate into schemas increasingly invariant to persona interventions"。
+- **忘却論的読み**: DPR (Dynamic Persona Routing) はクエリ適応的にペルソナを切り替える training-free 機構。形式的定義は `x* = argmax TF-IDF cosine similarity`。G_route (状態依存適応的忘却, §M1) との機能的類似はあるが、形式的同型は確認されない (G_route は FEP/VFE 最小化ベース、DPR は TF-IDF ベース)。**"忘却"語は本論文には出現しない**。忘却論的解釈は Paper X 側からの定式化が必要。
+- **本文との関係**: D4 と同型の「外部補強」枠。Paper X body への直接統合より、論文XI §3.8 (ペルソナ vs 構造) の補注として先行的に機能する。§M8 D6 として meta 保留し、論文XI §3.8 補注の経由後に昇格要否を再評価する。
+- **判定**: **meta 保留**。本文昇格には以下が必要: (1) DPR と G_route の形式的接続の論証、または (2) 「persona routing = 忘却選択の一変種」の定式化。現時点では論文XI §3.8 補注 (2026-04-22 追加) での外部補強に留める。

@@ -21,6 +21,8 @@ REDUCTION_SCRIPT = EXPERIMENTS_DIR / "strong_coupling_gamma_reduction.py"
 COMPARE_SCRIPT = EXPERIMENTS_DIR / "strong_coupling_compare.py"
 COMMON_SCRIPT = EXPERIMENTS_DIR / "strong_coupling_common.py"
 METROLOGY_SCRIPT = EXPERIMENTS_DIR / "strong_coupling_fractional_metrology.py"
+PORTABILITY_SCRIPT = EXPERIMENTS_DIR / "strong_coupling_fractional_portability.py"
+TOPOLOGY_SCRIPT = EXPERIMENTS_DIR / "strong_coupling_fractional_topology_surface.py"
 
 
 def run_python(script: Path, *args: str, check: bool = True) -> subprocess.CompletedProcess[str]:
@@ -125,6 +127,57 @@ def test_metrology_transfer_detects_stable_factor() -> None:
     assert summary_rows[0]["transfer_stability_pass"] == "True"
     assert transfer_rows[0]["status_transfer"] == "stable_transfer_candidate"
     assert float(transfer_rows[0]["eta_transfer_corrected"]) > 0.0
+
+
+def test_portability_summary_detects_cross_n_stable_estimator() -> None:
+    module = load_module(PORTABILITY_SCRIPT, "fractional_portability_module")
+    summary_rows = [
+        {
+            "formal_n": "2.780000",
+            "eta_estimator": "chi_connected",
+            "transfer_factor_median": "60.0",
+            "transfer_stability_pass": "True",
+        },
+        {
+            "formal_n": "2.900000",
+            "eta_estimator": "chi_connected",
+            "transfer_factor_median": "63.0",
+            "transfer_stability_pass": "True",
+        },
+        {
+            "formal_n": "3.000000",
+            "eta_estimator": "chi_connected",
+            "transfer_factor_median": "66.0",
+            "transfer_stability_pass": "True",
+        },
+    ]
+    rows = module.portability_summary_rows(summary_rows, expected_formal_ns=[2.78, 2.9, 3.0], max_portability_cv=0.20)
+    assert rows
+    assert rows[0]["portability_pass"] == "True"
+    assert rows[0]["status_portability"] == "portable_transfer_candidate"
+
+
+def test_rg_invariant_selector_prefers_low_scatter_surface() -> None:
+    module = load_module(TOPOLOGY_SCRIPT, "fractional_topology_module")
+    scan_rows = [
+        {"mass_like": "0.90", "lambda_like": "1.00", "L": "4", "observable": "xi_over_L", "mean": "0.10", "coupling_id": "a", "seed": "1", "proposal_scale_final": "0.6"},
+        {"mass_like": "0.90", "lambda_like": "1.00", "L": "6", "observable": "xi_over_L", "mean": "0.40", "coupling_id": "a", "seed": "2", "proposal_scale_final": "0.6"},
+        {"mass_like": "1.00", "lambda_like": "1.00", "L": "4", "observable": "xi_over_L", "mean": "0.21", "coupling_id": "b", "seed": "3", "proposal_scale_final": "0.6"},
+        {"mass_like": "1.00", "lambda_like": "1.00", "L": "6", "observable": "xi_over_L", "mean": "0.22", "coupling_id": "b", "seed": "4", "proposal_scale_final": "0.6"},
+        {"mass_like": "0.90", "lambda_like": "1.00", "L": "4", "observable": "binder", "mean": "0.10", "coupling_id": "a", "seed": "1", "proposal_scale_final": "0.6"},
+        {"mass_like": "0.90", "lambda_like": "1.00", "L": "6", "observable": "binder", "mean": "0.50", "coupling_id": "a", "seed": "2", "proposal_scale_final": "0.6"},
+        {"mass_like": "1.00", "lambda_like": "1.00", "L": "4", "observable": "binder", "mean": "0.31", "coupling_id": "b", "seed": "3", "proposal_scale_final": "0.6"},
+        {"mass_like": "1.00", "lambda_like": "1.00", "L": "6", "observable": "binder", "mean": "0.32", "coupling_id": "b", "seed": "4", "proposal_scale_final": "0.6"},
+        {"mass_like": "0.90", "lambda_like": "1.00", "L": "4", "observable": "susceptibility", "mean": "1.0", "coupling_id": "a", "seed": "1", "proposal_scale_final": "0.6"},
+        {"mass_like": "0.90", "lambda_like": "1.00", "L": "6", "observable": "susceptibility", "mean": "1.2", "coupling_id": "a", "seed": "2", "proposal_scale_final": "0.6"},
+        {"mass_like": "1.00", "lambda_like": "1.00", "L": "4", "observable": "susceptibility", "mean": "1.1", "coupling_id": "b", "seed": "3", "proposal_scale_final": "0.6"},
+        {"mass_like": "1.00", "lambda_like": "1.00", "L": "6", "observable": "susceptibility", "mean": "1.2", "coupling_id": "b", "seed": "4", "proposal_scale_final": "0.6"},
+    ]
+    summary = load_module(CRITICAL_LINE_SCRIPT, "fractional_critical_for_topology").summarize_scan_rows(scan_rows)
+    candidates = module.build_rg_invariant_candidates(summary, 2.78, [0.9, 1.0], [1.0], [4, 6])
+    assert candidates
+    assert candidates[0]["selected_mass_like"] == "1.000000"
+    assert candidates[0]["surface_selector"] == "rg_invariant"
 
 
 def test_adaptive_proposal_moves_toward_target_band() -> None:
@@ -631,6 +684,131 @@ def test_metrology_cli_smoke(tmp_path: Path) -> None:
     assert "transfer_factor_median" in summary_rows[0]
     assert "status_transfer" in transfer_rows[0]
     assert "Estimator Stability" in analysis_out.read_text(encoding="utf-8")
+
+
+def test_portability_cli_smoke(tmp_path: Path) -> None:
+    window_path = tmp_path / "windows.json"
+    scan_out = tmp_path / "portability_scan.csv"
+    reduction_out = tmp_path / "portability_reduction.csv"
+    line_summary_out = tmp_path / "portability_line_summary.csv"
+    metrology_summary_out = tmp_path / "portability_metrology_summary.csv"
+    transfer_out = tmp_path / "portability_transfer.csv"
+    portability_out = tmp_path / "portability_summary.csv"
+    analysis_out = tmp_path / "portability_analysis.md"
+    window_path.write_text(
+        json.dumps(
+            {
+                "2.78": {"mass_like": [0.9, 1.0], "lambda_like": [1.0]},
+                "2.90": {"mass_like": [0.38, 0.43], "lambda_like": [0.55]},
+            },
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    run_python(
+        PORTABILITY_SCRIPT,
+        "--L",
+        "4,6",
+        "--formal-n",
+        "2.78,2.90",
+        "--window-json",
+        str(window_path),
+        "--warmup",
+        "5",
+        "--measure",
+        "10",
+        "--block-size",
+        "4",
+        "--scan-out",
+        str(scan_out),
+        "--reduction-out",
+        str(reduction_out),
+        "--line-summary-out",
+        str(line_summary_out),
+        "--metrology-summary-out",
+        str(metrology_summary_out),
+        "--transfer-out",
+        str(transfer_out),
+        "--portability-out",
+        str(portability_out),
+        "--analysis-out",
+        str(analysis_out),
+    )
+
+    with line_summary_out.open("r", encoding="utf-8", newline="") as fh:
+        line_rows = list(csv.DictReader(fh))
+    with portability_out.open("r", encoding="utf-8", newline="") as fh:
+        portability_rows = list(csv.DictReader(fh))
+    assert line_rows
+    assert portability_rows
+    assert "status_portability" in portability_rows[0]
+    assert "Cross-n Portability" in analysis_out.read_text(encoding="utf-8")
+
+
+def test_topology_surface_cli_smoke(tmp_path: Path) -> None:
+    window_path = tmp_path / "topology_windows.json"
+    grid_scan_out = tmp_path / "topology_grid.csv"
+    selected_scan_out = tmp_path / "topology_selected.csv"
+    candidates_out = tmp_path / "topology_candidates.csv"
+    reduction_out = tmp_path / "topology_reduction.csv"
+    metrology_summary_out = tmp_path / "topology_metrology.csv"
+    transfer_out = tmp_path / "topology_transfer.csv"
+    summary_out = tmp_path / "topology_summary.csv"
+    analysis_out = tmp_path / "topology_analysis.md"
+    window_path.write_text(
+        json.dumps(
+            {
+                "t_projected_direct": {"mass_like": [0.9, 1.0], "lambda_like": [1.0]},
+            },
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    run_python(
+        TOPOLOGY_SCRIPT,
+        "--L",
+        "4,6",
+        "--formal-n",
+        "2.78",
+        "--proxy-kind",
+        "t_projected_direct",
+        "--surface-selector",
+        "rg_invariant",
+        "--window-json",
+        str(window_path),
+        "--warmup",
+        "5",
+        "--measure",
+        "10",
+        "--block-size",
+        "4",
+        "--grid-scan-out",
+        str(grid_scan_out),
+        "--selected-scan-out",
+        str(selected_scan_out),
+        "--candidates-out",
+        str(candidates_out),
+        "--reduction-out",
+        str(reduction_out),
+        "--metrology-summary-out",
+        str(metrology_summary_out),
+        "--transfer-out",
+        str(transfer_out),
+        "--summary-out",
+        str(summary_out),
+        "--analysis-out",
+        str(analysis_out),
+    )
+
+    with summary_out.open("r", encoding="utf-8", newline="") as fh:
+        summary_rows = list(csv.DictReader(fh))
+    assert summary_rows
+    assert "status_h3_h4" in summary_rows[0]
+    assert "Fractional Topology Surface Analysis" in analysis_out.read_text(encoding="utf-8")
 
 
 def test_fractional_calibration_cli_smoke(tmp_path: Path) -> None:

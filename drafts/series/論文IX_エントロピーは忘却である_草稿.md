@@ -2,11 +2,13 @@
 
 **Paper IX — v0.6 (2026-04-10) — 忘却論 (Force is Oblivion) シリーズ**
 
-> **日付注記 (2026-04-17):** 旧ヘッダおよび変更履歴にあった `2026-07-21` / `2026-07-23` は未来日付の誤記。`v0.1` については `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/thermodynamic_correspondence_v3.md` の更新履歴にある「2026-04-02: Paper IX v0.1 作成」を SOURCE として採用する。`v0.5` の厳密日付は未観測だが、`論文XII_速度は忘却である_草稿.md` v0.4 (2026-04-09) が Paper IX Th. 3.4.1 を参照しているため、少なくとも 2026-04-09 以前の版として補正する。
+> **日付注記 (2026-04-17):** 旧ヘッダおよび変更履歴にあった `2026-07-21` / `2026-07-23` は未来日付の誤記。`v0.1` については `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/infra/リファレンス/熱力学対応表.md` の更新履歴にある「2026-04-02: Paper IX v0.1 作成」を SOURCE として採用する。`v0.5` の厳密日付は未観測だが、`論文XII_速度は忘却である_草稿.md` v0.4 (2026-04-09) が Paper IX Th. 3.4.1 を参照しているため、少なくとも 2026-04-09 以前の版として補正する。
 
-*概要.* Paper VIII で確立した α-忘却濾過の公理系 (F1)-(F4) が、統計力学の基本構造——エントロピー、第二法則、データ処理不等式——を自然に内包することを示す。中心的構成は **CPS エントロピー** $S_{\mathrm{CPS}}(p, \alpha)$: Perrone [P1] が Markov 圏上で定義したエントロピー（確定的射からの divergence の下限）を、CPS($\alpha > 0$) が Markov 圏であること（Paper II 互換性補題 §3.7.1）を通じて α-忘却濾過に輸入する。主定理（CPS エントロピー単調性定理）は、(F4) 公理から直接従う: 忘却が進む（α が増大する）ほど確定的射の集合が縮小し、したがってエントロピーが単調に増大する。これは Paper VIII 定理 6.10.3（射計数版）の Perrone 枠組みへの精密化であり、Shannon/Rényi/Gini-Simpson エントロピーを統一的に回収する。
+*概要.* Paper VIII で確立した α-忘却濾過の公理系 (F1)-(F4) が、統計力学の基本構造——エントロピー、第二法則、データ処理不等式——を自然に内包することを示す。中心的構成は **CPS エントロピー** $S_{\mathrm{CPS}}(p, \alpha)$: Perrone [P1] が Markov 圏上で定義したエントロピー（確定的射からの divergence の下限）を、Paper II §3.7.1 が与える **Markov 圏的構造**（$\alpha = 0$ では strict な Fritz 型 Markov 圏、$\alpha > 0$ では $e(\alpha)$-twisted 余モノイド構造）を通じて α-忘却濾過に輸入する。主定理（CPS エントロピー単調性定理）は、(F4) 公理から直接従う: 忘却が進む（α が増大する）ほど確定的射の集合が縮小し、したがってエントロピーが単調に増大する。これは Paper VIII 定理 6.10.3（射計数版）の Perrone 枠組みへの精密化であり、Shannon/Rényi/Gini-Simpson エントロピーを統一的に回収する。
 
 > **記号規約.** α は Paper VIII の忘却強度パラメータ $\alpha_{\mathrm{VIII}} \in [0, 1]$。Paper III/V の $\alpha_{\mathrm{III}} \in \mathbb{R}$（Amari の α-接続）とは異なる。CPS($\alpha$) は忘却パラメータ $\alpha$ における CPS 圏を指す。$D$ は固定された divergence 関数。統一記号表 (`drafts/infra/リファレンス/統一記号表.md`) を参照。
+
+> **主張水準注記.** Paper II §3.7.1 が strict な Fritz 型 Markov category を正確に与えるのは $\alpha = 0$ 設定である。$\alpha > 0$ では copy/del は構成されるが、余単位律は $e(\alpha)$-twist を受けるため、本稿の Perrone 輸入は $\alpha > 0$ セクターに対する**構成的延長**として読む。
 
 ---
 
@@ -25,7 +27,7 @@
 | 結果 | 出典 | 本稿での役割 |
 |:--|:--|:--|
 | α-忘却濾過 (F1)-(F4) | Paper VIII Def. 6.2.1 | 基底構造 |
-| CPS($\alpha > 0$) は Markov 圏 | Paper II §3.7.1 互換性補題 | Perrone 輸入の前提 |
+| CPS($\alpha = 0$) は strict な Markov 圏, CPS($\alpha > 0$) は Markov 圏的構造 | Paper II §3.7.1 互換性補題 + α-twisted 余モノイド | Perrone 輸入の前提と主張水準の境界 |
 | 射計数エントロピー $S_{\mathrm{cat}}$ | Paper VIII Th. 6.10.3 | 粗い版の第二法則 |
 | Schur-Horn 橋渡し | Paper I Th. 5.6.1, Paper IV 命題 7.5.1 | 観測量の entropic 制約 |
 | Markov 圏上のエントロピー | Perrone [P1] | 輸入対象 |
@@ -79,15 +81,17 @@ $$H_D(k \circ p) \leq H_D(p)$$
 
 ## §3. CPS エントロピーの構成
 
-### 3.1 CPS($\alpha > 0$) の Markov 圏構造
+### 3.1 CPS($\alpha > 0$) の Markov 圏的構造
 
-Paper II 互換性補題（§3.7.1）により、$\alpha > 0$ のとき CPS 圏は Markov 圏の構造を持つ:
+Paper II 互換性補題（§3.7.1）により、$\alpha = 0$ では CPS 圏は Fritz の意味での strict な Markov 圏となる。$\alpha > 0$ では $e(\alpha)$-twisted 余モノイド構造と a.e. factorization が与えられるため、本稿ではそれを Perrone エントロピーの構成的延長の足場として用いる:
+
+ここで本稿が実際に使うのは「$\alpha > 0$ で strict な Markov 圏が完成している」という強い読みではなく、copy/del の構成と確定的射 `Det(CPS(α))` を定義するのに必要な最小部分だけである。
 
 - **$\mathrm{del}_X$**: 忘却場 $\Phi > 0$ による全忘却。$\alpha > 0$ により $\Phi$ の正値性が保証され、正規化 $\mathrm{del}_X = \Phi / \int \Phi$ が well-defined。
 - **$\mathrm{copy}_X$**: 対角写像 $x \mapsto (x, x)$ の Markov kernel としての持ち上げ。Fritz の意味での確定的射。
 - **確定的射 $\mathrm{Det}(\mathrm{CPS}(\alpha))$**: copy を保存する射。$\alpha$ の増大により Mor が減少するため、$\mathrm{Det}$ も減少する（後述の補題 3.2.1）。
 
-**備考.** $\alpha \leq 0$ では $\mathrm{del}_X$ の正規化が崩壊し（Paper II §3.7.1 備考）、Markov 圏構造が退化する。本稿では $\alpha > 0$ に限定する。$\alpha \leq 0$ セクターのエントロピーは §5 で議論する（Paper III の $\mathbb{Z}_2$-次数付き CPS 圏との関係）。
+**備考.** strict な Markov 圏構造は Paper II が明示する通り $\alpha = 0$ でのみ正確に成立する。$\alpha > 0$ では $\mathrm{del}_X$ / $\mathrm{copy}_X$ は構成されるが、余単位律は $e(\alpha)$-twist を受けるため、本稿の $S_{\mathrm{CPS}}(p, \alpha)$ は Perrone 構成の $\alpha > 0$ 延長として読む。$\alpha \leq 0$ では $\mathrm{del}_X$ の正規化が崩壊し（Paper II §3.7.1 備考）、この Markov 圏的構造自体が退化する。本稿では $\alpha > 0$ に限定する。$\alpha \leq 0$ セクターのエントロピーは §5 で議論する（Paper III の $\mathbb{Z}_2$-次数付き CPS 圏との関係）。
 
 ### 3.2 確定的射の α-単調性
 
@@ -236,13 +240,13 @@ Paper IV 命題 7.5.1 は、効果量天井 $r_{\mathrm{obs}} \leq \sqrt{\rho/(K
 
 $\alpha_{\mathrm{VIII}} \leq 0$ は Paper VIII §6.7.1 の正規化写像 $\eta$ の値域の外にあり、$\eta^{-1}(0)$ は $\alpha_{\mathrm{III}} = -\infty$ に対応する（§3.5 参照）。物理的には、α-忘却濾過の枠組みで $\alpha_{\mathrm{VIII}} \leq 0$ は「負の忘却」——情報の自発的生成——を意味する。
 
-より根本的に: $\alpha_{\mathrm{III}} < 0$（Paper III のフェルミオン的セクター）では CPS 圏の Markov 圏構造が退化する（Paper II §3.7.1）。Grassmann 奇射 $f$ は $f \otimes f = 0$（$\xi \wedge \xi = 0$）を満たすため、Perrone–Fritz の Markov 圏公理が要求するコピー射 $\mathrm{del}_X: X \to X \otimes X$ が定義できない。
+より根本的に: $\alpha_{\mathrm{III}} < 0$（Paper III のフェルミオン的セクター）では CPS 圏の Markov 圏的構造が退化する（Paper II §3.7.1）。Grassmann 奇射 $f$ は $f \otimes f = 0$（$\xi \wedge \xi = 0$）を満たすため、Perrone–Fritz の Markov 圏公理が要求するコピー射 $\mathrm{copy}_X: X \to X \otimes X$ が定義できない。
 
 ### 5.2 直接構成の不可能性
 
 **定理 5.2.1 (Perrone エントロピーの α_III < 0 不可能性).** $\mathrm{CPS}^{Z_2}$ 圏のフェルミオン的セクター（$\alpha_{\mathrm{III}} < 0$、Z₂-奇射が非自明に存在する対象を含む）に対し、Perrone の意味での確定的射を用いたエントロピーは well-defined でない。
 
-*証明.* Perrone [P1, §3] のエントロピーの構成には 確定的射 $\mathrm{Det}(C)$ の定義が必要であり、これは Markov 圏のコピー射 $\mathrm{del}_X$ に依存する（$f$ が確定的 $\Leftrightarrow$ $\mathrm{del}_Y \circ f = (f \otimes f) \circ \mathrm{del}_X$）。
+*証明.* Perrone [P1, §3] のエントロピーの構成には確定的射 $\mathrm{Det}(C)$ の定義が必要であり、これは Markov 圏のコピー射 $\mathrm{copy}_X$ に依存する（$f$ が確定的 $\Leftrightarrow$ $\mathrm{copy}_Y \circ f = (f \otimes f) \circ \mathrm{copy}_X$）。
 
 $\alpha_{\mathrm{III}} < 0$ のセクターにおいて、Paper III §2.2 の Z₂-次数付けにより射は偶（ボソン的）成分と奇（フェルミオン的）成分に分解される。奇射 $f$ に対し:
 - Koszul 符号則より $(f \otimes f)(x) = (-1)^{|f| \cdot |f|} (f \otimes f)(x) = -(f \otimes f)(x)$（$|f| = 1$ のとき）

@@ -1,0 +1,7 @@
+formal_n,eta_estimator,anchor_method,n_rows,transfer_factor_median,transfer_factor_mean,transfer_factor_cv,transfer_stability_pass,eta_transfer_min,eta_transfer_max,status_transfer
+2.780000,chi_connected,de2,5,63.3749186406,63.7660165562,0.0630325763,True,0.0295280510,0.0349326789,stable_transfer_candidate
+2.780000,kmin_structure,de2,5,53.7929295156,54.2320411844,0.0293975475,True,0.0313064816,0.0340758357,stable_transfer_candidate
+2.900000,chi_connected,de2,5,74.3930593520,70.1839932640,0.2682994010,False,,,unstable_transfer_candidate
+2.900000,kmin_structure,de2,5,71.1423253600,71.5851640632,0.0449510123,True,0.0238757982,0.0266076904,stable_transfer_candidate
+3.000000,chi_connected,de2,5,111.8821966000,109.6172339842,0.1051893008,False,,,unstable_transfer_candidate
+3.000000,kmin_structure,de2,5,94.1349172316,92.8410229811,0.0620504665,True,0.0166575130,0.0202417134,stable_transfer_candidate

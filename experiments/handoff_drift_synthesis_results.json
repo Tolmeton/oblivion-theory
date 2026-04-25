@@ -1,0 +1,849 @@
+{
+  "task": "Brief 1 Task 4",
+  "public_api_used": [
+    "mekhane.lethe.estimate_drift"
+  ],
+  "synthetic_config": {
+    "turn_count": 7,
+    "unit_count": 48,
+    "jitter_support": [
+      -1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "seed": 42
+  },
+  "scenarios": [
+    {
+      "scenario_id": "type_1_clue_recovery",
+      "expected_steps": {
+        "carrier_step": 3,
+        "null_step": 1
+      },
+      "expected_regime": "chi_lt_1",
+      "sample_count": 30,
+      "chi_summary": {
+        "mean": 0.35428571428571426,
+        "std": 0.06393023408319397,
+        "min": 0.2857142857142857,
+        "max": 0.5,
+        "p10": 0.2857142857142857,
+        "p25": 0.3333333333333333,
+        "p50": 0.3333333333333333,
+        "p75": 0.3333333333333333,
+        "p90": 0.5
+      },
+      "estimator_summary": {
+        "pair_count": 30,
+        "mean_chi_characteristic": 0.3542857142857144,
+        "std_chi_characteristic": 0.06393023408319397,
+        "chi_characteristic_quantiles": {
+          "p50": 0.3333333333333333,
+          "p90": 0.5
+        },
+        "max_turn_chi": 1.0,
+        "mode_usage": {
+          "slot": 30,
+          "coverage": 0
+        },
+        "pairs_with_chi_above_one": 0,
+        "regime": "carrier-recovery"
+      },
+      "pair_results": [
+        {
+          "pair_id": "type_1_clue_recovery-00",
+          "chi_characteristic": 0.4,
+          "characteristic_v_carrier": 2.5,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-01",
+          "chi_characteristic": 0.5,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.5,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-02",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-03",
+          "chi_characteristic": 0.4,
+          "characteristic_v_carrier": 2.5,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-04",
+          "chi_characteristic": 0.5,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.5,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-05",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-06",
+          "chi_characteristic": 0.2857142857142857,
+          "characteristic_v_carrier": 3.5,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-07",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-08",
+          "chi_characteristic": 0.2857142857142857,
+          "characteristic_v_carrier": 3.5,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-09",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-10",
+          "chi_characteristic": 0.5,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.5,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-11",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-12",
+          "chi_characteristic": 0.2857142857142857,
+          "characteristic_v_carrier": 3.5,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-13",
+          "chi_characteristic": 0.4,
+          "characteristic_v_carrier": 2.5,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-14",
+          "chi_characteristic": 0.5,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.5,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-15",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-16",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-17",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-18",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-19",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-20",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-21",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-22",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-23",
+          "chi_characteristic": 0.2857142857142857,
+          "characteristic_v_carrier": 3.5,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-24",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-25",
+          "chi_characteristic": 0.2857142857142857,
+          "characteristic_v_carrier": 3.5,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-26",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-27",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-28",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_1_clue_recovery-29",
+          "chi_characteristic": 0.3333333333333333,
+          "characteristic_v_carrier": 3.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": null
+        }
+      ],
+      "linked_case_study": {
+        "id": "case_1_mando",
+        "task": "allrecipes.com で \"Mando\" レシピを検索",
+        "state_type": "Type 1: recent useful clue",
+        "optimal_strategy": "KLN"
+      }
+    },
+    {
+      "scenario_id": "type_2_dead_end_loop",
+      "expected_steps": {
+        "carrier_step": 1,
+        "null_step": 2
+      },
+      "expected_regime": "chi_gt_1",
+      "sample_count": 30,
+      "chi_summary": {
+        "mean": 2.0166666666666666,
+        "std": 0.3760171390892826,
+        "min": 1.0,
+        "max": 3.0,
+        "p10": 1.9500000000000002,
+        "p25": 2.0,
+        "p50": 2.0,
+        "p75": 2.0,
+        "p90": 2.5
+      },
+      "estimator_summary": {
+        "pair_count": 30,
+        "mean_chi_characteristic": 2.0166666666666666,
+        "std_chi_characteristic": 0.3760171390892826,
+        "chi_characteristic_quantiles": {
+          "p50": 2.0,
+          "p90": 2.5
+        },
+        "max_turn_chi": 3.0,
+        "mode_usage": {
+          "slot": 30,
+          "coverage": 0
+        },
+        "pairs_with_chi_above_one": 28,
+        "regime": "drift-dominant"
+      },
+      "pair_results": [
+        {
+          "pair_id": "type_2_dead_end_loop-00",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-01",
+          "chi_characteristic": 2.5,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.5,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-02",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 3
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-03",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-04",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-05",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-06",
+          "chi_characteristic": 2.5,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.5,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-07",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-08",
+          "chi_characteristic": 1.5,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 1.5,
+          "first_chi_above_one_turn": 3
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-09",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-10",
+          "chi_characteristic": 2.5,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.5,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-11",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 3
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-12",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 3
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-13",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 3
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-14",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-15",
+          "chi_characteristic": 3.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 3.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-16",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-17",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-18",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-19",
+          "chi_characteristic": 2.5,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.5,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-20",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-21",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-22",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 3
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-23",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 1.0,
+          "first_chi_above_one_turn": 5
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-24",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 4
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-25",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-26",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 1.5,
+          "characteristic_v_null": 1.5,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-27",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-28",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_2_dead_end_loop-29",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 3
+        }
+      ],
+      "linked_case_study": {
+        "id": "case_2_live_crickets",
+        "task": "Google Flights で DCA→MDW のフライト検索",
+        "state_type": "Type 2: dead-end loop",
+        "optimal_strategy": "DA"
+      }
+    },
+    {
+      "scenario_id": "type_3_mixed",
+      "expected_steps": {
+        "carrier_step": 2,
+        "null_step": 2
+      },
+      "expected_regime": "chi_eq_1",
+      "sample_count": 30,
+      "chi_summary": {
+        "mean": 1.0711111111111111,
+        "std": 0.2235626241427226,
+        "min": 0.75,
+        "max": 2.0,
+        "p10": 0.9800000000000001,
+        "p25": 1.0,
+        "p50": 1.0,
+        "p75": 1.1875,
+        "p90": 1.25
+      },
+      "estimator_summary": {
+        "pair_count": 30,
+        "mean_chi_characteristic": 1.0711111111111111,
+        "std_chi_characteristic": 0.2235626241427226,
+        "chi_characteristic_quantiles": {
+          "p50": 1.0,
+          "p90": 1.25
+        },
+        "max_turn_chi": 3.0,
+        "mode_usage": {
+          "slot": 30,
+          "coverage": 0
+        },
+        "pairs_with_chi_above_one": 8,
+        "regime": "drift-dominant"
+      },
+      "pair_results": [
+        {
+          "pair_id": "type_3_mixed-00",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 7
+        },
+        {
+          "pair_id": "type_3_mixed-01",
+          "chi_characteristic": 1.25,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.5,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_3_mixed-02",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 6
+        },
+        {
+          "pair_id": "type_3_mixed-03",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_3_mixed-04",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_3_mixed-05",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 3
+        },
+        {
+          "pair_id": "type_3_mixed-06",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 3
+        },
+        {
+          "pair_id": "type_3_mixed-07",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 4
+        },
+        {
+          "pair_id": "type_3_mixed-08",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 5
+        },
+        {
+          "pair_id": "type_3_mixed-09",
+          "chi_characteristic": 1.25,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.5,
+          "first_chi_above_one_turn": 3
+        },
+        {
+          "pair_id": "type_3_mixed-10",
+          "chi_characteristic": 0.75,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 1.5,
+          "first_chi_above_one_turn": 7
+        },
+        {
+          "pair_id": "type_3_mixed-11",
+          "chi_characteristic": 1.3333333333333333,
+          "characteristic_v_carrier": 1.5,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_3_mixed-12",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_3_mixed-13",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 3
+        },
+        {
+          "pair_id": "type_3_mixed-14",
+          "chi_characteristic": 1.25,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.5,
+          "first_chi_above_one_turn": 5
+        },
+        {
+          "pair_id": "type_3_mixed-15",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 3
+        },
+        {
+          "pair_id": "type_3_mixed-16",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_3_mixed-17",
+          "chi_characteristic": 0.75,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 1.5,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_3_mixed-18",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 4
+        },
+        {
+          "pair_id": "type_3_mixed-19",
+          "chi_characteristic": 0.8,
+          "characteristic_v_carrier": 2.5,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_3_mixed-20",
+          "chi_characteristic": 1.25,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.5,
+          "first_chi_above_one_turn": 3
+        },
+        {
+          "pair_id": "type_3_mixed-21",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 5
+        },
+        {
+          "pair_id": "type_3_mixed-22",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": null
+        },
+        {
+          "pair_id": "type_3_mixed-23",
+          "chi_characteristic": 1.25,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.5,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_3_mixed-24",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 3
+        },
+        {
+          "pair_id": "type_3_mixed-25",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 3
+        },
+        {
+          "pair_id": "type_3_mixed-26",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 3
+        },
+        {
+          "pair_id": "type_3_mixed-27",
+          "chi_characteristic": 1.25,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.5,
+          "first_chi_above_one_turn": 3
+        },
+        {
+          "pair_id": "type_3_mixed-28",
+          "chi_characteristic": 2.0,
+          "characteristic_v_carrier": 1.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 2
+        },
+        {
+          "pair_id": "type_3_mixed-29",
+          "chi_characteristic": 1.0,
+          "characteristic_v_carrier": 2.0,
+          "characteristic_v_null": 2.0,
+          "first_chi_above_one_turn": 3
+        }
+      ],
+      "linked_case_study": {
+        "id": "case_3_mythos",
+        "task": "Claude Mythos の aloneness / discontinuity を Context Rot の主観的表面として解釈",
+        "state_type": "Forced session reset / discontinuity analogue",
+        "optimal_strategy": null
+      }
+    }
+  ],
+  "ordering_by_mean_chi": [
+    [
+      "type_1_clue_recovery",
+      0.35428571428571426
+    ],
+    [
+      "type_3_mixed",
+      1.0711111111111111
+    ],
+    [
+      "type_2_dead_end_loop",
+      2.0166666666666666
+    ]
+  ],
+  "agentswing_table2_k1_upper_bounds": [
+    {
+      "model": "GPT-OSS-120B",
+      "bounds": {
+        "DA": {
+          "rho": 0.686,
+          "r_obs_upper_k1": 0.5856620185738529
+        },
+        "Sum": {
+          "rho": 0.6,
+          "r_obs_upper_k1": 0.5477225575051661
+        },
+        "KLN": {
+          "rho": 0.525,
+          "r_obs_upper_k1": 0.51234753829798
+        }
+      }
+    },
+    {
+      "model": "DeepSeek-V3",
+      "bounds": {
+        "DA": {
+          "rho": 0.6,
+          "r_obs_upper_k1": 0.5477225575051661
+        },
+        "Sum": {
+          "rho": 0.486,
+          "r_obs_upper_k1": 0.4929503017546495
+        },
+        "KLN": {
+          "rho": 0.543,
+          "r_obs_upper_k1": 0.5210566188045211
+        }
+      }
+    },
+    {
+      "model": "Tongyi-qwq-32B",
+      "bounds": {
+        "DA": {
+          "rho": 0.818,
+          "r_obs_upper_k1": 0.6395310782127792
+        },
+        "Sum": {
+          "rho": 0.571,
+          "r_obs_upper_k1": 0.5343220002957019
+        },
+        "KLN": {
+          "rho": 0.478,
+          "r_obs_upper_k1": 0.48887626246321264
+        }
+      }
+    }
+  ]
+}

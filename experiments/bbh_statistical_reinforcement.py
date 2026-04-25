@@ -226,7 +226,7 @@ out = {
     "ceiling_ci": ceil_ci,
     "summary": {"n_sig": n_sig, "n_tasks": len(TASKS)},
 }
-outpath = os.path.join(OUT_DIR, "statistical_reinforcement.json")
+outpath = os.path.join(OUT_DIR, "統計_強化.json")
 with open(outpath, "w") as f:
     json.dump(out, f, indent=2, ensure_ascii=False)
 print(f"\nSaved: {outpath}", flush=True)

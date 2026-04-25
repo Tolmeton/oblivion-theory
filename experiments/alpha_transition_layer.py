@@ -195,9 +195,9 @@ def plot_scenario_comparison(mu: np.ndarray, sigma: float, mu_0: float):
         ax_right.axvspan(-mu_0, mu_0, alpha=0.1, color='red', label='遷移層')
     
     plt.tight_layout()
-    fig.savefig(OUTPUT_DIR / 'P3_alpha_transition_layer.png', dpi=150, bbox_inches='tight')
+    fig.savefig(OUTPUT_DIR / 'ピー三_アルファ_遷移_層.png', dpi=150, bbox_inches='tight')
     plt.close(fig)
-    print(f"  → プロット保存: {OUTPUT_DIR / 'P3_alpha_transition_layer.png'}")
+    print(f"  → プロット保存: {OUTPUT_DIR / 'ピー三_アルファ_遷移_層.png'}")
 
 
 def plot_mu0_dependence(mu: np.ndarray, sigma: float):
@@ -248,9 +248,9 @@ def plot_mu0_dependence(mu: np.ndarray, sigma: float):
     axes[1].legend()
     
     plt.tight_layout()
-    fig.savefig(OUTPUT_DIR / 'P3_mu0_scaling.png', dpi=150, bbox_inches='tight')
+    fig.savefig(OUTPUT_DIR / '画像_3836.png', dpi=150, bbox_inches='tight')
     plt.close(fig)
-    print(f"  → プロット保存: {OUTPUT_DIR / 'P3_mu0_scaling.png'}")
+    print(f"  → プロット保存: {OUTPUT_DIR / '画像_3836.png'}")
     
     return peak_values, widths
 
@@ -289,9 +289,9 @@ def plot_alpha_constant_vs_field(mu: np.ndarray, sigma: float, mu_0: float):
     ax.set_xlim(-5, 5)
     
     plt.tight_layout()
-    fig.savefig(OUTPUT_DIR / 'P3_const_vs_field.png', dpi=150, bbox_inches='tight')
+    fig.savefig(OUTPUT_DIR / '画像_3835.png', dpi=150, bbox_inches='tight')
     plt.close(fig)
-    print(f"  → プロット保存: {OUTPUT_DIR / 'P3_const_vs_field.png'}")
+    print(f"  → プロット保存: {OUTPUT_DIR / '画像_3835.png'}")
 
 
 # === メイン ===

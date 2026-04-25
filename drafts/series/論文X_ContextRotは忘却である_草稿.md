@@ -2,11 +2,11 @@
 
 **Paper X — v0.1 (2026-04-03) — 忘却論 (Force is Oblivion) シリーズ**
 
-*概要.* 長距離 Web エージェントにおける Context Rot (Feng et al. 2026) が、忘却論の忘却関手族 U₀ / U_R の具体的インスタンスであることを示す。AgentSwing の 3 つの Context Management (CM) 戦略 — Discard-All, Summary, Keep-Last-N — を Hom 集合上の同値関係 R による商関手族 {U_R} として定式化し (proof_cm_categorical_2026-04-03.md)、その半順序構造と因子分解定理を確立する。2 つの Case Study と N=240 の aligned 統計から「条件付き不可逆性テーゼ」を提示し、Hyphē の boot⊣bye 随伴との三者合流を定式化する。AgentSwing の routing parameter r と Hyphē の τ 閾値の逆関数関係を予測する。
+*概要.* 長距離 Web エージェントにおける Context Rot (Feng et al. 2026) が、忘却論の忘却関手族 U₀ / U_R の具体的インスタンスであることを示す。AgentSwing の 3 つの Context Management (CM) 戦略 — Discard-All, Summary, Keep-Last-N — を Hom 集合上の同値関係 R による商関手族 {U_R} として定式化する。半順序構造と因子分解定理は、現行本文では `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文X_ContextRotは忘却である.meta.md` §M7 D1 の donor 証明に依存するため、本文では SOURCE 境界つきの構成的主張として扱う。2 つの Case Study と N=240 の aligned 統計から「条件付き不可逆性テーゼ」を提示し、Hyphē の boot⊣bye 随伴との三者合流を定式化する。AgentSwing の routing parameter r と Hyphē の τ 閾値の逆関数関係を予測する。
 
 > **依存関係.** 本稿は以下に依存する:
 > - Paper VIII: α-忘却濾過の公理系 (F1)-(F4)
-> - proof_cm_categorical_2026-04-03.md: CM 戦略の圏論的定式化 (本稿 §3-§4 の基盤)
+> - `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文X_ContextRotは忘却である.meta.md` §M7 D1: CM 戦略の圏論的定式化 donor。旧証明ノートは現行 body SOURCE としては未観測
 > - linkage_hyphe.md: Hyphē F⊣G 随伴の定義
 > - AgentSwing (Feng et al. 2026, Tongji Lab/Alibaba): 実験データの SOURCE
 
@@ -153,7 +153,7 @@ U_DA: C_session → C_discrete    (α-filtration の α→1 への強制遷移)
 
 ## §3. CM 戦略の圏論的定式化 (要約)
 
-> 詳細: proof_cm_categorical_2026-04-03.md
+> 詳細: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文X_ContextRotは忘却である.meta.md` §M7 D1。旧証明ノートは本文から直接参照しない。
 
 ### 3.1 軌道圏 C_traj (Def 1.1)
 
@@ -432,7 +432,7 @@ g(τ) = τ^α  (α > 0, power law)
 ```
 [確信 90%] CM 戦略は商関手族 {U_R} として数学的に well-defined (Thm 3.1, 6.1)
            ↓
-[推定 80%] CM = U₀ の部分適用 (proof_cm_categorical Thm 6.1)
+[推定 80%] CM = U₀ の部分適用 (meta §M7 D1 donor; 旧 proof file は現行 body SOURCE として未観測)
 [推定 80%] 状態依存最適忘却 (Table 2, Fig 9, 命題 X.2)
            ↓
 [推定 75%] 統計的随伴 F_par ⊣ G_route (Thm 4.4/4.5)
@@ -470,7 +470,7 @@ g(τ) = τ^α  (α > 0, power law)
 - [IV] Paper IV: なぜ効果量は小さいか (v1.4)
 - [VIII] Paper VIII: 圏論的基礎における存在 (v1.5)
 - [IX] Paper IX: エントロピーは忘却である (v0.1)
-- [proof] proof_cm_categorical_2026-04-03.md: CM 戦略の圏論的定式化
+- [donor-D1] `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文X_ContextRotは忘却である.meta.md` §M7 D1: CM 戦略の圏論的定式化 donor
 - [research] research_agentswing_oblivion_hyphe_2026-04-03.md: MECE 研究方向
 - [prediction] prediction_agentswing_irreversibility_2026-04-03.md: 不可逆性限界予測
 
@@ -479,7 +479,7 @@ g(τ) = τ^α  (α > 0, power law)
 - [CR] A3_context_rot.md: Context Rot — MB の恒常性限界
 
 ### 外部
-- [Feng2026] Feng, J., Wang, M., Cai, D., et al. "AgentSwing: Adaptive Parallel Context Management Routing for Long-Horizon Web Agents." arXiv:2504.xxxxx, 2026.
+- [Feng2026] Feng, Z., Su, L., Zhang, Z., Wang, X., Zhang, X., Wang, X., Fang, R., Zhang, Q., Li, B., Cai, S., et al. "AgentSwing: Adaptive Parallel Context Management Routing for Long-Horizon Web Agents." arXiv:2603.27490, 2026. https://arxiv.org/abs/2603.27490
 - [Zweiger2025] Zweiger, A., Pari, J., Guo, H., Akyürek, E., Kim, Y., Agrawal, P. "Self-Adapting Language Models." arXiv:2506.10943, 2025.
 - [Karpathy2025] Karpathy, A. "An LLM Wiki Pattern." GitHub Gist, 2025. https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
 - [delyJP2025] dely_jp. "Karpathy 流 \"LLM Wiki\" を Obsidian + Claude Code で運用する." Zenn, 2025. https://zenn.dev/dely_jp/articles/8b55114cc0b958

@@ -406,7 +406,7 @@ def plot_bridge_comparison(n_values: list, eigen_results: list,
     ax.grid(True, alpha=0.3, color=COLORS['grid'])
     
     plt.tight_layout(rect=[0, 0, 1, 0.96])
-    path = RESULTS_DIR / "beta_lambda_bridge_verification.png"
+    path = RESULTS_DIR / "画像_3838.png"
     fig.savefig(path, dpi=150, bbox_inches='tight', facecolor=COLORS['bg'])
     plt.close(fig)
     return str(path)

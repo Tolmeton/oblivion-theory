@@ -129,6 +129,25 @@ operational な中間概念として、
 
 を `localizable` と呼ぶ。本文 canonical 四分法にはまだ上げず、本ノートで管理する。
 
+### 4.6 整合担体 `coherence carrier`
+
+C4 canonicalization 側で必要になる別の中間対象として、
+
+> **局所 forgetting law を、support-local な比較面と guarded re-lift / witness に束ね、`H^2_{\Theta}` の class 可否を問える器**
+
+を **整合担体** と呼ぶ。
+
+これは `localizable` より一段強い。`localizable` が与えるのは「どこが壊れていそうか」の候補集合だが、整合担体が与えるのは、その候補集合の上に
+
+- defect support
+- generating comparison faces
+- local forgetting law
+- guarded realization
+
+を載せた **class 判定可能な support-local package** である。
+
+重要なのは、整合担体を recoverability と混同しないことだ。整合担体は「貼合側 / 残差側」を分ける前段であり、decoder を持つ後段ではない。現時点では `A'' / B''` をその両極実現として読む。
+
 ---
 
 ## 5. 関係式
@@ -147,6 +166,7 @@ recoverable         = 現れた欠損から元の構造を戻せる
 - 安定でも、欠損が盲点方向に落ちれば未検出でありうる
 - 検出できても、`[\omega_{\Theta}] \neq 0` なら構造的に修復不能でありうる
 - `H^2_{\Theta} = 0` でも、decoder 条件がなければ recoverable とは言えない
+- `localizable` でも、整合担体が立たなければ class 可否はまだ問えない
 
 `detectable → recoverable` を直結させないことが、このノートの核心である。
 
@@ -242,6 +262,15 @@ Face Lemma が与えるのは、
 3. だから戻せる
 
 この 3 段は連続していない。`2 → 3` のところに、まだ定義されていない機構がある。
+
+C4 の観点では、その空所をいきなり decoder で埋めるのではなく、まず **整合担体** で埋めるのが正しい。すなわち、
+
+- comparison face が立つ
+- defect support が局在する
+- 局所 law と guarded re-lift / witness を同じ器に乗せる
+- その上で初めて貼合側 / 残差側を問う
+
+という順序が必要である。
 
 ---
 

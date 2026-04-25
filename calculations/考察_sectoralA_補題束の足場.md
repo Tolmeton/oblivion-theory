@@ -34,7 +34,7 @@ sectoral A の弱点は「Face/SST が存在しないこと」ではなく、そ
 2. `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/calculations/Face補題_証明修正.md`  
    nerve の `2-coskeletal` 性と CPS-安定性が整理されている。これは「高次 simplex を持ち込まずとも 2-face で足りる」という飽和論の源泉になる。
 
-3. `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/incubator/力とは忘却である_v2.md`  
+3. `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/incubator/legacy/力とは忘却である_v2.md`  
    Stability Simplex Theorem が「三角恒等式の 3 つの読み方」として整理されている。これは `(+\lambda)+(-\lambda)=0` の残差規則を sectoral A へ供給する。
 
 4. `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/統一表の関手化_構想ドラフト_v0.2.md`  
@@ -55,7 +55,7 @@ sectoral A を後続が歩けるようにするため、補題束を 5 本に固
 |:---|:---|:---|:---|
 | L0 | Bridge existence lemma | `b \in \mathrm{Bridge}(C,A;D_C)` が立つ最小条件を固定する | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/統一表の関手化_構想ドラフト_v0.2.md` |
 | L1 | Face witness lemma | 非自明な path 差分は 2-simplex 検査面に露出することを保証する | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/calculations/Face補題_ホモロジー厳密化.md` |
-| L2 | SST residue lemma | 露出した差分が `(+\lambda)+(-\lambda)=0` の型でしか相殺されないことを固定する | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/incubator/力とは忘却である_v2.md` |
+| L2 | SST residue lemma | 露出した差分が `(+\lambda)+(-\lambda)=0` の型でしか相殺されないことを固定する | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/incubator/legacy/力とは忘却である_v2.md` |
 | L3 | Canonical lift lemma | `q_{\pi}` が標準 path へ持ち上がることを示す | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/統一表の関手化_構想ドラフト_v0.2.md` |
 | L4 | Sectoral A corollary | `\Pi_{\mathrm{static}}` と `\Pi_{\mathrm{dynamic}}` が同じ bridge machine の二投影だと結ぶ | 同上 + L1-L3 |
 

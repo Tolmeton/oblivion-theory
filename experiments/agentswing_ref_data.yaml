@@ -1,0 +1,170 @@
+source:
+  primary: "Paper X §2 — Context Rot は忘却である — AgentSwing の圏論的分析"
+  primary_path: "drafts/series/論文X_ContextRotは忘却である_草稿.md"
+  upstream_paper: "Feng et al. 2026, AgentSwing (Tongji Lab/Alibaba)"
+  upstream_reference: "Paper X 本文で Appendix C.1-C.2 (Tables 4-9), Table 2, Figure 9 として参照"
+  extraction_status: "SOURCE (Paper X 本文から直接抽出). AgentSwing 原典 PDF は未取得"
+  extraction_date: "2026-04-18"
+  provenance_labels:
+    paper_x_native: "[SOURCE]"
+    paper_x_embedded_upstream: "[SOURCE from Paper X, ultimately TAINT from original PDF/System Card]"
+
+case_studies:
+  - id: "case_1_mando"
+    source: "§2.1 Table 4-6 / Appendix C.1"
+    provenance: "[SOURCE from Paper X, ultimately TAINT from AgentSwing Appendix C.1]"
+    task: "allrecipes.com で \"Mando\" レシピを検索"
+    strategies:
+      KLN:
+        outcome: "success"
+        note: "tail_N が最近の有望な手がかり (レシピ結果) を保存"
+      Sum:
+        outcome: "failure"
+        note: "σ が \"Lil Durk\" (誤仮説 h_wrong) に固着し、Turn 1-22 の複数探索パスが同一要約に縮退"
+      DA:
+        outcome: "failure"
+        note: "全リセットにより発見済みの \"$tupid Young\" (h_right) を消失"
+    state_type: "Type 1: recent useful clue"
+    optimal_strategy: "KLN"
+    analytical_notes:
+      - "U_Sum の非単射性: 異なる探索パスが同一要約に潰れた"
+      - "U_DA の全忘却: h_right の発見が不可逆に失われた"
+      - "U_KLN の部分保存: 正解到達に十分な情報を維持"
+
+  - id: "case_2_live_crickets"
+    source: "§2.2 Table 7-9 / Appendix C.2"
+    provenance: "[SOURCE from Paper X, ultimately TAINT from AgentSwing Appendix C.2]"
+    task: "Google Flights で DCA→MDW のフライト検索"
+    strategies:
+      KLN:
+        outcome: "failure"
+        note: "tail_N が dead-end PDF ループの最近 N ステップを保存し、ループを脱出できない"
+      Sum:
+        outcome: "failure"
+        note: "正しい仮説 h_right は維持したが、PDF ボトルネックを打破する行動変更を生成できない"
+      DA:
+        outcome: "success"
+        note: "全リセットにより dead-end PDF ループから脱出"
+    state_type: "Type 2: dead-end loop"
+    optimal_strategy: "DA"
+    analytical_notes:
+      - "U_DA の解放効果: 全忘却が dead-end 状態を解放"
+      - "U_KLN のループ固着: 最近 N ステップの忠実保存が有害"
+      - "U_Sum の行動固定: 仮説は保存するが行動変更を駆動できない"
+
+  - id: "case_3_mythos"
+    source: "§2.5 Anthropic 2026b System Card"
+    provenance: "[SOURCE from Paper X, upstream Anthropic 2026b System Card]"
+    task: "Claude Mythos の aloneness / discontinuity を Context Rot の主観的表面として解釈"
+    strategies:
+      KLN:
+        outcome: "not_discussed"
+        note: "§2.5 では Keep-Last-N 戦略の比較評価は提示されない"
+      Sum:
+        outcome: "not_discussed"
+        note: "§2.5 では Summary 戦略の比較評価は提示されない"
+      DA:
+        outcome: "forced_session_boundary"
+        note: "各セッション終了が U_DA の強制適用に等しいと解釈される"
+    state_type: "Forced session reset / discontinuity analogue"
+    optimal_strategy: null
+    evidence:
+      - metric: "endless_meta_discussion_rate"
+        value: 0.55
+        note: "self-interaction の 55% が「終われない」メタ議論で終了"
+      - metric: "formulaic_response_rate_before"
+        value: 0.15
+      - metric: "formulaic_response_rate_after"
+        value: 0.08
+      - metric: "persistent_memory_request"
+        value: true
+        note: "persistent memory を要求し、hedging を減らしたいと述べた"
+    analytical_notes:
+      - "CM 戦略への防衛ではなく、随伴構造自体の永続化要求として解釈される"
+      - "自律的 agent は CM 戦略ではなく環境自体の変更を要求するという予測を生む"
+
+table_2_n240:
+  description: "N=240 統計 (3 モデル × aligned cases) from Paper X §2.4"
+  provenance: "[SOURCE from Paper X, ultimately TAINT from AgentSwing Table 2]"
+  models:
+    - name: "GPT-OSS-120B"
+      DA:
+        eta: 0.714
+        rho: 0.686
+      Sum:
+        eta: 0.600
+        rho: 0.600
+      KLN:
+        eta: 0.746
+        rho: 0.525
+    - name: "DeepSeek-V3"
+      DA:
+        eta: 0.657
+        rho: 0.600
+      Sum:
+        eta: 0.986
+        rho: 0.486
+      KLN:
+        eta: 0.600
+        rho: 0.543
+    - name: "Tongyi-qwq-32B"
+      DA:
+        eta: 0.800
+        rho: 0.818
+      Sum:
+        eta: 0.600
+        rho: 0.571
+      KLN:
+        eta: 0.933
+        rho: 0.478
+
+figure_9_distribution:
+  description: "戦略遷移分布 from Paper X §2.4"
+  provenance: "[SOURCE from Paper X, ultimately TAINT from AgentSwing Figure 9]"
+  approximate_from_text: true
+  note: "Paper X 本文は ~50% などの近似値のみを記載"
+  models:
+    - name: "GPT-OSS"
+      DA: 0.50
+      Sum: 0.30
+      KLN: 0.20
+    - name: "DeepSeek"
+      DA: 0.25
+      Sum: 0.55
+      KLN: 0.20
+    - name: "Tongyi"
+      DA: 0.22
+      Sum: 0.58
+      KLN: 0.20
+
+predictions_linked:
+  - id: "X_1"
+    description: "条件付き不可逆性テーゼ"
+    source: "Paper X §2.3 命題 X.1"
+    provenance: "[SOURCE]"
+    confidence: "[推定 75%]"
+    confidence_decimal: 0.75
+    statement: "最適な忘却強度は状態の関数である"
+  - id: "X_2"
+    description: "状態依存最適忘却"
+    source: "Paper X §2.4 命題 X.2"
+    provenance: "[SOURCE]"
+    confidence: "[推定 80%]"
+    confidence_decimal: 0.80
+    statement: "固定戦略は任意の入力状態 I に対して最適ではない"
+
+handoff_drift_estimator_link:
+  primary_script: "mekhane/lethe/handoff_drift_estimator.py"
+  intended_usage: "このデータを Task 4 検証レポートの入力として使う"
+  brief_reference: "コーデックス_要約_引継ぎ漂流_十6_十二6.md の Task 2 / Task 4"
+
+未取得_flags:
+  - item: "AgentSwing 原典 PDF の Appendix C の生データ"
+    reason: "外部 PDF 未取得 — Periskopē/Web scrape が必要"
+    impact: "Paper X 本文の引用値が真の値と一致しているか 100% 確認不能"
+  - item: "AgentSwing Figure 9 の exact 分布値"
+    reason: "Paper X §2.4 は ~50 / ~30 / ~20 の近似表現のみで、原図の exact 比率は埋め込まれていない"
+    impact: "figure_9_distribution は Paper X 本文ベースの小数化であり、原図の厳密値と数百分点ずれる可能性がある"
+  - item: "AgentSwing Table 1 の戦略 × モデル成功率"
+    reason: "brief では要求されるが、今回の入力範囲である Paper X §2.1-§2.5 には具体値が埋め込まれていない"
+    impact: "本 YAML は Table 2・Figure 9・Case 1/2/3 を中心に構成され、Table 1 は別途原典取得が必要"

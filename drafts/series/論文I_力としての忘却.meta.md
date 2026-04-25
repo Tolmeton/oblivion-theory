@@ -122,3 +122,21 @@
 - **本文との関係**: Paper I body (v1.5) の主構造は Φ(θ)=D_KL(p_θ‖q)、α-接続 A_i (§2.2)、忘却曲率 F_{ij}=(α/2)[d(ΦT)]_{ij} (§4)、方向性定理 Th.5.1 (§5)。donor の Th.5.1 (CKA 方向性定理) は body の Th.5.1 を CKA 測度へ直接拡張する対応定理。CKA/KL の測度論的詳細は本文の抽象度を超えるが、橋渡しの構造は明確。
 - **判定**: 計算は valid。本文 v1.5 の段階では CKA 側の詳細を前景に出す段階ではないが、donor Th.5.1 ↔ body Th.5.1 の対応は将来版で remark として言及する候補。Paper IV/V との cross-paper reference としても記録。
 - **著者判断待ち**: (1) donor Th.5.1 を body Th.5.1 の remark として言及するか、(2) 修正 SAM 目的関数を Paper IV/V へ回すか。
+
+## §M9 Donor Absorption Ledger (2026-04-18)
+
+### D-T-01: 2026-04-11_T抽象化実験メモ
+
+- **donor path**: `drafts/incubator/2026-04-11_T抽象化実験メモ.md`
+- **receiver surfaces**: `論文0_忘却の忘却_草稿.md` v0.8 改訂履歴、`論文I_力としての忘却.meta.md` 本節
+- **kept**: §9.1-§9.8 の反転履歴、基礎石再定位、Chebyshev 1-形式 `T` の再解釈、Kalon ◎ 不動点到達の provenance
+- **discarded**: 時間配分や探索順序の局所メモのみ。内容面の棄却はなし
+- **final disposition**: donor file を削除し、provenance は本文改訂履歴 + meta ledger に再配置
+
+### D-T-02: Fisher_SAMを超えて
+
+- **donor path**: `drafts/incubator/Fisher_SAMを超えて.md`
+- **receiver surfaces**: `論文I_力としての忘却_草稿.md` §6.7-§6.8、`論文II_相補性は忘却である_草稿.md` §2.5.6、Paper I/II meta の吸収台帳
+- **kept**: 方向1 `α-SAM`、方向2 `Oblivion-Aware SAM`、合成案 `α-Oblivion SAM`、Paper I/II 統合計画
+- **discarded**: 重複する導入文と phrasing のみ。主張面の棄却はなし
+- **final disposition**: donor file を削除し、主張の所在は body 側、由来は Paper I/II meta に保存

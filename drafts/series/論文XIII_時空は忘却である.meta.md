@@ -190,7 +190,7 @@ G は「そのうち何が skeleton で、何が support で、何が open quest
 
 ### Donor 統合メモ (外部パッチ統合)
 
-- **O1 局所 closure**: `drafts/incubator/FaceLemma_Einstein_O1試作.md` が Blocker A1 の第一項 (3射の型付け) に対する局所的応答方向を提供。3項を「三つの場」ではなく「三つの検証役割 (方向 / 比較 / 輸送)」として型付けし直すことで、Γ の g からの導出可能性と第三射の非冗長性を両立させる。本文 §8.2.1 O1 に precision note として吸収済み (v0.1.1)。O2-O4 は未着手のまま。
+- **O1 局所 closure**: §M8 D-XIII-01 に集約した donor 由来の O1 局所 closure は、Blocker A1 の第一項 (3射の型付け) に対する局所的応答方向を提供した。3項を「三つの場」ではなく「三つの検証役割 (方向 / 比較 / 輸送)」として型付けし直すことで、Γ の g からの導出可能性と第三射の非冗長性を両立させる。本文 §8.2.1 O1 に precision note として吸収済み (v0.1.1)。O2-O4 は未着手のまま。
 - **統一記号表参照パス**: 本文 §0 簡易記号表の `drafts/infra/統一記号表.md` を `drafts/infra/リファレンス/統一記号表.md` に修正済み (v0.1.1)。
 
 ---
@@ -245,3 +245,21 @@ G は「そのうち何が skeleton で、何が support で、何が open quest
 
 - 棄却 5: `(3+1)` 発生問題を削除して Einstein 方程式解釈論に限定する
   - 理由: それでは Paper XIII が「時空は忘却である」ではなく「GR を忘却論で読む」に縮む
+
+## §M8 Donor Absorption Ledger (2026-04-18)
+
+### D-XIII-01: FaceLemma_Einstein_O1試作
+
+- **donor path**: `drafts/incubator/FaceLemma_Einstein_O1試作.md`
+- **receiver surfaces**: `論文XIII_時空は忘却である_草稿.md` §8.2.1、`論文XIII_時空は忘却である.meta.md` 本節
+- **kept**: O1 局所 closure、3 射を「方向 / 比較 / 輸送」の 3 検証役割として型付け直す方向、第三射が自明に消えない理由
+- **discarded**: donor 単独の試作順序のみ
+- **final disposition**: donor file を削除し、本文 precision note と meta ledger に再配置
+
+### D-XIII-02: ThreeDimensionalTime×忘却論_接続分析
+
+- **donor path**: `drafts/incubator/ThreeDimensionalTime×忘却論_接続分析.md`
+- **receiver surfaces**: `論文XII_速度は忘却である_草稿.md` §1.3.3-§1.3.4、`論文XIII_時空は忘却である_草稿.md` §7.2.1、Paper XII/XIII meta
+- **kept**: literal 3D time を support にせず敵対的比較へ落とす判断、前幾何の translation、世代/質量差を予想水準へ落として保持する判断
+- **discarded**: donor 単独の対話 scaffold のみ
+- **final disposition**: donor file を削除し、XIII 側では §7.2.1 の provenance を meta に固定

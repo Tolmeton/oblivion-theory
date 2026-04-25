@@ -239,10 +239,28 @@ flat sector ですら strict chain map が壊れ、`K_q` を global obstruction 
 
 と読む。ここで `Int_q` の規格化に使う `\lambda_q` は、carry amplitude ではなく **single carry event** に対応する event quantum とする。
 
-### T2. `q*=5` の source 依存性を明示化する
+### T2. `q*=5` の 2 representative 構造を理論内化する
 
-`q*` は current official convention 上の閾値である。  
-exact moment companion convention と official convention の差を、理論の外に置かず理論の一部として扱う必要がある。
+`q*` は current official Lean kernel における閾値である。同じ `q*=5` が **Lucas-aligned dual (official)** と **exact moment companion** の 2 representative で観測される (詳細: [調査_automath_q6q7_probe.md](./調査_automath_q6q7_probe.md) §2.2)。
+
+[SOURCE] SF 調査 (2026-04-24) で確定した事実:
+
+- 2 representative は element-wise 全符号反転で関係する (`p_lean + p_python = 2x^5`)
+- Lucas-aligned side は e₂=+L_5=11 を前面に出す (Lean `collisionKernel5` の選択)
+- exact side は S_5 の moment recurrence に直接対応する
+- `momentSum_five_recurrence_verified` 相当の定理は現行 Lean に不在 (q=2,3,4 は verification 定理あり)
+
+[TAINT: inference, confidence 75%] 上記を踏まえた解釈: 両 representative は同一の obstruction class `K_q = [κ_q]` の 2 代表元として読める可能性が高い。
+
+T2 の目的は、この 2 representative を「convention 差」として外部処理せず、**K_q class の 2 代表元選択として統合する**ことである。
+
+具体的な要請:
+
+- Problem 10 reduction map `H²_{dR}(M_q) --Int_q--> H²(G_m; Z) --ρ_2--> H²(G_m; Z/2Z)` において、2 representative が同一 class に落ちることを明示化
+- [TAINT: inference] Lucas-aligned representative が Paper III の anti-copy sector (Λ²) に対応し、exact representative が copy sector (Sym²) に対応する可能性 (q5 符号反転 donor §3.4 の graded second lift と整合する方向を向く)
+- Lean の `momentSum_five_recurrence_verified` 不在は、[TAINT: inference] 「gap」というより **Lucas-invariant formalization choice の帰結**として記録
+
+詳細: [文書_0016.md](./文書_0016.md) §3.2
 
 ### T3. `X_q` と `E_q` の関係を family law ではなく resonance law として定義する
 

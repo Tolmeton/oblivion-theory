@@ -1,0 +1,3 @@
+eta_estimator,stable_formal_n_count,expected_formal_n_count,stable_formal_ns,transfer_factor_min,transfer_factor_max,transfer_factor_portability_cv,portability_pass,status_portability
+chi_connected,1,3,2.780000,63.3749186406,63.3749186406,0.0000000000,False,nonportable_transfer_candidate
+kmin_structure,3,3,2.780000|2.900000|3.000000,53.7929295156,94.1349172316,0.2262723138,False,nonportable_transfer_candidate
