@@ -22,6 +22,8 @@
 **対象**: Paper V §6.8.4 実験 III  
 **結論**: first cut は **Monte Carlo**、BMW は **昇格条件付き second phase**
 
+**実行契約**: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/infra/experiments/P-V.6_強結合MCベンチマークプロトコル.md`
+
 ---
 
 ## 1. 何を解く実験か
@@ -194,6 +196,8 @@ BMW は「より正しい benchmark」ではない。
 ---
 
 ## 7. 棄却 ledger
+
+詳細な失敗時帰属表は `drafts/infra/experiments/P-V.6_強結合MC_failure_ledger.md` を正本とする。ここでは、benchmark 計画時点で棄却済みの大枝だけを固定する。
 
 - 棄却案 1: **BMW first**
   - 棄却理由: FRG 系列の内側だけを延長しても、Paper IV 側の observable / R / calibration の問題と切り分けられない
