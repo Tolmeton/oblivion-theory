@@ -117,10 +117,12 @@
 
 ### C3-core
 - 野望: Pauli 排他律から `A(n)=A(n-1)\sqcup A(n-2)` を導き、Cor. F2.2 として `growth rate = φ` を seed 非依存に押す
-- 現在まだ虚な点: `ℤ₂→ℕ` の正準持ち上げと連続極限リフトは未閉。seed も concrete sequence の面では未確定
+- 現在まだ虚な点: `ℤ₂→ℕ` の正準持ち上げは未閉。seed も concrete sequence の面では未確定。連続極限リフトは Open C: lax monoidal coherence の defect 2-cell 同定として再精密化済み。1-functor 部分と chain-map 部分は閉じた (Theorem A / B, body §4.4 同期済み)。残るのは合成ドリフト δ を Čech 型 2-cocycle κ として連続側で同定する 3 路線 (橋梁公理 / 弱*連続測度族 / Discretizable+DescendsToCube)。
 - 実へ引くための SOURCE: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文0_忘却の忘却_草稿.md` §2.2a、`/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文XIV_曲率は忘却の繰り上がりである_草稿.md` §7.3
 - 実化の判定条件: recurrence が補題列で支えられ、`φ` の主張が concrete sequence から独立に防衛できる
-- 次の実化操作: 補題 F2.1c の内部構成と seed 決定を切り分け、先に `ℤ₂→ℕ` の bridge を閉じる
+- 次の実化操作:
+  - 補題 F2.1c の内部構成と seed 決定を切り分け、先に `ℤ₂→ℕ` の bridge を閉じる
+  - Open C の 3 路線のいずれかで部分的閉鎖を試みる。最ローリスクは路線 1 (`ZeroForgetCollapse` 橋梁公理) — 局所固定だが well-defined な追加。路線 2 (`μ_λ` 弱*連続) と路線 3 (Strategy B) は automath repo との Lean 4 連携が必要
 - 最新状態: 変換中
 
 ## §M7 棄却された代替案
