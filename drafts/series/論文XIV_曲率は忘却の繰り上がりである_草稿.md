@@ -272,7 +272,7 @@ OP-I-2 の連続極限リフトは、`関手の合成保存問題の再定式化
 
 Open C は単一の問題だが、3 つの独立な実装路線を持つ:
 
-1. **路線 1 (橋梁公理)**: `ZeroForgetCollapse` を採用し (d)→(e) を局所固定する。これは `\delta=0` から Boolean 回復が自動ではないというギャップを、橋梁公理として明示的に塞ぐ路線である [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/三者対応辞書.md L166] [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/三者対応辞書.md L270]。
+1. **路線 1 (古典圏論限定の橋梁公理)**: `ZeroForgetCollapse` を **α=0 古典圏論文脈に限定した独立公理** として採用し (d)→(e) を局所固定する。これは `\delta=0` から Boolean 回復が自動ではないというギャップを、橋梁公理として明示的に塞ぐ路線である [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/三者対応辞書.md L166] [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/三者対応辞書.md L270]。射程明示: ZFC は古典圏論文脈での独立公理であり、α=1 (完全忘却 / Paper IX §3.5(ii)) 経路、Lawvere Boolean topos 経路、HoTT 経路、Smithe Bayesian lens 合成経路の 4 派生候補が completion した時点で派生定理に格下げされる (`三者対応辞書.md` §7.5 OP-S05-3.1〜3.4 として ledger 化)。
 
 2. **路線 2 (極限戦略)**: $\{0,1\}^{\mathbb{N}}$ を固定 ambient profinite として、$\lambda$-依存弱*連続測度族 $\mu_\lambda$ を構成する。これは $X_\infty(\lambda)$ 自体を動かす案ではなく、期待値の連続変形を問う路線である [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/三者対応辞書.md L196] [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/三者対応辞書.md L208]。
 

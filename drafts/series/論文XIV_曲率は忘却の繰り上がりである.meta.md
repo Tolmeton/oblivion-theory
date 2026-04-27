@@ -130,7 +130,9 @@
 - 実化の判定条件: recurrence が補題列で支えられ、`φ` の主張が concrete sequence から独立に防衛できる
 - 次の実化操作:
   - 補題 F2.1c の内部構成と seed 決定を切り分け、先に `ℤ₂→ℕ` の bridge を閉じる
-  - Open C の 3 路線のいずれかで部分的閉鎖を試みる。最ローリスクは路線 1 (`ZeroForgetCollapse` 橋梁公理) — 局所固定だが well-defined な追加。路線 2 (`μ_λ` 弱*連続) と路線 3 (Strategy B) は automath repo との Lean 4 連携が必要
+  - Open C の 3 路線のいずれかで部分的閉鎖を試みる。**路線 1 (`ZeroForgetCollapse`) は α=0 古典圏論文脈に限定した独立公理として採用** — 局所固定だが well-defined な追加。/ele 反駁 (2026-04-27) で 4 派生候補経路 (Lawvere Boolean topos / Paper IX α=1 / HoTT / Smithe Bayesian lens 合成) が露出したため、ZFC は **古典圏論限定の独立公理 + 派生候補ロードマップ** として位置づける。各派生候補が completion した時点で ZFC は派生定理に格下げされる
+  - 派生候補 4 経路は `三者対応辞書.md` §7.5 OP-S05-3.1〜3.4 として ledger 化
+  - 路線 2 (`μ_λ` 弱*連続) と路線 3 (Strategy B) は automath repo との Lean 4 連携が必要
 - 最新状態: 変換中
 
 ## §M7 棄却された代替案
