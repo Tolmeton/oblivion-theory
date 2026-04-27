@@ -89,6 +89,14 @@
 - 前提強化: 命題 F2.1 を recurrence、系 F2.2 を seed 非依存の漸近主張として露出させる。seed debt は tower 全体の具体列に限定し、`growth rate = φ` から切り離す
 - 結果: 射程維持 ✓ — `φ` は「種が決まったら出る数」ではなく、「再帰が立った時点で出る支配根」として防衛可能になった
 
+### C3-core — 2026-04-27 Round 4 (連続極限リフトの再精密化)
+- 反論 r: 「連続極限リフトを Open C: lax monoidal coherence の defect 2-cell 同定に再精密化し、3 路線 (橋梁公理 / 弱*連続測度族 / Discretizable+DescendsToCube) に分けるのは、単一の未解決問題を 3 つに分割しただけの責務再配分であり、実質的前進ではない」
+- SFBT: できないのではなく、何が閉じて何が残ったかを区別していないだけではないか?
+- 試行: 問題位相の 1 段下げを 2 つの操作に分解 — (a) 既に閉じている部分の露出 (Theorem A: strict 1-functor on `CubeExp_proj` with `restrict_functorial` Lean witness, Theorem B: chain-map on multilinear obs as cubical cochain-level theorem)、(b) 残る未解決の正確な型付け (Open C: lax monoidal coherence — 求める型は ordinary functor ではなく lax monoidal functor / pseudofunctor、bridge essay §2.4 confessed)
+- 実化操作: SOURCE 追加 (関手の合成保存問題_再定式化.md L8-23 / 曲率は忘却のcarryである_草稿.md L99-105 / 三者対応辞書.md §2.B-§2.C) + body §4.4 の 3 段分離 + body §5.3 の Open C と 3 路線統合 + meta §M6 C3-core の精密化 (commit 27f6009)。3 路線は「責務の再配分」ではなく Open C への並列攻略経路であり、最ローリスク路線 1 (橋梁公理) は局所固定 / 路線 2-3 は段階的閉鎖戦略
+- 虚→実判定: 実化前進 ✓ — 「連続極限リフトは未閉」(粗い虚) → 「Open C: composition drift δ ↔ Čech 型 2-cocycle κ の連続側同定」(precise 虚) + Theorem A/B の閉鎖を露出
+- 結果: 射程維持 ✓ — C3-core の射程は変わらず、虚な点が「単一の粗い未解決」から「閉じた部分 + 並列攻略経路を持つ残未解決」に分解された
+
 ## §M6 虚→実変換面
 
 ### C1
