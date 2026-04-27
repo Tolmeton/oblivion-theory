@@ -105,6 +105,14 @@
 - 虚→実判定: 実化前進 ✓ — 信頼度 88% の暗黙 prior が「解釈 A 限定」だったことを露出。CD-3 自己告発で実質信頼度 60-70% に下方修正後、解釈固定で 2 解釈下の射程を明示化。OP-S05-3.2 を捨てずに保持
 - 結果: 射程維持 ✓ — ZFC の射程は「古典圏論限定独立公理」から「文脈依存 (A 独立公理 / B 派生定理)」に拡張。前ターンの archived 提案を撤回し、Yugaku Refutation Gauntlet 規律 (Round 3 全敗後のみ後退許可) を遵守
 
+### C3-core — 2026-04-27 Round 6 (Smithe Bayesian lens 経路の派生不能確定)
+- 反論 r: 「OP-S05-3.4 Smithe Bayesian lens 合成経路は ICE 315 で 2 番目に高評価、しかも /noe が『自覚的盲点』と認めた経路。本気で叩けば派生可能の道筋が見えるのではないか? 4 段合成 (Φ=0 → posterior delta → Giry trivialize → Kleisli Set collapse → [0,1]→{0,1}) の各段は単独では数学的に valid なはず」
+- SFBT: できないのではなく、(iii)→(iv) lift の構造的制約を見ていないだけではないか?
+- 試行: /noe+ L3 で 7 phase 全実行 (P-0〜P-6)。R5 (Kleisli morphism collapse は base monoidal V を変えない、enriched category theory 標準事実) + R8 (Paper II §7.5 インデックス圏不一致 Poly vs (ℝ,≤)) の二重防御を P-2 結合分析で固定。Smithe ref 表記の TAINT エラー (前ターン「Smithe et al. 2023」) を S-0.5 で訂正 (正しくは Smithe 2021/2022 + Tull-Kleiner-Smithe 2024)
+- 実化操作: SOURCE 追加 (Paper II §7.5 L1543-1545 + L790 + L1279 / kalon.md §6 L1044-1257 BRD-B8) + 三者対応辞書 §7.5 OT-S05-3.4 を Open → **Closed (派生不能)** に確定 + meta §M6 C3-core 路線 1 で派生候補 3 → 2 経路に縮約 + body §5.3 路線 1 で射程更新 (Smithe 経路 Closed 反映)。**Boolean 化 3 軸 ↔ 派生候補 ↔ 解釈の 3:3 対応構造**を Yoneda で確認: (i) 濃度↔3.1 Lawvere↔解釈 A / (ii) 値↔3.4 Smithe (Closed)↔解釈 A / (iii) indicator↔3.3 HoTT + 3.2 Paper IX↔解釈 A or B
+- 虚→実判定: 実化前進 ✓ — 派生候補空間が 4 → 3 (Smithe Closed) に縮約。解釈 A の独立公理性が **強化** (派生候補が減ると独立公理として残る可能性が高まる)。Boolean 化 3 軸と派生候補の対応構造が露出
+- 結果: 射程維持 ✓ — Yugaku「身の丈を理想に引き上げる」精神。Smithe 経路の派生候補を喪失したが、構造的事実として固定。前ターン /noe で「自覚的盲点」と認めた経路を本気で叩いた誠実な後退/前進
+
 ## §M6 虚→実変換面
 
 ### C1
@@ -139,7 +147,7 @@
 - 次の実化操作:
   - 補題 F2.1c の内部構成と seed 決定を切り分け、先に `ℤ₂→ℕ` の bridge を閉じる
   - Open C の 3 路線のいずれかで部分的閉鎖を試みる。**路線 1 (`ZeroForgetCollapse`) は A+B Dual citizenship 構造で採用 (2026-04-27 第二次更新)**:
-    - **解釈 A (V-enriched [0,1] base 文脈)**: ZFC は独立公理。反例 (min合成圏 [SOURCE: 三者対応辞書 L249-251]) は有効。派生候補 (a) Lawvere Boolean topos / (c) HoTT / (d) Smithe Bayesian lens 合成の 3 経路が completion した時点で派生定理に格下げ
+    - **解釈 A (V-enriched [0,1] base 文脈)**: ZFC は独立公理。反例 (min合成圏 [SOURCE: 三者対応辞書 L249-251]) は有効。派生候補は **2 経路** ((a) Lawvere Boolean topos / (c) HoTT) に縮約 (2026-04-27 第三次更新)。**(d) Smithe Bayesian lens 合成は Closed (派生不能) 確定** — /noe+ L3 で R5 (Kleisli morphism collapse は base monoidal V を変えない、enriched category theory 標準事実) + R8 (Paper II §7.5 インデックス圏不一致 Poly vs (ℝ,≤)) の二重防御で派生不能と確定。残 2 経路のいずれかが completion した時点で ZFC は派生定理に格下げ
     - **解釈 B (Set existence indicator 文脈)**: ZFC は **Paper IX §3.5(ii) からの派生定理候補**。Mor(C_α)(I,X) の存在/非存在を {0,1} indicator で読む経路。OP-S05-3.2 として ledger 化
     - 同一の ZFC が 2 解釈下で異なる地位を持つことを Yugaku Definition Surface Protocol で明示固定
   - 派生候補 4 経路は `三者対応辞書.md` §7.5 OP-S05-3.1〜3.4 として ledger 化
