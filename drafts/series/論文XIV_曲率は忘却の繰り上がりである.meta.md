@@ -97,6 +97,14 @@
 - 虚→実判定: 実化前進 ✓ — 「連続極限リフトは未閉」(粗い虚) → 「Open C: composition drift δ ↔ Čech 型 2-cocycle κ の連続側同定」(precise 虚) + Theorem A/B の閉鎖を露出
 - 結果: 射程維持 ✓ — C3-core の射程は変わらず、虚な点が「単一の粗い未解決」から「閉じた部分 + 並列攻略経路を持つ残未解決」に分解された
 
+### C3-core — 2026-04-27 Round 5 (ZFC Boolean 化の 3 軸発見と Dual citizenship 採用)
+- 反論 r: 「OP-S05-3.2 (Paper IX α=1 経路) を /noe で『派生不能』と結論したが (信頼度 88%)、Tolmetes の信頼問いを契機に再走査すると、`Boolean 化』の意味を 2 軸 (値 vs 濃度) に二分したのは不完全。3 軸目 (Hom 集合の濃度を {0,1} indicator として読む経路) を見落としており、CD-3 確証バイアスの可能性。前ターン archived 提案は時期尚早」
+- SFBT: できないのではなく、ZFC の発動条件における Boolean 化の意味を解釈未固定で進めていただけではないか?
+- 試行: Definition Surface Protocol [SOURCE: ~/.claude/rules/dialogue-definition-surface.md] に従い、Boolean 化を 3 軸で再定義 — (i) Hom 集合の濃度 / (ii) Hom 集合内の射の値 / (iii) Hom 集合の存在 indicator。ZFC の解釈を 2 候補に分離 — 解釈 A (V-enriched [0,1] base): 反例 min合成圏が有効 / 解釈 B (Set existence indicator): Paper IX §3.5(ii) で派生可能。Tolmetes 判断で **A+B Dual citizenship** 採用
+- 実化操作: meta §M6 C3-core 路線 1 を Dual citizenship 構造に再記述 + 三者対応辞書 §7.5 OT-S05-3 を A 文脈 / B 文脈の二重 ledger に分離 + Paper XIV body §5.3 路線 1 で射程明示。OP-S05-3.2 は archived ではなく **解釈 B での派生定理候補** として保持。ZFC は文脈依存の 2 重市民権を持つ
+- 虚→実判定: 実化前進 ✓ — 信頼度 88% の暗黙 prior が「解釈 A 限定」だったことを露出。CD-3 自己告発で実質信頼度 60-70% に下方修正後、解釈固定で 2 解釈下の射程を明示化。OP-S05-3.2 を捨てずに保持
+- 結果: 射程維持 ✓ — ZFC の射程は「古典圏論限定独立公理」から「文脈依存 (A 独立公理 / B 派生定理)」に拡張。前ターンの archived 提案を撤回し、Yugaku Refutation Gauntlet 規律 (Round 3 全敗後のみ後退許可) を遵守
+
 ## §M6 虚→実変換面
 
 ### C1
@@ -130,10 +138,13 @@
 - 実化の判定条件: recurrence が補題列で支えられ、`φ` の主張が concrete sequence から独立に防衛できる
 - 次の実化操作:
   - 補題 F2.1c の内部構成と seed 決定を切り分け、先に `ℤ₂→ℕ` の bridge を閉じる
-  - Open C の 3 路線のいずれかで部分的閉鎖を試みる。**路線 1 (`ZeroForgetCollapse`) は α=0 古典圏論文脈に限定した独立公理として採用** — 局所固定だが well-defined な追加。/ele 反駁 (2026-04-27) で 4 派生候補経路 (Lawvere Boolean topos / Paper IX α=1 / HoTT / Smithe Bayesian lens 合成) が露出したため、ZFC は **古典圏論限定の独立公理 + 派生候補ロードマップ** として位置づける。各派生候補が completion した時点で ZFC は派生定理に格下げされる
+  - Open C の 3 路線のいずれかで部分的閉鎖を試みる。**路線 1 (`ZeroForgetCollapse`) は A+B Dual citizenship 構造で採用 (2026-04-27 第二次更新)**:
+    - **解釈 A (V-enriched [0,1] base 文脈)**: ZFC は独立公理。反例 (min合成圏 [SOURCE: 三者対応辞書 L249-251]) は有効。派生候補 (a) Lawvere Boolean topos / (c) HoTT / (d) Smithe Bayesian lens 合成の 3 経路が completion した時点で派生定理に格下げ
+    - **解釈 B (Set existence indicator 文脈)**: ZFC は **Paper IX §3.5(ii) からの派生定理候補**。Mor(C_α)(I,X) の存在/非存在を {0,1} indicator で読む経路。OP-S05-3.2 として ledger 化
+    - 同一の ZFC が 2 解釈下で異なる地位を持つことを Yugaku Definition Surface Protocol で明示固定
   - 派生候補 4 経路は `三者対応辞書.md` §7.5 OP-S05-3.1〜3.4 として ledger 化
   - 路線 2 (`μ_λ` 弱*連続) と路線 3 (Strategy B) は automath repo との Lean 4 連携が必要
-- 最新状態: 変換中
+- 最新状態: 変換中 (2026-04-27 /noe + /ele Round 5 を経て Dual citizenship 採用)
 
 ## §M7 棄却された代替案
 
