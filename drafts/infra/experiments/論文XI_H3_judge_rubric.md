@@ -1,7 +1,7 @@
 # 論文XI — H3 clean-room judge rubric
 
-**対象**: `/home/makaron8426/Sync/oikos/oblivion-theory/experiments/paper_xi_h3_prompt_pairs.skeleton.jsonl`
-**親計画**: `/home/makaron8426/Sync/oikos/oblivion-theory/drafts/infra/experiments/論文XI_H3_clean_room_replication_plan.md`
+**対象**: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/paper_xi_h3_prompt_pairs.skeleton.jsonl`
+**親計画**: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/infra/experiments/論文XI_H3_clean_room_replication_plan.md`
 **役割**: H3 clean-room replication で、A/B の表記差を品質差と誤読しないための judge 契約を固定する。
 
 ## P-0 判定対象

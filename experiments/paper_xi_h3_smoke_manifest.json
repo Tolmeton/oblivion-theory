@@ -1,9 +1,12 @@
 {
   "manifest_name": "paper_xi_h3_smoke_v1",
   "created_at": "2026-04-29",
-  "parent_manifest": "/home/makaron8426/Sync/oikos/oblivion-theory/experiments/paper_xi_h3_clean_room_manifest.json",
-  "dry_run_packet": "/home/makaron8426/Sync/oikos/oblivion-theory/experiments/results/paper_xi_h3_H3-PH-01_dry_run_packet.json",
-  "output_file": "/home/makaron8426/Sync/oikos/oblivion-theory/experiments/results/paper_xi_h3_H3-PH-01_smoke_results.jsonl",
+  "control_plane": "CLI_ONLY",
+  "api_policy": "APIs are allowed only as CLI-runner backends. Browser/UI execution is out of scope.",
+  "allowed_api_backends": ["nvidia_nim", "google_vertex"],
+  "parent_manifest": "/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/paper_xi_h3_clean_room_manifest.json",
+  "dry_run_packet": "/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/results/paper_xi_h3_H3-PH-01_dry_run_packet.json",
+  "output_file": "/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/results/paper_xi_h3_H3-PH-01_smoke_results.jsonl",
   "task_id": "H3-PH-01",
   "input_id": "H3-PH-01.synthetic.v1",
   "run_scope": {
@@ -13,9 +16,16 @@
     "expected_generations": 2
   },
   "provider_candidate": {
-    "provider": "openai",
-    "model": "gpt-4o-mini",
-    "status": "blocked_until_OPENAI_API_KEY_is_set"
+    "provider": "nvidia",
+    "model": "select_before_run_or_set_NVIDIA_MODEL",
+    "status": "blocked_until_NVIDIA_API_KEY_and_model_are_set"
+  },
+  "vertex_candidate": {
+    "provider": "vertex",
+    "model": "select_before_run_or_set_VERTEX_MODEL",
+    "required_env": ["GOOGLE_CLOUD_PROJECT", "GOOGLE_CLOUD_LOCATION"],
+    "auth": "Application Default Credentials or GOOGLE_APPLICATION_CREDENTIALS",
+    "status": "allowed_if_available"
   },
   "generation_contract": {
     "temperature": 0,
@@ -29,5 +39,5 @@
     "pass": "Both A and B return nonempty responses with the required four-section contract and no API/runtime schema failure.",
     "fail": "Any condition fails to return, leaks external-tool behavior, ignores the output contract, or runner output is not valid JSONL."
   },
-  "status": "blocked_until_api_key"
+  "status": "blocked_until_api_key_and_model"
 }

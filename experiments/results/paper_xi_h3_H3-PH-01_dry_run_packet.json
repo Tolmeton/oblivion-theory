@@ -26,7 +26,7 @@
     "encoding": "structural_notation",
     "prompt": "<task_contract><goal>Audit the input argument by separating claim, evidence, and falsification condition.</goal><constraints><external_sources>forbidden</external_sources><new_facts_not_in_input>forbidden</new_facts_not_in_input><answer_surface>four_sections</answer_surface></constraints><output>S1 Answer; S2 Reasons; S3 Uncertainty; S4 Failure condition</output></task_contract><input>Claim: A decision rule is explanatory when it tells the evaluator what would change the verdict, not only what label to assign. Evidence: In a pilot review, two evaluators used different labels for the same argument but changed their verdict only when a falsification condition was added. Falsification condition: If label changes alone make evaluators reverse the verdict while the evidence and falsification condition stay fixed, the rule is not separating explanation from presentation.</input>"
   },
-  "judge_rubric": "/home/makaron8426/Sync/oikos/oblivion-theory/drafts/infra/experiments/論文XI_H3_judge_rubric.md",
+  "judge_rubric": "/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/infra/experiments/論文XI_H3_judge_rubric.md",
   "c_e_audit": {
     "goal": "fixed",
     "procedure": "fixed",

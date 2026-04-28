@@ -164,7 +164,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--manifest",
         type=Path,
-        default=Path("/home/makaron8426/Sync/oikos/oblivion-theory/experiments/paper_xi_h3_clean_room_manifest.json"),
+        default=Path("/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/paper_xi_h3_clean_room_manifest.json"),
     )
     parser.add_argument("--task-id", default=None)
     parser.add_argument("--input-id", default=None)
