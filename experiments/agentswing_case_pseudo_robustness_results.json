@@ -1,0 +1,973 @@
+{
+  "source_input": "/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/agentswing_case_pseudo_trajectories.json",
+  "estimator": "/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/20_機構｜Mekhane/_src｜ソースコード/mekhane/lethe/handoff_drift_estimator.py",
+  "status": "robustness test for manual pseudo front assignment; not raw AgentSwing logs",
+  "perturbation": {
+    "trials": 5000,
+    "seed": 20260426,
+    "front_delta": [
+      -1,
+      0,
+      1
+    ],
+    "sampling": "independent integer delta per turn for carrier_front and null_front",
+    "repair": "clamp to valid unit index, then cumulative max monotone repair",
+    "estimator_parameters": {
+      "mode": "slot",
+      "p": 0.5,
+      "kappa_c": 0.5,
+      "epsilon": 0.2
+    }
+  },
+  "case_criteria": {
+    "mando_kln_low_chi": "mando_KLN chi < 1",
+    "mando_kln_lowest_chi": "mando_KLN has the lowest chi among Mando branches",
+    "mando_kln_highest_v_carrier": "mando_KLN has highest V_carrier among Mando branches",
+    "live_da_high_chi": "live_crickets_DA chi > 1",
+    "live_da_chi_lower_than_kln": "live_crickets_DA chi < live_crickets_KLN chi",
+    "live_da_v_carrier_ge_kln": "live_crickets_DA V_carrier >= live_crickets_KLN V_carrier",
+    "live_da_combined_controlled": "DA chi > 1, DA chi < KLN chi, and DA V_carrier >= KLN V_carrier",
+    "both_selected_expected_regime": "Mando selected KLN chi < 1 and live-crickets selected DA chi > 1"
+  },
+  "case_pass_rates": {
+    "mando_kln_low_chi": 1.0,
+    "mando_kln_lowest_chi": 0.8436,
+    "mando_kln_highest_v_carrier": 0.6976,
+    "live_da_high_chi": 0.5972,
+    "live_da_chi_lower_than_kln": 0.6994,
+    "live_da_v_carrier_ge_kln": 0.9046,
+    "live_da_combined_controlled": 0.3246,
+    "both_selected_expected_regime": 0.5972
+  },
+  "pair_summary": {
+    "mando_DA_lookahead": {
+      "chi": {
+        "mean": 6764287.302685714,
+        "median": 1.5,
+        "p10": 0.6666666666666666,
+        "p90": 4.0,
+        "min": 0.3333333333333333,
+        "max": 142857142.85714284,
+        "rate_gt_1": 0.6434,
+        "rate_gt_10": 0.0718
+      },
+      "v_carrier": {
+        "mean": 0.8912,
+        "median": 1.0,
+        "p10": 0.5,
+        "p90": 1.5,
+        "min": 0.0,
+        "max": 1.5,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      },
+      "v_null": {
+        "mean": 1.2922642857142856,
+        "median": 1.5,
+        "p10": 0.5,
+        "p90": 2.0,
+        "min": 0.035714285714285754,
+        "max": 2.0,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      },
+      "max_turn_chi": {
+        "mean": 970228572.2726713,
+        "median": 214285714.2857143,
+        "p10": 1.0,
+        "p90": 3000000000.0,
+        "min": 0.3333333333333333,
+        "max": 3999999999.9999995,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      }
+    },
+    "mando_KLN_lookahead": {
+      "chi": {
+        "mean": 0.2003754761904762,
+        "median": 0.16666666666666666,
+        "p10": 0.0,
+        "p90": 0.42857142857142855,
+        "min": 0.0,
+        "max": 0.75,
+        "rate_gt_1": 0.0,
+        "rate_gt_10": 0.0
+      },
+      "v_carrier": {
+        "mean": 2.1532285714285715,
+        "median": 2.5,
+        "p10": 0.21428571428571427,
+        "p90": 3.5,
+        "min": 0.14285714285714285,
+        "max": 4.0,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      },
+      "v_null": {
+        "mean": 0.5794,
+        "median": 0.5,
+        "p10": 0.0,
+        "p90": 1.5,
+        "min": 0.0,
+        "max": 1.5,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      },
+      "max_turn_chi": {
+        "mean": 0.42546000000000006,
+        "median": 0.3333333333333333,
+        "p10": 0.0,
+        "p90": 1.0,
+        "min": 0.0,
+        "max": 3.0,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      }
+    },
+    "mando_Summary_lookahead": {
+      "chi": {
+        "mean": 3450000.8457333334,
+        "median": 1.0,
+        "p10": 0.0,
+        "p90": 3.0,
+        "min": 0.0,
+        "max": 107142857.14285715,
+        "rate_gt_1": 0.2716,
+        "rate_gt_10": 0.0566
+      },
+      "v_carrier": {
+        "mean": 0.7407714285714285,
+        "median": 1.0,
+        "p10": 0.03571428571428571,
+        "p90": 1.5,
+        "min": 0.0,
+        "max": 1.5,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      },
+      "v_null": {
+        "mean": 0.69245,
+        "median": 0.5,
+        "p10": 0.0,
+        "p90": 1.5,
+        "min": 0.0,
+        "max": 1.5,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      },
+      "max_turn_chi": {
+        "mean": 527485714.8363476,
+        "median": 2.0,
+        "p10": 0.0,
+        "p90": 1999999999.9999998,
+        "min": 0.0,
+        "max": 3000000000.0,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      }
+    },
+    "live_crickets_DA_lookahead": {
+      "chi": {
+        "mean": 1.5366033333333333,
+        "median": 1.3333333333333333,
+        "p10": 0.75,
+        "p90": 2.5,
+        "min": 0.4,
+        "max": 6.0,
+        "rate_gt_1": 0.5972,
+        "rate_gt_10": 0.0
+      },
+      "v_carrier": {
+        "mean": 1.5568,
+        "median": 1.5,
+        "p10": 1.0,
+        "p90": 2.5,
+        "min": 0.5,
+        "max": 2.5,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      },
+      "v_null": {
+        "mean": 2.0109,
+        "median": 2.0,
+        "p10": 1.0,
+        "p90": 3.0,
+        "min": 1.0,
+        "max": 3.0,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      },
+      "max_turn_chi": {
+        "mean": 878000001.2214833,
+        "median": 3.0,
+        "p10": 1.0,
+        "p90": 3000000000.0,
+        "min": 0.5,
+        "max": 3999999999.9999995,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      }
+    },
+    "live_crickets_KLN_lookahead": {
+      "chi": {
+        "mean": 11300002.104799999,
+        "median": 2.0,
+        "p10": 1.0,
+        "p90": 5.0,
+        "min": 0.6666666666666666,
+        "max": 208333333.3333333,
+        "rate_gt_1": 0.8572,
+        "rate_gt_10": 0.073
+      },
+      "v_carrier": {
+        "mean": 0.893,
+        "median": 1.0,
+        "p10": 0.5,
+        "p90": 1.5,
+        "min": 0.0,
+        "max": 1.5,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      },
+      "v_null": {
+        "mean": 1.7171,
+        "median": 2.0,
+        "p10": 1.0,
+        "p90": 2.5,
+        "min": 0.08333333333333331,
+        "max": 2.5,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      },
+      "max_turn_chi": {
+        "mean": 1235833334.0988667,
+        "median": 999999999.9999999,
+        "p10": 2.0,
+        "p90": 3000000000.0,
+        "min": 0.6666666666666666,
+        "max": 3999999999.9999995,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      }
+    },
+    "live_crickets_Summary_lookahead": {
+      "chi": {
+        "mean": 6916667.726566666,
+        "median": 1.0,
+        "p10": 0.3333333333333333,
+        "p90": 3.0,
+        "min": 0.0,
+        "max": 166666666.6666667,
+        "rate_gt_1": 0.3772,
+        "rate_gt_10": 0.0724
+      },
+      "v_carrier": {
+        "mean": 0.9793583333333334,
+        "median": 1.0,
+        "p10": 0.08333333333333333,
+        "p90": 2.0,
+        "min": 0.0,
+        "max": 2.0,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      },
+      "v_null": {
+        "mean": 0.9863166666666666,
+        "median": 1.0,
+        "p10": 0.08333333333333331,
+        "p90": 2.0,
+        "min": 0.0,
+        "max": 2.0,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      },
+      "max_turn_chi": {
+        "mean": 596533334.0362666,
+        "median": 2.0,
+        "p10": 0.5,
+        "p90": 1999999999.9999998,
+        "min": 0.0,
+        "max": 3000000000.0,
+        "rate_gt_1": null,
+        "rate_gt_10": null
+      }
+    }
+  },
+  "trial_samples_first_25": [
+    {
+      "trial": 0,
+      "chi": {
+        "mando_DA_lookahead": 2.0,
+        "mando_KLN_lookahead": 0.4,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 1.0,
+        "live_crickets_KLN_lookahead": 2.5,
+        "live_crickets_Summary_lookahead": 2.0
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 1.0,
+        "mando_KLN_lookahead": 2.5,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 0.5
+      },
+      "v_null": {
+        "mando_DA_lookahead": 2.0,
+        "mando_KLN_lookahead": 1.0,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 2.5,
+        "live_crickets_Summary_lookahead": 1.0
+      }
+    },
+    {
+      "trial": 1,
+      "chi": {
+        "mando_DA_lookahead": 2.0,
+        "mando_KLN_lookahead": 0.42857142857142855,
+        "mando_Summary_lookahead": 0.6666666666666666,
+        "live_crickets_DA_lookahead": 0.6666666666666666,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 0.5
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 0.5,
+        "mando_KLN_lookahead": 3.5,
+        "mando_Summary_lookahead": 1.5,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 1.0
+      },
+      "v_null": {
+        "mando_DA_lookahead": 1.0,
+        "mando_KLN_lookahead": 1.5,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 1.0,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 0.5
+      }
+    },
+    {
+      "trial": 2,
+      "chi": {
+        "mando_DA_lookahead": 71428571.42857145,
+        "mando_KLN_lookahead": 0.75,
+        "mando_Summary_lookahead": 0.0,
+        "live_crickets_DA_lookahead": 4.0,
+        "live_crickets_KLN_lookahead": 2.0,
+        "live_crickets_Summary_lookahead": 1.5
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 0.0,
+        "mando_KLN_lookahead": 2.0,
+        "mando_Summary_lookahead": 0.07142857142857142,
+        "live_crickets_DA_lookahead": 0.5,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 1.0
+      },
+      "v_null": {
+        "mando_DA_lookahead": 0.07142857142857145,
+        "mando_KLN_lookahead": 1.5,
+        "mando_Summary_lookahead": 0.0,
+        "live_crickets_DA_lookahead": 2.0,
+        "live_crickets_KLN_lookahead": 2.0,
+        "live_crickets_Summary_lookahead": 1.5
+      }
+    },
+    {
+      "trial": 3,
+      "chi": {
+        "mando_DA_lookahead": 3.0,
+        "mando_KLN_lookahead": 0.0,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 1.0,
+        "live_crickets_KLN_lookahead": 1.5,
+        "live_crickets_Summary_lookahead": 41666666.66666668
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 0.5,
+        "mando_KLN_lookahead": 0.25,
+        "mando_Summary_lookahead": 0.5,
+        "live_crickets_DA_lookahead": 2.0,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 0.0
+      },
+      "v_null": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 0.0,
+        "mando_Summary_lookahead": 0.5,
+        "live_crickets_DA_lookahead": 2.0,
+        "live_crickets_KLN_lookahead": 1.5,
+        "live_crickets_Summary_lookahead": 0.041666666666666685
+      }
+    },
+    {
+      "trial": 4,
+      "chi": {
+        "mando_DA_lookahead": 0.6666666666666666,
+        "mando_KLN_lookahead": 0.14285714285714285,
+        "mando_Summary_lookahead": 0.5,
+        "live_crickets_DA_lookahead": 2.0,
+        "live_crickets_KLN_lookahead": 4.0,
+        "live_crickets_Summary_lookahead": 4.0
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 3.5,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 1.0,
+        "live_crickets_KLN_lookahead": 0.5,
+        "live_crickets_Summary_lookahead": 0.5
+      },
+      "v_null": {
+        "mando_DA_lookahead": 1.0,
+        "mando_KLN_lookahead": 0.5,
+        "mando_Summary_lookahead": 0.5,
+        "live_crickets_DA_lookahead": 2.0,
+        "live_crickets_KLN_lookahead": 2.0,
+        "live_crickets_Summary_lookahead": 2.0
+      }
+    },
+    {
+      "trial": 5,
+      "chi": {
+        "mando_DA_lookahead": 0.6666666666666666,
+        "mando_KLN_lookahead": 0.6,
+        "mando_Summary_lookahead": 3.0,
+        "live_crickets_DA_lookahead": 0.75,
+        "live_crickets_KLN_lookahead": 4.0,
+        "live_crickets_Summary_lookahead": 0.5
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 2.5,
+        "mando_Summary_lookahead": 0.5,
+        "live_crickets_DA_lookahead": 2.0,
+        "live_crickets_KLN_lookahead": 0.5,
+        "live_crickets_Summary_lookahead": 2.0
+      },
+      "v_null": {
+        "mando_DA_lookahead": 1.0,
+        "mando_KLN_lookahead": 1.5,
+        "mando_Summary_lookahead": 1.5,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 2.0,
+        "live_crickets_Summary_lookahead": 1.0
+      }
+    },
+    {
+      "trial": 6,
+      "chi": {
+        "mando_DA_lookahead": 2.0,
+        "mando_KLN_lookahead": 0.0,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 1.3333333333333333,
+        "live_crickets_KLN_lookahead": 2.0,
+        "live_crickets_Summary_lookahead": 0.75
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 1.0,
+        "mando_KLN_lookahead": 0.24999999999999997,
+        "mando_Summary_lookahead": 0.5,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 0.5,
+        "live_crickets_Summary_lookahead": 2.0
+      },
+      "v_null": {
+        "mando_DA_lookahead": 2.0,
+        "mando_KLN_lookahead": 0.0,
+        "mando_Summary_lookahead": 0.5,
+        "live_crickets_DA_lookahead": 2.0,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 1.5
+      }
+    },
+    {
+      "trial": 7,
+      "chi": {
+        "mando_DA_lookahead": 2.0,
+        "mando_KLN_lookahead": 0.14285714285714285,
+        "mando_Summary_lookahead": 0.0,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 2.5,
+        "live_crickets_Summary_lookahead": 0.5
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 0.5,
+        "mando_KLN_lookahead": 3.5,
+        "mando_Summary_lookahead": 0.07142857142857142,
+        "live_crickets_DA_lookahead": 1.0,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 1.0
+      },
+      "v_null": {
+        "mando_DA_lookahead": 1.0,
+        "mando_KLN_lookahead": 0.5,
+        "mando_Summary_lookahead": 0.0,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 2.5,
+        "live_crickets_Summary_lookahead": 0.5
+      }
+    },
+    {
+      "trial": 8,
+      "chi": {
+        "mando_DA_lookahead": 0.6666666666666666,
+        "mando_KLN_lookahead": 0.5,
+        "mando_Summary_lookahead": 1.5,
+        "live_crickets_DA_lookahead": 1.6666666666666667,
+        "live_crickets_KLN_lookahead": 1.6666666666666667,
+        "live_crickets_Summary_lookahead": 3.0
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 2.0,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 1.5,
+        "live_crickets_Summary_lookahead": 0.5
+      },
+      "v_null": {
+        "mando_DA_lookahead": 1.0,
+        "mando_KLN_lookahead": 1.0,
+        "mando_Summary_lookahead": 1.5,
+        "live_crickets_DA_lookahead": 2.5,
+        "live_crickets_KLN_lookahead": 2.5,
+        "live_crickets_Summary_lookahead": 1.5
+      }
+    },
+    {
+      "trial": 9,
+      "chi": {
+        "mando_DA_lookahead": 107142857.14285715,
+        "mando_KLN_lookahead": 0.0,
+        "mando_Summary_lookahead": 0.0,
+        "live_crickets_DA_lookahead": 1.3333333333333333,
+        "live_crickets_KLN_lookahead": 1.5,
+        "live_crickets_Summary_lookahead": 0.0
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 0.0,
+        "mando_KLN_lookahead": 0.25,
+        "mando_Summary_lookahead": 0.10714285714285714,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 0.08333333333333333
+      },
+      "v_null": {
+        "mando_DA_lookahead": 0.10714285714285715,
+        "mando_KLN_lookahead": 0.0,
+        "mando_Summary_lookahead": 0.0,
+        "live_crickets_DA_lookahead": 2.0,
+        "live_crickets_KLN_lookahead": 1.5,
+        "live_crickets_Summary_lookahead": 0.0
+      }
+    },
+    {
+      "trial": 10,
+      "chi": {
+        "mando_DA_lookahead": 3.0,
+        "mando_KLN_lookahead": 0.2,
+        "mando_Summary_lookahead": 0.0,
+        "live_crickets_DA_lookahead": 1.6666666666666667,
+        "live_crickets_KLN_lookahead": 1.3333333333333333,
+        "live_crickets_Summary_lookahead": 1.0
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 0.5,
+        "mando_KLN_lookahead": 2.5,
+        "mando_Summary_lookahead": 0.03571428571428571,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 1.5,
+        "live_crickets_Summary_lookahead": 0.5
+      },
+      "v_null": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 0.5,
+        "mando_Summary_lookahead": 0.0,
+        "live_crickets_DA_lookahead": 2.5,
+        "live_crickets_KLN_lookahead": 2.0,
+        "live_crickets_Summary_lookahead": 0.5
+      }
+    },
+    {
+      "trial": 11,
+      "chi": {
+        "mando_DA_lookahead": 1.0,
+        "mando_KLN_lookahead": 0.42857142857142855,
+        "mando_Summary_lookahead": 0.3333333333333333,
+        "live_crickets_DA_lookahead": 3.0,
+        "live_crickets_KLN_lookahead": 1.3333333333333333,
+        "live_crickets_Summary_lookahead": 4.0
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 3.5,
+        "mando_Summary_lookahead": 1.5,
+        "live_crickets_DA_lookahead": 0.5,
+        "live_crickets_KLN_lookahead": 1.5,
+        "live_crickets_Summary_lookahead": 0.5
+      },
+      "v_null": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 1.5,
+        "mando_Summary_lookahead": 0.5,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 2.0,
+        "live_crickets_Summary_lookahead": 2.0
+      }
+    },
+    {
+      "trial": 12,
+      "chi": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 0.16666666666666666,
+        "mando_Summary_lookahead": 0.0,
+        "live_crickets_DA_lookahead": 2.0,
+        "live_crickets_KLN_lookahead": 0.6666666666666666,
+        "live_crickets_Summary_lookahead": 0.0
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 1.0,
+        "mando_KLN_lookahead": 3.0,
+        "mando_Summary_lookahead": 0.03571428571428571,
+        "live_crickets_DA_lookahead": 1.0,
+        "live_crickets_KLN_lookahead": 1.5,
+        "live_crickets_Summary_lookahead": 0.125
+      },
+      "v_null": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 0.5,
+        "mando_Summary_lookahead": 0.0,
+        "live_crickets_DA_lookahead": 2.0,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 0.0
+      }
+    },
+    {
+      "trial": 13,
+      "chi": {
+        "mando_DA_lookahead": 142857142.85714284,
+        "mando_KLN_lookahead": 0.25,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 3.0,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 1.0
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 0.0,
+        "mando_KLN_lookahead": 2.0,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 0.5,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 1.0
+      },
+      "v_null": {
+        "mando_DA_lookahead": 0.14285714285714285,
+        "mando_KLN_lookahead": 0.5,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 1.0
+      }
+    },
+    {
+      "trial": 14,
+      "chi": {
+        "mando_DA_lookahead": 0.3333333333333333,
+        "mando_KLN_lookahead": 0.0,
+        "mando_Summary_lookahead": 0.0,
+        "live_crickets_DA_lookahead": 1.0,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 2.0
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 0.17857142857142858,
+        "mando_Summary_lookahead": 0.10714285714285714,
+        "live_crickets_DA_lookahead": 2.0,
+        "live_crickets_KLN_lookahead": 1.5,
+        "live_crickets_Summary_lookahead": 0.5
+      },
+      "v_null": {
+        "mando_DA_lookahead": 0.5,
+        "mando_KLN_lookahead": 0.0,
+        "mando_Summary_lookahead": 0.0,
+        "live_crickets_DA_lookahead": 2.0,
+        "live_crickets_KLN_lookahead": 1.5,
+        "live_crickets_Summary_lookahead": 1.0
+      }
+    },
+    {
+      "trial": 15,
+      "chi": {
+        "mando_DA_lookahead": 1.0,
+        "mando_KLN_lookahead": 0.0,
+        "mando_Summary_lookahead": 0.0,
+        "live_crickets_DA_lookahead": 0.6666666666666666,
+        "live_crickets_KLN_lookahead": 2.5,
+        "live_crickets_Summary_lookahead": 0.6666666666666666
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 0.25,
+        "mando_Summary_lookahead": 0.07142857142857142,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 1.5
+      },
+      "v_null": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 0.0,
+        "mando_Summary_lookahead": 0.0,
+        "live_crickets_DA_lookahead": 1.0,
+        "live_crickets_KLN_lookahead": 2.5,
+        "live_crickets_Summary_lookahead": 1.0
+      }
+    },
+    {
+      "trial": 16,
+      "chi": {
+        "mando_DA_lookahead": 0.5,
+        "mando_KLN_lookahead": 0.3333333333333333,
+        "mando_Summary_lookahead": 0.5,
+        "live_crickets_DA_lookahead": 4.0,
+        "live_crickets_KLN_lookahead": 2.0,
+        "live_crickets_Summary_lookahead": 1.0
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 1.0,
+        "mando_KLN_lookahead": 3.0,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 0.5,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 0.5
+      },
+      "v_null": {
+        "mando_DA_lookahead": 0.5,
+        "mando_KLN_lookahead": 1.0,
+        "mando_Summary_lookahead": 0.5,
+        "live_crickets_DA_lookahead": 2.0,
+        "live_crickets_KLN_lookahead": 2.0,
+        "live_crickets_Summary_lookahead": 0.5
+      }
+    },
+    {
+      "trial": 17,
+      "chi": {
+        "mando_DA_lookahead": 4.0,
+        "mando_KLN_lookahead": 0.25,
+        "mando_Summary_lookahead": 0.3333333333333333,
+        "live_crickets_DA_lookahead": 1.0,
+        "live_crickets_KLN_lookahead": 1.5,
+        "live_crickets_Summary_lookahead": 0.5
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 0.5,
+        "mando_KLN_lookahead": 2.0,
+        "mando_Summary_lookahead": 1.5,
+        "live_crickets_DA_lookahead": 2.0,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 1.0
+      },
+      "v_null": {
+        "mando_DA_lookahead": 2.0,
+        "mando_KLN_lookahead": 0.5,
+        "mando_Summary_lookahead": 0.5,
+        "live_crickets_DA_lookahead": 2.0,
+        "live_crickets_KLN_lookahead": 1.5,
+        "live_crickets_Summary_lookahead": 0.5
+      }
+    },
+    {
+      "trial": 18,
+      "chi": {
+        "mando_DA_lookahead": 107142857.14285715,
+        "mando_KLN_lookahead": 0.2857142857142857,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 0.75,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 83333333.33333331
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 0.0,
+        "mando_KLN_lookahead": 3.5,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 2.0,
+        "live_crickets_KLN_lookahead": 1.5,
+        "live_crickets_Summary_lookahead": 0.0
+      },
+      "v_null": {
+        "mando_DA_lookahead": 0.10714285714285715,
+        "mando_KLN_lookahead": 1.0,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 1.5,
+        "live_crickets_Summary_lookahead": 0.08333333333333331
+      }
+    },
+    {
+      "trial": 19,
+      "chi": {
+        "mando_DA_lookahead": 1.3333333333333333,
+        "mando_KLN_lookahead": 0.16666666666666666,
+        "mando_Summary_lookahead": 1.5,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 3.0,
+        "live_crickets_Summary_lookahead": 0.5
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 3.0,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 1.0,
+        "live_crickets_KLN_lookahead": 0.5,
+        "live_crickets_Summary_lookahead": 2.0
+      },
+      "v_null": {
+        "mando_DA_lookahead": 2.0,
+        "mando_KLN_lookahead": 0.5,
+        "mando_Summary_lookahead": 1.5,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 1.5,
+        "live_crickets_Summary_lookahead": 1.0
+      }
+    },
+    {
+      "trial": 20,
+      "chi": {
+        "mando_DA_lookahead": 1.0,
+        "mando_KLN_lookahead": 0.2,
+        "mando_Summary_lookahead": 35714285.714285694,
+        "live_crickets_DA_lookahead": 2.5,
+        "live_crickets_KLN_lookahead": 2.5,
+        "live_crickets_Summary_lookahead": 0.6666666666666666
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 2.5,
+        "mando_Summary_lookahead": 0.0,
+        "live_crickets_DA_lookahead": 1.0,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 1.5
+      },
+      "v_null": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 0.5,
+        "mando_Summary_lookahead": 0.0357142857142857,
+        "live_crickets_DA_lookahead": 2.5,
+        "live_crickets_KLN_lookahead": 2.5,
+        "live_crickets_Summary_lookahead": 1.0
+      }
+    },
+    {
+      "trial": 21,
+      "chi": {
+        "mando_DA_lookahead": 0.6666666666666666,
+        "mando_KLN_lookahead": 0.3333333333333333,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 1.3333333333333333,
+        "live_crickets_KLN_lookahead": 5.0,
+        "live_crickets_Summary_lookahead": 1.0
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 3.0,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 0.5,
+        "live_crickets_Summary_lookahead": 0.5
+      },
+      "v_null": {
+        "mando_DA_lookahead": 1.0,
+        "mando_KLN_lookahead": 1.0,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 2.0,
+        "live_crickets_KLN_lookahead": 2.5,
+        "live_crickets_Summary_lookahead": 0.5
+      }
+    },
+    {
+      "trial": 22,
+      "chi": {
+        "mando_DA_lookahead": 2.0,
+        "mando_KLN_lookahead": 0.5,
+        "mando_Summary_lookahead": 0.5,
+        "live_crickets_DA_lookahead": 1.0,
+        "live_crickets_KLN_lookahead": 2.0,
+        "live_crickets_Summary_lookahead": 1.0
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 1.0,
+        "mando_KLN_lookahead": 3.0,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 1.0
+      },
+      "v_null": {
+        "mando_DA_lookahead": 2.0,
+        "mando_KLN_lookahead": 1.5,
+        "mando_Summary_lookahead": 0.5,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 2.0,
+        "live_crickets_Summary_lookahead": 1.0
+      }
+    },
+    {
+      "trial": 23,
+      "chi": {
+        "mando_DA_lookahead": 1.0,
+        "mando_KLN_lookahead": 0.0,
+        "mando_Summary_lookahead": 1.0,
+        "live_crickets_DA_lookahead": 1.2,
+        "live_crickets_KLN_lookahead": 1.6666666666666667,
+        "live_crickets_Summary_lookahead": 0.75
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 0.2857142857142857,
+        "mando_Summary_lookahead": 1.5,
+        "live_crickets_DA_lookahead": 2.5,
+        "live_crickets_KLN_lookahead": 1.5,
+        "live_crickets_Summary_lookahead": 2.0
+      },
+      "v_null": {
+        "mando_DA_lookahead": 1.5,
+        "mando_KLN_lookahead": 0.0,
+        "mando_Summary_lookahead": 1.5,
+        "live_crickets_DA_lookahead": 3.0,
+        "live_crickets_KLN_lookahead": 2.5,
+        "live_crickets_Summary_lookahead": 1.5
+      }
+    },
+    {
+      "trial": 24,
+      "chi": {
+        "mando_DA_lookahead": 2.0,
+        "mando_KLN_lookahead": 0.2857142857142857,
+        "mando_Summary_lookahead": 0.0,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 2.5,
+        "live_crickets_Summary_lookahead": 1.0
+      },
+      "v_carrier": {
+        "mando_DA_lookahead": 0.5,
+        "mando_KLN_lookahead": 3.5,
+        "mando_Summary_lookahead": 0.03571428571428571,
+        "live_crickets_DA_lookahead": 1.0,
+        "live_crickets_KLN_lookahead": 1.0,
+        "live_crickets_Summary_lookahead": 1.0
+      },
+      "v_null": {
+        "mando_DA_lookahead": 1.0,
+        "mando_KLN_lookahead": 1.0,
+        "mando_Summary_lookahead": 0.0,
+        "live_crickets_DA_lookahead": 1.5,
+        "live_crickets_KLN_lookahead": 2.5,
+        "live_crickets_Summary_lookahead": 1.0
+      }
+    }
+  ]
+}

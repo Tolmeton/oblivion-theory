@@ -77,12 +77,12 @@ Per-type salient features (importance × class contrast):
 - OP 台帳更新提案 diff:
 
 ```diff
---- a/drafts/infra/リファレンス/批判反証レジストリ.md
-+++ b/drafts/infra/リファレンス/批判反証レジストリ.md
+--- a/drafts/リファレンス/批判反証レジストリ.md
++++ b/drafts/リファレンス/批判反証レジストリ.md
 @@
 -| OP-X-5 | Type 1/2/3 分類器: 状態型を自動判定し最適 CM 戦略を予測するモデル | 中 | Testable |
 +| OP-X-5 | Type 1/2/3 分類器: 状態型を自動判定し最適 CM 戦略を予測するモデル | 中 | 達成 |
 +| 進捗 | Brief 2 Task 4: Logistic Regression best accuracy=1.000, Type 1/2 accuracy=1.000, Type 3 recall=1.000. |
 ```
 
-_Source paths: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/type_classifier_trainset.jsonl, /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文X_ContextRotは忘却である_草稿.md, /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/infra/リファレンス/批判反証レジストリ.md_
+_Source paths: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/type_classifier_trainset.jsonl, /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文X_ContextRotは忘却である_草稿.md, /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/リファレンス/批判反証レジストリ.md_

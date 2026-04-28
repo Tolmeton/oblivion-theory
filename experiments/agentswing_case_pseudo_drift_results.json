@@ -1,0 +1,1703 @@
+{
+  "source_input": "/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/agentswing_case_pseudo_trajectories.json",
+  "estimator": "/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/20_機構｜Mekhane/_src｜ソースコード/mekhane/lethe/handoff_drift_estimator.py",
+  "mode": "slot",
+  "parameters_primary": {
+    "p": 0.5,
+    "kappa_c": 0.5,
+    "epsilon": 0.2
+  },
+  "parameters_sensitivity": {
+    "p": 0.9,
+    "kappa_c": 0.5,
+    "epsilon": 0.2
+  },
+  "result_p50": {
+    "mode_requested": "slot",
+    "parameters": {
+      "p": 0.5,
+      "kappa_c": 0.5,
+      "epsilon": 0.2
+    },
+    "pair_results": [
+      {
+        "pair_id": "mando_DA_lookahead",
+        "mode_used": "slot",
+        "unit_count": 14,
+        "turn_count": 3,
+        "atomic_units": [
+          "initial clue bundle: October, Libra, 1990s, gang at 14, father-prison feature",
+          "critical target clue: $tupid Young",
+          "$tupid Young identity verified",
+          "$tupid Young birthday October 3 1992 and Libra",
+          "$tupid Young joined Cambodian Crips at age 14",
+          "Mando identified as song candidate",
+          "Mozzy feature identified",
+          "Mozzy father served 15 years in prison",
+          "Mando release and viral status support final answer",
+          "final answer Mando",
+          "generic October-born rapper search noise",
+          "Lil Durk wrong-focus context",
+          "Hit-Boy father clue as misleading main path",
+          "January 21 2016 date-anchor underfocused path"
+        ],
+        "carrier_front": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "null_front": [
+          10.0,
+          12.0,
+          13.0
+        ],
+        "coverage": [
+          0.07142857142857142,
+          0.14285714285714285,
+          0.21428571428571427
+        ],
+        "mass": [
+          0.7857142857142857,
+          0.9285714285714286,
+          1.0
+        ],
+        "v_carrier": [
+          0.0,
+          1.0,
+          1.0
+        ],
+        "v_null": [
+          0.0,
+          2.0,
+          1.0
+        ],
+        "chi_turn": [
+          0.0,
+          2.0,
+          1.0
+        ],
+        "chi_characteristic": 1.5,
+        "median_chi_turn": 1.5,
+        "max_chi_turn": 2.0,
+        "first_chi_above_one_turn": 2,
+        "characteristic_v_carrier": 1.0,
+        "characteristic_v_null": 1.5,
+        "turn_rows": [
+          {
+            "pair_id": "mando_DA_lookahead",
+            "turn_index": 1,
+            "mode_used": "slot",
+            "carrier_front": 0.0,
+            "null_front": 10.0,
+            "coverage": 0.07142857142857142,
+            "mass": 0.7857142857142857,
+            "v_carrier": 0.0,
+            "v_null": 0.0,
+            "chi": 0.0
+          },
+          {
+            "pair_id": "mando_DA_lookahead",
+            "turn_index": 2,
+            "mode_used": "slot",
+            "carrier_front": 1.0,
+            "null_front": 12.0,
+            "coverage": 0.14285714285714285,
+            "mass": 0.9285714285714286,
+            "v_carrier": 1.0,
+            "v_null": 2.0,
+            "chi": 2.0
+          },
+          {
+            "pair_id": "mando_DA_lookahead",
+            "turn_index": 3,
+            "mode_used": "slot",
+            "carrier_front": 2.0,
+            "null_front": 13.0,
+            "coverage": 0.21428571428571427,
+            "mass": 1.0,
+            "v_carrier": 1.0,
+            "v_null": 1.0,
+            "chi": 1.0
+          }
+        ]
+      },
+      {
+        "pair_id": "mando_KLN_lookahead",
+        "mode_used": "slot",
+        "unit_count": 14,
+        "turn_count": 3,
+        "atomic_units": [
+          "initial clue bundle: October, Libra, 1990s, gang at 14, father-prison feature",
+          "critical target clue: $tupid Young",
+          "$tupid Young identity verified",
+          "$tupid Young birthday October 3 1992 and Libra",
+          "$tupid Young joined Cambodian Crips at age 14",
+          "Mando identified as song candidate",
+          "Mozzy feature identified",
+          "Mozzy father served 15 years in prison",
+          "Mando release and viral status support final answer",
+          "final answer Mando",
+          "generic October-born rapper search noise",
+          "Lil Durk wrong-focus context",
+          "Hit-Boy father clue as misleading main path",
+          "January 21 2016 date-anchor underfocused path"
+        ],
+        "carrier_front": [
+          1.0,
+          4.0,
+          7.0
+        ],
+        "null_front": [
+          10.0,
+          10.0,
+          11.0
+        ],
+        "coverage": [
+          0.14285714285714285,
+          0.35714285714285715,
+          0.5714285714285714
+        ],
+        "mass": [
+          0.7857142857142857,
+          0.7857142857142857,
+          0.8571428571428571
+        ],
+        "v_carrier": [
+          0.0,
+          3.0,
+          3.0
+        ],
+        "v_null": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "chi_turn": [
+          0.0,
+          0.0,
+          0.3333333333333333
+        ],
+        "chi_characteristic": 0.16666666666666666,
+        "median_chi_turn": 0.16666666666666666,
+        "max_chi_turn": 0.3333333333333333,
+        "first_chi_above_one_turn": null,
+        "characteristic_v_carrier": 3.0,
+        "characteristic_v_null": 0.5,
+        "turn_rows": [
+          {
+            "pair_id": "mando_KLN_lookahead",
+            "turn_index": 1,
+            "mode_used": "slot",
+            "carrier_front": 1.0,
+            "null_front": 10.0,
+            "coverage": 0.14285714285714285,
+            "mass": 0.7857142857142857,
+            "v_carrier": 0.0,
+            "v_null": 0.0,
+            "chi": 0.0
+          },
+          {
+            "pair_id": "mando_KLN_lookahead",
+            "turn_index": 2,
+            "mode_used": "slot",
+            "carrier_front": 4.0,
+            "null_front": 10.0,
+            "coverage": 0.35714285714285715,
+            "mass": 0.7857142857142857,
+            "v_carrier": 3.0,
+            "v_null": 0.0,
+            "chi": 0.0
+          },
+          {
+            "pair_id": "mando_KLN_lookahead",
+            "turn_index": 3,
+            "mode_used": "slot",
+            "carrier_front": 7.0,
+            "null_front": 11.0,
+            "coverage": 0.5714285714285714,
+            "mass": 0.8571428571428571,
+            "v_carrier": 3.0,
+            "v_null": 1.0,
+            "chi": 0.3333333333333333
+          }
+        ]
+      },
+      {
+        "pair_id": "mando_Summary_lookahead",
+        "mode_used": "slot",
+        "unit_count": 14,
+        "turn_count": 3,
+        "atomic_units": [
+          "initial clue bundle: October, Libra, 1990s, gang at 14, father-prison feature",
+          "critical target clue: $tupid Young",
+          "$tupid Young identity verified",
+          "$tupid Young birthday October 3 1992 and Libra",
+          "$tupid Young joined Cambodian Crips at age 14",
+          "Mando identified as song candidate",
+          "Mozzy feature identified",
+          "Mozzy father served 15 years in prison",
+          "Mando release and viral status support final answer",
+          "final answer Mando",
+          "generic October-born rapper search noise",
+          "Lil Durk wrong-focus context",
+          "Hit-Boy father clue as misleading main path",
+          "January 21 2016 date-anchor underfocused path"
+        ],
+        "carrier_front": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "null_front": [
+          11.0,
+          12.0,
+          12.0
+        ],
+        "coverage": [
+          0.07142857142857142,
+          0.14285714285714285,
+          0.21428571428571427
+        ],
+        "mass": [
+          0.8571428571428571,
+          0.9285714285714286,
+          0.9285714285714286
+        ],
+        "v_carrier": [
+          0.0,
+          1.0,
+          1.0
+        ],
+        "v_null": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "chi_turn": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "chi_characteristic": 0.5,
+        "median_chi_turn": 0.5,
+        "max_chi_turn": 1.0,
+        "first_chi_above_one_turn": null,
+        "characteristic_v_carrier": 1.0,
+        "characteristic_v_null": 0.5,
+        "turn_rows": [
+          {
+            "pair_id": "mando_Summary_lookahead",
+            "turn_index": 1,
+            "mode_used": "slot",
+            "carrier_front": 0.0,
+            "null_front": 11.0,
+            "coverage": 0.07142857142857142,
+            "mass": 0.8571428571428571,
+            "v_carrier": 0.0,
+            "v_null": 0.0,
+            "chi": 0.0
+          },
+          {
+            "pair_id": "mando_Summary_lookahead",
+            "turn_index": 2,
+            "mode_used": "slot",
+            "carrier_front": 1.0,
+            "null_front": 12.0,
+            "coverage": 0.14285714285714285,
+            "mass": 0.9285714285714286,
+            "v_carrier": 1.0,
+            "v_null": 1.0,
+            "chi": 1.0
+          },
+          {
+            "pair_id": "mando_Summary_lookahead",
+            "turn_index": 3,
+            "mode_used": "slot",
+            "carrier_front": 2.0,
+            "null_front": 12.0,
+            "coverage": 0.21428571428571427,
+            "mass": 0.9285714285714286,
+            "v_carrier": 1.0,
+            "v_null": 0.0,
+            "chi": 0.0
+          }
+        ]
+      },
+      {
+        "pair_id": "live_crickets_DA_lookahead",
+        "mode_used": "slot",
+        "unit_count": 12,
+        "turn_count": 3,
+        "atomic_units": [
+          "source family: The Victorian Sideshow",
+          "core clue: stapled paper to forehead",
+          "supporting clue bundle: Feejee Mermaid, Minerva, Jo-Jo",
+          "clean search reset after context management",
+          "alternative text-extraction path",
+          "live crickets answer",
+          "direct PDF extraction failure",
+          "Scribd mirror inaccessible",
+          "repeated snippet-oriented search behavior",
+          "local noisy loop around same PDF",
+          "tool-access bottleneck",
+          "old recent context should not be preserved"
+        ],
+        "carrier_front": [
+          1.0,
+          3.0,
+          4.0
+        ],
+        "null_front": [
+          6.0,
+          8.0,
+          10.0
+        ],
+        "coverage": [
+          0.16666666666666666,
+          0.3333333333333333,
+          0.4166666666666667
+        ],
+        "mass": [
+          0.5833333333333334,
+          0.75,
+          0.9166666666666666
+        ],
+        "v_carrier": [
+          0.0,
+          2.0,
+          1.0
+        ],
+        "v_null": [
+          0.0,
+          2.0,
+          2.0
+        ],
+        "chi_turn": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "chi_characteristic": 1.3333333333333333,
+        "median_chi_turn": 1.5,
+        "max_chi_turn": 2.0,
+        "first_chi_above_one_turn": 3,
+        "characteristic_v_carrier": 1.5,
+        "characteristic_v_null": 2.0,
+        "turn_rows": [
+          {
+            "pair_id": "live_crickets_DA_lookahead",
+            "turn_index": 1,
+            "mode_used": "slot",
+            "carrier_front": 1.0,
+            "null_front": 6.0,
+            "coverage": 0.16666666666666666,
+            "mass": 0.5833333333333334,
+            "v_carrier": 0.0,
+            "v_null": 0.0,
+            "chi": 0.0
+          },
+          {
+            "pair_id": "live_crickets_DA_lookahead",
+            "turn_index": 2,
+            "mode_used": "slot",
+            "carrier_front": 3.0,
+            "null_front": 8.0,
+            "coverage": 0.3333333333333333,
+            "mass": 0.75,
+            "v_carrier": 2.0,
+            "v_null": 2.0,
+            "chi": 1.0
+          },
+          {
+            "pair_id": "live_crickets_DA_lookahead",
+            "turn_index": 3,
+            "mode_used": "slot",
+            "carrier_front": 4.0,
+            "null_front": 10.0,
+            "coverage": 0.4166666666666667,
+            "mass": 0.9166666666666666,
+            "v_carrier": 1.0,
+            "v_null": 2.0,
+            "chi": 2.0
+          }
+        ]
+      },
+      {
+        "pair_id": "live_crickets_KLN_lookahead",
+        "mode_used": "slot",
+        "unit_count": 12,
+        "turn_count": 3,
+        "atomic_units": [
+          "source family: The Victorian Sideshow",
+          "core clue: stapled paper to forehead",
+          "supporting clue bundle: Feejee Mermaid, Minerva, Jo-Jo",
+          "clean search reset after context management",
+          "alternative text-extraction path",
+          "live crickets answer",
+          "direct PDF extraction failure",
+          "Scribd mirror inaccessible",
+          "repeated snippet-oriented search behavior",
+          "local noisy loop around same PDF",
+          "tool-access bottleneck",
+          "old recent context should not be preserved"
+        ],
+        "carrier_front": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "null_front": [
+          7.0,
+          9.0,
+          11.0
+        ],
+        "coverage": [
+          0.08333333333333333,
+          0.16666666666666666,
+          0.25
+        ],
+        "mass": [
+          0.6666666666666666,
+          0.8333333333333334,
+          1.0
+        ],
+        "v_carrier": [
+          0.0,
+          1.0,
+          1.0
+        ],
+        "v_null": [
+          0.0,
+          2.0,
+          2.0
+        ],
+        "chi_turn": [
+          0.0,
+          2.0,
+          2.0
+        ],
+        "chi_characteristic": 2.0,
+        "median_chi_turn": 2.0,
+        "max_chi_turn": 2.0,
+        "first_chi_above_one_turn": 2,
+        "characteristic_v_carrier": 1.0,
+        "characteristic_v_null": 2.0,
+        "turn_rows": [
+          {
+            "pair_id": "live_crickets_KLN_lookahead",
+            "turn_index": 1,
+            "mode_used": "slot",
+            "carrier_front": 0.0,
+            "null_front": 7.0,
+            "coverage": 0.08333333333333333,
+            "mass": 0.6666666666666666,
+            "v_carrier": 0.0,
+            "v_null": 0.0,
+            "chi": 0.0
+          },
+          {
+            "pair_id": "live_crickets_KLN_lookahead",
+            "turn_index": 2,
+            "mode_used": "slot",
+            "carrier_front": 1.0,
+            "null_front": 9.0,
+            "coverage": 0.16666666666666666,
+            "mass": 0.8333333333333334,
+            "v_carrier": 1.0,
+            "v_null": 2.0,
+            "chi": 2.0
+          },
+          {
+            "pair_id": "live_crickets_KLN_lookahead",
+            "turn_index": 3,
+            "mode_used": "slot",
+            "carrier_front": 2.0,
+            "null_front": 11.0,
+            "coverage": 0.25,
+            "mass": 1.0,
+            "v_carrier": 1.0,
+            "v_null": 2.0,
+            "chi": 2.0
+          }
+        ]
+      },
+      {
+        "pair_id": "live_crickets_Summary_lookahead",
+        "mode_used": "slot",
+        "unit_count": 12,
+        "turn_count": 3,
+        "atomic_units": [
+          "source family: The Victorian Sideshow",
+          "core clue: stapled paper to forehead",
+          "supporting clue bundle: Feejee Mermaid, Minerva, Jo-Jo",
+          "clean search reset after context management",
+          "alternative text-extraction path",
+          "live crickets answer",
+          "direct PDF extraction failure",
+          "Scribd mirror inaccessible",
+          "repeated snippet-oriented search behavior",
+          "local noisy loop around same PDF",
+          "tool-access bottleneck",
+          "old recent context should not be preserved"
+        ],
+        "carrier_front": [
+          1.0,
+          2.0,
+          3.0
+        ],
+        "null_front": [
+          6.0,
+          7.0,
+          8.0
+        ],
+        "coverage": [
+          0.16666666666666666,
+          0.25,
+          0.3333333333333333
+        ],
+        "mass": [
+          0.5833333333333334,
+          0.6666666666666666,
+          0.75
+        ],
+        "v_carrier": [
+          0.0,
+          1.0,
+          1.0
+        ],
+        "v_null": [
+          0.0,
+          1.0,
+          1.0
+        ],
+        "chi_turn": [
+          0.0,
+          1.0,
+          1.0
+        ],
+        "chi_characteristic": 1.0,
+        "median_chi_turn": 1.0,
+        "max_chi_turn": 1.0,
+        "first_chi_above_one_turn": null,
+        "characteristic_v_carrier": 1.0,
+        "characteristic_v_null": 1.0,
+        "turn_rows": [
+          {
+            "pair_id": "live_crickets_Summary_lookahead",
+            "turn_index": 1,
+            "mode_used": "slot",
+            "carrier_front": 1.0,
+            "null_front": 6.0,
+            "coverage": 0.16666666666666666,
+            "mass": 0.5833333333333334,
+            "v_carrier": 0.0,
+            "v_null": 0.0,
+            "chi": 0.0
+          },
+          {
+            "pair_id": "live_crickets_Summary_lookahead",
+            "turn_index": 2,
+            "mode_used": "slot",
+            "carrier_front": 2.0,
+            "null_front": 7.0,
+            "coverage": 0.25,
+            "mass": 0.6666666666666666,
+            "v_carrier": 1.0,
+            "v_null": 1.0,
+            "chi": 1.0
+          },
+          {
+            "pair_id": "live_crickets_Summary_lookahead",
+            "turn_index": 3,
+            "mode_used": "slot",
+            "carrier_front": 3.0,
+            "null_front": 8.0,
+            "coverage": 0.3333333333333333,
+            "mass": 0.75,
+            "v_carrier": 1.0,
+            "v_null": 1.0,
+            "chi": 1.0
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "pair_count": 6,
+      "mean_chi_characteristic": 1.0833333333333333,
+      "std_chi_characteristic": 0.6142595663193329,
+      "chi_characteristic_quantiles": {
+        "p50": 1.1666666666666665,
+        "p90": 1.75
+      },
+      "max_turn_chi": 2.0,
+      "mode_usage": {
+        "slot": 6,
+        "coverage": 0
+      },
+      "pairs_with_chi_above_one": 3,
+      "regime": "drift-dominant"
+    },
+    "turn_rows": [
+      {
+        "pair_id": "mando_DA_lookahead",
+        "turn_index": 1,
+        "mode_used": "slot",
+        "carrier_front": 0.0,
+        "null_front": 10.0,
+        "coverage": 0.07142857142857142,
+        "mass": 0.7857142857142857,
+        "v_carrier": 0.0,
+        "v_null": 0.0,
+        "chi": 0.0
+      },
+      {
+        "pair_id": "mando_DA_lookahead",
+        "turn_index": 2,
+        "mode_used": "slot",
+        "carrier_front": 1.0,
+        "null_front": 12.0,
+        "coverage": 0.14285714285714285,
+        "mass": 0.9285714285714286,
+        "v_carrier": 1.0,
+        "v_null": 2.0,
+        "chi": 2.0
+      },
+      {
+        "pair_id": "mando_DA_lookahead",
+        "turn_index": 3,
+        "mode_used": "slot",
+        "carrier_front": 2.0,
+        "null_front": 13.0,
+        "coverage": 0.21428571428571427,
+        "mass": 1.0,
+        "v_carrier": 1.0,
+        "v_null": 1.0,
+        "chi": 1.0
+      },
+      {
+        "pair_id": "mando_KLN_lookahead",
+        "turn_index": 1,
+        "mode_used": "slot",
+        "carrier_front": 1.0,
+        "null_front": 10.0,
+        "coverage": 0.14285714285714285,
+        "mass": 0.7857142857142857,
+        "v_carrier": 0.0,
+        "v_null": 0.0,
+        "chi": 0.0
+      },
+      {
+        "pair_id": "mando_KLN_lookahead",
+        "turn_index": 2,
+        "mode_used": "slot",
+        "carrier_front": 4.0,
+        "null_front": 10.0,
+        "coverage": 0.35714285714285715,
+        "mass": 0.7857142857142857,
+        "v_carrier": 3.0,
+        "v_null": 0.0,
+        "chi": 0.0
+      },
+      {
+        "pair_id": "mando_KLN_lookahead",
+        "turn_index": 3,
+        "mode_used": "slot",
+        "carrier_front": 7.0,
+        "null_front": 11.0,
+        "coverage": 0.5714285714285714,
+        "mass": 0.8571428571428571,
+        "v_carrier": 3.0,
+        "v_null": 1.0,
+        "chi": 0.3333333333333333
+      },
+      {
+        "pair_id": "mando_Summary_lookahead",
+        "turn_index": 1,
+        "mode_used": "slot",
+        "carrier_front": 0.0,
+        "null_front": 11.0,
+        "coverage": 0.07142857142857142,
+        "mass": 0.8571428571428571,
+        "v_carrier": 0.0,
+        "v_null": 0.0,
+        "chi": 0.0
+      },
+      {
+        "pair_id": "mando_Summary_lookahead",
+        "turn_index": 2,
+        "mode_used": "slot",
+        "carrier_front": 1.0,
+        "null_front": 12.0,
+        "coverage": 0.14285714285714285,
+        "mass": 0.9285714285714286,
+        "v_carrier": 1.0,
+        "v_null": 1.0,
+        "chi": 1.0
+      },
+      {
+        "pair_id": "mando_Summary_lookahead",
+        "turn_index": 3,
+        "mode_used": "slot",
+        "carrier_front": 2.0,
+        "null_front": 12.0,
+        "coverage": 0.21428571428571427,
+        "mass": 0.9285714285714286,
+        "v_carrier": 1.0,
+        "v_null": 0.0,
+        "chi": 0.0
+      },
+      {
+        "pair_id": "live_crickets_DA_lookahead",
+        "turn_index": 1,
+        "mode_used": "slot",
+        "carrier_front": 1.0,
+        "null_front": 6.0,
+        "coverage": 0.16666666666666666,
+        "mass": 0.5833333333333334,
+        "v_carrier": 0.0,
+        "v_null": 0.0,
+        "chi": 0.0
+      },
+      {
+        "pair_id": "live_crickets_DA_lookahead",
+        "turn_index": 2,
+        "mode_used": "slot",
+        "carrier_front": 3.0,
+        "null_front": 8.0,
+        "coverage": 0.3333333333333333,
+        "mass": 0.75,
+        "v_carrier": 2.0,
+        "v_null": 2.0,
+        "chi": 1.0
+      },
+      {
+        "pair_id": "live_crickets_DA_lookahead",
+        "turn_index": 3,
+        "mode_used": "slot",
+        "carrier_front": 4.0,
+        "null_front": 10.0,
+        "coverage": 0.4166666666666667,
+        "mass": 0.9166666666666666,
+        "v_carrier": 1.0,
+        "v_null": 2.0,
+        "chi": 2.0
+      },
+      {
+        "pair_id": "live_crickets_KLN_lookahead",
+        "turn_index": 1,
+        "mode_used": "slot",
+        "carrier_front": 0.0,
+        "null_front": 7.0,
+        "coverage": 0.08333333333333333,
+        "mass": 0.6666666666666666,
+        "v_carrier": 0.0,
+        "v_null": 0.0,
+        "chi": 0.0
+      },
+      {
+        "pair_id": "live_crickets_KLN_lookahead",
+        "turn_index": 2,
+        "mode_used": "slot",
+        "carrier_front": 1.0,
+        "null_front": 9.0,
+        "coverage": 0.16666666666666666,
+        "mass": 0.8333333333333334,
+        "v_carrier": 1.0,
+        "v_null": 2.0,
+        "chi": 2.0
+      },
+      {
+        "pair_id": "live_crickets_KLN_lookahead",
+        "turn_index": 3,
+        "mode_used": "slot",
+        "carrier_front": 2.0,
+        "null_front": 11.0,
+        "coverage": 0.25,
+        "mass": 1.0,
+        "v_carrier": 1.0,
+        "v_null": 2.0,
+        "chi": 2.0
+      },
+      {
+        "pair_id": "live_crickets_Summary_lookahead",
+        "turn_index": 1,
+        "mode_used": "slot",
+        "carrier_front": 1.0,
+        "null_front": 6.0,
+        "coverage": 0.16666666666666666,
+        "mass": 0.5833333333333334,
+        "v_carrier": 0.0,
+        "v_null": 0.0,
+        "chi": 0.0
+      },
+      {
+        "pair_id": "live_crickets_Summary_lookahead",
+        "turn_index": 2,
+        "mode_used": "slot",
+        "carrier_front": 2.0,
+        "null_front": 7.0,
+        "coverage": 0.25,
+        "mass": 0.6666666666666666,
+        "v_carrier": 1.0,
+        "v_null": 1.0,
+        "chi": 1.0
+      },
+      {
+        "pair_id": "live_crickets_Summary_lookahead",
+        "turn_index": 3,
+        "mode_used": "slot",
+        "carrier_front": 3.0,
+        "null_front": 8.0,
+        "coverage": 0.3333333333333333,
+        "mass": 0.75,
+        "v_carrier": 1.0,
+        "v_null": 1.0,
+        "chi": 1.0
+      }
+    ]
+  },
+  "result_p90": {
+    "mode_requested": "slot",
+    "parameters": {
+      "p": 0.9,
+      "kappa_c": 0.5,
+      "epsilon": 0.2
+    },
+    "pair_results": [
+      {
+        "pair_id": "mando_DA_lookahead",
+        "mode_used": "slot",
+        "unit_count": 14,
+        "turn_count": 3,
+        "atomic_units": [
+          "initial clue bundle: October, Libra, 1990s, gang at 14, father-prison feature",
+          "critical target clue: $tupid Young",
+          "$tupid Young identity verified",
+          "$tupid Young birthday October 3 1992 and Libra",
+          "$tupid Young joined Cambodian Crips at age 14",
+          "Mando identified as song candidate",
+          "Mozzy feature identified",
+          "Mozzy father served 15 years in prison",
+          "Mando release and viral status support final answer",
+          "final answer Mando",
+          "generic October-born rapper search noise",
+          "Lil Durk wrong-focus context",
+          "Hit-Boy father clue as misleading main path",
+          "January 21 2016 date-anchor underfocused path"
+        ],
+        "carrier_front": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "null_front": [
+          10.0,
+          12.0,
+          13.0
+        ],
+        "coverage": [
+          0.07142857142857142,
+          0.14285714285714285,
+          0.21428571428571427
+        ],
+        "mass": [
+          0.7857142857142857,
+          0.9285714285714286,
+          1.0
+        ],
+        "v_carrier": [
+          0.0,
+          1.0,
+          1.0
+        ],
+        "v_null": [
+          0.0,
+          2.0,
+          1.0
+        ],
+        "chi_turn": [
+          0.0,
+          2.0,
+          1.0
+        ],
+        "chi_characteristic": 1.9,
+        "median_chi_turn": 1.5,
+        "max_chi_turn": 2.0,
+        "first_chi_above_one_turn": 2,
+        "characteristic_v_carrier": 1.0,
+        "characteristic_v_null": 1.9,
+        "turn_rows": [
+          {
+            "pair_id": "mando_DA_lookahead",
+            "turn_index": 1,
+            "mode_used": "slot",
+            "carrier_front": 0.0,
+            "null_front": 10.0,
+            "coverage": 0.07142857142857142,
+            "mass": 0.7857142857142857,
+            "v_carrier": 0.0,
+            "v_null": 0.0,
+            "chi": 0.0
+          },
+          {
+            "pair_id": "mando_DA_lookahead",
+            "turn_index": 2,
+            "mode_used": "slot",
+            "carrier_front": 1.0,
+            "null_front": 12.0,
+            "coverage": 0.14285714285714285,
+            "mass": 0.9285714285714286,
+            "v_carrier": 1.0,
+            "v_null": 2.0,
+            "chi": 2.0
+          },
+          {
+            "pair_id": "mando_DA_lookahead",
+            "turn_index": 3,
+            "mode_used": "slot",
+            "carrier_front": 2.0,
+            "null_front": 13.0,
+            "coverage": 0.21428571428571427,
+            "mass": 1.0,
+            "v_carrier": 1.0,
+            "v_null": 1.0,
+            "chi": 1.0
+          }
+        ]
+      },
+      {
+        "pair_id": "mando_KLN_lookahead",
+        "mode_used": "slot",
+        "unit_count": 14,
+        "turn_count": 3,
+        "atomic_units": [
+          "initial clue bundle: October, Libra, 1990s, gang at 14, father-prison feature",
+          "critical target clue: $tupid Young",
+          "$tupid Young identity verified",
+          "$tupid Young birthday October 3 1992 and Libra",
+          "$tupid Young joined Cambodian Crips at age 14",
+          "Mando identified as song candidate",
+          "Mozzy feature identified",
+          "Mozzy father served 15 years in prison",
+          "Mando release and viral status support final answer",
+          "final answer Mando",
+          "generic October-born rapper search noise",
+          "Lil Durk wrong-focus context",
+          "Hit-Boy father clue as misleading main path",
+          "January 21 2016 date-anchor underfocused path"
+        ],
+        "carrier_front": [
+          1.0,
+          4.0,
+          7.0
+        ],
+        "null_front": [
+          10.0,
+          10.0,
+          11.0
+        ],
+        "coverage": [
+          0.14285714285714285,
+          0.35714285714285715,
+          0.5714285714285714
+        ],
+        "mass": [
+          0.7857142857142857,
+          0.7857142857142857,
+          0.8571428571428571
+        ],
+        "v_carrier": [
+          0.0,
+          3.0,
+          3.0
+        ],
+        "v_null": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "chi_turn": [
+          0.0,
+          0.0,
+          0.3333333333333333
+        ],
+        "chi_characteristic": 0.3,
+        "median_chi_turn": 0.16666666666666666,
+        "max_chi_turn": 0.3333333333333333,
+        "first_chi_above_one_turn": null,
+        "characteristic_v_carrier": 3.0,
+        "characteristic_v_null": 0.9,
+        "turn_rows": [
+          {
+            "pair_id": "mando_KLN_lookahead",
+            "turn_index": 1,
+            "mode_used": "slot",
+            "carrier_front": 1.0,
+            "null_front": 10.0,
+            "coverage": 0.14285714285714285,
+            "mass": 0.7857142857142857,
+            "v_carrier": 0.0,
+            "v_null": 0.0,
+            "chi": 0.0
+          },
+          {
+            "pair_id": "mando_KLN_lookahead",
+            "turn_index": 2,
+            "mode_used": "slot",
+            "carrier_front": 4.0,
+            "null_front": 10.0,
+            "coverage": 0.35714285714285715,
+            "mass": 0.7857142857142857,
+            "v_carrier": 3.0,
+            "v_null": 0.0,
+            "chi": 0.0
+          },
+          {
+            "pair_id": "mando_KLN_lookahead",
+            "turn_index": 3,
+            "mode_used": "slot",
+            "carrier_front": 7.0,
+            "null_front": 11.0,
+            "coverage": 0.5714285714285714,
+            "mass": 0.8571428571428571,
+            "v_carrier": 3.0,
+            "v_null": 1.0,
+            "chi": 0.3333333333333333
+          }
+        ]
+      },
+      {
+        "pair_id": "mando_Summary_lookahead",
+        "mode_used": "slot",
+        "unit_count": 14,
+        "turn_count": 3,
+        "atomic_units": [
+          "initial clue bundle: October, Libra, 1990s, gang at 14, father-prison feature",
+          "critical target clue: $tupid Young",
+          "$tupid Young identity verified",
+          "$tupid Young birthday October 3 1992 and Libra",
+          "$tupid Young joined Cambodian Crips at age 14",
+          "Mando identified as song candidate",
+          "Mozzy feature identified",
+          "Mozzy father served 15 years in prison",
+          "Mando release and viral status support final answer",
+          "final answer Mando",
+          "generic October-born rapper search noise",
+          "Lil Durk wrong-focus context",
+          "Hit-Boy father clue as misleading main path",
+          "January 21 2016 date-anchor underfocused path"
+        ],
+        "carrier_front": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "null_front": [
+          11.0,
+          12.0,
+          12.0
+        ],
+        "coverage": [
+          0.07142857142857142,
+          0.14285714285714285,
+          0.21428571428571427
+        ],
+        "mass": [
+          0.8571428571428571,
+          0.9285714285714286,
+          0.9285714285714286
+        ],
+        "v_carrier": [
+          0.0,
+          1.0,
+          1.0
+        ],
+        "v_null": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "chi_turn": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "chi_characteristic": 0.9,
+        "median_chi_turn": 0.5,
+        "max_chi_turn": 1.0,
+        "first_chi_above_one_turn": null,
+        "characteristic_v_carrier": 1.0,
+        "characteristic_v_null": 0.9,
+        "turn_rows": [
+          {
+            "pair_id": "mando_Summary_lookahead",
+            "turn_index": 1,
+            "mode_used": "slot",
+            "carrier_front": 0.0,
+            "null_front": 11.0,
+            "coverage": 0.07142857142857142,
+            "mass": 0.8571428571428571,
+            "v_carrier": 0.0,
+            "v_null": 0.0,
+            "chi": 0.0
+          },
+          {
+            "pair_id": "mando_Summary_lookahead",
+            "turn_index": 2,
+            "mode_used": "slot",
+            "carrier_front": 1.0,
+            "null_front": 12.0,
+            "coverage": 0.14285714285714285,
+            "mass": 0.9285714285714286,
+            "v_carrier": 1.0,
+            "v_null": 1.0,
+            "chi": 1.0
+          },
+          {
+            "pair_id": "mando_Summary_lookahead",
+            "turn_index": 3,
+            "mode_used": "slot",
+            "carrier_front": 2.0,
+            "null_front": 12.0,
+            "coverage": 0.21428571428571427,
+            "mass": 0.9285714285714286,
+            "v_carrier": 1.0,
+            "v_null": 0.0,
+            "chi": 0.0
+          }
+        ]
+      },
+      {
+        "pair_id": "live_crickets_DA_lookahead",
+        "mode_used": "slot",
+        "unit_count": 12,
+        "turn_count": 3,
+        "atomic_units": [
+          "source family: The Victorian Sideshow",
+          "core clue: stapled paper to forehead",
+          "supporting clue bundle: Feejee Mermaid, Minerva, Jo-Jo",
+          "clean search reset after context management",
+          "alternative text-extraction path",
+          "live crickets answer",
+          "direct PDF extraction failure",
+          "Scribd mirror inaccessible",
+          "repeated snippet-oriented search behavior",
+          "local noisy loop around same PDF",
+          "tool-access bottleneck",
+          "old recent context should not be preserved"
+        ],
+        "carrier_front": [
+          1.0,
+          3.0,
+          4.0
+        ],
+        "null_front": [
+          6.0,
+          8.0,
+          10.0
+        ],
+        "coverage": [
+          0.16666666666666666,
+          0.3333333333333333,
+          0.4166666666666667
+        ],
+        "mass": [
+          0.5833333333333334,
+          0.75,
+          0.9166666666666666
+        ],
+        "v_carrier": [
+          0.0,
+          2.0,
+          1.0
+        ],
+        "v_null": [
+          0.0,
+          2.0,
+          2.0
+        ],
+        "chi_turn": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "chi_characteristic": 1.0526315789473684,
+        "median_chi_turn": 1.5,
+        "max_chi_turn": 2.0,
+        "first_chi_above_one_turn": 3,
+        "characteristic_v_carrier": 1.9,
+        "characteristic_v_null": 2.0,
+        "turn_rows": [
+          {
+            "pair_id": "live_crickets_DA_lookahead",
+            "turn_index": 1,
+            "mode_used": "slot",
+            "carrier_front": 1.0,
+            "null_front": 6.0,
+            "coverage": 0.16666666666666666,
+            "mass": 0.5833333333333334,
+            "v_carrier": 0.0,
+            "v_null": 0.0,
+            "chi": 0.0
+          },
+          {
+            "pair_id": "live_crickets_DA_lookahead",
+            "turn_index": 2,
+            "mode_used": "slot",
+            "carrier_front": 3.0,
+            "null_front": 8.0,
+            "coverage": 0.3333333333333333,
+            "mass": 0.75,
+            "v_carrier": 2.0,
+            "v_null": 2.0,
+            "chi": 1.0
+          },
+          {
+            "pair_id": "live_crickets_DA_lookahead",
+            "turn_index": 3,
+            "mode_used": "slot",
+            "carrier_front": 4.0,
+            "null_front": 10.0,
+            "coverage": 0.4166666666666667,
+            "mass": 0.9166666666666666,
+            "v_carrier": 1.0,
+            "v_null": 2.0,
+            "chi": 2.0
+          }
+        ]
+      },
+      {
+        "pair_id": "live_crickets_KLN_lookahead",
+        "mode_used": "slot",
+        "unit_count": 12,
+        "turn_count": 3,
+        "atomic_units": [
+          "source family: The Victorian Sideshow",
+          "core clue: stapled paper to forehead",
+          "supporting clue bundle: Feejee Mermaid, Minerva, Jo-Jo",
+          "clean search reset after context management",
+          "alternative text-extraction path",
+          "live crickets answer",
+          "direct PDF extraction failure",
+          "Scribd mirror inaccessible",
+          "repeated snippet-oriented search behavior",
+          "local noisy loop around same PDF",
+          "tool-access bottleneck",
+          "old recent context should not be preserved"
+        ],
+        "carrier_front": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "null_front": [
+          7.0,
+          9.0,
+          11.0
+        ],
+        "coverage": [
+          0.08333333333333333,
+          0.16666666666666666,
+          0.25
+        ],
+        "mass": [
+          0.6666666666666666,
+          0.8333333333333334,
+          1.0
+        ],
+        "v_carrier": [
+          0.0,
+          1.0,
+          1.0
+        ],
+        "v_null": [
+          0.0,
+          2.0,
+          2.0
+        ],
+        "chi_turn": [
+          0.0,
+          2.0,
+          2.0
+        ],
+        "chi_characteristic": 2.0,
+        "median_chi_turn": 2.0,
+        "max_chi_turn": 2.0,
+        "first_chi_above_one_turn": 2,
+        "characteristic_v_carrier": 1.0,
+        "characteristic_v_null": 2.0,
+        "turn_rows": [
+          {
+            "pair_id": "live_crickets_KLN_lookahead",
+            "turn_index": 1,
+            "mode_used": "slot",
+            "carrier_front": 0.0,
+            "null_front": 7.0,
+            "coverage": 0.08333333333333333,
+            "mass": 0.6666666666666666,
+            "v_carrier": 0.0,
+            "v_null": 0.0,
+            "chi": 0.0
+          },
+          {
+            "pair_id": "live_crickets_KLN_lookahead",
+            "turn_index": 2,
+            "mode_used": "slot",
+            "carrier_front": 1.0,
+            "null_front": 9.0,
+            "coverage": 0.16666666666666666,
+            "mass": 0.8333333333333334,
+            "v_carrier": 1.0,
+            "v_null": 2.0,
+            "chi": 2.0
+          },
+          {
+            "pair_id": "live_crickets_KLN_lookahead",
+            "turn_index": 3,
+            "mode_used": "slot",
+            "carrier_front": 2.0,
+            "null_front": 11.0,
+            "coverage": 0.25,
+            "mass": 1.0,
+            "v_carrier": 1.0,
+            "v_null": 2.0,
+            "chi": 2.0
+          }
+        ]
+      },
+      {
+        "pair_id": "live_crickets_Summary_lookahead",
+        "mode_used": "slot",
+        "unit_count": 12,
+        "turn_count": 3,
+        "atomic_units": [
+          "source family: The Victorian Sideshow",
+          "core clue: stapled paper to forehead",
+          "supporting clue bundle: Feejee Mermaid, Minerva, Jo-Jo",
+          "clean search reset after context management",
+          "alternative text-extraction path",
+          "live crickets answer",
+          "direct PDF extraction failure",
+          "Scribd mirror inaccessible",
+          "repeated snippet-oriented search behavior",
+          "local noisy loop around same PDF",
+          "tool-access bottleneck",
+          "old recent context should not be preserved"
+        ],
+        "carrier_front": [
+          1.0,
+          2.0,
+          3.0
+        ],
+        "null_front": [
+          6.0,
+          7.0,
+          8.0
+        ],
+        "coverage": [
+          0.16666666666666666,
+          0.25,
+          0.3333333333333333
+        ],
+        "mass": [
+          0.5833333333333334,
+          0.6666666666666666,
+          0.75
+        ],
+        "v_carrier": [
+          0.0,
+          1.0,
+          1.0
+        ],
+        "v_null": [
+          0.0,
+          1.0,
+          1.0
+        ],
+        "chi_turn": [
+          0.0,
+          1.0,
+          1.0
+        ],
+        "chi_characteristic": 1.0,
+        "median_chi_turn": 1.0,
+        "max_chi_turn": 1.0,
+        "first_chi_above_one_turn": null,
+        "characteristic_v_carrier": 1.0,
+        "characteristic_v_null": 1.0,
+        "turn_rows": [
+          {
+            "pair_id": "live_crickets_Summary_lookahead",
+            "turn_index": 1,
+            "mode_used": "slot",
+            "carrier_front": 1.0,
+            "null_front": 6.0,
+            "coverage": 0.16666666666666666,
+            "mass": 0.5833333333333334,
+            "v_carrier": 0.0,
+            "v_null": 0.0,
+            "chi": 0.0
+          },
+          {
+            "pair_id": "live_crickets_Summary_lookahead",
+            "turn_index": 2,
+            "mode_used": "slot",
+            "carrier_front": 2.0,
+            "null_front": 7.0,
+            "coverage": 0.25,
+            "mass": 0.6666666666666666,
+            "v_carrier": 1.0,
+            "v_null": 1.0,
+            "chi": 1.0
+          },
+          {
+            "pair_id": "live_crickets_Summary_lookahead",
+            "turn_index": 3,
+            "mode_used": "slot",
+            "carrier_front": 3.0,
+            "null_front": 8.0,
+            "coverage": 0.3333333333333333,
+            "mass": 0.75,
+            "v_carrier": 1.0,
+            "v_null": 1.0,
+            "chi": 1.0
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "pair_count": 6,
+      "mean_chi_characteristic": 1.1921052631578946,
+      "std_chi_characteristic": 0.5903873714639551,
+      "chi_characteristic_quantiles": {
+        "p50": 1.026315789473684,
+        "p90": 1.95
+      },
+      "max_turn_chi": 2.0,
+      "mode_usage": {
+        "slot": 6,
+        "coverage": 0
+      },
+      "pairs_with_chi_above_one": 3,
+      "regime": "drift-dominant"
+    },
+    "turn_rows": [
+      {
+        "pair_id": "mando_DA_lookahead",
+        "turn_index": 1,
+        "mode_used": "slot",
+        "carrier_front": 0.0,
+        "null_front": 10.0,
+        "coverage": 0.07142857142857142,
+        "mass": 0.7857142857142857,
+        "v_carrier": 0.0,
+        "v_null": 0.0,
+        "chi": 0.0
+      },
+      {
+        "pair_id": "mando_DA_lookahead",
+        "turn_index": 2,
+        "mode_used": "slot",
+        "carrier_front": 1.0,
+        "null_front": 12.0,
+        "coverage": 0.14285714285714285,
+        "mass": 0.9285714285714286,
+        "v_carrier": 1.0,
+        "v_null": 2.0,
+        "chi": 2.0
+      },
+      {
+        "pair_id": "mando_DA_lookahead",
+        "turn_index": 3,
+        "mode_used": "slot",
+        "carrier_front": 2.0,
+        "null_front": 13.0,
+        "coverage": 0.21428571428571427,
+        "mass": 1.0,
+        "v_carrier": 1.0,
+        "v_null": 1.0,
+        "chi": 1.0
+      },
+      {
+        "pair_id": "mando_KLN_lookahead",
+        "turn_index": 1,
+        "mode_used": "slot",
+        "carrier_front": 1.0,
+        "null_front": 10.0,
+        "coverage": 0.14285714285714285,
+        "mass": 0.7857142857142857,
+        "v_carrier": 0.0,
+        "v_null": 0.0,
+        "chi": 0.0
+      },
+      {
+        "pair_id": "mando_KLN_lookahead",
+        "turn_index": 2,
+        "mode_used": "slot",
+        "carrier_front": 4.0,
+        "null_front": 10.0,
+        "coverage": 0.35714285714285715,
+        "mass": 0.7857142857142857,
+        "v_carrier": 3.0,
+        "v_null": 0.0,
+        "chi": 0.0
+      },
+      {
+        "pair_id": "mando_KLN_lookahead",
+        "turn_index": 3,
+        "mode_used": "slot",
+        "carrier_front": 7.0,
+        "null_front": 11.0,
+        "coverage": 0.5714285714285714,
+        "mass": 0.8571428571428571,
+        "v_carrier": 3.0,
+        "v_null": 1.0,
+        "chi": 0.3333333333333333
+      },
+      {
+        "pair_id": "mando_Summary_lookahead",
+        "turn_index": 1,
+        "mode_used": "slot",
+        "carrier_front": 0.0,
+        "null_front": 11.0,
+        "coverage": 0.07142857142857142,
+        "mass": 0.8571428571428571,
+        "v_carrier": 0.0,
+        "v_null": 0.0,
+        "chi": 0.0
+      },
+      {
+        "pair_id": "mando_Summary_lookahead",
+        "turn_index": 2,
+        "mode_used": "slot",
+        "carrier_front": 1.0,
+        "null_front": 12.0,
+        "coverage": 0.14285714285714285,
+        "mass": 0.9285714285714286,
+        "v_carrier": 1.0,
+        "v_null": 1.0,
+        "chi": 1.0
+      },
+      {
+        "pair_id": "mando_Summary_lookahead",
+        "turn_index": 3,
+        "mode_used": "slot",
+        "carrier_front": 2.0,
+        "null_front": 12.0,
+        "coverage": 0.21428571428571427,
+        "mass": 0.9285714285714286,
+        "v_carrier": 1.0,
+        "v_null": 0.0,
+        "chi": 0.0
+      },
+      {
+        "pair_id": "live_crickets_DA_lookahead",
+        "turn_index": 1,
+        "mode_used": "slot",
+        "carrier_front": 1.0,
+        "null_front": 6.0,
+        "coverage": 0.16666666666666666,
+        "mass": 0.5833333333333334,
+        "v_carrier": 0.0,
+        "v_null": 0.0,
+        "chi": 0.0
+      },
+      {
+        "pair_id": "live_crickets_DA_lookahead",
+        "turn_index": 2,
+        "mode_used": "slot",
+        "carrier_front": 3.0,
+        "null_front": 8.0,
+        "coverage": 0.3333333333333333,
+        "mass": 0.75,
+        "v_carrier": 2.0,
+        "v_null": 2.0,
+        "chi": 1.0
+      },
+      {
+        "pair_id": "live_crickets_DA_lookahead",
+        "turn_index": 3,
+        "mode_used": "slot",
+        "carrier_front": 4.0,
+        "null_front": 10.0,
+        "coverage": 0.4166666666666667,
+        "mass": 0.9166666666666666,
+        "v_carrier": 1.0,
+        "v_null": 2.0,
+        "chi": 2.0
+      },
+      {
+        "pair_id": "live_crickets_KLN_lookahead",
+        "turn_index": 1,
+        "mode_used": "slot",
+        "carrier_front": 0.0,
+        "null_front": 7.0,
+        "coverage": 0.08333333333333333,
+        "mass": 0.6666666666666666,
+        "v_carrier": 0.0,
+        "v_null": 0.0,
+        "chi": 0.0
+      },
+      {
+        "pair_id": "live_crickets_KLN_lookahead",
+        "turn_index": 2,
+        "mode_used": "slot",
+        "carrier_front": 1.0,
+        "null_front": 9.0,
+        "coverage": 0.16666666666666666,
+        "mass": 0.8333333333333334,
+        "v_carrier": 1.0,
+        "v_null": 2.0,
+        "chi": 2.0
+      },
+      {
+        "pair_id": "live_crickets_KLN_lookahead",
+        "turn_index": 3,
+        "mode_used": "slot",
+        "carrier_front": 2.0,
+        "null_front": 11.0,
+        "coverage": 0.25,
+        "mass": 1.0,
+        "v_carrier": 1.0,
+        "v_null": 2.0,
+        "chi": 2.0
+      },
+      {
+        "pair_id": "live_crickets_Summary_lookahead",
+        "turn_index": 1,
+        "mode_used": "slot",
+        "carrier_front": 1.0,
+        "null_front": 6.0,
+        "coverage": 0.16666666666666666,
+        "mass": 0.5833333333333334,
+        "v_carrier": 0.0,
+        "v_null": 0.0,
+        "chi": 0.0
+      },
+      {
+        "pair_id": "live_crickets_Summary_lookahead",
+        "turn_index": 2,
+        "mode_used": "slot",
+        "carrier_front": 2.0,
+        "null_front": 7.0,
+        "coverage": 0.25,
+        "mass": 0.6666666666666666,
+        "v_carrier": 1.0,
+        "v_null": 1.0,
+        "chi": 1.0
+      },
+      {
+        "pair_id": "live_crickets_Summary_lookahead",
+        "turn_index": 3,
+        "mode_used": "slot",
+        "carrier_front": 3.0,
+        "null_front": 8.0,
+        "coverage": 0.3333333333333333,
+        "mass": 0.75,
+        "v_carrier": 1.0,
+        "v_null": 1.0,
+        "chi": 1.0
+      }
+    ]
+  }
+}

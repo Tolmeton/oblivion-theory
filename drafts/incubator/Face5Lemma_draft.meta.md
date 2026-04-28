@@ -1,6 +1,9 @@
 # Face5 Lemma 試作 — メタデータ
 
 **役割**: Face5Lemma_draft.md の Kalon 判定を anchor する独立 §M1 F⊣G を宣言する台帳。
+**型**: meta / proof-incubator-meta
+**昇格先**: `Face5Lemma_draft.md` の昇格判断に同期し、必要部分だけを親稿 meta または appendix に移す。
+**failure condition**: 本 draft の F⊣G が σ 統一論文側の F⊣G と区別できず、独立判定面として働かない場合は親稿 meta へ吸収する。
 **軌道**: `比較射σの統一定理_v0.6.md` 親クラスタにおける **proof-incubator-meta**。`Face5Lemma_draft.md` を補助証明稿として運用するための判定面・棄却面・昇格面を保持し、整理済み結論だけを本流へ送る。
 **関係**: 本 draft は σ 統一論文 (`../standalone/比較射σの統一定理_v0.6.md` + `../standalone/比較射σの統一定理_v0.6.meta.md`) の姉妹 incubator であり、σ 論文の §M1 F⊣G (BridgeDat 始対象性) とは **独立の F⊣G** で評価される。σ 論文が Face5 を C-claim として引用する場合は、σ 論文側の F⊣G で再評価する。
 

@@ -2,7 +2,7 @@
 """Paper XI third-model calibration probe.
 
 This runner executes the c_fmt calibration suite described in:
-  /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/infra/論文XI_第3モデル条件_実験計画書.md
+  /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/infra/experiments/論文XI_第3モデル条件_実験計画書.md
 
 It supports two modes:
   1. --dry-run: emit canonical expected responses and verify the scoring path.
@@ -243,7 +243,7 @@ def parse_args() -> argparse.Namespace:
         "--manifest",
         type=Path,
         default=Path(
-            "/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/データ_3830.json"
+            "/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/paper_xi_third_model_probe_manifest.json"
         ),
         help="Path to the probe manifest JSON",
     )

@@ -153,7 +153,7 @@ Paper X §2 Case Study N=2 を N≥10 に拡張するため、合成 trajectory 
 ## 参考正本 (事前 Read 推奨)
 
 1. `03_忘却論｜Oblivion/drafts/series/論文X_ContextRotは忘却である_草稿.md` §2 (Case Study), §5.3 (τ-r 関係), §6 (予測)
-2. `03_忘却論｜Oblivion/drafts/infra/リファレンス/批判反証レジストリ.md` §4.2 OP-X-5
+2. `03_忘却論｜Oblivion/drafts/リファレンス/批判反証レジストリ.md` §4.2 OP-X-5
 3. 既存類似 brief: `plans/codex_brief_liang6_phaseB_reproducibility.md` (形式参考)
 4. 既存 Mekhane Lethe モジュール (`20_機構｜Mekhane/_src｜ソースコード/mekhane/lethe/`) — 配置先
 

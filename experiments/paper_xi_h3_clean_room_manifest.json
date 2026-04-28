@@ -1,0 +1,88 @@
+{
+  "manifest_name": "paper_xi_h3_clean_room_mvp_v1",
+  "created_at": "2026-04-29",
+  "workspace_root": "/home/makaron8426/Sync/oikos/oblivion-theory",
+  "hypothesis": {
+    "id": "H3-C2",
+    "claim": "When constraint C is fixed, structural encoding E changes surface realization and structural vocabulary without increasing mean content quality.",
+    "primary_decision": "encoding-only mean-quality null",
+    "secondary_decision": "structural realization propagation"
+  },
+  "files": {
+    "clean_room_plan": "/home/makaron8426/Sync/oikos/oblivion-theory/drafts/infra/experiments/論文XI_H3_clean_room_replication_plan.md",
+    "task_panel": "/home/makaron8426/Sync/oikos/oblivion-theory/drafts/infra/experiments/論文XI_H3_MVP_task_panel.md",
+    "judge_rubric": "/home/makaron8426/Sync/oikos/oblivion-theory/drafts/infra/experiments/論文XI_H3_judge_rubric.md",
+    "prompt_pairs": "/home/makaron8426/Sync/oikos/oblivion-theory/experiments/paper_xi_h3_prompt_pairs.skeleton.jsonl",
+    "dry_run_inputs": "/home/makaron8426/Sync/oikos/oblivion-theory/experiments/paper_xi_h3_dry_run_inputs.jsonl",
+    "dry_run_script": "/home/makaron8426/Sync/oikos/oblivion-theory/experiments/paper_xi_h3_dry_run.py",
+    "dry_run_output": "/home/makaron8426/Sync/oikos/oblivion-theory/experiments/results/paper_xi_h3_H3-PH-01_dry_run_packet.json"
+  },
+  "mvp_scope": {
+    "domains": 5,
+    "tasks_per_domain": 4,
+    "task_count": 20,
+    "conditions": ["A", "B"],
+    "model_family_slots": 3,
+    "repeats": 3,
+    "max_generations": 360
+  },
+  "generation_contract": {
+    "temperature": 0,
+    "top_p": 1,
+    "tools": "off",
+    "browsing": "off",
+    "retrieval": "off",
+    "max_output_tokens": 512
+  },
+  "model_slots": [
+    {
+      "slot": "M1",
+      "family": "anthropic",
+      "model": "select_before_run",
+      "status": "not_selected"
+    },
+    {
+      "slot": "M2",
+      "family": "google",
+      "model": "select_before_run",
+      "status": "not_selected"
+    },
+    {
+      "slot": "M3",
+      "family": "openai_or_open_weight",
+      "model": "select_before_run",
+      "status": "not_selected"
+    }
+  ],
+  "judge_contract": {
+    "condition_blind": true,
+    "same_family_judge_allowed": false,
+    "rubric_file": "/home/makaron8426/Sync/oikos/oblivion-theory/drafts/infra/experiments/論文XI_H3_judge_rubric.md",
+    "primary_metric": "content_quality",
+    "structural_metric_is_not_quality": true
+  },
+  "equivalence_margins": {
+    "content_quality": 0.25,
+    "task_correctness": 0.3,
+    "logical_consistency": 0.3,
+    "constraint_satisfaction": 0.25,
+    "normalized_added_fact_penalty": 0.05
+  },
+  "dry_run": {
+    "task_id": "H3-PH-01",
+    "input_id": "H3-PH-01.synthetic.v1",
+    "mode": "packet_materialization_only",
+    "api_calls": "forbidden",
+    "expected_output": "/home/makaron8426/Sync/oikos/oblivion-theory/experiments/results/paper_xi_h3_H3-PH-01_dry_run_packet.json"
+  },
+  "readiness_gates": [
+    "prompt_pairs_jsonl_parse_passes",
+    "prompt_pair_count_is_20",
+    "judge_rubric_exists",
+    "dry_run_packet_materializes_A_and_B",
+    "dry_run_prompts_have_no_unfilled_INPUT",
+    "dry_run_prompts_keep_same_task_text",
+    "c_e_audit_marks_goal_procedure_constraints_output_schema_fixed"
+  ],
+  "status": "dry_run_ready"
+}

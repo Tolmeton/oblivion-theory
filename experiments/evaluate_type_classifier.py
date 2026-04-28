@@ -396,8 +396,8 @@ def build_report(
     diff_block = "\n".join(
         [
             "```diff",
-            "--- a/drafts/infra/リファレンス/批判反証レジストリ.md",
-            "+++ b/drafts/infra/リファレンス/批判反証レジストリ.md",
+            "--- a/drafts/リファレンス/批判反証レジストリ.md",
+            "+++ b/drafts/リファレンス/批判反証レジストリ.md",
             "@@",
             "-| OP-X-5 | Type 1/2/3 分類器: 状態型を自動判定し最適 CM 戦略を予測するモデル | 中 | Testable |",
             f"+| OP-X-5 | Type 1/2/3 分類器: 状態型を自動判定し最適 CM 戦略を予測するモデル | 中 | {op_x5['level']} |",

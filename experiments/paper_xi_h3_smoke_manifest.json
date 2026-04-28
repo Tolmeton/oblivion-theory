@@ -1,0 +1,33 @@
+{
+  "manifest_name": "paper_xi_h3_smoke_v1",
+  "created_at": "2026-04-29",
+  "parent_manifest": "/home/makaron8426/Sync/oikos/oblivion-theory/experiments/paper_xi_h3_clean_room_manifest.json",
+  "dry_run_packet": "/home/makaron8426/Sync/oikos/oblivion-theory/experiments/results/paper_xi_h3_H3-PH-01_dry_run_packet.json",
+  "output_file": "/home/makaron8426/Sync/oikos/oblivion-theory/experiments/results/paper_xi_h3_H3-PH-01_smoke_results.jsonl",
+  "task_id": "H3-PH-01",
+  "input_id": "H3-PH-01.synthetic.v1",
+  "run_scope": {
+    "family_count": 1,
+    "conditions": ["A", "B"],
+    "repeats": 1,
+    "expected_generations": 2
+  },
+  "provider_candidate": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "status": "blocked_until_OPENAI_API_KEY_is_set"
+  },
+  "generation_contract": {
+    "temperature": 0,
+    "top_p": 1,
+    "max_tokens": 512,
+    "tools": "off",
+    "browsing": "off",
+    "retrieval": "off"
+  },
+  "decision_after_smoke": {
+    "pass": "Both A and B return nonempty responses with the required four-section contract and no API/runtime schema failure.",
+    "fail": "Any condition fails to return, leaks external-tool behavior, ignores the output contract, or runner output is not valid JSONL."
+  },
+  "status": "blocked_until_api_key"
+}

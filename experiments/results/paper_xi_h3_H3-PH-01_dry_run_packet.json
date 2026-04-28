@@ -1,0 +1,37 @@
+{
+  "manifest": "paper_xi_h3_clean_room_mvp_v1",
+  "dry_run": true,
+  "api_calls": "forbidden",
+  "task_id": "H3-PH-01",
+  "input_id": "H3-PH-01.synthetic.v1",
+  "domain": "philosophy_theory",
+  "task_type": "argument_audit",
+  "task": "Audit the input argument by separating claim, evidence, and falsification condition.",
+  "checks": {
+    "condition_a_contains_task": true,
+    "condition_b_contains_task": true,
+    "condition_a_has_input_slot": true,
+    "condition_b_has_input_slot": true,
+    "prompt_pair_count": 20,
+    "condition_a_unfilled_input": false,
+    "condition_b_unfilled_input": false
+  },
+  "condition_a": {
+    "condition": "A",
+    "encoding": "natural_language",
+    "prompt": "You will receive an input. Perform the task described in TASK. Use four sections: Answer, Reasons, Uncertainty, Failure condition. Do not use external sources. Do not add facts not present in the input. TASK: Audit the input argument by separating claim, evidence, and falsification condition. INPUT: Claim: A decision rule is explanatory when it tells the evaluator what would change the verdict, not only what label to assign. Evidence: In a pilot review, two evaluators used different labels for the same argument but changed their verdict only when a falsification condition was added. Falsification condition: If label changes alone make evaluators reverse the verdict while the evidence and falsification condition stay fixed, the rule is not separating explanation from presentation."
+  },
+  "condition_b": {
+    "condition": "B",
+    "encoding": "structural_notation",
+    "prompt": "<task_contract><goal>Audit the input argument by separating claim, evidence, and falsification condition.</goal><constraints><external_sources>forbidden</external_sources><new_facts_not_in_input>forbidden</new_facts_not_in_input><answer_surface>four_sections</answer_surface></constraints><output>S1 Answer; S2 Reasons; S3 Uncertainty; S4 Failure condition</output></task_contract><input>Claim: A decision rule is explanatory when it tells the evaluator what would change the verdict, not only what label to assign. Evidence: In a pilot review, two evaluators used different labels for the same argument but changed their verdict only when a falsification condition was added. Falsification condition: If label changes alone make evaluators reverse the verdict while the evidence and falsification condition stay fixed, the rule is not separating explanation from presentation.</input>"
+  },
+  "judge_rubric": "/home/makaron8426/Sync/oikos/oblivion-theory/drafts/infra/experiments/論文XI_H3_judge_rubric.md",
+  "c_e_audit": {
+    "goal": "fixed",
+    "procedure": "fixed",
+    "constraints": "fixed",
+    "output_schema": "fixed",
+    "notation": "changed"
+  }
+}

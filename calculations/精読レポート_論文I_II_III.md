@@ -166,7 +166,7 @@ Paper II §4.3 は α < 0 を「脱構造化」として定性的に記述し、
 ### 6.2 装飾的な圏論
 
 - **Paper II §3.4 Face Lemma の「nerve の 2-skeleton」**: 本質的な主張は「3つの独立な関係があれば検証可能性が生まれる」であり、nerve の言語は必要ない。3体問題の制約（2体では自由度不足、3体で充足）として述べれば圏論なしで伝わる。
-  追記: この再記述はさらに符号理論の語彙へ押し出せる。Face Lemma を「圏論版 syndrome 条件」と読み、stable / detectable / recoverable を分離して定義すれば、nerve のオーバーヘッドを下げつつ操作的意味を保持できる。参照: `drafts/infra/FaceLemma_技術設計.md`
+  追記: この再記述はさらに符号理論の語彙へ押し出せる。Face Lemma を「圏論版 syndrome 条件」と読み、stable / detectable / recoverable を分離して定義すれば、nerve のオーバーヘッドを下げつつ操作的意味を保持できる。参照: `drafts/incubator/FaceLemma_技術設計.md`
 
 - **Paper II §6.1–6.2 の「創発 = 1-skeleton → 2-skeleton」**: 創発の定義としては興味深いが、実際に使われる場面（意識のハードプロブレム）では圏論的定義が具体的な予測を生まない。「3射が必要」は直感的にもわかる主張であり、nerve の形式化はオーバーヘッド。
 

@@ -166,6 +166,170 @@ G は「そのうち何が skeleton で、何が support で、何が open quest
   - 未達を Blocker A1 / A2 / B に分解し、closure の核と物理的実現例と α 橋を別深度の課題として切り分ける
 - 結果: 射程維持 ✓ / ただし Kalon 判定は未昇格
 
+### C3 — 2026-04-26 Round 2: E-XIII-C3-01 local closure probe
+
+- 反論 r: 「Einstein tensor を 2-simplex defect と直接読むと、Schwarzschild exterior のような vacuum curvature を説明できないのではないか」
+- SFBT: できないのではなく、defect / contraction / coupling projection を分けていないだけではないか?
+- 実験 artifact:
+  - `drafts/infra/experiments/XIII_C3_local_closure_protocol.md`
+  - `drafts/infra/experiments/XIII_C3_case_matrix.md`
+  - `drafts/infra/experiments/XIII_C3_result.md`
+- 観測:
+  - `defect = Einstein tensor` の直読は raw defect としては棄却。
+  - Riemann/holonomy = raw defect、Ricci/scalar = contracted defect、Einstein tensor = conserved coupling projection と分けると、Minkowski / Schwarzschild exterior / FLRW / Bianchi の最小 probe に耐える見込みが出る。
+  - ただし Bianchi 恒等式を Face 側の closure / syndrome conservation として翻訳する O3 は未閉鎖。
+- 結果: 射程維持 ✓ / D2 は D2' へ再配置必要 / Kalon 判定は未昇格
+
+### C3 — 2026-04-26 Round 3: E-XIII-C3-02 Bianchi closure probe
+
+- 反論 r: 「contracted Bianchi identity を Face 側 closure と呼んでも、GR の既知事実を言い換えただけではないか」
+- SFBT: できないのではなく、Face Lemma の detectability 層と、projected defect の conservation 層を分けていないだけではないか?
+- 実験 artifact:
+  - `drafts/infra/experiments/XIII_C3_bianchi_closure_protocol.md`
+  - `drafts/infra/experiments/XIII_C3_bianchi_closure_matrix.md`
+  - `drafts/infra/experiments/XIII_C3_bianchi_closure_result.md`
+- 観測:
+  - `Bianchi identity = Face Lemma そのもの` という直読は強すぎる。
+  - Face Lemma は raw defect の detectability を与え、Bianchi identity はその projected defect を divergence-free な conserved projection へ制約する。
+  - この読みなら `G_{μν}` は raw face defect ではなく、内容へ結合可能な conserved coupling projection として選ばれる。
+  - O3 は role-level support を得たが、Einstein 方程式全体、係数、`T_{μν}` との等号は O4 に残る。
+- 結果: 射程維持 ✓ / O3 は role-level support / Kalon 判定は未昇格
+
+### C3 — 2026-04-26 Round 4: E-XIII-C3-03 FLRW coupling probe
+
+- 反論 r: 「`G_{μν}` が conserved projection でも、それが `T_{μν}` と等置される理由はまだ出ていないのではないか」
+- SFBT: できないのではなく、O4 を一般導出ではなく、まず一つの内容あり GR インスタンスで tensor slot 対応として試していないだけではないか?
+- 実験 artifact:
+  - `drafts/infra/experiments/XIII_C3_flrw_coupling_protocol.md`
+  - `drafts/infra/experiments/XIII_C3_flrw_symbolic_ledger.md`
+  - `drafts/infra/experiments/XIII_C3_flrw_coupling_matrix.md`
+  - `drafts/infra/experiments/XIII_C3_flrw_coupling_result.md`
+- 観測:
+  - flat FLRW symbolic run で `G_00 = 3H^2`、`G_ii/a^2 = -2a''/a - H^2` が得られ、perfect fluid の `ρ,p` slot と対応する。
+  - `∇_μG^μ_ν=0` と `∇_μT^μ_ν=0` は同じ conservation slot に入り、perfect fluid 側では `ρ' + 3H(ρ+p)=0` を与える。
+  - metric がなければ `T_{ii}=p a^2` の covariant component も定義できないため、C2 の容器先行は維持される。
+  - ただし係数 `8πG_N`、作用原理、一般 GR case は未導出。
+- 結果: 射程維持 ✓ / O4 は flat FLRW single-instance local support / Kalon 判定は未昇格
+
+### C3 — 2026-04-26 Round 5: E-XIII-C3-04a GR source promotion
+
+- 反論 r: 「FLRW probe はローカル symbolic 計算に支えられているだけで、標準 GR 文献への接地が弱いのではないか」
+- SFBT: できないのではなく、標準 GR source のどの節がどの claim を支えるかを台帳化していないだけではないか?
+- 実行 artifact:
+  - `drafts/infra/experiments/XIII_C3_GR_source_promotion_ledger.md`
+  - `drafts/infra/experiments/XIII_C3_GR_source_promotion_result.md`
+- 観測:
+  - Carroll `gr-qc/9712019` により、perfect fluid stress-energy、stress-energy conservation、Einstein tensor の conserved geometric role、Robertson-Walker metric、Friedmann equations の標準的導出面を裏取り。
+  - E-XIII-C3-03 は `local symbolic source only` から `standard GR source + local symbolic source` へ昇格。
+  - ただし historical primary source ではなく standard lecture source なので、投稿稿では教科書または原論文 citation へ整える必要が残る。
+- 結果: 射程維持 ✓ / O4 は source-backed local support / Kalon 判定は未昇格
+
+### C3 — 2026-04-26 Round 6: E-XIII-C3-04b non-FLRW TOV stress test
+
+- 反論 r: 「FLRW の O4 coupling は高対称な一様宇宙でだけ成立する slot coincidence ではないか」
+- SFBT: できないのではなく、半径方向の圧力勾配を持つ non-FLRW perfect-fluid case で試していないだけではないか?
+- 実行 artifact:
+  - `drafts/infra/experiments/XIII_C3_non_flrw_tov_protocol.md`
+  - `drafts/infra/experiments/XIII_C3_non_flrw_tov_symbolic_ledger.md`
+  - `drafts/infra/experiments/XIII_C3_non_flrw_tov_matrix.md`
+  - `drafts/infra/experiments/XIII_C3_non_flrw_tov_result.md`
+- 観測:
+  - static spherical metric `ds^2=-e^{2Phi(r)}dt^2+(1-2m(r)/r)^{-1}dr^2+r^2dOmega^2` で、`G^t_t=-2m'(r)/r^2` が density slot に入る。
+  - `G^r_r` は `Phi'(r), m(r)` を含み、pressure slot と結合する。
+  - `div T=0` は `p'(r)+(rho+p)Phi'(r)=0` を与え、FLRW の homogeneous continuity equation より強い radial balance になる。
+  - ただし static spherical perfect fluid に限るため、anisotropic stress / non-perfect-fluid / 一般 GR case は未閉鎖。
+- 結果: 射程維持 ✓ / O4 は non-FLRW local support を追加 / Kalon 判定は未昇格
+
+### C3 — 2026-04-26 Round 7: E-XIII-C3-04c Jacobson local patch
+
+- 反論 r: 「FLRW/TOV の tensor slot 対応は、物理的な導出経路ではなく、GR 方程式を後から読んでいるだけではないか」
+- SFBT: できないのではなく、局所 Rindler horizon / Clausius relation / Raychaudhuri focusing を C2/C3 bridge として source-backed に整理していないだけではないか?
+- 実行 artifact:
+  - `drafts/infra/experiments/XIII_C3_jacobson_local_patch_protocol.md`
+  - `drafts/infra/experiments/XIII_C3_jacobson_source_ledger.md`
+  - `drafts/infra/experiments/XIII_C3_jacobson_bridge_matrix.md`
+  - `drafts/infra/experiments/XIII_C3_jacobson_local_patch_result.md`
+- 観測:
+  - Jacobson (1995) は local Rindler horizon、heat flux、Unruh temperature、horizon-area entropy、Raychaudhuri focusing、conservation + contracted Bianchi identity を同じ導出経路に置く。
+  - C2 側では、heat flux は local causal boundary と observer calibration に相対化されるため、content flux は container boundary なしに定義されない。
+  - C3 側では、Raychaudhuri focusing が content flux と Ricci curvature を null direction ごとに比較可能にし、conservation + Bianchi が tensor equation へ閉じる。
+  - ただし entropy-area proportionality と local equilibrium は Jacobson 側の仮定であり、Face Lemma 3射最小性の証明ではない。
+- 結果: 射程維持 ✓ / C2/C3 は source-backed local physical bridge を追加 / Kalon 判定は未昇格
+
+### C3 — 2026-04-26 Round 8: E-XIII-C3-05 local closure subsection integration
+
+- 反論 r: 「実験 artifact が増えても、本文 §8 が skeleton のままなら読者には進展が見えないのではないか」
+- SFBT: できないのではなく、E-03/E-04b/E-04c を本文の主張水準へ戻していないだけではないか?
+- 実行 artifact:
+  - `drafts/infra/experiments/XIII_C3_local_closure_subsection_result.md`
+  - `drafts/series/論文XIII_時空は忘却である_草稿.md` §8.2.2
+- 観測:
+  - §8.2.2 `局所 closure 実験の現在地` を追加し、Bianchi / FLRW / TOV / Jacobson local patch を O3/O4 の局所支持として統合。
+  - `Riemann/holonomy = raw defect`、`Ricci/scalar = contracted defect`、`Einstein tensor = conserved coupling projection` の三層分離を本文に明示。
+  - §8.3 と §8.4 を、Jacobson を local physical bridge として前景化しつつ、Face Lemma 証明ではないという境界へ更新。
+  - 改訂履歴 v0.1.2 を追加。
+- 結果: 射程維持 ✓ / §8 は source-backed local support を持つ skeleton へ更新 / Kalon 判定は未昇格
+
+### C3 — 2026-04-26 Round 9: E-XIII-C3-04d anisotropic TOV stress test
+
+- 反論 r: 「TOV support は isotropic perfect-fluid の `p_r=p_t` に依存しており、anisotropic stress では O4 coupling が崩れるのではないか」
+- SFBT: できないのではなく、同じ static spherical metric で内容側の radial / tangential pressure slot を分けて試していないだけではないか?
+- 実行 artifact:
+  - `drafts/infra/experiments/XIII_C3_anisotropic_tov_protocol.md`
+  - `drafts/infra/experiments/XIII_C3_anisotropic_tov_symbolic_ledger.md`
+  - `drafts/infra/experiments/XIII_C3_anisotropic_tov_matrix.md`
+  - `drafts/infra/experiments/XIII_C3_anisotropic_tov_result.md`
+- 観測:
+  - static spherical metric `ds^2=-e^{2Phi(r)}dt^2+(1-2m(r)/r)^{-1}dr^2+r^2dOmega^2` で、`T^mu_nu=diag(-rho,p_r,p_t,p_t)` を置いた。
+  - `G^t_t=-2m'(r)/r^2` は density slot、`G^r_r` は radial pressure slot、`G^theta_theta=G^phi_phi` は tangential pressure slot に対応する。
+  - `div T=0` は `p_r'(r)+(rho+p_r)Phi'(r)+2(p_r-p_t)/r=0` を与え、anisotropic imbalance が conservation bridge に明示的に入る。
+  - `p_t=p_r` と置けば 04b の perfect-fluid TOV balance に戻る。
+  - ただし static spherical diagonal stress に限るため、一般の非対角 flux / shear、作用原理、係数導出、一般 GR case は未閉鎖。
+- 結果: 射程維持 ✓ / O4 は isotropic perfect-fluid 依存ではない局所支持を追加 / Kalon 判定は未昇格
+
+### C3 — 2026-04-26 Round 10: E-XIII-C3-06 §8 transition smoothing / citation normalization
+
+- 反論 r: 「§8.2.2 が内部実験番号の表に見え、外部 SOURCE と忘却論的 INFERENCE の境界が読者に見えないのではないか」
+- SFBT: できないのではなく、外部 GR source、local symbolic run、Paper XIII inference を本文上で分けていないだけではないか?
+- 実行 artifact:
+  - `drafts/infra/experiments/XIII_C3_transition_citation_result.md`
+  - `drafts/series/論文XIII_時空は忘却である_草稿.md` §8.2.2 / §8.3 / 参考文献 / 改訂履歴
+- 観測:
+  - §8.2.2 冒頭に、E-XIII-C3 番号は内部検証台帳であり、外部根拠そのものではないと明記。
+  - FLRW / perfect fluid / Bianchi / Einstein tensor は Carroll、static spherical fluid は Tolman と Oppenheimer-Volkoff、local horizon thermodynamics は Jacobson に接続。
+  - local symbolic run は本稿 convention での再計算 SOURCE、container/content 読みは Paper XIII の INFERENCE として分離。
+  - §8.3 への bridge を、先行研究を証明者ではなく closure 後の実現候補として扱う形へ調整。
+- 結果: 射程維持 ✓ / reader-facing support 改善 / Kalon 判定は未昇格
+
+### C3 — 2026-04-26 Round 11: E-XIII-C3-07 §8 cold reread prose polish
+
+- 反論 r: 「§8.2.2 で `Einstein tensor = raw defect` を棄却しているのに、§8.2 D2 と §8.4 Blocker A1 には直読の古い wording が残っており、読者には内部矛盾に見えるのではないか」
+- SFBT: できないのではなく、§8.2.2 の三層分離を §8.2 / §8.2.1 / §8.4 へ戻していないだけではないか?
+- 実行 artifact:
+  - `drafts/infra/experiments/XIII_C3_section8_cold_reread_polish_result.md`
+  - `drafts/series/論文XIII_時空は忘却である_草稿.md` §8.2 / §8.2.1 / §8.4 / 改訂履歴
+- 観測:
+  - §8 冒頭を、skeleton だが O3/O4 は局所支持を得た、という現在地へ更新。
+  - D2 を `Einstein tensor = raw Face Lemma defect` 直読から、Riemann / Ricci / Einstein tensor の三層分離へ置換。
+  - O2 defect 義務と Blocker A1 の文言を、raw defect / contracted defect / conserved coupling projection に合わせた。
+  - 主張水準は [構造的対応] / skeleton のまま維持。
+- 結果: 射程維持 ✓ / §8 内部整合性を改善 / Kalon 判定は未昇格
+
+### C3 — 2026-04-27 Round 12: Th. 3.4.X (Paper IX §3.7) 媒介の monograph 統合への接続
+
+- **反論 r**: 「C3 は §8 で局所支持を蓄積しているが、Paper XIII 単独では Phase 5 完成は数ヶ月単位の作業。それまで C3 は『精巧な比較』に留まる。本稿の存在理由 (`忘却論は物理学の文法である`) を、Paper XIII Phase 5 完成を待たずに別の経路で支える方法はないか?」
+- **SFBT 問い**: できないのではなく、Paper IX §3.7 で完成した Th. 3.4.X (動的第二法則) を **C3 の Phase 5 と並行する別経路の支柱** として活用していないだけではないか?
+- **試行**: Th. 3.4.X (Paper IX §3.7, IX-T2) は Paper V Th. 2.3.1 + Th. 3.4.1 の合成定理として **2026-04-27 に独立定理化された** [SOURCE: 論文IX_*_草稿.md §3.7, 統一記号表 §2 IX-T2]。これは C3 の Blocker A2 (Verlinde / Jacobson の物理的実現例) と直接接続する:
+  - Th. 3.4.X §3.7.4 差分テーブル: Boltzmann / Jacobson 1995 / Verlinde 2011 / Page-Wootters 1983 との直交性が明示
+  - Paper XIII §1.2 (Verlinde / Jacobson 接続) と §8.3 (Blocker A2) は Th. 3.4.X 経由で **物理的実現例の支持線が一段強化される** (Paper IX §3.7 が Verlinde / Jacobson より上位の動的第二法則を圏論的に閉じたため、Paper XIII の C3 は Th. 3.4.X を支柱として「Verlinde / Jacobson は U⊣N の射影である」を主張しやすくなる)
+- **実化操作**:
+  - Paper IX §3.7 + IX-T2 を C3 の SOURCE 補強として §M6 C3「実へ引くための SOURCE」リストに追加
+  - monograph 第VI幕統合章 (`/home/makaron8426/Sync/oikos/.../Yugaku/01_研究論文｜Papers/monograph_第VI幕統合章_時間の矢=忘却の矢.meta.md` v0.1, 2026-04-27 起票) は Paper XIII C3 と Paper IX C6 (Th. 3.4.X) を双方向接続する hub として機能
+  - monograph 第VI幕統合章 meta §M9 接続文書テーブルで「Paper XIII = C2/C3 の物理射影 + Phase 5 進捗」として記録済 (2026-04-27)
+- **虚→実判定**: 実化前進 ✓ (C3 の SOURCE 線が Paper IX §3.7 経由で 1 本増えた。monograph 統合章の起票で Paper XIII C3 の射程が Phase 5 完成を待たずに「Th. 3.4.X 媒介の hub 命題」として保持される)
+- **結果**: 射程維持 ✓ + 並行支柱獲得 (C3 単独 Phase 5 完成を待つ必要が relaxed。Th. 3.4.X 経由で外部巨人接続が monograph で明示できる)
+- **Blocker B (α 橋) への接続**: Th. 3.4.X は α_VIII (Paper VIII forgetful filtration) を引数とするため、Blocker B (α_III → α_VIII → α_CPS 橋) の closure に **Paper IX 側からの圧力**を加える。OP-IX-9 ((P*) 仮説の主張水準格上げ判定) が閉じれば、Blocker B の α 橋は Th. 3.4.X 経由で Paper XIII 物理側へ接続される
+
 ### C4 — 2026-04-14 Round 1
 
 - 反論 r: 「前幾何をやりたいなら、Kletetschka (2025) のように時間次元を増やせばよい。忘却論はそこまで踏み込めていない」
@@ -191,7 +355,7 @@ G は「そのうち何が skeleton で、何が support で、何が open quest
 ### Donor 統合メモ (外部パッチ統合)
 
 - **O1 局所 closure**: §M8 D-XIII-01 に集約した donor 由来の O1 局所 closure は、Blocker A1 の第一項 (3射の型付け) に対する局所的応答方向を提供した。3項を「三つの場」ではなく「三つの検証役割 (方向 / 比較 / 輸送)」として型付けし直すことで、Γ の g からの導出可能性と第三射の非冗長性を両立させる。本文 §8.2.1 O1 に precision note として吸収済み (v0.1.1)。O2-O4 は未着手のまま。
-- **統一記号表参照パス**: 本文 §0 簡易記号表の `drafts/infra/統一記号表.md` を `drafts/infra/リファレンス/統一記号表.md` に修正済み (v0.1.1)。
+- **統一記号表参照パス**: 本文 §0 簡易記号表の `drafts/infra/統一記号表.md` を `drafts/リファレンス/統一記号表.md` に修正済み (v0.1.1)。
 
 ---
 
@@ -214,12 +378,17 @@ G は「そのうち何が skeleton で、何が support で、何が open quest
 - 最新状態: 変換中
 
 ### C3
-- 野望: [§M2 C3 の核主張を 1 文で言い直す]
-- 現在まだ虚な点: [未証明・未観測・未形式化・未反駁処理の核]
-- 実へ引くための SOURCE: [読むべき原典 / 必要データ / 必要定理]
-- 実化の判定条件: [何が揃えば『実へ近づいた』と言えるか]
-- 次の実化操作: [Sourcing / 定義追加 / 証明 / 実験 / 反論吸収]
-- 最新状態: 変換中
+- 野望: Face Lemma の 3射最小性を、GR 側の方向 / 比較 / 輸送 / 曲率 defect / closure / coupling の dictionary として、少なくとも一つの GR インスタンスで correspondence へ押し上げる。
+- 現在まだ虚な点: Riemann/holonomy, Ricci/scalar, Einstein tensor, stress-energy tensor の役割分担は E-XIII-C3-01 で修正候補を得た。Bianchi 恒等式を Face 側の projected syndrome closure として読む O3 は E-XIII-C3-02 で role-level support を得た。O4 は E-XIII-C3-03 で flat FLRW single-instance local support を得て、E-XIII-C3-04a で標準 GR source に昇格し、E-XIII-C3-04b で static spherical perfect-fluid の non-FLRW local support を追加し、E-XIII-C3-04c で Jacobson-style local physical bridge を追加し、E-XIII-C3-04d で static spherical anisotropic-stress support を追加した。E-XIII-C3-05 で 04c までを本文 §8.2.2 に統合し、04d も同節へ追記済み。E-XIII-C3-06 で §8.2.2 の SOURCE / INFERENCE 境界と citation surface を整えた。E-XIII-C3-07 で §8.2 D2 と §8.4 Blocker A1 を三層分離へ統一した。ただし entropy-area proportionality、local equilibrium、係数 `8πG_N`、作用原理、一般の非対角 flux / shear、投稿稿全体の citation polish は未閉鎖。
+- 実へ引くための SOURCE: `drafts/series/論文XIII_時空は忘却である_草稿.md` §2.2 / §8、`drafts/リファレンス/FaceLemma.md`、`drafts/incubator/FaceLemma_技術設計.md`、`drafts/series/論文VIII_存在は忘却に先行する_草稿.md` §3.4 / §5.1-§5.2、`drafts/infra/experiments/XIII_C3_local_closure_protocol.md`、`drafts/infra/experiments/XIII_C3_case_matrix.md`、`drafts/infra/experiments/XIII_C3_result.md`、`drafts/infra/experiments/XIII_C3_bianchi_closure_protocol.md`、`drafts/infra/experiments/XIII_C3_bianchi_closure_matrix.md`、`drafts/infra/experiments/XIII_C3_bianchi_closure_result.md`、`drafts/infra/experiments/XIII_C3_flrw_coupling_protocol.md`、`drafts/infra/experiments/XIII_C3_flrw_symbolic_ledger.md`、`drafts/infra/experiments/XIII_C3_flrw_coupling_matrix.md`、`drafts/infra/experiments/XIII_C3_flrw_coupling_result.md`、`drafts/infra/experiments/XIII_C3_GR_source_promotion_ledger.md`、`drafts/infra/experiments/XIII_C3_GR_source_promotion_result.md`、`drafts/infra/experiments/XIII_C3_non_flrw_tov_protocol.md`、`drafts/infra/experiments/XIII_C3_non_flrw_tov_symbolic_ledger.md`、`drafts/infra/experiments/XIII_C3_non_flrw_tov_matrix.md`、`drafts/infra/experiments/XIII_C3_non_flrw_tov_result.md`、`drafts/infra/experiments/XIII_C3_jacobson_local_patch_protocol.md`、`drafts/infra/experiments/XIII_C3_jacobson_source_ledger.md`、`drafts/infra/experiments/XIII_C3_jacobson_bridge_matrix.md`、`drafts/infra/experiments/XIII_C3_jacobson_local_patch_result.md`、`drafts/infra/experiments/XIII_C3_local_closure_subsection_result.md`、`drafts/infra/experiments/XIII_C3_anisotropic_tov_protocol.md`、`drafts/infra/experiments/XIII_C3_anisotropic_tov_symbolic_ledger.md`、`drafts/infra/experiments/XIII_C3_anisotropic_tov_matrix.md`、`drafts/infra/experiments/XIII_C3_anisotropic_tov_result.md`、`drafts/infra/experiments/XIII_C3_transition_citation_result.md`、`drafts/infra/experiments/XIII_C3_section8_cold_reread_polish_result.md`。次段では global citation/style pass、または non-diagonal flux / shear stress test が必要。
+- 実化の判定条件: (1) Minkowski で defect が 0 になる、(2) Schwarzschild exterior で Riemann nonzero / Ricci-G-T zero を処理できる、(3) Bianchi identity が Face 側の raw defect ではなく projected syndrome closure として読める、(4) FLRW など内容あり case で `G_{μν}` と `T_{μν}` の coupling が容器/内容整合として読める、(5) TOV 型 non-FLRW case で高対称性への過適合を弱める、(6) anisotropic stress case で isotropic perfect-fluid 依存を弱める、(7) C1/C4 を救済に使わず C3 単独で局所 closure する。
+- 次の実化操作: global citation/style pass を行うか、E-XIII-C3-04e として non-diagonal flux / shear stress test を切る。**並行経路 (2026-04-27 追加)**: Paper IX §3.7 で Th. 3.4.X (動的第二法則 — 時間の矢 = 忘却の矢) が独立定理化されたため、C3 は monograph 第VI幕統合章 (`/home/makaron8426/Sync/oikos/.../Yugaku/01_研究論文｜Papers/monograph_第VI幕統合章_時間の矢=忘却の矢.meta.md` v0.1) で Th. 3.4.X 媒介の hub 命題として並行支柱を得る。Blocker B (α 橋) は OP-IX-9 ((P*) 仮説の主張水準格上げ判定) との連動で Paper IX 側からの圧力を受ける。
+- **追加 SOURCE (2026-04-27)**:
+  - `drafts/series/論文IX_エントロピーは忘却である_草稿.md` §3.7 (Th. 3.4.X 動的第二法則 + §3.7.4 Boltzmann/Jacobson/Verlinde/Page-Wootters 差分テーブル)
+  - `drafts/リファレンス/統一記号表.md` §2 IX-T2 + §2b 安定度マップ
+  - `drafts/リファレンス/熱力学対応表.md` #8 (静的版 + 動的版 = Th.6.10.3 + Th.3.4.1 + Th.3.4.X)
+  - `01_研究論文｜Papers/monograph_第VI幕統合章_時間の矢=忘却の矢.meta.md` v0.1 (4 件統合 monograph hub)
+- 最新状態: 変換中。E-XIII-C3-01 により D2 直読を棄却し、D2'「Riemann/holonomy = raw defect、Einstein tensor = conserved coupling projection」へ再配置。E-XIII-C3-02 により O3 は role-level support。E-XIII-C3-03 により O4 は flat FLRW single-instance local support。E-XIII-C3-04a により O4 は source-backed local support。E-XIII-C3-04b により O4 は non-FLRW static spherical support を追加。E-XIII-C3-04c により C2/C3 は Jacobson-style local physical bridge を得た。E-XIII-C3-04d により O4 は isotropic perfect-fluid 依存ではない局所支持を追加。E-XIII-C3-05 と 04d 追記により本文 §8.2.2 へ局所支持を統合し、E-XIII-C3-06 により §8.2.2 の外部 citation と SOURCE / INFERENCE 境界を整えた。E-XIII-C3-07 により §8 内の D2 / O2 / Blocker A1 を三層分離へ統一。**Round 12 (2026-04-27) により Paper IX §3.7 Th. 3.4.X 経由で monograph 第VI幕統合章への接続が確立し、C3 単独 Phase 5 完成を待たずに「Th. 3.4.X 媒介の hub 命題」として並行支柱を得た**。ただし定理昇格はしていない。
 
 ### C4
 - 野望: [§M2 C4 の核主張を 1 文で言い直す]
@@ -239,6 +408,21 @@ G は「そのうち何が skeleton で、何が support で、何が open quest
 
 - 棄却 3: Face Lemma ↔ Einstein dictionary を削る
   - 理由: 安全になるが、本稿の中核価値も消える
+
+- 棄却 3b: `Einstein tensor = Face Lemma の raw defect` と直接読む
+  - 理由: Schwarzschild exterior の vacuum curvature を処理できない。raw defect は Riemann/holonomy に置き、Einstein tensor は divergence-free coupling projection として読む方がよい
+
+- 棄却 3c: `Bianchi identity = Face Lemma そのもの` と読む
+  - 理由: Face Lemma は comparison surface / detectability の最小条件であり、Bianchi identity は露出した defect を conserved projection へ制約する closure 条件である。両者を同一視すると、Face Lemma と Coherence Defect / closure 層が潰れる
+
+- 棄却 3d: flat FLRW の slot 対応だけで Einstein 方程式を忘却論から導出したと読む
+  - 理由: E-XIII-C3-03 が与えるのは一つの高対称 case における容器/内容 coupling の局所支持であり、係数 `8πG_N`、作用原理、一般 GR case は未閉鎖である
+
+- 棄却 3e: TOV 型 non-FLRW stress test が通ったので C3 は theorem に昇格したと読む
+  - 理由: E-XIII-C3-04b/04d は static spherical perfect fluid / anisotropic stress での局所支持であり、一般の非対角 flux / shear、作用原理、係数導出、一般 GR case はまだ閉じていない
+
+- 棄却 3f: Jacobson (1995) が Face Lemma を証明していると読む
+  - 理由: Jacobson は local Rindler horizon と thermodynamic relation から Einstein equation を equation of state として導く外部 SOURCE であり、Face Lemma の 3射最小性や忘却論の dictionary を証明してはいない。E-XIII-C3-04c は local physical bridge support であって theorem 昇格ではない
 
 - 棄却 4: Kletetschka *Three-Dimensional Time* を外部支持根拠として採用する
   - 理由: literal な三次元時間 ontology は忘却論の時間概念と衝突する。採るべきは前幾何志向だけであり、support ではなく敵対的比較対象として扱うべき

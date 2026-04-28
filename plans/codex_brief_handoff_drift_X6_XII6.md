@@ -138,7 +138,7 @@ Paper X §6.3 の「メタ二重天井予測 `r_obs ≤ √(ρ/(K+1))`」を Tas
 
 1. `03_忘却論｜Oblivion/drafts/series/論文X_ContextRotは忘却である_草稿.md` §4-§6
 2. `03_忘却論｜Oblivion/drafts/series/論文XII_速度は忘却である_草稿.md` §3-§5, §8
-3. `03_忘却論｜Oblivion/drafts/infra/リファレンス/批判反証レジストリ.md` §4.2 OP-X-6, §4.3 OP-XII-6
+3. `03_忘却論｜Oblivion/drafts/リファレンス/批判反証レジストリ.md` §4.2 OP-X-6, §4.3 OP-XII-6
 4. 既存類似 brief: `plans/codex_brief_liang6_phaseB_reproducibility.md` (形式参考)
 5. 既存 Mekhane Lethe モジュール (`20_機構｜Mekhane/_src｜ソースコード/mekhane/lethe/`) — 配置先確認
 

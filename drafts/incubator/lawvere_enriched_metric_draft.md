@@ -1,5 +1,9 @@
 # Lawvere 距離による認知圏の enriched 定式化 — incubator draft
 
+**型**: proof seed / draft embryo
+**昇格先**: LLM 身体論 companion paper / standalone / appendix
+**failure condition**: 複数測定モダリティ統合、非対称距離の経験的計算、Yoneda 的客観性原理のいずれも具体化しない場合は、数学的拡張として保持し本文へ戻さない。
+
 ## メタ情報 (incubation context)
 
 | 項目 | 内容 |

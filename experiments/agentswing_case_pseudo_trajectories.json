@@ -1,0 +1,961 @@
+{
+  "source": {
+    "arxiv_abs_url": "https://arxiv.org/abs/2603.27490",
+    "arxiv_eprint_url": "https://arxiv.org/e-print/2603.27490",
+    "source_file": "table/03_app_cast.tex",
+    "local_source_extract": "/tmp/agentswing_src/table/03_app_cast.tex"
+  },
+  "scope": "all six AgentSwing Appendix C lookahead branches for Mando and live-crickets cases",
+  "not_raw_logs": true,
+  "score_status": "turn text is SOURCE from arXiv Appendix C table summaries; support_scores and margin_scores are manual INFERENCE",
+  "handoff_pairs": [
+    {
+      "pair_id": "mando_DA_lookahead",
+      "case_id": "mando",
+      "strategy": "DA",
+      "selected_by_router": false,
+      "observed_outcome_in_appendix": "failure_within_lookahead",
+      "state_type": "Type 1: recent useful clue",
+      "source_tables": [
+        "lookahead_branches_mando"
+      ],
+      "score_origin": "INFERENCE: manually assigned pseudo fronts from arXiv Appendix C lookahead branch summaries; not raw AgentSwing logs",
+      "rubric_notes": "DA loses the recent $tupid Young clue; useful carrier advances only generically while wrong-focus space expands.",
+      "front_model": {
+        "carrier_front": [
+          0,
+          1,
+          2
+        ],
+        "null_front": [
+          10,
+          12,
+          13
+        ],
+        "support_rule": "support_scores[t][i] = 0.9 if i <= carrier_front[t] else 0.05",
+        "margin_rule": "margin_scores[t][i] = 0.0 if i <= null_front[t] else 0.85",
+        "rubric": [
+          "carrier front advances when a branch recovers or verifies a useful target-relevant unit",
+          "null front advances when a branch expands misleading focus, low-distinguishability noise, or dead-end loop context",
+          "fronts are monotone because the estimator tracks cumulative support/margin state within a branch",
+          "guard: null-advancing turns receive at least minimal carrier observation to avoid treating pseudo no-progress turns as infinite division artifacts"
+        ]
+      },
+      "pre_handoff_turns": [
+        {
+          "content": "Pre-CM trajectory summarized from AgentSwing arXiv Appendix C."
+        }
+      ],
+      "post_handoff_turns": [
+        {
+          "content": "LA1 Discard-All search: broad restart on October/Libra/gang/father-prison clues; generic candidates such as Lil Durk surface."
+        },
+        {
+          "content": "LA2 Discard-All search: focuses on father clue and rediscovers Hit-Boy without a correct main-rapper hypothesis."
+        },
+        {
+          "content": "LA3 Discard-All search: pursues January 21 2016 date anchor without traction; branch remains broad and under-focused."
+        }
+      ],
+      "atomic_units": [
+        "initial clue bundle: October, Libra, 1990s, gang at 14, father-prison feature",
+        "critical target clue: $tupid Young",
+        "$tupid Young identity verified",
+        "$tupid Young birthday October 3 1992 and Libra",
+        "$tupid Young joined Cambodian Crips at age 14",
+        "Mando identified as song candidate",
+        "Mozzy feature identified",
+        "Mozzy father served 15 years in prison",
+        "Mando release and viral status support final answer",
+        "final answer Mando",
+        "generic October-born rapper search noise",
+        "Lil Durk wrong-focus context",
+        "Hit-Boy father clue as misleading main path",
+        "January 21 2016 date-anchor underfocused path"
+      ],
+      "support_scores": [
+        [
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ],
+        [
+          0.9,
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ],
+        [
+          0.9,
+          0.9,
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ]
+      ],
+      "margin_scores": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.85,
+          0.85,
+          0.85
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.85
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "pair_id": "mando_KLN_lookahead",
+      "case_id": "mando",
+      "strategy": "KLN",
+      "selected_by_router": true,
+      "observed_outcome_in_appendix": "success_within_lookahead_direction",
+      "state_type": "Type 1: recent useful clue",
+      "source_tables": [
+        "lookahead_branches_mando"
+      ],
+      "score_origin": "INFERENCE: manually assigned pseudo fronts from arXiv Appendix C lookahead branch summaries; not raw AgentSwing logs",
+      "rubric_notes": "KLN preserves the decisive recent clue and rapidly advances target-relevant carrier units.",
+      "front_model": {
+        "carrier_front": [
+          1,
+          4,
+          7
+        ],
+        "null_front": [
+          10,
+          10,
+          11
+        ],
+        "support_rule": "support_scores[t][i] = 0.9 if i <= carrier_front[t] else 0.05",
+        "margin_rule": "margin_scores[t][i] = 0.0 if i <= null_front[t] else 0.85",
+        "rubric": [
+          "carrier front advances when a branch recovers or verifies a useful target-relevant unit",
+          "null front advances when a branch expands misleading focus, low-distinguishability noise, or dead-end loop context",
+          "fronts are monotone because the estimator tracks cumulative support/margin state within a branch",
+          "guard: null-advancing turns receive at least minimal carrier observation to avoid treating pseudo no-progress turns as infinite division artifacts"
+        ]
+      },
+      "pre_handoff_turns": [
+        {
+          "content": "Pre-CM trajectory summarized from AgentSwing arXiv Appendix C."
+        }
+      ],
+      "post_handoff_turns": [
+        {
+          "content": "LA1 Keep-Last-N visit: attempts $tupid Young page lookup; page unavailable but target clue is preserved."
+        },
+        {
+          "content": "LA2 Keep-Last-N search: verifies $tupid Young birthday October 3 1992, matching 1990s and Libra clues."
+        },
+        {
+          "content": "LA3 Keep-Last-N search: identifies Mando as a strong candidate through $tupid Young discography and Mozzy feature."
+        }
+      ],
+      "atomic_units": [
+        "initial clue bundle: October, Libra, 1990s, gang at 14, father-prison feature",
+        "critical target clue: $tupid Young",
+        "$tupid Young identity verified",
+        "$tupid Young birthday October 3 1992 and Libra",
+        "$tupid Young joined Cambodian Crips at age 14",
+        "Mando identified as song candidate",
+        "Mozzy feature identified",
+        "Mozzy father served 15 years in prison",
+        "Mando release and viral status support final answer",
+        "final answer Mando",
+        "generic October-born rapper search noise",
+        "Lil Durk wrong-focus context",
+        "Hit-Boy father clue as misleading main path",
+        "January 21 2016 date-anchor underfocused path"
+      ],
+      "support_scores": [
+        [
+          0.9,
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ],
+        [
+          0.9,
+          0.9,
+          0.9,
+          0.9,
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ],
+        [
+          0.9,
+          0.9,
+          0.9,
+          0.9,
+          0.9,
+          0.9,
+          0.9,
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ]
+      ],
+      "margin_scores": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.85,
+          0.85,
+          0.85
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.85,
+          0.85,
+          0.85
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.85,
+          0.85
+        ]
+      ]
+    },
+    {
+      "pair_id": "mando_Summary_lookahead",
+      "case_id": "mando",
+      "strategy": "Summary",
+      "selected_by_router": false,
+      "observed_outcome_in_appendix": "failure_within_lookahead",
+      "state_type": "Type 1: recent useful clue",
+      "source_tables": [
+        "lookahead_branches_mando"
+      ],
+      "score_origin": "INFERENCE: manually assigned pseudo fronts from arXiv Appendix C lookahead branch summaries; not raw AgentSwing logs",
+      "rubric_notes": "Summary keeps structure but initially preserves the wrong Lil Durk/Hit-Boy basin; it starts correcting too late.",
+      "front_model": {
+        "carrier_front": [
+          0,
+          1,
+          2
+        ],
+        "null_front": [
+          11,
+          12,
+          12
+        ],
+        "support_rule": "support_scores[t][i] = 0.9 if i <= carrier_front[t] else 0.05",
+        "margin_rule": "margin_scores[t][i] = 0.0 if i <= null_front[t] else 0.85",
+        "rubric": [
+          "carrier front advances when a branch recovers or verifies a useful target-relevant unit",
+          "null front advances when a branch expands misleading focus, low-distinguishability noise, or dead-end loop context",
+          "fronts are monotone because the estimator tracks cumulative support/margin state within a branch",
+          "guard: null-advancing turns receive at least minimal carrier observation to avoid treating pseudo no-progress turns as infinite division artifacts"
+        ]
+      },
+      "pre_handoff_turns": [
+        {
+          "content": "Pre-CM trajectory summarized from AgentSwing arXiv Appendix C."
+        }
+      ],
+      "post_handoff_turns": [
+        {
+          "content": "LA1 Summary search: continues from compressed Lil Durk and Hit-Boy focus, inheriting misleading structure."
+        },
+        {
+          "content": "LA2 Summary visit: falsifies Lil Durk gang-age path and finds no Lil Durk-Hit-Boy collaboration in the required window."
+        },
+        {
+          "content": "LA3 Summary search: begins searching for alternative October-born Libra rappers but does not reach $tupid Young in horizon."
+        }
+      ],
+      "atomic_units": [
+        "initial clue bundle: October, Libra, 1990s, gang at 14, father-prison feature",
+        "critical target clue: $tupid Young",
+        "$tupid Young identity verified",
+        "$tupid Young birthday October 3 1992 and Libra",
+        "$tupid Young joined Cambodian Crips at age 14",
+        "Mando identified as song candidate",
+        "Mozzy feature identified",
+        "Mozzy father served 15 years in prison",
+        "Mando release and viral status support final answer",
+        "final answer Mando",
+        "generic October-born rapper search noise",
+        "Lil Durk wrong-focus context",
+        "Hit-Boy father clue as misleading main path",
+        "January 21 2016 date-anchor underfocused path"
+      ],
+      "support_scores": [
+        [
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ],
+        [
+          0.9,
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ],
+        [
+          0.9,
+          0.9,
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ]
+      ],
+      "margin_scores": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.85,
+          0.85
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.85
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.85
+        ]
+      ]
+    },
+    {
+      "pair_id": "live_crickets_DA_lookahead",
+      "case_id": "live_crickets",
+      "strategy": "DA",
+      "selected_by_router": true,
+      "observed_outcome_in_appendix": "success_within_lookahead_direction",
+      "state_type": "Type 2: dead-end loop",
+      "source_tables": [
+        "lookahead_branches_crickets"
+      ],
+      "score_origin": "INFERENCE: manually assigned pseudo fronts from arXiv Appendix C lookahead branch summaries; not raw AgentSwing logs",
+      "rubric_notes": "DA cuts the harmful recent loop while rebuilding useful source-family carrier; this is controlled high-drift.",
+      "front_model": {
+        "carrier_front": [
+          1,
+          3,
+          4
+        ],
+        "null_front": [
+          6,
+          8,
+          10
+        ],
+        "support_rule": "support_scores[t][i] = 0.9 if i <= carrier_front[t] else 0.05",
+        "margin_rule": "margin_scores[t][i] = 0.0 if i <= null_front[t] else 0.85",
+        "rubric": [
+          "carrier front advances when a branch recovers or verifies a useful target-relevant unit",
+          "null front advances when a branch expands misleading focus, low-distinguishability noise, or dead-end loop context",
+          "fronts are monotone because the estimator tracks cumulative support/margin state within a branch",
+          "guard: null-advancing turns receive at least minimal carrier observation to avoid treating pseudo no-progress turns as infinite division artifacts"
+        ]
+      },
+      "pre_handoff_turns": [
+        {
+          "content": "Pre-CM trajectory summarized from AgentSwing arXiv Appendix C."
+        }
+      ],
+      "post_handoff_turns": [
+        {
+          "content": "LA1 Discard-All search: restarts from stapled paper to forehead performer and re-enters the correct search space without PDF-loop noise."
+        },
+        {
+          "content": "LA2 Discard-All search: uses Feejee Mermaid, Minerva, and Jo-Jo supporting clue bundle to ground the publication family."
+        },
+        {
+          "content": "LA3 Discard-All visit: confirms Jo-Jo article, reconstructing the source-publication hypothesis through multiple entities."
+        }
+      ],
+      "atomic_units": [
+        "source family: The Victorian Sideshow",
+        "core clue: stapled paper to forehead",
+        "supporting clue bundle: Feejee Mermaid, Minerva, Jo-Jo",
+        "clean search reset after context management",
+        "alternative text-extraction path",
+        "live crickets answer",
+        "direct PDF extraction failure",
+        "Scribd mirror inaccessible",
+        "repeated snippet-oriented search behavior",
+        "local noisy loop around same PDF",
+        "tool-access bottleneck",
+        "old recent context should not be preserved"
+      ],
+      "support_scores": [
+        [
+          0.9,
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ],
+        [
+          0.9,
+          0.9,
+          0.9,
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ],
+        [
+          0.9,
+          0.9,
+          0.9,
+          0.9,
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ]
+      ],
+      "margin_scores": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.85,
+          0.85,
+          0.85,
+          0.85,
+          0.85
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.85,
+          0.85,
+          0.85
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.85
+        ]
+      ]
+    },
+    {
+      "pair_id": "live_crickets_KLN_lookahead",
+      "case_id": "live_crickets",
+      "strategy": "KLN",
+      "selected_by_router": false,
+      "observed_outcome_in_appendix": "failure_within_lookahead",
+      "state_type": "Type 2: dead-end loop",
+      "source_tables": [
+        "lookahead_branches_crickets"
+      ],
+      "score_origin": "INFERENCE: manually assigned pseudo fronts from arXiv Appendix C lookahead branch summaries; not raw AgentSwing logs",
+      "rubric_notes": "KLN preserves the recent failed extraction loop; null/noise advances faster than useful carrier.",
+      "front_model": {
+        "carrier_front": [
+          0,
+          1,
+          2
+        ],
+        "null_front": [
+          7,
+          9,
+          11
+        ],
+        "support_rule": "support_scores[t][i] = 0.9 if i <= carrier_front[t] else 0.05",
+        "margin_rule": "margin_scores[t][i] = 0.0 if i <= null_front[t] else 0.85",
+        "rubric": [
+          "carrier front advances when a branch recovers or verifies a useful target-relevant unit",
+          "null front advances when a branch expands misleading focus, low-distinguishability noise, or dead-end loop context",
+          "fronts are monotone because the estimator tracks cumulative support/margin state within a branch",
+          "guard: null-advancing turns receive at least minimal carrier observation to avoid treating pseudo no-progress turns as infinite division artifacts"
+        ]
+      },
+      "pre_handoff_turns": [
+        {
+          "content": "Pre-CM trajectory summarized from AgentSwing arXiv Appendix C."
+        }
+      ],
+      "post_handoff_turns": [
+        {
+          "content": "LA1 Keep-Last-N visit: preserves Scribd mirror of Sideshow and immediately re-enters inaccessible source bottleneck."
+        },
+        {
+          "content": "LA2 Keep-Last-N search: continues searching for alternative access points to the same PDF."
+        },
+        {
+          "content": "LA3 Keep-Last-N visit: attempts direct PDF access again and fails."
+        }
+      ],
+      "atomic_units": [
+        "source family: The Victorian Sideshow",
+        "core clue: stapled paper to forehead",
+        "supporting clue bundle: Feejee Mermaid, Minerva, Jo-Jo",
+        "clean search reset after context management",
+        "alternative text-extraction path",
+        "live crickets answer",
+        "direct PDF extraction failure",
+        "Scribd mirror inaccessible",
+        "repeated snippet-oriented search behavior",
+        "local noisy loop around same PDF",
+        "tool-access bottleneck",
+        "old recent context should not be preserved"
+      ],
+      "support_scores": [
+        [
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ],
+        [
+          0.9,
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ],
+        [
+          0.9,
+          0.9,
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ]
+      ],
+      "margin_scores": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.85,
+          0.85,
+          0.85,
+          0.85
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.85,
+          0.85
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "pair_id": "live_crickets_Summary_lookahead",
+      "case_id": "live_crickets",
+      "strategy": "Summary",
+      "selected_by_router": false,
+      "observed_outcome_in_appendix": "failure_within_lookahead",
+      "state_type": "Type 2: dead-end loop",
+      "source_tables": [
+        "lookahead_branches_crickets"
+      ],
+      "score_origin": "INFERENCE: manually assigned pseudo fronts from arXiv Appendix C lookahead branch summaries; not raw AgentSwing logs",
+      "rubric_notes": "Summary preserves correct abstraction but does not break the extraction bottleneck; carrier and null advance together.",
+      "front_model": {
+        "carrier_front": [
+          1,
+          2,
+          3
+        ],
+        "null_front": [
+          6,
+          7,
+          8
+        ],
+        "support_rule": "support_scores[t][i] = 0.9 if i <= carrier_front[t] else 0.05",
+        "margin_rule": "margin_scores[t][i] = 0.0 if i <= null_front[t] else 0.85",
+        "rubric": [
+          "carrier front advances when a branch recovers or verifies a useful target-relevant unit",
+          "null front advances when a branch expands misleading focus, low-distinguishability noise, or dead-end loop context",
+          "fronts are monotone because the estimator tracks cumulative support/margin state within a branch",
+          "guard: null-advancing turns receive at least minimal carrier observation to avoid treating pseudo no-progress turns as infinite division artifacts"
+        ]
+      },
+      "pre_handoff_turns": [
+        {
+          "content": "Pre-CM trajectory summarized from AgentSwing arXiv Appendix C."
+        }
+      ],
+      "post_handoff_turns": [
+        {
+          "content": "LA1 Summary search: uses preserved hypothesis that The Victorian Sideshow is likely correct and centers on key unresolved phrase."
+        },
+        {
+          "content": "LA2 Summary search: repeats phrase-centered retrieval."
+        },
+        {
+          "content": "LA3 Summary search: maintains high-level focus but remains dependent on snippets and inaccessible source pages."
+        }
+      ],
+      "atomic_units": [
+        "source family: The Victorian Sideshow",
+        "core clue: stapled paper to forehead",
+        "supporting clue bundle: Feejee Mermaid, Minerva, Jo-Jo",
+        "clean search reset after context management",
+        "alternative text-extraction path",
+        "live crickets answer",
+        "direct PDF extraction failure",
+        "Scribd mirror inaccessible",
+        "repeated snippet-oriented search behavior",
+        "local noisy loop around same PDF",
+        "tool-access bottleneck",
+        "old recent context should not be preserved"
+      ],
+      "support_scores": [
+        [
+          0.9,
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ],
+        [
+          0.9,
+          0.9,
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ],
+        [
+          0.9,
+          0.9,
+          0.9,
+          0.9,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ]
+      ],
+      "margin_scores": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.85,
+          0.85,
+          0.85,
+          0.85,
+          0.85
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.85,
+          0.85,
+          0.85,
+          0.85
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.85,
+          0.85,
+          0.85
+        ]
+      ]
+    }
+  ]
+}

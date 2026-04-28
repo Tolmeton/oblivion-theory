@@ -2,6 +2,9 @@
 
 **v0.2 (2026-04-17)** — 第 2 ラウンド検証 (§5.2 Ising / §5.3 SU(2)_k) 追加、F5-γ 反証 → F5-γ' 確立
 **ステータス**: incubator draft / 試作 / 成否判定付き
+**型**: draft embryo / proof seed
+**昇格先**: `drafts/standalone/` または Paper II / σ 統一論文 appendix
+**failure condition**: pentagon coherence が Face Lemma の延長として非自明に立たない、または `Face5Lemma_draft.meta.md` の F⊣G 下で派生が自明化する場合は本流昇格しない。
 **役割**: Face Lemma (3 射) を 5 射へ延長する構想試作。Face3 の「comparison surface 最小条件」を「pentagon coherence 最小条件」へ持ち上げられるかを検証する。
 **軌道**: `比較射σの統一定理_v0.6.md` の **証明 incubator**。`v0.6` 本文 §III / §VII に関わる C8-C10 の補助検証稿であり、正文そのものではない。
 **親文書**:

@@ -1,138 +1,227 @@
-# Handoff Drift 検証レポート — Brief 1 Task 4 成果物
+# Handoff Drift 検証レポート - AgentSwing SOURCE 昇格後 v0.2
 
 ## §1 Executive Summary
 
-- OP-X-6 到達度は **部分**。`estimate_drift` を public API として用いた synthetic boot⊣bye 実行で、Type 1/2/3 の `χ` 序列 `0.354 < 1.071 < 2.017` を再現し、AgentSwing の case study の向きと整合した。
-- OP-XII-6 到達度は **未達**。Bucher / AgentSwing / Hyphē のいずれでも `χ(t)` の実測時系列はまだ得ておらず、今回は synthetic ペアによる予備検証に留まる。
-- Step 1 では 3 シナリオ各 `N=30` を `mekhane.lethe.estimate_drift` で推定し、期待帯 `Type 1 ≈ 0.3`, `Type 2 ≈ 2.0`, `Type 3 ≈ 1.0` を満たした。
-- Step 2 では Type 1 の low-`χ` と `KLN` 最適、Type 2 の high-`χ` と `DA` 最適の対応を確認した。Type 3 は `forced_session_boundary` analogue として境界域 `χ≈1` に置けるが、`optimal_strategy` 自体は YAML 側で未定義である。
-- Step 3 では Paper X §6.3 の `r_obs ≤ √(ρ/(K+1))` を `K=1` で評価し、Table 2 の `DA` が全 3 モデルで最大 ceiling (`0.548–0.640`) を持つことを確認した。
+OP-X-6 の到達度は **部分** のまま。ただし 2026-04-26 の arXiv source 昇格により、根拠面は `Paper X embedded summary` から `AgentSwing arXiv source TeX/PDF` へ上がった。
 
-## §2 合成データ検証
+今回 SOURCE として固定できるのは、Appendix case study、aligned context-management table、Figure 9 transition matrix である。raw per-turn logs / evaluation JSON / plotting CSV は未取得なので、`χ(t)` の実測、Drift-Performance 逆 U 字、全戦略の trajectory-level 比較はまだ実化していない。
 
-### 2.1 実行条件
+重要な更新は 2 点である。
 
-- 使用 API: `mekhane.lethe.estimate_drift`
-- 生成物: `experiments/引継ぎ漂流_合成_結果.json`
-- 乱数 seed: `42`
-- 各シナリオ: `N=30`, `turn_count=7`, `unit_count=48`
-- `handoff_drift_estimator.py` の private helper は使っていない。Task 2 テスト参照先 `_make_synthetic_pair` は現行 tree では参照できなかったため、brief 指定の `carrier_step` / `null_step` をそのまま public API 入力 (`support_scores`, `margin_scores`) に再構成した。
+1. synthetic `χ` calibration は旧レポートから維持できる。Type 1 は low-`χ` と KLN、Type 2 は high-`χ` と DA に対応する。
+2. aligned table の exact 値では、AgentSwing routing が 3 モデルすべてで Pass@1 の最良値を取る。一方、terminal precision `ρ` は固定 DA が 3 モデルすべてで最大である。
 
-### 2.2 結果
+したがって安全な結論は、「DA が普遍的に最良」ではなく、**router は状態依存に finish rate と terminal precision の tradeoff を調整して勝っている**である。
 
-| Scenario | carrier_step / null_step | mean `χ` | p10 / p50 / p90 | `χ>1` pair | 判定 |
+## §2 SOURCE Ledger
+
+| 面 | SOURCE |
+|:---|:---|
+| arXiv record | `https://arxiv.org/abs/2603.27490` |
+| arXiv source | `https://arxiv.org/e-print/2603.27490` |
+| aligned results | `table/01_aligned_results.tex` |
+| case studies | `table/03_app_cast.tex` |
+| transition matrices | `pic/transition_matrix_1x3.pdf` |
+| appendix description | `sections/8_appendix.tex` |
+| local structured data | `experiments/agentswing_ref_data.yaml` |
+| synthetic drift output | `experiments/handoff_drift_synthesis_results.json` |
+| operational mapping | `plans/codex_handoff_drift_mapping.md` |
+
+## §3 Synthetic χ Calibration
+
+この節は旧 Task 4 の synthetic calibration を維持する。理由は、estimator の検証対象が AgentSwing table ではなく、`V_null / V_carrier` の operational mapping だからである。
+
+| Scenario | carrier_step / null_step | mean `χ` | p10 / p50 / p90 | `χ>1` pair | Regime |
 |:---|:---:|:---:|:---:|:---:|:---|
 | Type 1 clue recovery | 3 / 1 | 0.354 | 0.286 / 0.333 / 0.500 | 0 / 30 | carrier-recovery |
 | Type 2 dead-end loop | 1 / 2 | 2.017 | 1.950 / 2.000 / 2.500 | 28 / 30 | drift-dominant |
 | Type 3 mixed | 2 / 2 | 1.071 | 0.980 / 1.000 / 1.250 | 8 / 30 | boundary / mixed |
 
-### 2.3 読み
+読み:
 
-- Type 1 は `χ<1` で安定し、null front の進行より carrier front の回復が優勢である。recent useful clue を保持したい場面の低 drift regime と読める。
-- Type 2 は `χ>1` が支配的で、dead-end loop のような有害文脈を切るための forgetting が carrier recovery より先に必要な regime になっている。
-- Type 3 は `χ≈1` に集中し、保持と切断の利得が拮抗する境界域として機能している。
+- Type 1 は `χ<1` で、担体回復が欠如境界の進行より速い。recent useful clue を残す KLN と整合する。
+- Type 2 は `χ>1` で、欠如境界の進行が支配的である。dead-end loop を切る DA と整合する。
+- Type 3 は `χ≈1` の境界域である。ただし AgentSwing arXiv source には Type 3 case がない。
 
-## §3 AgentSwing 整合性
+## §4 AgentSwing Case Alignment
 
-### 3.1 Case study 対応
+| State | arXiv case | observed optimal strategy | synthetic `χ` reading | 判定 |
+|:---|:---|:---|:---|:---|
+| Type 1: recent useful clue | Mando case | KLN | low-`χ` / carrier recovery | 一致 |
+| Type 2: dead-end loop | live-crickets case | DA | high-`χ` / drift dominant | 一致 |
+| Type 3: mixed / session boundary | AgentSwing source には無し | 未観測 | boundary `χ≈1` | 未検証 |
 
-| Synthetic scenario | YAML case_study | AgentSwing state_type | optimal_strategy | 合成 `χ` 解釈 | 整合性 |
-|:---|:---|:---|:---|:---|:---|
-| Type 1 clue recovery | `case_1_mando` | recent useful clue | `KLN` | `χ=0.354` の low-drift | 一致 |
-| Type 2 dead-end loop | `case_2_live_crickets` | dead-end loop | `DA` | `χ=2.017` の high-drift | 一致 |
-| Type 3 mixed | `case_3_mythos` | forced session reset analogue | `null` | `χ=1.071` の境界域 | 部分一致 |
+Case 1 では Turn 23 の `$tupid Young` clue を KLN が保持し、その後 Mando answer へ進む。Case 2 では PDF extraction loop を DA が切り、alternative extraction path から live crickets answer へ進む。
 
-### 3.2 論理整合
+ここから言えるのは、state-dependent optimal forgetting の 2 点支持である。Type 3 を閉じるには、別 case 追加か、local rerun が要る。
 
-- Type 1 では useful clue の担体を残すほうが得なので、`χ<1` と `KLN` 最適は同じ向きを向く。
-- Type 2 では loop 自体が有害 carrier になっているため、`χ>1` で `DA` 最適になる。これは「強い忘却が性能回復を生む」側の regime である。
-- Type 3 は `Mythos` の session discontinuity analogue であり、YAML でも `KLN`/`Sum`/`DA` の最適化比較は提示されていない。ここでは境界域の説明に使えるが、戦略最適性の直接検証には使えない。
+## §5 Aligned Context-Management Results
 
-### 3.3 Table 2 との接続
+### 5.1 Pass@1 と routing gain
 
-Paper X から抽出された `table_2_n240` では、3 モデルすべてで `DA` の `ρ` が最大だった。
+| Model | best fixed strategy | best fixed Pass@1 | AgentSwing Pass@1 | absolute gain | relative gain |
+|:---|:---:|---:|---:|---:|---:|
+| GPT-OSS-120B | KLN | 0.352 | 0.418 | +0.066 | +18.8% |
+| DeepSeek-v3.2 | DA | 0.329 | 0.356 | +0.027 | +8.2% |
+| Tongyi-DR-30B-A3B | DA | 0.200 | 0.311 | +0.111 | +55.5% |
 
-| Model | `ρ_DA` | `ρ_Sum` | `ρ_KLN` | 最大 `ρ` |
-|:---|:---:|:---:|:---:|:---|
-| GPT-OSS-120B | 0.686 | 0.600 | 0.525 | DA |
-| DeepSeek-V3 | 0.600 | 0.486 | 0.543 | DA |
-| Tongyi-qwq-32B | 0.818 | 0.571 | 0.478 | DA |
+戦略平均:
 
-- この並びは、少なくとも Table 2 の aggregate 指標が「dead-end loop を切った後の高精度」を DA 側へ寄せていることを示す。
-- synthetic 側で high-`χ` regime を Type 2 に割り当てた判断は、この `ρ_DA` 優位と矛盾しない。
+| Strategy | Pass@1 | `η` finish rate | `ρ` terminal precision | avg turns |
+|:---|---:|---:|---:|---:|
+| DA | 0.272 | 0.403 | 0.701 | 302.1 |
+| Sum | 0.263 | 0.774 | 0.359 | 198.6 |
+| KLN | 0.289 | 0.802 | 0.374 | 180.6 |
+| AgentSwing | 0.362 | 0.809 | 0.454 | 181.9 |
 
-## §4 Paper X §6.3 二重天井結合
+読み:
 
-### 4.1 K=1 baseline ceiling
+- DA は `ρ` が最も高いが、`η` が低い。正答できるときは強いが、finish rate が重い。
+- KLN と Sum は `η` が高いが、`ρ` が低い。
+- AgentSwing は `η` を KLN/Sum 水準に保ちつつ、`ρ` を固定 KLN/Sum より上げている。
 
-Paper X §6.3 の命題 X.7 は
+したがって、AgentSwing の勝ち筋は「最も強い固定忘却」ではなく、**状態依存 routing による二指標の折衷**である。
 
-`r_obs ≤ √(ρ/(K+1))`
+### 5.2 Figure 9 transition matrix reading
 
-を与える。baseline として `K=1` を置くと `r_obs ≤ √(ρ/2)` になる。
+SOURCE 値は transition matrix であり、単純な strategy frequency ではない。行を現在 strategy、列を次 strategy と読む Markov 近似を置くと、定常分布は次のようになる。
 
-| Model | DA | Sum | KLN |
-|:---|:---:|:---:|:---:|
-| GPT-OSS-120B | 0.586 | 0.548 | 0.512 |
-| DeepSeek-V3 | 0.548 | 0.493 | 0.521 |
-| Tongyi-qwq-32B | 0.640 | 0.534 | 0.489 |
+| Model | Summary | Keep-Last-N | Discard-All |
+|:---|---:|---:|---:|
+| GPT-OSS-120B | 0.263 | 0.244 | 0.492 |
+| DeepSeek-v3.2 | 0.542 | 0.267 | 0.191 |
+| Tongyi-DR | 0.573 | 0.191 | 0.236 |
 
-戦略平均 ceiling は `DA=0.591`, `Sum=0.525`, `KLN=0.507`。
+この表は INFERENCE である。SOURCE は PDF label の 3x3 matrix であり、上の値は row-stochastic Markov chain として読んだ場合の派生量である。
 
-### 4.2 `χ` との対応
+読みとしては、routing policy はモデル依存である。GPT は DA へ寄り、DeepSeek/Tongyi は Summary へ寄る。したがって Paper X の state taxonomy は、次の実験で model-dependent prior と分離して検証する必要がある。
 
-- `χ>1` の drift-dominant regime では、文脈を保持するほど performance が落ちる側の状態に入る。Type 2 がこれに当たる。
-- ただし Paper X の ceiling は「最適 routing をしても超えにくい上限」であって、`χ` から直接 `r_obs` を復元する式ではない。今回の結合は **regime mapping** であり、回帰式の同定ではない。
-- したがって現時点の安全な言い方は次の通りである。
-  - low-`χ` (`χ<1`) では clue preservation 側の戦略が有利になりやすい。
-  - high-`χ` (`χ>1`) では reset / forgetting が性能 ceiling の改善条件になりうる。
-  - それでも ceiling 自体は `√(ρ/2)` に抑えられ、今回の Table 2 では最良でも `0.640` を超えない。
+## §6 Paper X §6.3 Ceiling Recalculation
 
-## §5 OP-X-6 / OP-XII-6 到達度評価
+Paper X §6.3 の `r_obs ≤ sqrt(ρ/(K+1))` を `K=1` で評価する。
+
+| Model | DA | Sum | KLN | AgentSwing |
+|:---|---:|---:|---:|---:|
+| GPT-OSS-120B | 0.586 | 0.507 | 0.486 | 0.532 |
+| DeepSeek-v3.2 | 0.548 | 0.391 | 0.466 | 0.437 |
+| Tongyi-DR-30B-A3B | 0.640 | 0.358 | 0.327 | 0.454 |
+
+戦略平均 ceiling は `DA=0.591`, `Sum=0.419`, `KLN=0.426`, `AgentSwing=0.474`。
+
+この ceiling は terminal precision 由来なので、DA が最大になる。一方、Pass@1 は `η × ρ` に近い挙動を持つため、AgentSwing が勝つ。ここを混同すると、Paper X の実験的読みを誤る。
+
+安全な言い方:
+
+- high-`χ` state では DA 的 reset が terminal precision を上げうる。
+- low-`χ` state では KLN 的 preservation が clue を残しうる。
+- routing は、その state mixture を見て `η` と `ρ` の両方を最適化する。
+
+まだ言えないこと:
+
+- `χ(t)` と Pass@1 の逆 U 字が実測された、とは言えない。
+- AgentSwing の transition matrix だけから state-level Drift を復元した、とは言えない。
+- Type 3 の最適戦略が検証された、とは言えない。
+
+## §7 OP-X-6 / OP-XII-6 到達度
 
 | OP | 完了基準 | 今回の到達 | 欠けているもの | 評価 |
 |:---|:---|:---|:---|:---|
-| OP-X-6 | boot⊣bye の Drift が AgentSwing 全戦略について `χ` で定量化される | synthetic `χ` 序列を作り、Type 1/2/3 と AgentSwing case logic を接続した | AgentSwing raw trajectory、戦略別時系列、all-strategy 実測 `χ` | **部分** |
-| OP-XII-6 | `χ` が Bucher / AgentSwing / Hyphē のうち最低 1 媒体で実測値として得られる | estimator の synthetic 挙動を検証し、計測手順の一部を dry-run した | 実媒体での `χ(t)` 測定、probe space 固定、first-passage `τ_χ` の実記録 | **未達** |
+| OP-X-6 | AgentSwing 全戦略の Drift が `χ` で定量化される | arXiv SOURCE で Case 1/2、Table、Figure 9 を固定。synthetic `χ` と case direction は整合 | raw trajectory、戦略別時系列、state-level `χ(t)` | **部分** |
+| OP-XII-6 | handoff residual `χ` が 1 媒体以上で実測される | estimator と synthetic calibration はある | Bucher / AgentSwing / Hyphē の実測 `χ(t)` | **未達** |
 
-### 5.1 判定理由
+## §8 Branch-level Pseudo Trajectory Run
 
-- OP-X-6 は「戦略ごとの drift 指標系が閉じるか」の問いであり、今回そこに向かう最初の bridge はできた。ただし raw AgentSwing を流していないので criterion には届かない。
-- OP-XII-6 は criterion 文言が厳密で、**実測 medium が 1 つもない** 以上、現段階を「部分」へ繰り上げる根拠は弱い。
-- よって、Task 4 の honest 判定は `OP-X-6 = 部分`, `OP-XII-6 = 未達` である。
+2026-04-26 に、arXiv Appendix C の all lookahead branches 6 本を turn-level pseudo trajectory へ落とし、既存 `estimate_drift` に流した。
 
-## §6 残余と次のアクション
+| Artifact | Path |
+|:---|:---|
+| pseudo trajectory input | `experiments/agentswing_case_pseudo_trajectories.json` |
+| pseudo drift output | `experiments/agentswing_case_pseudo_drift_results.json` |
+| scoring audit | `experiments/agentswing_case_pseudo_scoring_audit.md` |
+| scoring robustness | `experiments/agentswing_case_pseudo_robustness_results.json` |
+| estimator | `20_機構｜Mekhane/_src｜ソースコード/mekhane/lethe/handoff_drift_estimator.py` |
 
-### 6.1 残余
+重要な制約:
 
-- AgentSwing 原典 PDF / raw Appendix C trajectory が未取得で、case-level embedded 数値しかない。
-- Hyphē または実 boot⊣bye log の JSONL pair が今回の入力に含まれていない。
-- `probe space X` の固定は synthetic では `memory slot` に置いたが、Paper XII OP-XII-2 の invariance 検証は未着手。
-- optional PNG は今回は生成していない。Step 2-4 の判定には不要だったため skip した。
+- turn text は arXiv Appendix C の table summary に基づく SOURCE である。
+- `support_scores` と `margin_scores` は manual INFERENCE である。
+- raw AgentSwing logs ではないため、この run は OP-X-6 の完了ではなく、case-level operationalization の dry-run である。
+- scoring rubric は全 branch で同じである。carrier front は target-relevant useful unit の回復、null front は誤焦点・曖昧性・dead-end loop の拡大を表す。
 
-### 6.2 次のアクション
+### 8.1 Primary result (`p=0.5`)
 
-1. AgentSwing の raw per-turn / per-chunk data を取得し、`DA/Sum/KLN` 全戦略へ同一 estimator を流す。
-2. Hyphē または Hegemonikon 実 boot⊣bye log `N≥20` を pair 化し、`χ(t)` と `τ_χ` を出す。
-3. `memory slot / chunk / semantic coordinate` の 3 probe space で estimator を再実行し、OP-XII-2 の invariance debt を先に減らす。
+| Pair | selected | outcome | `V_carrier` | `V_null` | `χ` | reading |
+|:---|:---:|:---|---:|---:|---:|:---|
+| `mando_DA_lookahead` | no | failure | 1.0 | 1.5 | 1.500 | clue-losing reset |
+| `mando_KLN_lookahead` | yes | success-direction | 3.0 | 0.5 | 0.167 | carrier-recovery |
+| `mando_Summary_lookahead` | no | failure | 1.0 | 0.5 | 0.500 | late correction |
+| `live_crickets_DA_lookahead` | yes | success-direction | 1.5 | 2.0 | 1.333 | controlled high-drift |
+| `live_crickets_KLN_lookahead` | no | failure | 1.0 | 2.0 | 2.000 | loop-preserving drift |
+| `live_crickets_Summary_lookahead` | no | failure | 1.0 | 1.0 | 1.000 | abstraction without break |
 
-### 6.3 OP 台帳更新提案 diff
+### 8.2 Sensitivity (`p=0.9`)
 
-現行 read では `批判反証レジストリ.md` に standalone の `OP-X-6` エントリが見当たらず、`OP-XII-6` の説明文中でのみ参照されていた。以下は **提案 diff** であり、本文・台帳への直接編集は行っていない。
+| Pair | `χ_p90` |
+|:---|---:|
+| `mando_DA_lookahead` | 1.900 |
+| `mando_KLN_lookahead` | 0.300 |
+| `mando_Summary_lookahead` | 0.900 |
+| `live_crickets_DA_lookahead` | 1.053 |
+| `live_crickets_KLN_lookahead` | 2.000 |
+| `live_crickets_Summary_lookahead` | 1.000 |
 
-```diff
---- a/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/infra/リファレンス/批判反証レジストリ.md
-+++ b/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/infra/リファレンス/批判反証レジストリ.md
-@@
-+#### OP-X-6: boot⊣bye の Drift を AgentSwing データから推定
-+**内容** [SOURCE: 論文X §7 OP table]: 各 CM 戦略の Drift を `χ` で定量化し、Type 1/2/3 state と結び付ける。
-+**状態案**: 🟡 部分解決
-+**進捗案**: Brief 1 Task 4 により synthetic boot⊣bye `N=30×3` で `χ` mean = `0.354 / 1.071 / 2.017` を再現。Type 1 < Type 2 の序列は AgentSwing case study (`KLN` optimal / `DA` optimal) と整合。
-+**残余案**: raw AgentSwing trajectory 未取得のため「全戦略の `χ` 実測」は未達。
-@@
- #### OP-XII-6: Handoff Drift の定量化
- **内容** [TAINT: 外部レポート]: context 引き継ぎ時の情報損失を `χ` として定量。Hegemonikon boot⊣bye サイクルでの計測が実験台。
--**状態**: 🔵 Testable (W3 Codex 発注済み 2026-04-17 — OP-X-6 と連動)
-+**状態**: 🔵 Testable (W3 Codex 発注済み 2026-04-17 — OP-X-6 と連動)
-+**進捗案**: synthetic estimator は稼働確認済みだが、Bucher / AgentSwing / Hyphē のいずれでも `χ(t)` 実測値は未取得。完了基準はまだ未充足。
- ```
+### 8.3 Reading
+
+この dry-run は、旧 synthetic calibration の方向を branch-level に写しても壊れないことを示す。
+
+- Mando / Type 1 では、router-selected KLN が最も低い `χ` を持つ。recent useful clue が carrier front を強く進め、null front を抑える。
+- live-crickets / Type 2 では、router-selected DA が `χ>1` の controlled high-drift になる。KLN も `χ>1` だが、これは failed extraction loop を保存する drift であり、carrier が弱い。
+- Summary は両 case で中間域に落ちる。構造は保つが、Mando では wrong basin correction が遅く、live-crickets では extraction bottleneck を切れない。
+
+したがって、この段階での最小主張は次である。
+
+> AgentSwing Appendix C の 2 case / 6 lookahead branches では、router-selected branch は state type に対応する Drift regime を持つ。ただし `χ` 単独ではなく、`V_carrier` と branch semantics を併読する必要がある。
+
+ただし、ここでの `χ` は scoring design に依存する。次に必要なのは、manual front assignment を固定せず、judge による `support_scores / margin_scores` 生成へ置き換えることである。
+
+### 8.4 Scoring robustness (`±1` front perturbation)
+
+Manual front assignment への攻撃面を確認するため、各 branch の `carrier_front` / `null_front` を turn ごとに独立に `-1/0/+1` 揺らし、範囲 clamp と単調 repair だけを入れて 5000 trial を走らせた。outcome に合わせた補正は入れていない。
+
+| criterion | pass rate |
+|:---|---:|
+| Mando: selected KLN has `χ < 1` | 1.000 |
+| Mando: selected KLN has lowest `χ` among Mando branches | 0.844 |
+| Mando: selected KLN has highest `V_carrier` among Mando branches | 0.698 |
+| live-crickets: selected DA has `χ > 1` | 0.597 |
+| live-crickets: selected DA has lower `χ` than KLN | 0.699 |
+| live-crickets: selected DA has `V_carrier >= KLN` | 0.905 |
+| live-crickets: DA controlled condition (`χ>1`, `χ<KLN`, `V_carrier>=KLN`) | 0.325 |
+| both selected branches match expected `χ` regime | 0.597 |
+
+Pair-level median `χ`:
+
+| Pair | median `χ` | p10 | p90 | `χ>1` rate | huge `χ>10` rate |
+|:---|---:|---:|---:|---:|---:|
+| `mando_DA_lookahead` | 1.500 | 0.667 | 4.000 | 0.643 | 0.072 |
+| `mando_KLN_lookahead` | 0.167 | 0.000 | 0.429 | 0.000 | 0.000 |
+| `mando_Summary_lookahead` | 1.000 | 0.000 | 3.000 | 0.272 | 0.057 |
+| `live_crickets_DA_lookahead` | 1.333 | 0.750 | 2.500 | 0.597 | 0.000 |
+| `live_crickets_KLN_lookahead` | 2.000 | 1.000 | 5.000 | 0.857 | 0.073 |
+| `live_crickets_Summary_lookahead` | 1.000 | 0.333 | 3.000 | 0.377 | 0.072 |
+
+読み:
+
+- Mando case は頑健である。KLN は `χ<1` を 100% 維持し、84.4% の trial で Mando branch 内の最低 `χ` になる。
+- live-crickets case は `χ` 単独では頑健性が中程度である。DA が KLN より低い `χ` になる割合は 69.9% だが、controlled condition 全体は 32.5% に落ちる。
+- したがって Paper X 側の安全な表現は、`χ` 単独による winner prediction ではない。`χ + V_carrier + branch semantics` の三点セットで、DA が harmful loop を切る状態依存操作として読める、である。
+
+## §9 次の実化操作
+
+次は 2 択である。
+
+1. **annotation route**: `experiments/agentswing_case_pseudo_scoring_audit.md` を使い、第二 scorer が front 値を blind 修正する。
+2. **robustness route**: perturbation を `±2` へ広げるか、case 別に perturbation の妥当範囲を制限する。
+3. **実測 route**: SWE-bench real trajectory または local boot⊣bye logs に対して judge-based scoring を実装し、manual INFERENCE から SOURCE 寄りの測定へ移る。
+
+GPU はこの段階では不要である。必要なのは turn text、judge、既存 estimator である。GPU が要るのは、open-weight agent をローカルで再実行する場合だけである。

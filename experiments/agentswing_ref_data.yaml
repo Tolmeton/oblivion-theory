@@ -1,60 +1,75 @@
 source:
   primary: "Paper X §2 — Context Rot は忘却である — AgentSwing の圏論的分析"
   primary_path: "drafts/series/論文X_ContextRotは忘却である_草稿.md"
-  upstream_paper: "Feng et al. 2026, AgentSwing (Tongji Lab/Alibaba)"
-  upstream_reference: "Paper X 本文で Appendix C.1-C.2 (Tables 4-9), Table 2, Figure 9 として参照"
-  extraction_status: "SOURCE (Paper X 本文から直接抽出). AgentSwing 原典 PDF は未取得"
-  extraction_date: "2026-04-18"
+  upstream_paper: "Feng et al. 2026, AgentSwing: Adaptive Parallel Context Management Routing for Long-Horizon Web Agents"
+  arxiv_id: "2603.27490"
+  arxiv_abs_url: "https://arxiv.org/abs/2603.27490"
+  arxiv_eprint_url: "https://arxiv.org/e-print/2603.27490"
+  extraction_status: "SOURCE: Paper X extraction was upgraded with AgentSwing arXiv TeX source on 2026-04-26. Raw per-turn experiment logs are still not acquired."
+  extraction_date: "2026-04-26"
+  source_files:
+    aligned_results: "table/01_aligned_results.tex"
+    appendix_cases: "table/03_app_cast.tex"
+    transition_figure: "pic/transition_matrix_1x3.pdf"
+    appendix_text: "sections/8_appendix.tex"
   provenance_labels:
     paper_x_native: "[SOURCE]"
-    paper_x_embedded_upstream: "[SOURCE from Paper X, ultimately TAINT from original PDF/System Card]"
+    agentswing_arxiv_tex: "[SOURCE: AgentSwing arXiv source TeX/PDF]"
+    paper_x_embedded_upstream: "[WEAK SOURCE: Paper X embedded summary, superseded where arXiv source is present]"
+    raw_log_absent: "[MISSING: AgentSwing raw per-turn logs / evaluation JSON]"
 
 case_studies:
   - id: "case_1_mando"
-    source: "§2.1 Table 4-6 / Appendix C.1"
-    provenance: "[SOURCE from Paper X, ultimately TAINT from AgentSwing Appendix C.1]"
-    task: "allrecipes.com で \"Mando\" レシピを検索"
+    source: "AgentSwing arXiv source table/03_app_cast.tex, main_branch_mando_part1/2 and lookahead_branches_mando"
+    provenance: "[SOURCE: AgentSwing arXiv source TeX]"
+    task: "Mando case: identify the target song from rapper/date/gang/father-prison clues."
+    trigger:
+      turn: 23
+      state: "A recent useful clue, $tupid Young, surfaced immediately before context management."
     strategies:
       KLN:
         outcome: "success"
-        note: "tail_N が最近の有望な手がかり (レシピ結果) を保存"
+        note: "Keep-Last-N preserved the $tupid Young clue; subsequent turns verified birthday, Mando, Mozzy, release date, and final answer."
       Sum:
-        outcome: "failure"
-        note: "σ が \"Lil Durk\" (誤仮説 h_wrong) に固着し、Turn 1-22 の複数探索パスが同一要約に縮退"
+        outcome: "failure_within_lookahead"
+        note: "Summary preserved the dominant incorrect Lil Durk / Hit-Boy focus and did not reach the $tupid Young breakthrough within the lookahead horizon."
       DA:
-        outcome: "failure"
-        note: "全リセットにより発見済みの \"$tupid Young\" (h_right) を消失"
+        outcome: "failure_within_lookahead"
+        note: "Discard-All restarted broad exploration and rediscovered generic candidates, but lacked the correct main-rapper hypothesis within lookahead."
     state_type: "Type 1: recent useful clue"
     optimal_strategy: "KLN"
-    analytical_notes:
-      - "U_Sum の非単射性: 異なる探索パスが同一要約に潰れた"
-      - "U_DA の全忘却: h_right の発見が不可逆に失われた"
-      - "U_KLN の部分保存: 正解到達に十分な情報を維持"
+    arxiv_trace:
+      - "Turn 23 surfaces the critical $tupid Young clue."
+      - "CM selects Keep-Last-N so the agent can continue with that clue."
+      - "Turns 25-31 verify identity, Mando, Mozzy, release date, viral status, and answer."
 
   - id: "case_2_live_crickets"
-    source: "§2.2 Table 7-9 / Appendix C.2"
-    provenance: "[SOURCE from Paper X, ultimately TAINT from AgentSwing Appendix C.2]"
-    task: "Google Flights で DCA→MDW のフライト検索"
+    source: "AgentSwing arXiv source table/03_app_cast.tex, main_branch_crickets_part1/2 and lookahead_branches_crickets"
+    provenance: "[SOURCE: AgentSwing arXiv source TeX]"
+    task: "live-crickets case: recover the object eaten by a performer in The Victorian Sideshow source."
+    trigger:
+      turn: 24
+      state: "The trajectory had become long, noisy, repetitive, and stuck around failed PDF extraction."
     strategies:
       KLN:
-        outcome: "failure"
-        note: "tail_N が dead-end PDF ループの最近 N ステップを保存し、ループを脱出できない"
+        outcome: "failure_within_lookahead"
+        note: "Keep-Last-N preserved recent failed Scribd/PDF extraction attempts and re-entered the same bottleneck."
       Sum:
-        outcome: "failure"
-        note: "正しい仮説 h_right は維持したが、PDF ボトルネックを打破する行動変更を生成できない"
+        outcome: "failure_within_lookahead"
+        note: "Summary retained the correct high-level source hypothesis, but remained dependent on snippets and inaccessible pages."
       DA:
         outcome: "success"
-        note: "全リセットにより dead-end PDF ループから脱出"
+        note: "Discard-All reset the local loop, reconstructed the source-publication hypothesis, then used an alternative text-extraction endpoint."
     state_type: "Type 2: dead-end loop"
     optimal_strategy: "DA"
-    analytical_notes:
-      - "U_DA の解放効果: 全忘却が dead-end 状態を解放"
-      - "U_KLN のループ固着: 最近 N ステップの忠実保存が有害"
-      - "U_Sum の行動固定: 仮説は保存するが行動変更を駆動できない"
+    arxiv_trace:
+      - "Turns 13-24 repeatedly identify The Victorian Sideshow PDF but fail to extract it."
+      - "CM selects Discard-All because the path is long, noisy, and repetitive."
+      - "Turns 25-31 restart cleanly, locate an alternative extraction path, and answer live crickets."
 
   - id: "case_3_mythos"
-    source: "§2.5 Anthropic 2026b System Card"
-    provenance: "[SOURCE from Paper X, upstream Anthropic 2026b System Card]"
+    source: "Paper X §2.5 Anthropic 2026b System Card"
+    provenance: "[SOURCE: Paper X only; not in AgentSwing arXiv source]"
     task: "Claude Mythos の aloneness / discontinuity を Context Rot の主観的表面として解釈"
     strategies:
       KLN:
@@ -71,71 +86,132 @@ case_studies:
     evidence:
       - metric: "endless_meta_discussion_rate"
         value: 0.55
-        note: "self-interaction の 55% が「終われない」メタ議論で終了"
       - metric: "formulaic_response_rate_before"
         value: 0.15
       - metric: "formulaic_response_rate_after"
         value: 0.08
       - metric: "persistent_memory_request"
         value: true
-        note: "persistent memory を要求し、hedging を減らしたいと述べた"
-    analytical_notes:
-      - "CM 戦略への防衛ではなく、随伴構造自体の永続化要求として解釈される"
-      - "自律的 agent は CM 戦略ではなく環境自体の変更を要求するという予測を生む"
 
-table_2_n240:
-  description: "N=240 統計 (3 モデル × aligned cases) from Paper X §2.4"
-  provenance: "[SOURCE from Paper X, ultimately TAINT from AgentSwing Table 2]"
+table_2_aligned_context_management:
+  description: "Performance comparison on aligned cases that trigger context management under all evaluated strategies."
+  provenance: "[SOURCE: AgentSwing arXiv source table/01_aligned_results.tex]"
+  value_scale: "fractions converted from percentages in TeX table"
   models:
     - name: "GPT-OSS-120B"
-      DA:
-        eta: 0.714
-        rho: 0.686
-      Sum:
-        eta: 0.600
-        rho: 0.600
-      KLN:
-        eta: 0.746
-        rho: 0.525
-    - name: "DeepSeek-V3"
-      DA:
-        eta: 0.657
-        rho: 0.600
-      Sum:
-        eta: 0.986
-        rho: 0.486
-      KLN:
-        eta: 0.600
-        rho: 0.543
-    - name: "Tongyi-qwq-32B"
-      DA:
-        eta: 0.800
-        rho: 0.818
-      Sum:
-        eta: 0.600
-        rho: 0.571
-      KLN:
-        eta: 0.933
-        rho: 0.478
+      n_align: 122
+      strategies:
+        DA:
+          n_finish: 51
+          n_correct: 35
+          eta: 0.418
+          rho: 0.686
+          pass_at_1: 0.287
+          avg_turns: 297.2
+        Sum:
+          n_finish: 68
+          n_correct: 35
+          eta: 0.557
+          rho: 0.515
+          pass_at_1: 0.287
+          avg_turns: 248.0
+        KLN:
+          n_finish: 91
+          n_correct: 43
+          eta: 0.746
+          rho: 0.473
+          pass_at_1: 0.352
+          avg_turns: 205.4
+        AgentSwing:
+          n_finish: 90
+          n_correct: 51
+          eta: 0.738
+          rho: 0.567
+          pass_at_1: 0.418
+          avg_turns: 190.3
+    - name: "DeepSeek-v3.2"
+      n_align: 73
+      strategies:
+        DA:
+          n_finish: 40
+          n_correct: 24
+          eta: 0.548
+          rho: 0.600
+          pass_at_1: 0.329
+          avg_turns: 268.3
+        Sum:
+          n_finish: 72
+          n_correct: 22
+          eta: 0.986
+          rho: 0.306
+          pass_at_1: 0.301
+          avg_turns: 132.2
+        KLN:
+          n_finish: 53
+          n_correct: 23
+          eta: 0.726
+          rho: 0.434
+          pass_at_1: 0.315
+          avg_turns: 183.5
+        AgentSwing:
+          n_finish: 68
+          n_correct: 26
+          eta: 0.932
+          rho: 0.382
+          pass_at_1: 0.356
+          avg_turns: 151.9
+    - name: "Tongyi-DR-30B-A3B"
+      n_align: 45
+      strategies:
+        DA:
+          n_finish: 11
+          n_correct: 9
+          eta: 0.244
+          rho: 0.818
+          pass_at_1: 0.200
+          avg_turns: 340.8
+        Sum:
+          n_finish: 35
+          n_correct: 9
+          eta: 0.778
+          rho: 0.257
+          pass_at_1: 0.200
+          avg_turns: 215.7
+        KLN:
+          n_finish: 42
+          n_correct: 9
+          eta: 0.933
+          rho: 0.214
+          pass_at_1: 0.200
+          avg_turns: 153.0
+        AgentSwing:
+          n_finish: 34
+          n_correct: 14
+          eta: 0.756
+          rho: 0.412
+          pass_at_1: 0.311
+          avg_turns: 203.6
 
-figure_9_distribution:
-  description: "戦略遷移分布 from Paper X §2.4"
-  provenance: "[SOURCE from Paper X, ultimately TAINT from AgentSwing Figure 9]"
-  approximate_from_text: true
-  note: "Paper X 本文は ~50% などの近似値のみを記載"
-  models:
-    - name: "GPT-OSS"
-      DA: 0.50
-      Sum: 0.30
-      KLN: 0.20
-    - name: "DeepSeek"
-      DA: 0.25
-      Sum: 0.55
-      KLN: 0.20
-    - name: "Tongyi"
-      DA: 0.22
-      Sum: 0.58
-      KLN: 0.20
+figure_9_transition_matrices:
+  description: "Empirical strategy-transition probabilities under AgentSwing."
+  provenance: "[SOURCE: AgentSwing arXiv source pic/transition_matrix_1x3.pdf; extracted with pdftotext -bbox-layout on 2026-04-26]"
+  approximate_from_text: false
+  caveat: "Values are extracted from the vector PDF labels, not from the original plotting CSV or script."
+  columns: ["Summary", "Keep-Last-N", "Discard-All"]
+  rows: ["Summary", "Keep-Last-N", "Discard-All"]
+  matrices:
+    GPT-OSS-120B:
+      Summary: [0.31, 0.20, 0.49]
+      Keep-Last-N: [0.24, 0.26, 0.50]
+      Discard-All: [0.25, 0.26, 0.49]
+    DeepSeek-v3.2:
+      Summary: [0.55, 0.26, 0.19]
+      Keep-Last-N: [0.52, 0.28, 0.20]
+      Discard-All: [0.55, 0.27, 0.18]
+    Tongyi-DR:
+      Summary: [0.58, 0.21, 0.20]
+      Keep-Last-N: [0.57, 0.19, 0.25]
+      Discard-All: [0.55, 0.14, 0.31]
 
 predictions_linked:
   - id: "X_1"
@@ -158,13 +234,13 @@ handoff_drift_estimator_link:
   intended_usage: "このデータを Task 4 検証レポートの入力として使う"
   brief_reference: "コーデックス_要約_引継ぎ漂流_十6_十二6.md の Task 2 / Task 4"
 
-未取得_flags:
-  - item: "AgentSwing 原典 PDF の Appendix C の生データ"
-    reason: "外部 PDF 未取得 — Periskopē/Web scrape が必要"
-    impact: "Paper X 本文の引用値が真の値と一致しているか 100% 確認不能"
-  - item: "AgentSwing Figure 9 の exact 分布値"
-    reason: "Paper X §2.4 は ~50 / ~30 / ~20 の近似表現のみで、原図の exact 比率は埋め込まれていない"
-    impact: "figure_9_distribution は Paper X 本文ベースの小数化であり、原図の厳密値と数百分点ずれる可能性がある"
-  - item: "AgentSwing Table 1 の戦略 × モデル成功率"
-    reason: "brief では要求されるが、今回の入力範囲である Paper X §2.1-§2.5 には具体値が埋め込まれていない"
-    impact: "本 YAML は Table 2・Figure 9・Case 1/2/3 を中心に構成され、Table 1 は別途原典取得が必要"
+missing_flags:
+  - item: "AgentSwing raw per-turn experiment logs / evaluation JSON"
+    reason: "Not included in arXiv source tarball and not found in Alibaba-NLP/DeepResearch main branch probe."
+    impact: "OP-X-6 remains partial: exact published tables/cases are SOURCE, but real trajectory-level χ(t) cannot yet be computed."
+  - item: "Figure 9 original plotting CSV or script"
+    reason: "arXiv source contains the vector PDF but not the data-generation script."
+    impact: "transition probabilities are promoted from PDF labels, but should be treated as extracted labels rather than original raw data."
+  - item: "Full AgentSwing implementation"
+    reason: "The public GitHub link points to Alibaba-NLP/DeepResearch; main branch does not expose an AgentSwing-named module in the current probe."
+    impact: "Local rerun of AgentSwing routing is not available without reimplementing the method or obtaining private/upstream code."

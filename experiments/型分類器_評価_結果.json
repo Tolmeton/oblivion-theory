@@ -1,0 +1,462 @@
+{
+  "dataset_summary": {
+    "raw_count": 50,
+    "noise_count": 4,
+    "labeled_count": 46,
+    "label_distribution": {
+      "type_1": 17,
+      "type_2": 17,
+      "type_3": 12
+    },
+    "split": {
+      "train_size": 36,
+      "test_size": 10,
+      "random_state": 42,
+      "stratified": true
+    }
+  },
+  "models": {
+    "logistic": {
+      "display_name": "Logistic Regression",
+      "metrics": {
+        "accuracy": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "macro_f1": 1.0,
+        "per_type_precision": {
+          "type_1": 1.0,
+          "type_2": 1.0,
+          "type_3": 1.0
+        },
+        "per_type_recall": {
+          "type_1": 1.0,
+          "type_2": 1.0,
+          "type_3": 1.0
+        },
+        "per_type_f1": {
+          "type_1": 1.0,
+          "type_2": 1.0,
+          "type_3": 1.0
+        },
+        "support": {
+          "type_1": 4,
+          "type_2": 4,
+          "type_3": 2
+        },
+        "confusion_matrix": [
+          [
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            0,
+            2
+          ]
+        ],
+        "mean_confidence": 0.9866732766914138,
+        "low_confidence_rate_lt_0_5": 0.0
+      }
+    },
+    "random_forest": {
+      "display_name": "Random Forest",
+      "metrics": {
+        "accuracy": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "macro_f1": 1.0,
+        "per_type_precision": {
+          "type_1": 1.0,
+          "type_2": 1.0,
+          "type_3": 1.0
+        },
+        "per_type_recall": {
+          "type_1": 1.0,
+          "type_2": 1.0,
+          "type_3": 1.0
+        },
+        "per_type_f1": {
+          "type_1": 1.0,
+          "type_2": 1.0,
+          "type_3": 1.0
+        },
+        "support": {
+          "type_1": 4,
+          "type_2": 4,
+          "type_3": 2
+        },
+        "confusion_matrix": [
+          [
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            0,
+            2
+          ]
+        ],
+        "mean_confidence": 0.9979166666666668,
+        "low_confidence_rate_lt_0_5": 0.0
+      }
+    },
+    "mlp": {
+      "display_name": "MLP",
+      "metrics": {
+        "accuracy": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "macro_f1": 1.0,
+        "per_type_precision": {
+          "type_1": 1.0,
+          "type_2": 1.0,
+          "type_3": 1.0
+        },
+        "per_type_recall": {
+          "type_1": 1.0,
+          "type_2": 1.0,
+          "type_3": 1.0
+        },
+        "per_type_f1": {
+          "type_1": 1.0,
+          "type_2": 1.0,
+          "type_3": 1.0
+        },
+        "support": {
+          "type_1": 4,
+          "type_2": 4,
+          "type_3": 2
+        },
+        "confusion_matrix": [
+          [
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            0,
+            2
+          ]
+        ],
+        "mean_confidence": 0.999972618592459,
+        "low_confidence_rate_lt_0_5": 0.0
+      }
+    }
+  },
+  "best_model": {
+    "model_key": "logistic",
+    "display_name": "Logistic Regression",
+    "metrics": {
+      "accuracy": 1.0,
+      "macro_precision": 1.0,
+      "macro_recall": 1.0,
+      "macro_f1": 1.0,
+      "per_type_precision": {
+        "type_1": 1.0,
+        "type_2": 1.0,
+        "type_3": 1.0
+      },
+      "per_type_recall": {
+        "type_1": 1.0,
+        "type_2": 1.0,
+        "type_3": 1.0
+      },
+      "per_type_f1": {
+        "type_1": 1.0,
+        "type_2": 1.0,
+        "type_3": 1.0
+      },
+      "support": {
+        "type_1": 4,
+        "type_2": 4,
+        "type_3": 2
+      },
+      "confusion_matrix": [
+        [
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          2
+        ]
+      ],
+      "mean_confidence": 0.9866732766914138,
+      "low_confidence_rate_lt_0_5": 0.0
+    }
+  },
+  "feature_analysis": {
+    "global_importance": {
+      "recent_clue_hit": 0.0,
+      "recent_clue_reuse": 0.06567357972795673,
+      "tau_tail_slope": 0.06778737916011257,
+      "summary_loss_risk": 0.10773511774155617,
+      "action_repeat_ratio": 0.06843040758259175,
+      "dead_end_tail_retention": 0.05771095399753084,
+      "loop_closure_score": 0.09873227147667288,
+      "tau_collapse_score": 0.08177215928336402,
+      "hypothesis_confidence": 0.09448310718517415,
+      "action_relevance": 0.10266323774283198,
+      "hyp_act_gap": 0.11736149968424629,
+      "counterfactual_gain_gap": 0.13765028641796276
+    },
+    "per_type_profiles": {
+      "type_1": [
+        {
+          "feature": "counterfactual_gain_gap",
+          "importance": 0.13765028641796276,
+          "class_mean": 0.05999999999999995,
+          "other_mean": 0.5131034482758621,
+          "contrast": -0.45310344827586213,
+          "score": 0.062369819432139
+        },
+        {
+          "feature": "action_relevance",
+          "importance": 0.10266323774283198,
+          "class_mean": 0.8514026359108212,
+          "other_mean": 0.3235694474744846,
+          "contrast": 0.5278331884363366,
+          "score": 0.05418906411299666
+        },
+        {
+          "feature": "loop_closure_score",
+          "importance": 0.09873227147667288,
+          "class_mean": 0.25869161368885657,
+          "other_mean": 0.6432103527107277,
+          "contrast": -0.3845187390218711,
+          "score": 0.037964408528975306
+        },
+        {
+          "feature": "dead_end_tail_retention",
+          "importance": 0.05771095399753084,
+          "class_mean": 0.0,
+          "other_mean": 0.5862068965517241,
+          "contrast": -0.5862068965517241,
+          "score": 0.03383055923993187
+        },
+        {
+          "feature": "hypothesis_confidence",
+          "importance": 0.09448310718517415,
+          "class_mean": 0.907793369819707,
+          "other_mean": 0.5915689494501222,
+          "contrast": 0.31622442036958487,
+          "score": 0.029877865804349056
+        }
+      ],
+      "type_2": [
+        {
+          "feature": "dead_end_tail_retention",
+          "importance": 0.05771095399753084,
+          "class_mean": 1.0,
+          "other_mean": 0.0,
+          "contrast": 1.0,
+          "score": 0.05771095399753084
+        },
+        {
+          "feature": "hypothesis_confidence",
+          "importance": 0.09448310718517415,
+          "class_mean": 0.3615923289499617,
+          "other_mean": 0.9117557665116971,
+          "contrast": -0.5501634375617355,
+          "score": 0.05198115104050932
+        },
+        {
+          "feature": "action_repeat_ratio",
+          "importance": 0.06843040758259175,
+          "class_mean": 1.0,
+          "other_mean": 0.3333333333333333,
+          "contrast": 0.6666666666666667,
+          "score": 0.04562027172172784
+        },
+        {
+          "feature": "loop_closure_score",
+          "importance": 0.09873227147667288,
+          "class_mean": 0.7416488432070489,
+          "other_mean": 0.36009749402764935,
+          "contrast": 0.3815513491793996,
+          "score": 0.03767143138947129
+        },
+        {
+          "feature": "action_relevance",
+          "importance": 0.10266323774283198,
+          "class_mean": 0.35013186144895325,
+          "other_mean": 0.6174178325038556,
+          "contrast": -0.26728597105490237,
+          "score": 0.02744044319173315
+        }
+      ],
+      "type_3": [
+        {
+          "feature": "counterfactual_gain_gap",
+          "importance": 0.13765028641796276,
+          "class_mean": 0.6733333333333332,
+          "other_mean": 0.23000000000000007,
+          "contrast": 0.44333333333333313,
+          "score": 0.061024960311963465
+        },
+        {
+          "feature": "hyp_act_gap",
+          "importance": 0.11736149968424629,
+          "class_mean": 0.8157149004073477,
+          "other_mean": 0.5169628003524737,
+          "contrast": 0.29875210005487407,
+          "score": 0.03506199449625802
+        },
+        {
+          "feature": "action_relevance",
+          "importance": 0.10266323774283198,
+          "class_mean": 0.2859393610106542,
+          "other_mean": 0.6007672486798876,
+          "contrast": -0.3148278876692334,
+          "score": 0.03232125027986011
+        },
+        {
+          "feature": "dead_end_tail_retention",
+          "importance": 0.05771095399753084,
+          "class_mean": 0.0,
+          "other_mean": 0.5,
+          "contrast": -0.5,
+          "score": 0.02885547699876542
+        },
+        {
+          "feature": "hypothesis_confidence",
+          "importance": 0.09448310718517415,
+          "class_mean": 0.9173691618253496,
+          "other_mean": 0.6346928493848338,
+          "contrast": 0.2826763124405157,
+          "score": 0.026708136327027024
+        }
+      ]
+    },
+    "type3_diagnosis": {
+      "collapse": false,
+      "recall": 1.0,
+      "summary": "Type 3 collapse not observed: action-side mismatch features remained distinguishable enough to clear recall 0.4.",
+      "global_top_features": [
+        {
+          "feature": "counterfactual_gain_gap",
+          "importance": 0.13765028641796276
+        },
+        {
+          "feature": "hyp_act_gap",
+          "importance": 0.11736149968424629
+        },
+        {
+          "feature": "summary_loss_risk",
+          "importance": 0.10773511774155617
+        },
+        {
+          "feature": "action_relevance",
+          "importance": 0.10266323774283198
+        },
+        {
+          "feature": "loop_closure_score",
+          "importance": 0.09873227147667288
+        },
+        {
+          "feature": "hypothesis_confidence",
+          "importance": 0.09448310718517415
+        }
+      ],
+      "type_3_core_feature_gaps": []
+    }
+  },
+  "type12_binary_evaluation": {
+    "accuracy": 1.0,
+    "macro_precision": 0.6666666666666666,
+    "macro_recall": 0.6666666666666666,
+    "macro_f1": 0.6666666666666666,
+    "per_type_precision": {
+      "type_1": 1.0,
+      "type_2": 1.0,
+      "type_3": 0.0
+    },
+    "per_type_recall": {
+      "type_1": 1.0,
+      "type_2": 1.0,
+      "type_3": 0.0
+    },
+    "per_type_f1": {
+      "type_1": 1.0,
+      "type_2": 1.0,
+      "type_3": 0.0
+    },
+    "support": {
+      "type_1": 4,
+      "type_2": 3,
+      "type_3": 0
+    },
+    "confusion_matrix": [
+      [
+        4,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "mean_confidence": 0.9898861288381868,
+    "low_confidence_rate_lt_0_5": 0.0,
+    "n_total": 34,
+    "n_test": 7,
+    "selected_model": "logistic",
+    "withdrawal_condition_passed": true
+  },
+  "op_x5_assessment": {
+    "level": "達成",
+    "reason": "合成データ上では三値分類 accuracy と Type 1/2 二値分類 accuracy の双方で 60% 基準を通過し、Task 4 の完了条件を満たした。",
+    "best_accuracy": 1.0,
+    "type12_accuracy": 1.0,
+    "type3_recall": 1.0
+  },
+  "router_proposal": {
+    "selected_model": "logistic",
+    "confidence_rule": "max_probability < 0.50 なら abstain",
+    "route_map": {
+      "type_1": "KLN",
+      "type_2": "DA",
+      "type_3": "Summary + perturbation",
+      "abstain": "KLN(短尾保持) + 2 turn diagnostic probe + reclassify"
+    },
+    "operational_notes": [
+      "Type 1 は recent useful clue を壊さないよう弱い忘却を選ぶ。",
+      "Type 2 は dead-end loop を切るため強い忘却を選ぶ。",
+      "Type 3 は正しい仮説を残しつつ action perturbation を追加する。",
+      "confidence < 0.50 のときは state misroute を避けるため保守的に abstain する。"
+    ],
+    "empirical_evidence": "Logistic Regression が best accuracy 1.000 を記録し、Type 1/2/3 の recall を分離できたため、Paper X §6.1 予測 X.2 の『状態依存最適忘却』に empirical evidence を与える。"
+  }
+}
