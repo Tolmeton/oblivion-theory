@@ -13,9 +13,9 @@
 |---|---|
 | `/tmp/oqc_papers_20260426_batch02/2206.04920.txt:268-276` | Fisher SAM explicitly leaves natural-gradient update with Fisher SAM loss as future work. |
 | `/tmp/oqc_papers_20260426_batch02/2206.04920.txt:548-556` | Fisher SAM conclusion lists natural-gradient, distributed m-sharpness, and proximal-gradient relation as remaining questions. |
-| `/home/makaron8426/Sync/oikos/oblivion-theory/drafts/series/論文I_力としての忘却_草稿.md:775-821` | alpha-SAM is defined as Fisher-metric neighborhood plus alpha-connection update direction. |
-| `/home/makaron8426/Sync/oikos/oblivion-theory/drafts/series/論文I_力としての忘却_草稿.md:864-893` | alpha-Oblivion SAM includes Fisher SAM at alpha=0, lambda=0. |
-| `/home/makaron8426/Sync/oikos/oblivion-theory/drafts/series/論文I_力としての忘却_草稿.md:961-1028` | E12 gives CKA-based forgetting profile measurement and lambda-sign control as prior internal experiment. |
+| `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文I_力としての忘却_草稿.md:775-821` | alpha-SAM is defined as Fisher-metric neighborhood plus alpha-connection update direction. |
+| `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文I_力としての忘却_草稿.md:864-893` | alpha-Oblivion SAM includes Fisher SAM at alpha=0, lambda=0. |
+| `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文I_力としての忘却_草稿.md:961-1028` | E12 gives CKA-based forgetting profile measurement and lambda-sign control as prior internal experiment. |
 
 ## 2. Claim Under Test
 
@@ -90,10 +90,10 @@ Run only after P1 passes.
 
 | date | gate | artifact | result |
 |---|---|---|---|
-| 2026-04-26 | E0a definition smoke | `/home/makaron8426/Sync/oikos/oblivion-theory/experiments/fisher_alpha_sam_recovery_smoke.py` | pass |
-| 2026-04-27 | E0b training recovery | `/home/makaron8426/Sync/oikos/oblivion-theory/experiments/fisher_alpha_sam_training_recovery.py` | pass |
-| 2026-04-29 | E1 direction probe | `/home/makaron8426/Sync/oikos/oblivion-theory/experiments/fisher_alpha_sam_direction_probe.py` | pass |
-| 2026-04-29 | E2 lambda probe | `/home/makaron8426/Sync/oikos/oblivion-theory/experiments/fisher_alpha_sam_lambda_probe.py` | pass |
+| 2026-04-26 | E0a definition smoke | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/fisher_alpha_sam_recovery_smoke.py` | pass |
+| 2026-04-27 | E0b training recovery | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/fisher_alpha_sam_training_recovery.py` | pass |
+| 2026-04-29 | E1 direction probe | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/fisher_alpha_sam_direction_probe.py` | pass |
+| 2026-04-29 | E2 lambda probe | `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/experiments/fisher_alpha_sam_lambda_probe.py` | pass |
 
 Observed summary:
 

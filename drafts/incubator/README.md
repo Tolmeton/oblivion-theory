@@ -40,6 +40,7 @@ incubator から外へ出す前に、以下を埋める。
 | `paper0_L6_4_A_filtration_seed.md` | proof seed | Paper 0 L6.4-A。式複雑度と証明長の二重 filtration を固定する舞台 | Paper 0 appendix / §6.4 footnote |
 | `paper0_L6_4_BD_relative_homology_seed.md` | proof seed | Paper 0 L6.4-B/D。証明側成長上界と相対ホモロジー昇格 | Paper 0 appendix |
 | `paper0_L6_4_C_independent_cycle_seed.md` | proof seed | Paper 0 L6.4-C。意味側独立 cycle 供給を 4 小補題へ分解する未証明 seed | Paper 0 appendix / §6.4 footnote |
+| `paper0_L6_4_C_R2_counting_toy_model.md` | proof seed support | Paper 0 L6.4-C R2。full Boolean poset nerve の失敗と proper Boolean 3 候補を固定 | L6.4-C seed / Paper 0 appendix |
 | `加速度は忘却境界の曲率である_橋梁ノート.md` | bridge note | Paper I と Paper XII の速度・加速度・力をつなぐ。primitive は `II(W)` | Paper XII patch / 統一記号表 |
 | `α_I_α_III_formal_bridge_草稿.md` | bridge note | `α_I` と `α_III` の formal bridge 候補 | 統一記号表 / Paper III-VIII-XII bridge |
 | `FaceLemma_技術設計.md` | technical design | Face Lemma の符号理論対応・修復可能性設計 | calculations / appendix |
@@ -73,6 +74,6 @@ seed を本文へ戻すとき、未解決条件を消して定理のように見
 ## 次の整理候補
 
 1. 各 incubator 文書の冒頭に `型 / 昇格先 / failure condition` を足す。
-2. Paper 0 L6.4-C seed の R2 counting route を toy model 化する。
+2. Paper 0 L6.4-C seed の `B_3^\circ` cycle を C-2 第一候補として定式化する。
 3. `Face5Lemma_draft.md` と `FaceLemma_技術設計.md` の責務を分ける。
 4. `第10章_統合章_忘却の先行性_草稿.md` をモノグラフ構成設計へ戻すか、独立 draft として保持するか決める。
