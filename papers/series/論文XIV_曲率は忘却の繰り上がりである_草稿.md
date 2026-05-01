@@ -195,27 +195,19 @@ Lean 4 で検証された性質:
 
 Walsh 基底は位置 $w$ に依存しない。ゆえに離散 Chebyshev torsion は恒等的にゼロである。automath の世界は「離散指数型族」に対応する。
 
-### 4.4 離散化 schema $D$ と制限付き関手性
+### 4.4 離散化 bridge の三層分解 — strict / chain-map / Open C
 
-上の対応を、まず schema として定式化する。
+上の対応は、単一の「$D: \mathbf{Man}\to\mathbf{Hyp}$ は関手か」という問いでは粗すぎる。2026-04 の再定式化では、問題は strict 1-functor 部分、chain-map 部分、lax monoidal coherence の defect 2-cell 同定に分かれる [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/関手の合成保存問題_再定式化.md L8]。
 
-> **離散化 schema** $D$ は、統計多様体の幾何をハイパーキューブ側へ対応づける局所的な構造対応である。
->
-> - $D(M) = \{0,1\}^n$ (ただし $n = \dim M$)
-> - $D(\Phi) = f: \{0,1\}^n \to \mathbb{Z}$ (忘却場の離散化)
-> - $D(T) = A \subseteq \text{Fin}(n)$ (Chebyshev 形式の方向の離散化)
-> - $D(d) = \text{deltaSet}$ (外微分の離散化)
-> - $D(\wedge) = \text{carry defect}$ (外積の離散化)
+> **構造的対応** (schema $D$). $D$ は、統計多様体の幾何をハイパーキューブ側へ対応づける局所的な構造対応である。少なくとも $D(M)=\{0,1\}^n$, $D(\Phi)=f$, $D(T)=A\subseteq\mathrm{Fin}(n)$, $D(d)=\mathrm{deltaSet}$, $D(\wedge)=\mathrm{carry\ defect}$ という対応を持つ [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/形式化仕様書.md L27]。
 
-この段階で厳密に言えることは二つである。
+1. **定理 (Theorem A: strict 1-functor 部分)**. `CubeExp_proj`、すなわち product Bernoulli family $M_I=(\Delta^1)^I$ と座標忘却 $\pi_{J\subseteq I}$ からなる部分圏では、$D_{\mathrm{proj}}(\pi_{J\subseteq I})=\mathrm{restrict}_{J\subseteq I}$ と置くことで ordinary composition の strict functoriality が成り立つ [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/関手の合成保存問題_再定式化.md L120]。Lean 側の witness は `restrict_functorial` である [Lean: restrict_functorial in Omega/Folding/Defect.lean]。旧稿の「$D$ が厳密に関手なのは `Man_No11` に限定したときである」という観察は、ここでは「Theorem A は `CubeExp_proj` 上で成立し、`Man_No11` はその strictness を保持する実装包絡である」と読む [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/三者対応辞書.md L394]。
 
-第一に、個別対応 (deltaSet $\leftrightarrow$ 外微分、walshFlux $\leftrightarrow$ 境界積分、carry $\leftrightarrow$ 外積) は、それぞれ Lean 4 側と Paper I 側で独立に証明済みである。
+2. **定理 (Theorem B: chain-map 部分)**. 観測量を multilinear observable / cubical cochain に制限すると、`deltaSet` は混合偏微分の cell 積分に一致する。したがって $d\mapsto\mathrm{deltaSet}$ と $\int\mapsto\mathrm{walshFlux}$ は、単なる類推ではなく cubical cochain のレベルで実定理に落ちる [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/関手の合成保存問題_再定式化.md L180]。この層が閉じるのは、一般の滑らかな関数全体ではなく、cubical / multilinear / boundary-face 版に限られる [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/関手の合成保存問題_再定式化.md L245]。
 
-第二に、$D$ が**厳密に関手**として振る舞うのは `Man_No11` に制限したときである。すなわち No11 制約と整合する射の部分圏では、`Discretizable` と `DescendsToCube` の data を通じて合成保存を押せる。だが $\mathbf{Man}$ 全体では、$D$ はまだ schema の段階に留まる。
+3. **予想 (Open C: lax monoidal coherence の defect 2-cell 同定)**. 残る核心は、ordinary functoriality ではなく、加法・合成・composition drift まで含めた monoidal coherence である。automath 側では `restrict_stableAdd_carry_defect` と `globalDefect_compose` が defect 2-cell を担い、bridge の型は strict functor だけでなく lax monoidal functor / pseudofunctor として読む必要がある [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/関手の合成保存問題_再定式化.md L255] [Lean: globalDefect_compose in Omega/Folding/Defect.lean] [Lean: restrict_stableAdd_carry_defect in Omega/Folding/CarryDefect.lean]。bridge essay も、忘却関手を lax functor として読み、laxity/compositor が carry defect と忘却曲率の対応点であると明記している [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/曲率は忘却のcarryである_草稿.md L99]。
 
-したがって、本稿の主張は「$\mathbf{Man}$ 全域で離散化関手が完成した」ではない。正確には、「`Man_No11` 上で strictness が回復し、全域拡張には別の証明義務が残る」である。
-
-**合成保存**: $D(d(\Phi T)) = \text{deltaSet}(D(A), D(f))$ を $\mathbf{Man}$ 全体で押せるかは、**未解決問題 (Open Problem)** である。
+したがって、本稿の主張は「$\mathbf{Man}$ 全域で離散化関手が完成した」ではない。正確には、strict 1-functor 部分と chain-map 部分は閉じ、残る未解決核が defect 2-cell の連続側同定へ縮約された、である。**合成保存**: ordinary composition としての合成保存は Theorem A の範囲で閉じ、monoidal coherence としての合成保存は Open C に残る。完全な open は §5.3 で Open C として整理する。
 
 ---
 
@@ -274,20 +266,21 @@ $$\Phi_{\mathrm{fold}}(x \oplus y) = \Phi_{\mathrm{fold}}(x) \oplus \Phi_{\mathr
 
 離散証明は連続証明の代用品ではない。離散証明は、連続側で何を証明しなければならないかを切り分ける装置である。
 
-### 5.3 連続版への持ち上げ — 三つの open
+### 5.3 連続版への持ち上げ — Open C と三つの実装路線
 
-OP-I-2 は一つの穴ではない。三つの穴である。
+OP-I-2 の連続極限リフトは、`関手の合成保存問題の再定式化` (2026-04) で問題位相が 1 段下がった。1-functor 部分と chain-map 部分は閉じた (Theorem A / B, §4.4)。残る open は **Open C: lax monoidal coherence の defect 2-cell 同定** に縮約される。すなわち合成ドリフト $\delta$ を Čech 型 2-cocycle $\kappa$ として連続側で同定する課題である [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/関手の合成保存問題_再定式化.md L22] [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/関手の合成保存問題_再定式化.md L313]。
 
-1. **公理の穴** — `ZeroForgetCollapse` の正当化。
-   反例はすでに存在する。一対象圏 $\mathrm{Hom}(*,*) = [0,1]$、合成 $= \min$、$G = \mathrm{id}$ は OP-I-3 と $\delta = 0$ を共に満たしつつ、$\mathrm{Hom}(*,*) = 1/2$ を許す。したがって「$\delta = 0$ なら標準圏が回復する」は定理ではなく、追加公理の要請である。`ZeroForgetCollapse` は、「忘却なしなら精度は最大であり、Hom は離散化される」という FEP 的直観の形式化である。
+Open C は単一の問題だが、3 つの独立な実装路線を持つ:
 
-2. **極限の穴** — Conjecture 9.5.2 の再定式化。
-   $X_\infty(\lambda)$ を $\lambda$ に沿って直接動かす案は失敗する。$\delta_m(\lambda)$ は Fibonacci 閾値で段差を持つからである。連続性を復元するには、状態空間そのものを動かすのでなく、固定された ambient profinite 空間 $\{0,1\}^{\mathbb{N}}$ の上に $\lambda$-依存弱*連続測度族 $\mu_\lambda$ を置くべきである。問うべきは「点の連続移動」ではない。「期待値の連続変形」である。
+1. **路線 1 (Dual citizenship 採用の橋梁公理)**: `ZeroForgetCollapse` を **A+B Dual citizenship 構造** で採用し (d)→(e) を局所固定する。これは `\delta=0` から Boolean 回復が自動ではないというギャップを、橋梁公理として明示的に塞ぐ路線である [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/三者対応辞書.md L166]。**射程明示** (2026-04-27 第三次更新): 「Boolean 化」の意味を 3 軸 (Hom 集合の濃度 / 値 / 存在 indicator) に分解した結果、ZFC は 2 解釈下で異なる地位を持つ — **解釈 A (V-enriched [0,1] base 文脈)** では独立公理 (反例 min合成圏が有効、派生候補は **2 経路 ((a) Lawvere Boolean topos / (c) HoTT)** に縮約。(d) Smithe Bayesian lens 合成は /noe+ L3 で **派生不能 (Closed)** 確定 — Kleisli morphism collapse は base monoidal V を変えない enriched category theory 標準事実 + Paper II §7.5 インデックス圏不一致 (Poly vs (ℝ,≤)) の二重防御) / **解釈 B (Set existence indicator 文脈)** では Paper IX §3.5(ii) からの派生定理候補 (Mor(C_α)(I,X) = ∅ なら indicator 0、≠ ∅ なら indicator 1)。同一 ZFC が 2 解釈下で並列保持される (Yugaku Definition Surface Protocol)。**Boolean 化 3 軸 ↔ 派生候補 ↔ 解釈の 3:3 対応構造**: (i) 濃度↔3.1 Lawvere↔解釈 A / (ii) 値↔3.4 Smithe (Closed)↔解釈 A / (iii) indicator↔3.3 HoTT + 3.2 Paper IX↔解釈 A or B。詳細は `三者対応辞書.md` §7.5 OT-S05-3 + OP-S05-3.1〜3.4。
 
-3. **関手の穴** — 離散化関手 $D$ の作用域拡張。
-   現時点で $D$ が厳密に関手なのは $\mathbf{Man}_{\mathrm{No11}}$ に限られる。$\mathbf{Man}$ 全体へ押し広げるには、各射に `Discretizable` と `DescendsToCube` の data を付す必要がある。実装戦略としては、$\Delta^n$ 経由よりも逆極限経由の Strategy B の方が有力である。既存 automath ライブラリとの接続が深く、sorry を剥がしやすいからだ。Appendix B の幾何を $(\Delta^1)^n$ に組み替える Strategy A' は残るが、主経路ではない。
+2. **路線 2 (極限戦略)**: $\{0,1\}^{\mathbb{N}}$ を固定 ambient profinite として、$\lambda$-依存弱*連続測度族 $\mu_\lambda$ を構成する。これは $X_\infty(\lambda)$ 自体を動かす案ではなく、期待値の連続変形を問う路線である [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/三者対応辞書.md L196] [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/三者対応辞書.md L208]。
 
-本稿が与えるのは完成証明ではない。完成証明の設計図である。ここを分けずに「離散版が真だから連続版も真だ」と言うなら、それは前進ではない。公理の不足と極限の失敗を見ないふりしただけである。
+3. **路線 3 (関手 debt)**: `Discretizable` + `DescendsToCube` typeclass を付与した $\mathbf{Man}$ 上の射クラスへ拡張し、Strategy B (逆極限経由) で `discretize_functorial` の sorry を剥がす。これは full $\mathbf{Man}$ 上の無条件 strict functor 化ではなく、descent data を持つ射への拡張である [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/三者対応辞書.md L357] [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/三者対応辞書.md L394] [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/形式化仕様書.md L86]。
+
+これらは Open C を閉じるために**並行して**進める実装課題であり、互いの代用品ではない。Open C 自体の連続側受け皿候補は (a) composition drift $\delta$ (Paper I §9.5), (b) Čech 2-cocycle, (c) central extension / gerbe 的障害である [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/standalone/automath_bridge/形式化仕様書.md L78]。
+
+本稿が与えるのは完成証明ではない。完成証明の設計図である。Open C を 3 路線に分けずに「離散版が真だから連続版も真だ」と言うなら、それは前進ではない。問題位相の 1 段下げ (関手 → lax monoidal) を見ないふりしただけである。
 
 ---
 

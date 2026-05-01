@@ -438,7 +438,7 @@ $$\mathrm{Hom}(-, X) = \mathrm{Hom}_{\mathrm{int}}(-, X) \amalg \mathrm{Hom}_E(-
 
 (iii)→(i): anti-copy が非自明なら、定義 3.4.2 の排斥条件 $\mathrm{int} \barwedge \mathrm{ext} \mid E$ は anti-copy による外積分解が well-defined であることから満たされる。$E$ の構成は Paper II §3.7.2 の Markov blanket 生成定理 (Face Lemma) の α 符号反転版として得られる。
 
-符号理論的に見ると、ここでの exclusion blanket は Markov blanket の「排他的 check node 版」である。anti-copy は bit-flip を補正するのではなく、同一状態の二重占有を禁止することで erasure を露出させる。したがって Face Lemma の detectability 条件は、$\alpha < 0$ セクターでは「何が複製不能か」を局在化する排斥検査面として読める。対応表は `drafts/infra/FaceLemma_技術設計.md`。
+符号理論的に見ると、ここでの exclusion blanket は Markov blanket の「排他的 check node 版」である。anti-copy は bit-flip を補正するのではなく、同一状態の二重占有を禁止することで erasure を露出させる。したがって Face Lemma の detectability 条件は、$\alpha < 0$ セクターでは「何が複製不能か」を局在化する排斥検査面として読める。対応表は `drafts/incubator/FaceLemma_技術設計.md`。
 
 (i)→(ii): 対偶を示す。$P = \emptyset$ (全元が奇) または $N = \emptyset$ (全元が偶) のとき、$\Phi_X$ は定符号であり α > 0 の構造に退化する。このとき exclusion blanket は Markov blanket に退化し、非自明な排斥構造は持たない。 □
 
@@ -459,7 +459,7 @@ Hahn 分解: $P = \emptyset$ (全空間で Φ < 0)。この場合、命題 3.4.5
 非自明な排斥ブランケットを構成するには、混合族 $\mathcal{M} = \mathcal{M}^+ \cup \mathcal{M}^-$ (α > 0 の対象と α < 0 の対象を含む) を考える必要がある。§5 の Z₂-次数付き構成はまさにこの混合族の形式化であり、ガウス族 + 混合族の設定で:
 
 - $\mathrm{int} = \mathcal{M}^-$ (奇セクター: フェルミオン的)
-- $\mathrm{ext} = \mathcal{M}^+$ (偶セクター: ボソン的)  
+- $\mathrm{ext} = \mathcal{M}^+$ (偶セクター: ボソン的)
 - $E = \partial\mathcal{M}$ (α = 0 の臨界面: 排斥ブランケット)
 
 このとき $\mathrm{int} \barwedge \mathrm{ext} \mid E$ は「フェルミオン的状態とボソン的状態が臨界面を経由しても同一量子数を共有できない」ことを意味し、超選択則 (superselection rule) の圏論的翻訳となる。
@@ -1387,7 +1387,7 @@ $$r_{\text{obs}} = \underbrace{\sqrt{\rho}}_{\sim Z^{1/2}} \cdot \frac{r_{\text{
 
 ### 4.8 α-τ 対応: Hyphē 実験データへの橋渡し
 
-§4.2–4.7 は忘却場の臨界構造を理論的に分析した。本節はその構造を Hyphē 実験 (linkage_hyphe.md, linkage_crystallization.md E11) の観測量に接続し、α の関数形を導出する。
+§4.2–4.7 は忘却場の臨界構造を理論的に分析した。本節はその構造を Hyphē 実験 (linkage_hyphe.md, `theory_core.md#linkage_crystallization` E11) の観測量に接続し、α の関数形を導出する。
 
 #### 4.8.1 勾配降下定理: 収縮率とポテンシャル曲率の同一性
 
@@ -1465,7 +1465,7 @@ $$\boxed{\alpha(\rho) = A \cdot \text{sgn}(\rho - \tau) \cdot \sqrt{|\rho - \tau
 
 #### 4.8.4 E11 実験データとの対応
 
-linkage_crystallization.md E11 (τ 連続掃引, 46 点, 13 sessions) は $\tau_{\cos} \in [0.50, 0.95]$ でチャンク核生成数 $N(\tau)$ を測定した。変換 $\tau_\rho = (\tau_{\cos} - \mu_{\text{noise}})/(1 - \mu_{\text{noise}})$ ($\mu_{\text{noise}} \approx 0.62$) により embedding 空間から理論空間に移る。
+`theory_core.md#linkage_crystallization` E11 (τ 連続掃引, 46 点, 13 sessions) は $\tau_{\cos} \in [0.50, 0.95]$ でチャンク核生成数 $N(\tau)$ を測定した。変換 $\tau_\rho = (\tau_{\cos} - \mu_{\text{noise}})/(1 - \mu_{\text{noise}})$ ($\mu_{\text{noise}} \approx 0.62$) により embedding 空間から理論空間に移る。
 
 E11 の3レジーム構造は本節の理論と以下のように対応する:
 
@@ -1870,7 +1870,7 @@ Paper II は意識を忘却曲率 F ≠ 0 として定義した。本節の α <
 
 ### 5.5 計算複雑性: Copy 可能性と P/NP 分離
 
-本節は CKDF (Crystallization–Detection–Kalon Framework; ckdf_theory.md) における Kalon△ (局所的美, P) / Kalon▽ (絶対的美, NP) の計算複雑性分離が、§3 の copy/anti-copy 構造から演繹されることを示す。
+本節は CKDF (Crystallization–Detection–Kalon Framework; `theory_core.md#ckdf_theory`) における Kalon△ (局所的美, P) / Kalon▽ (絶対的美, NP) の計算複雑性分離が、§3 の copy/anti-copy 構造から演繹されることを示す。
 
 #### 5.5.1 CKDF における Kalon の二重定義
 
