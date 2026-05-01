@@ -1090,7 +1090,7 @@ cross_model_verification:
   N_per_condition: 50
   topics: T1-T5 (Claude 実験と同一)
   conditions: A (plain) / B (CCL) — 同一プロンプト
-  invocation: "gemini -p (headless mode, Tolmeton OAuth)"
+  invocation: "gemini -p (headless mode)"
 ```
 
 #### 7.9.2 平均差 (Welch t-test, N=50/条件)

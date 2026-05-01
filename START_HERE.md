@@ -1,6 +1,8 @@
 # Start Here
 
 This page is the shortest path into the public edition of **Oblivion Theory**.
+All papers here are concept drafts, not finished preprints or submission-ready
+manuscripts.
 
 ## If you are new
 
@@ -39,10 +41,10 @@ If you want the open edges after the core:
 3. Paper XIII
 4. Paper XIV
 
-## How to read the statuses
+## How to read the status
 
-- `public draft`: intentionally published for reading, but still revisable
-- `exploratory draft`: conceptually important, but one or more bridges remain open
+- `concept draft`: a pre-preprint working construction, shared for reading and criticism while still unfinished
+- Some drafts contain stronger formal cores than others, but none should be read as a completed paper.
 
 ## What is intentionally absent
 

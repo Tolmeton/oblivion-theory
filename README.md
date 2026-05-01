@@ -6,6 +6,13 @@
 
 This repository is the public reading edition of **Oblivion Theory**. It is a reader-facing archive for papers and essays, not the internal research ledger or the private production source.
 
+## Status Notice
+
+All papers in this repository are **concept drafts**. They are unfinished
+working constructions: earlier than preprints, earlier than submission-ready
+manuscripts, and earlier than peer review. They are shared as scaffolds for
+reading, criticism, and future development, not as completed scholarly articles.
+
 ## Public Edition Contract
 
 What this repository is:
@@ -18,9 +25,10 @@ What this repository is not:
 
 - not the authoritative internal source for planning, sequencing, or backstage revision work
 - not a place for private ledgers or working meta documents
-- not a guarantee that every paper has the same maturity level
+- not a preprint archive or a record of completed papers
+- not a guarantee that every draft has the same maturity level
 
-The strongest formal core currently available in this public edition is **Paper I**. Some later bridge papers remain exploratory or conjectural. Read the status labels before treating them as settled.
+The strongest formal core currently sketched in this public edition is **Paper I**. Even there, the text remains a concept draft. Later bridge papers are more exploratory or conjectural. Read the status labels before treating any claim as settled.
 
 ## Start Here
 
@@ -45,21 +53,21 @@ This public edition can lag behind the private working archive that tracks plann
 
 | # | Title | Status | Public reading note |
 |:--|:--|:--|:--|
-| 0 | The Oblivion of Oblivion | public draft | Foundation: structural blind spot |
-| I | **Force is Oblivion** | public draft | Formal core: directionality theorem |
-| II | Complementarity is Oblivion | public draft | CPS framework and FEP bridge surface |
-| III | Beyond Markov Categories | public draft | Z2-graded CPS expansion |
-| IV | Why Effect Sizes Are Small | public draft | Effect-size decay program |
-| V | Renormalization is Oblivion | public draft | Oblivion beta-function program |
-| VI | Forgetting Opens Doors | public draft | G∘F crystallization and affordance surface |
-| VII | Perception is Oblivion | public draft | Universal filtration program |
-| VIII | Existence Precedes Oblivion | public draft | Alpha-oblivion filtration and finite subject theorem |
-| IX | Entropy is Oblivion | exploratory draft | Second-law surface inside the framework |
-| X | How Long-Range Agents Forget | exploratory draft | CM strategy analysis |
-| XI | Prompts Select What to Forget | public draft | Prompting as selective oblivion |
-| XII | Absence Outruns Presence | public draft | Kinematics of distinguishability boundaries |
-| XIII | Spacetime is Oblivion | exploratory draft | CPS span to spacetime dictionary |
-| XIV | Curvature is the Carry of Oblivion | exploratory draft | Discrete carry as directional oblivion |
+| 0 | The Oblivion of Oblivion | concept draft | Foundation: structural blind spot |
+| I | **Force is Oblivion** | concept draft | Formal core: directionality theorem |
+| II | Complementarity is Oblivion | concept draft | CPS framework and FEP bridge surface |
+| III | Beyond Markov Categories | concept draft | Z2-graded CPS expansion |
+| IV | Why Effect Sizes Are Small | concept draft | Effect-size decay program |
+| V | Renormalization is Oblivion | concept draft | Oblivion beta-function program |
+| VI | Forgetting Opens Doors | concept draft | G∘F crystallization and affordance surface |
+| VII | Perception is Oblivion | concept draft | Universal filtration program |
+| VIII | Existence Precedes Oblivion | concept draft | Alpha-oblivion filtration and finite subject theorem |
+| IX | Entropy is Oblivion | concept draft | Second-law surface inside the framework |
+| X | How Long-Range Agents Forget | concept draft | CM strategy analysis |
+| XI | Prompts Select What to Forget | concept draft | Prompting as selective oblivion |
+| XII | Absence Outruns Presence | concept draft | Kinematics of distinguishability boundaries |
+| XIII | Spacetime is Oblivion | concept draft | CPS span to spacetime dictionary |
+| XIV | Curvature is the Carry of Oblivion | concept draft | Discrete carry as directional oblivion |
 
 ### Standalone
 
@@ -80,6 +88,9 @@ Every claim is intended to be read under one of these labels:
 | [Conjecture] | Precisely stated, not yet proved |
 | [Structural correspondence] | Strong analogy or shared structure without full equivalence proof |
 | [Philosophical suggestion] | Conceptual proposal with open formal gaps |
+
+These labels describe the role of a claim inside a draft. They do not indicate
+that the surrounding paper is finished or submission-ready.
 
 ## License
 

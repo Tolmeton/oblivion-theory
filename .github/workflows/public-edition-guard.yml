@@ -25,7 +25,7 @@ jobs:
         run: |
           set -euo pipefail
           forbidden='読者には見せない|共同作業の台帳|internal working draft|内部作業文書として参照'
-          if grep -RInE "$forbidden" README*.md START_HERE*.md papers; then
+          if grep -RInE "$forbidden" README*.md START_HERE*.md papers publications; then
             echo "Backstage language leaked into the public edition."
             exit 1
           fi
