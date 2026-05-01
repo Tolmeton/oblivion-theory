@@ -29,3 +29,17 @@ jobs:
             echo "Backstage language leaked into the public edition."
             exit 1
           fi
+
+      - name: Reject unapproved email addresses
+        run: |
+          set -euo pipefail
+          allowed='Tolmetes@hegemonikon.org'
+          matches="$(grep -RInE -o '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}' README*.md START_HERE*.md papers publications || true)"
+          if [ -n "$matches" ]; then
+            unexpected="$(printf '%s\n' "$matches" | grep -vF "$allowed" || true)"
+            if [ -n "$unexpected" ]; then
+              echo "Unapproved email address leaked into the public edition."
+              echo "$unexpected"
+              exit 1
+            fi
+          fi
