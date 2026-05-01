@@ -16,3 +16,14 @@ return.
 
 Canonical archive: Zenodo.
 
+### How to read
+
+External readers should use the Zenodo record or the version DOI as the stable
+entry point:
+
+- record page: https://zenodo.org/records/19935819
+- DOI landing page: https://doi.org/10.5281/zenodo.19935819
+
+On the Zenodo record page, the paper can be read through the `Preview` button
+next to the PDF file, or downloaded as either PDF or Markdown. The PDF is the
+normal reading copy; the Markdown file is provided as a plain-text source copy.

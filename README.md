@@ -35,6 +35,7 @@ The strongest formal core currently sketched in this public edition is **Paper I
 - [START_HERE.md](START_HERE.md) for a first reading path
 - [papers/series/論文I_力としての忘却_草稿.md](papers/series/%E8%AB%96%E6%96%87I_%E5%8A%9B%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AE%E5%BF%98%E5%8D%B4_%E8%8D%89%E7%A8%BF.md) for the formal core
 - [papers/series/論文VII_知覚は忘却である_草稿.md](papers/series/%E8%AB%96%E6%96%87VII_%E7%9F%A5%E8%A6%9A%E3%81%AF%E5%BF%98%E5%8D%B4%E3%81%A7%E3%81%82%E3%82%8B_%E8%8D%89%E7%A8%BF.md) and [papers/series/論文VIII_存在は忘却に先行する_草稿.md](papers/series/%E8%AB%96%E6%96%87VIII_%E5%AD%98%E5%9C%A8%E3%81%AF%E5%BF%98%E5%8D%B4%E3%81%AB%E5%85%88%E8%A1%8C%E3%81%99%E3%82%8B_%E8%8D%89%E7%A8%BF.md) once the basic grammar is clear
+- [publications/README.md](publications/README.md) for published preprints adjacent to this series
 
 ## Snapshot Note
 
