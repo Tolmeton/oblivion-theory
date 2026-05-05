@@ -40,6 +40,15 @@
 3. Paper XIII
 4. Paper XIV
 
+### 伴走 branch 経路
+
+本体の文法を入れたあと、隣接する展開 branch を見たいなら:
+
+1. [伴走ドラフト入口](drafts/companion/README.md)
+2. [数学の忘却論 — 数の基礎](drafts/companion/数学の忘却論_数の基礎/数学の忘却論_数の基礎シリーズ.claimmap.md)
+3. [比較射σと形式化](drafts/companion/比較射σと形式化/比較射σと形式化シリーズ.claimmap.md)
+4. [忘却と自由エネルギー](drafts/companion/忘却と自由エネルギー/忘却と自由エネルギーシリーズ.claimmap.md)
+
 ## 状態ラベルの読み方
 
 - `たたき台`: preprint より前の構想段階にある未完成稿。読解と批判のために公開している

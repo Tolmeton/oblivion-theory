@@ -41,6 +41,15 @@ If you want the open edges after the core:
 3. Paper XIII
 4. Paper XIV
 
+### Companion branch path
+
+If you want adjacent development branches after the main grammar:
+
+1. [Companion drafts index](drafts/companion/README.md)
+2. [Mathematical Oblivion: foundations of number](drafts/companion/数学の忘却論_数の基礎/数学の忘却論_数の基礎シリーズ.claimmap.md)
+3. [Comparison morphism σ and formalization](drafts/companion/比較射σと形式化/比較射σと形式化シリーズ.claimmap.md)
+4. [Oblivion and free energy](drafts/companion/忘却と自由エネルギー/忘却と自由エネルギーシリーズ.claimmap.md)
+
 ## How to read the status
 
 - `concept draft`: a pre-preprint working construction, shared for reading and criticism while still unfinished
