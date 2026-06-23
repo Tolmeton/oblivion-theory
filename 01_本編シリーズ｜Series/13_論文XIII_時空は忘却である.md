@@ -418,6 +418,38 @@ O4 については、FLRW、TOV、anisotropic TOV が三つの試金石を与え
 
 > **[構造的対応]** Face Lemma ↔ Einstein dictionary は、O3/O4 について局所支持を持つ。すなわち、raw defect / contracted defect / conserved coupling projection の三層分離、FLRW / TOV / anisotropic TOV における content slot 対応、Jacobson 型の local horizon thermodynamics は、C2/C3 の容器-内容 coupling を一つの局所文法として読むことを支持する。ただし、係数 $8\pi G_N$、Einstein-Hilbert 作用、entropy-area input、一般の非対角 flux / shear、一般 GR case は未閉鎖であり、C3 は定理ではない。
 
+### 8.2.3　Ricci 曲率と Weyl 曲率の分解、曲率発散の Open Question [skeleton]
+
+§8.2.2 の三層分離 (Riemann/holonomy = raw defect、Ricci/scalar = contracted defect、Einstein テンソル = conserved coupling projection) は、Ricci 曲率側に対応する三層である。これに対し、Riemann 曲率の標準分解 (Carroll [19] 第 3 章) は、Ricci 曲率部分と Weyl 曲率部分 (= Riemann の trace-free 部分) の和として表される。Weyl 曲率を §8.2.2 三層分離のどこに住まわせるかは本稿で明示的に扱われておらず、本節はこの空席を Open Question として起票する。
+
+**[skeleton] 四分岐拡張候補**:
+
+```text
+Riemann / holonomy   = raw geometric defect
+  ├─ Ricci / scalar       = contracted defect  (内容に結合可能な縮約部分)
+  │   └─ Einstein tensor  = conserved coupling projection  (Bianchi-divergence-free)
+  └─ Weyl tensor          = trace-free residue  (内容に結合不可能な残差) [open]
+```
+
+これは §8.2.2 の三層分離を、Riemann の標準分解 (Ricci 部分 + Weyl 部分) に沿って **四分岐** へ拡張する候補である。Ricci 側は物質テンソル $T_{\mu\nu}$ と Einstein 方程式で結合する縮約された defect、Weyl 側は結合に乗らない trace-free な幾何 defect 残差 — として位置づける読みである。
+
+**未閉鎖の三つの Open Question** (詳細はメタデータ §M6 Open Question Ledger 参照。読者向け概要は付録 A Q8-Q10):
+
+- **OQ-DIV**: 欠損 cocycle $\kappa$ から、曲率発散に対応する非負観測量を定義できるか。Paper XIV §5.3 路線 2 (λ-依存弱*連続測度族 $\mu_\lambda$) を延伸して、$\kappa$ の有界性 / 非有界性を区別する観測量を構成する必要がある。連続側で $\kappa$ がそもそも well-defined になる前提 (Paper XIV Open C) 自体が未閉
+- **OQ-WEY**: Weyl 曲率を縮約されない生の幾何 defect 残差として定式化できるか。§8.2.2 三層分離を四分岐へ拡張する候補。Penrose (1979) Weyl Curvature Hypothesis (Weyl 増大 = エントロピー増大方向 = 熱力学的時間方向) と Paper IX (エントロピーは忘却である) の接続候補
+- **OQ-ALPHA**: 局所 $\alpha(x) \to 1$ と曲率不変量 $K = R^{abcd} R_{abcd} \to \infty$ を結ぶ写像はあるか。Paper VIII §6.2.3 (iii) の $\alpha = 1 \Rightarrow C_1 = C_{\text{disc}}$ を点ごとに変動する場 $\alpha(x)$ として読む候補
+
+**最小実験候補 — Schwarzschild と FLRW の対比**:
+
+| 時空 | Ricci 側 | Weyl 側 | Kretschmann スカラー $K$ |
+|:---|:---|:---|:---|
+| Schwarzschild (vacuum BH) | $R_{\mu\nu} = 0$ | Weyl $\neq 0$ (潮汐) | $K \sim 1/r^6 \to \infty$ at $r=0$。**Weyl 側で発散** |
+| FLRW (等方的・等質的宇宙) | $R_{\mu\nu} \neq 0$ | Weyl $= 0$ (等角平坦) | ビッグバン特異点で Ricci 発散。**Ricci 側で発散** |
+
+§8.2.2 三層分離を四分岐に拡張するなら、これら二つの発散型が忘却論的にどう異なる事象として読まれるかを区別できなければならない。これが OQ-WEY の実化判定条件 (b) である。
+
+**現時点の主張水準**: [skeleton]。本節は §8.2.2 を Weyl 方向に拡張するための設計図に留まる。Paper XIV §5.3 Open C 三路線 (橋梁公理 / 弱\*連続測度族 / 関手 debt) の closure と並行して進める Open Question として、メタデータ §M6 に台帳化されている。
+
 ### 8.3　先行研究との接続 (closure 後の実現候補)
 
 §8.2.2 の局所支持は、先行研究を「根拠」として輸入するためではなく、dictionary が物理的に駆動しうる実現候補を見分けるために使う。したがって本節では、Verlinde と Jacobson を本稿の証明者としてではなく、closure 後の検査面として扱う。
