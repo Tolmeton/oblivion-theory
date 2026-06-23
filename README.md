@@ -33,10 +33,10 @@ The strongest formal core currently sketched in this public edition is **Paper I
 ## Start Here
 
 - [START_HERE.md](START_HERE.md) for a first reading path
-- [papers/series/論文I_力としての忘却_草稿.md](papers/series/%E8%AB%96%E6%96%87I_%E5%8A%9B%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AE%E5%BF%98%E5%8D%B4_%E8%8D%89%E7%A8%BF.md) for the formal core
-- [papers/series/論文VII_知覚は忘却である_草稿.md](papers/series/%E8%AB%96%E6%96%87VII_%E7%9F%A5%E8%A6%9A%E3%81%AF%E5%BF%98%E5%8D%B4%E3%81%A7%E3%81%82%E3%82%8B_%E8%8D%89%E7%A8%BF.md) and [papers/series/論文VIII_存在は忘却に先行する_草稿.md](papers/series/%E8%AB%96%E6%96%87VIII_%E5%AD%98%E5%9C%A8%E3%81%AF%E5%BF%98%E5%8D%B4%E3%81%AB%E5%85%88%E8%A1%8C%E3%81%99%E3%82%8B_%E8%8D%89%E7%A8%BF.md) once the basic grammar is clear
-- [drafts/companion/README.md](drafts/companion/README.md) for adjacent companion branches
-- [publications/README.md](publications/README.md) for published preprints adjacent to this series
+- [01_本編シリーズ｜Series/01_論文I_力としての忘却.md](01_本編シリーズ｜Series/01_論文I_力としての忘却.md) for the formal core
+- [01_本編シリーズ｜Series/07_論文VII_知覚は忘却である.md](01_本編シリーズ｜Series/07_論文VII_知覚は忘却である.md) and [01_本編シリーズ｜Series/08_論文VIII_存在は忘却に先行する.md](01_本編シリーズ｜Series/08_論文VIII_存在は忘却に先行する.md) once the basic grammar is clear
+- [02_伴走枝｜Companion/README.md](02_伴走枝｜Companion/README.md) for adjacent companion branches
+- [04_出版証跡｜Publications/README.md](04_出版証跡｜Publications/README.md) for published preprints adjacent to this series
 
 ## Snapshot Note
 
@@ -48,7 +48,7 @@ This public edition can lag behind the private working archive that tracks plann
 - Core expansion: Paper VI, Paper VII, Paper VIII
 - Technical bridges: Paper II, Paper III, Paper V, Paper IX, Paper XII, Paper XIV
 - Exploratory frontier: Paper X, Paper XI, Paper XIII
-- Companion branches: mathematical foundations, comparison morphism formalization, and free-energy drafts in [drafts/companion/README.md](drafts/companion/README.md)
+- Companion branches: mathematical foundations, comparison morphism formalization, and free-energy drafts in [02_伴走枝｜Companion/README.md](02_伴走枝｜Companion/README.md)
 
 ## Papers
 
@@ -76,13 +76,13 @@ This public edition can lag behind the private working archive that tracks plann
 
 | Series | Entry | Public reading note |
 |:--|:--|:--|
-| Mathematical Oblivion: foundations of number | [claim map](drafts/companion/数学の忘却論_数の基礎/数学の忘却論_数の基礎シリーズ.claimmap.md) | Zero, natural numbers, and arithmetic as a foundation branch of Oblivion Theory |
-| Comparison morphism σ and formalization | [claim map](drafts/companion/比較射σと形式化/比較射σと形式化シリーズ.claimmap.md) | Proof-companion drafts around σ, Yoneda-path completion, and formalization |
-| Oblivion and free energy | [claim map](drafts/companion/忘却と自由エネルギー/忘却と自由エネルギーシリーズ.claimmap.md) | Helmholtz decomposition, FEP, abstraction, and cognitive-dynamics branches |
+| Mathematical Oblivion: foundations of number | [claim map](02_伴走枝｜Companion/数学の忘却論_数の基礎/数学の忘却論_数の基礎シリーズ.claimmap.md) | Zero, natural numbers, and arithmetic as a foundation branch of Oblivion Theory |
+| Comparison morphism σ and formalization | [claim map](02_伴走枝｜Companion/比較射σと形式化/比較射σと形式化シリーズ.claimmap.md) | Proof-companion drafts around σ, Yoneda-path completion, and formalization |
+| Oblivion and free energy | [claim map](02_伴走枝｜Companion/忘却と自由エネルギー/忘却と自由エネルギーシリーズ.claimmap.md) | Helmholtz decomposition, FEP, abstraction, and cognitive-dynamics branches |
 
 ### Standalone
 
-These standalone snapshots remain under `papers/standalone/`. Some now also have expanded companion branches under `drafts/companion/`.
+These standalone snapshots remain under `03_単独論考｜Standalone/`. Some now also have expanded companion branches under `02_伴走枝｜Companion/`.
 
 - **Understanding and Prediction as Adjunction**
 - **Falsifiability is Dead**
