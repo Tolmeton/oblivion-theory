@@ -338,7 +338,7 @@ Null hypothesis への反論:
 
 **⚠️ q=6,7 の `|det(I - A_q)|` は automath official Lean-certified kernel ではない。**
 
-[TAINT: proxy companion] q=6 と q=7 の数値は、本セッションで moment recurrence から reconstruct した "proxy companion" の determinant である。具体的には `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/calculations/計算_automath_q67_probe.py` が `weight_counts` / `moment_sum` から signflip-mode companion 係数を復元する実装で計算した。automath 本家の Lean 証明 (`CollisionKernel.lean` / `CollisionZeta.lean`) には `collisionKernel6_*` / `collisionKernel7_*` の Cayley-Hamilton 定理や det 定理は **存在しない** (本セッション時点)。
+[TAINT: proxy companion] q=6 と q=7 の数値は、本セッションで moment recurrence から reconstruct した "proxy companion" の determinant である。具体的には `本リポジトリ外の内部計算ノート` が `weight_counts` / `moment_sum` から signflip-mode companion 係数を復元する実装で計算した。automath 本家の Lean 証明 (`CollisionKernel.lean` / `CollisionZeta.lean`) には `collisionKernel6_*` / `collisionKernel7_*` の Cayley-Hamilton 定理や det 定理は **存在しない** (本セッション時点)。
 
 再現可能性:
 - 計算スクリプト: `/tmp/p1_bf_det_q67.py` (本セッション即席)
@@ -630,7 +630,7 @@ v0.1 から更新した項目を以下に示す。
   - `F_{2q-2}` 参照列: F_8 = 21, F_10 = 55, F_12 = 144
   - `L_q` 参照列: L_5 = 11, L_6 = 18, L_7 = 29
 - [SOURCE] P1 計算スクリプト: `/tmp/p1_bf_det_q67.py` (即席、再現用)
-- [SOURCE] probe モジュール: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/calculations/計算_automath_q67_probe.py` (moment recurrence からの companion 復元)
+- [SOURCE] probe モジュール: `本リポジトリ外の内部計算ノート` (moment recurrence からの companion 復元)
 - [TAINT: proxy companion] q=6,7 の `|det(I - A_q)|` 値 (110, 422) は上記 probe モジュールによる proxy の値。automath Lean-certified kernel (`collisionKernel6_*` / `collisionKernel7_*`) は本セッション時点で未 formalized。proxy と official の一致は moment recurrence の自己整合性の枠内でのみ保証される
 - [TAINT: 標準結果の要約] Mac Lane coherence theorem の「pentagon は n=5 固有、hexagon は n=6 の別公理」の帰結を読み β に利用しているが、原典 (Mac Lane 1998) を本 FORK v0.2 でも未参照
 - [TAINT: 本 FORK v0.2 の強読解]
@@ -711,7 +711,7 @@ v0.1 は 473 行を Claude (Opus) が直接 Write した。これは N-08 θ8.2 
 
 v0.2 改訂開始時に、本 FORK v0.1 全文を Read した上で編集に入ることを Codex Executor に明示要求された。
 
-**v0.2 での対応**: 冒頭で `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/companion/比較射σと形式化/5cell_phi_sector_FORK_v0.1.md` 全 473 行を Read 実施済。probe モジュール冒頭も Read 済。
+**v0.2 での対応**: 冒頭で `02_伴走枝｜Companion/比較射σと形式化/5cell_phi_sector_FORK_v0.1.md` 全 473 行を Read 実施済。probe モジュール冒頭も Read 済。
 
 ### 11.3 N-05 NLM 3-query 不在
 

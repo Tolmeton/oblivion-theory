@@ -37,15 +37,15 @@
 
 ### 1.2 内部 SOURCE
 
-- `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文II_相補性は忘却である_草稿.md:1229`
+- `本リポジトリ外の内部作業ノート`
   - CPS は時刻 `t` ごとに `C_CPS(t)` を割り当てる擬関手 `F: T^op -> Cat` を定義し、Grothendieck 全圏 `∫F` を構成している。
-- `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/drafts/series/論文II_相補性は忘却である_草稿.md:1267`
+- `本リポジトリ外の内部作業ノート`
   - Smithe は `Poly` で型を index し、CPS は `(R, <=)` で時間を index する。統合枠組みには `Poly × (R, <=)` が必要だと明示している。
-- `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/00_核心｜Kernel/A_公理｜Axioms/B_哲学｜Philosophy/aletheia.md:532`
+- `本リポジトリ外の内部基礎ノート`
   - U⊣N は、忘却 U = 溶解、回復 N = 結晶化として定義される。
-- `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/00_核心｜Kernel/A_公理｜Axioms/B_哲学｜Philosophy/aletheia.md:651`
+- `本リポジトリ外の内部基礎ノート`
   - N-Series は回復構成子として、射・合成・自然変換・精度・因果・文脈・随伴・自己関手を段階化する。
-- `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/00_核心｜Kernel/A_公理｜Axioms/F_美学｜Kalon/kalon.md:2202`
+- `本リポジトリ外の内部基礎ノート`
   - `Γ⊣Q`, `F⊣G`, `U⊣N` は同一 Helmholtz モナドの異なるファクタリゼーションとして扱われる。
 
 ## 2. 統合関手の候補
