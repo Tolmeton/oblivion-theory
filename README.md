@@ -23,7 +23,7 @@ What this repository is:
 
 What this repository is not:
 
-- not the authoritative internal source for planning, sequencing, or backstage revision work
+- not the authoritative internal source for planning, sequencing, or private revision work
 - not a place for private ledgers or working meta documents
 - not a preprint archive or a record of completed papers
 - not a guarantee that every draft has the same maturity level

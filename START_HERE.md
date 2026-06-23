@@ -58,7 +58,7 @@ If you want adjacent development branches after the main grammar:
 ## What is intentionally absent
 
 - private planning documents
-- backstage revision ledgers
+- private revision ledgers
 - unpublished meta documents
 
 If you cite the project, cite the exact file and commit you read.

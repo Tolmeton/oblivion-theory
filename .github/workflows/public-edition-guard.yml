@@ -24,8 +24,17 @@ jobs:
       - name: Reject backstage language
         run: |
           set -euo pipefail
-          forbidden='読者には見せない|共同作業の台帳|internal working draft|内部作業文書として参照'
-          if grep -RInE "$forbidden" README*.md START_HERE*.md papers publications; then
+          public_paths=(
+            README*.md
+            START_HERE*.md
+            "00_案内｜Guide"
+            "01_本編シリーズ｜Series"
+            "02_伴走枝｜Companion"
+            "03_単独論考｜Standalone"
+            "04_出版証跡｜Publications"
+          )
+          forbidden='backstage|読者には見せない|共同作業の台帳|internal working draft|内部作業文書として参照'
+          if grep -RInE "$forbidden" -- "${public_paths[@]}"; then
             echo "Backstage language leaked into the public edition."
             exit 1
           fi
@@ -33,8 +42,17 @@ jobs:
       - name: Reject unapproved email addresses
         run: |
           set -euo pipefail
+          public_paths=(
+            README*.md
+            START_HERE*.md
+            "00_案内｜Guide"
+            "01_本編シリーズ｜Series"
+            "02_伴走枝｜Companion"
+            "03_単独論考｜Standalone"
+            "04_出版証跡｜Publications"
+          )
           allowed='Tolmetes@hegemonikon.org'
-          matches="$(grep -RInE -o '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}' README*.md START_HERE*.md papers publications || true)"
+          matches="$(grep -RInE -o '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}' -- "${public_paths[@]}" || true)"
           if [ -n "$matches" ]; then
             unexpected="$(printf '%s\n' "$matches" | grep -vF "$allowed" || true)"
             if [ -n "$unexpected" ]; then
@@ -42,4 +60,5 @@ jobs:
               echo "$unexpected"
               exit 1
             fi
+          fi
           fi
