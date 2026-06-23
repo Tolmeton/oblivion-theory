@@ -76,9 +76,9 @@ This public edition can lag behind the private working archive that tracks plann
 
 | Series | Entry | Public reading note |
 |:--|:--|:--|
-| Mathematical Oblivion: foundations of number | [claim map](02_伴走枝｜Companion/数学の忘却論_数の基礎/数学の忘却論_数の基礎シリーズ.claimmap.md) | Zero, natural numbers, and arithmetic as a foundation branch of Oblivion Theory |
-| Comparison morphism σ and formalization | [claim map](02_伴走枝｜Companion/比較射σと形式化/比較射σと形式化シリーズ.claimmap.md) | Proof-companion drafts around σ, Yoneda-path completion, and formalization |
-| Oblivion and free energy | [claim map](02_伴走枝｜Companion/忘却と自由エネルギー/忘却と自由エネルギーシリーズ.claimmap.md) | Helmholtz decomposition, FEP, abstraction, and cognitive-dynamics branches |
+| Mathematical Oblivion: foundations of number | [claim map](02_伴走枝｜Companion/数学の忘却論_数の基礎/構造地図.md) | Zero, natural numbers, and arithmetic as a foundation branch of Oblivion Theory |
+| Comparison morphism σ and formalization | [claim map](02_伴走枝｜Companion/比較射σと形式化/構造地図.md) | Proof-companion drafts around σ, Yoneda-path completion, and formalization |
+| Oblivion and free energy | [claim map](02_伴走枝｜Companion/忘却と自由エネルギー/構造地図.md) | Helmholtz decomposition, FEP, abstraction, and cognitive-dynamics branches |
 
 ### Standalone
 

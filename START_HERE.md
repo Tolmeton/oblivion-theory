@@ -46,9 +46,9 @@ If you want the open edges after the core:
 If you want adjacent development branches after the main grammar:
 
 1. [Companion drafts index](02_伴走枝｜Companion/README.md)
-2. [Mathematical Oblivion: foundations of number](02_伴走枝｜Companion/数学の忘却論_数の基礎/数学の忘却論_数の基礎シリーズ.claimmap.md)
-3. [Comparison morphism σ and formalization](02_伴走枝｜Companion/比較射σと形式化/比較射σと形式化シリーズ.claimmap.md)
-4. [Oblivion and free energy](02_伴走枝｜Companion/忘却と自由エネルギー/忘却と自由エネルギーシリーズ.claimmap.md)
+2. [Mathematical Oblivion: foundations of number](02_伴走枝｜Companion/数学の忘却論_数の基礎/構造地図.md)
+3. [Comparison morphism σ and formalization](02_伴走枝｜Companion/比較射σと形式化/構造地図.md)
+4. [Oblivion and free energy](02_伴走枝｜Companion/忘却と自由エネルギー/構造地図.md)
 
 ## How to read the status
 
