@@ -2,15 +2,15 @@
 
 **Paper X — v0.3.2 (2026-04-26) — 忘却論 (Force is Oblivion) シリーズ**
 
-*概要.* 長距離 Web エージェントにおける Context Rot (Feng et al. 2026) が、忘却論の忘却関手族 U₀ / U_R の具体的インスタンスであることを示す。AgentSwing の 3 つの Context Management (CM) 戦略 — Discard-All, Summary, Keep-Last-N — を Hom 集合上の同値関係 R による商関手族 {U_R} として定式化する。現時点の前景命題は、(i) CM 戦略が U₀ の因子分解として読めること、(ii) 最適な忘却強度が状態型に依存することである。半順序構造と因子分解定理は、現行本文では `本リポジトリ外の内部編集ノート` §M7 D1 の donor 証明に依存するため、本文では SOURCE 境界つきの構成的主張として扱う。2 つの Case Study と N=240 の aligned 統計から「条件付き不可逆性テーゼ」を提示し、Hyphē の boot⊣bye 随伴は Drift 測定を通じて実験的に昇格させる橋渡し命題として扱う。AgentSwing の routing parameter r_AS と Hyphē の τ 閾値の逆関数関係は、OP-X-3 で検証される昇格候補である。
+*概要.* 長距離 Web エージェントにおける Context Rot (Feng et al. 2026) が、忘却論の忘却関手族 U₀ / U_R の具体的インスタンスであることを示す。AgentSwing の 3 つの Context Management (CM) 戦略 — Discard-All, Summary, Keep-Last-N — を Hom 集合上の同値関係 R による商関手族 {U_R} として定式化する。現時点の前景命題は、(i) CM 戦略が U₀ の因子分解として読めること、(ii) 最適な忘却強度が状態型に依存することである。半順序構造と因子分解定理は、現行本文では `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/01_系列｜Series/論文X_ContextRotは忘却である.meta.md` §M7 D1 の donor 証明に依存するため、本文では SOURCE 境界つきの構成的主張として扱う。2 つの Case Study と N=240 の aligned 統計から「条件付き不可逆性テーゼ」を提示し、Hyphē の boot⊣bye 随伴は Drift 測定を通じて実験的に昇格させる橋渡し命題として扱う。AgentSwing の routing parameter r_AS と Hyphē の τ 閾値の逆関数関係は、OP-X-3 で検証される昇格候補である。
 
 > **依存関係.** 本稿は以下に依存する:
 > - Paper VIII: α-忘却濾過の公理系 (F1)-(F4)
-> - `本リポジトリ外の内部編集ノート` §M7 D1: CM 戦略の圏論的定式化 donor。旧証明ノートは現行 body SOURCE としては未観測
+> - `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/01_系列｜Series/論文X_ContextRotは忘却である.meta.md` §M7 D1: CM 戦略の圏論的定式化 donor。旧証明ノートは現行 body SOURCE としては未観測
 > - linkage_hyphe.md: Hyphē F⊣G 随伴の定義
 > - AgentSwing (Feng et al. 2026, Tongji Lab/Alibaba): 実験データの SOURCE
 
-> **記号規約.** U₀ は軌道圏 C_traj から前順序圏 D_traj への忘却関手。U_R は同値関係 R による商関手。本稿で文脈上 generic に U と書く場合は U₀ または U_R を指し、Paper IV の U_SH や U^T とは別である。Q は品質関数。σ は LLM 要約関数。τ は Hyphē の意味的密度閾値。r_AS は AgentSwing の CM トリガー比率。η_ans は AgentSwing Table 2 の回答率、η_stat は統計的随伴の unit 条件、ρ_term は terminal precision、ρ_spec は Paper IV の効果量天井式におけるスペクトラム効率を指す。統一記号表 (`drafts/リファレンス/統一記号表.md`) を参照。
+> **記号規約.** U₀ は軌道圏 C_traj から前順序圏 D_traj への忘却関手。U_R は同値関係 R による商関手。本稿で文脈上 generic に U と書く場合は U₀ または U_R を指し、Paper IV の U_SH や U^T とは別である。Q は品質関数。σ は LLM 要約関数。τ は Hyphē の意味的密度閾値。r_AS は AgentSwing の CM トリガー比率。η_ans は AgentSwing Table 2 の回答率、η_stat は統計的随伴の unit 条件、ρ_term は terminal precision、ρ_spec は Paper IV の効果量天井式におけるスペクトラム効率を指す。統一記号表 (`01_草稿｜Drafts/リファレンス/統一記号表.md`) を参照。
 
 ---
 
@@ -160,7 +160,7 @@ U_DA: C_session → C_discrete    (α-filtration の α→1 への強制遷移)
 
 ## §3. CM 戦略の圏論的定式化 (要約)
 
-> 詳細: `本リポジトリ外の内部編集ノート` §M7 D1。旧証明ノートは本文から直接参照しない。
+> 詳細: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/01_系列｜Series/論文X_ContextRotは忘却である.meta.md` §M7 D1。旧証明ノートは本文から直接参照しない。
 
 ### 3.1 軌道圏 C_traj (Def 1.1)
 
@@ -480,7 +480,7 @@ g(τ) = τ^α  (α > 0, power law)
 - [IV] Paper IV: なぜ効果量は小さいか (v1.4)
 - [VIII] Paper VIII: 圏論的基礎における存在 (v1.5)
 - [IX] Paper IX: エントロピーは忘却である (v0.1)
-- [donor-D1] `本リポジトリ外の内部編集ノート` §M7 D1: CM 戦略の圏論的定式化 donor
+- [donor-D1] `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/01_系列｜Series/論文X_ContextRotは忘却である.meta.md` §M7 D1: CM 戦略の圏論的定式化 donor
 - [research] research_agentswing_oblivion_hyphe_2026-04-03.md: MECE 研究方向
 - [prediction] prediction_agentswing_irreversibility_2026-04-03.md: 不可逆性限界予測
 

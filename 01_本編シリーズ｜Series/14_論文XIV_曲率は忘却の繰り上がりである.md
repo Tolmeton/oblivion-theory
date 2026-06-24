@@ -1,10 +1,10 @@
 # 曲率は忘却の繰り上がりである — 離散 defect algebra と忘却場の方向性定理
 
-Paper XIV — v0.1 (2026-04-13) — 忘却論 (Force is Oblivion) シリーズ
+Paper XIV — v0.2 (2026-05-05) — 忘却論 (Force is Oblivion) シリーズ
 
-外部橋渡しの standalone 面: `本リポジトリ外の内部作業ノート` (v0.3, 2026-04-13)
+外部橋渡しの companion 面: `/home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/曲率は忘却の繰り上がりである_草稿.md` (v0.3, 2026-04-13)
 
-概要. 射影は合成を壊す。三次元の物体を二次元に射影すれば、三次元で成立していた演算は二次元では成立しなくなる。その「ズレ」は消えない。蓄積し、構造を歪め、力として現れる。2026年、二つの独立プロジェクトが同じ構造を異なる言語で証明した。忘却論 (Paper I) は統計多様体上の忘却場 Φ と Chebyshev 1-形式 T から忘却曲率 F_{ij} を導出し、力は忘却の方向的不均一から創発されることを方向性定理として証明した。The Omega Project (automath) は有限バイナリ列の no-consecutive-1s 制約から出発し、fold 演算子 $\Phi_{\mathrm{fold}}$ と加算 ⊕ の非可換性を carry defect δ として形式化し、Lean 4 で 3,427 以上の定理を機械検証した。本稿は両者の構造的対応を、定理・schema・open を切り分けつつ示す。carry defect は方向性定理の離散・有限体インスタンスであり、Walsh-Stokes 恒等式は Leibniz 規則の離散版であり、「忘却なしに力なし」の離散鎖は Lean 4 で証明済みである。さらに、黄金比 φ は外部からの輸入ではなく、n-cell tower の公理的複雑度の成長率として忘却論の内部に存在する。本稿でその proof spine として先に固定するのは Route D — Pauli 排他律 (e_x ∧ e_x = 0) が公理の加法的成長を強制し、Fibonacci 再帰を生むという線 — である。ここで本稿が先に押すのは tower 全体の具体列ではなく、seed に依存しない漸近主張 `growth rate = φ` である。Route A は離散証人、Route C は容量系、Route B は Kalon 読みとして働く。φ は忘却の文法の成長率である。
+概要. 射影は合成を壊す。三次元の物体を二次元に射影すれば、三次元で成立していた演算は二次元では成立しなくなる。その「ズレ」は消えない。蓄積し、構造を歪め、力として現れる。2026年、二つの独立プロジェクトが同じ構造を異なる言語で証明した。忘却論 (Paper I) は統計多様体上の忘却場 Φ と Chebyshev 1-形式 T から忘却曲率 F_{ij} を導出し、力は忘却の方向的不均一から創発されることを方向性定理として証明した。The Omega Project (automath) は有限バイナリ列の no-consecutive-1s 制約から出発し、fold 演算子 $\Phi_{\mathrm{fold}}$ と加算 ⊕ の非可換性を carry defect δ として形式化し、Lean 4 で 3,427 以上の定理を機械検証した。本稿は両者の構造的対応を、定理・schema・open・supporting evidence を切り分けつつ示す。carry defect は方向性定理の有限・離散 obstruction model として閉じ、Walsh-Stokes 側は cubical cochain level での discrete Stokes target として閉じる。「忘却なしに力なし」の離散鎖は Lean 4 で証明済みである。他方、連続側の composition drift と defect 2-cell の同定は Open C に残る。さらに、黄金比 φ は外部からの輸入ではなく、n-cell tower の公理的複雑度の成長率として忘却論の内部に存在する。本稿でその proof spine として先に固定するのは Route D — Pauli 排他律 (e_x ∧ e_x = 0) が公理の加法的成長を強制し、Fibonacci 再帰を生むという線 — である。ここで本稿が先に押すのは tower 全体の具体列ではなく、seed に依存しない漸近主張 `growth rate = φ` である。Route A は離散証人、Route C は容量系、Route B は Kalon 読みとして働く。φ は忘却の文法の成長率である。
 
 先行論文との関係: Paper I (力としての忘却) — 方向性定理 Th.5.1、合成ドリフト §9.5 OP-I-2。Paper V (繰り込みは忘却である) — c 定理、β 関数。Paper VIII (存在は忘却に先行する) — α-忘却濾過。Paper III (Markov 圏の向こう側) — Z₂ 次数付き構造、Pauli 排他律。Paper VI (行為可能性は忘却である) — G∘F 結晶化、Kalon。Paper IX (エントロピーは忘却である) — CPS エントロピー単調性。
 外部参照: The Omega Project (automath) — Lean 4, 3,427+ theorems, axioms=0.
@@ -29,15 +29,25 @@ Paper XIV — v0.1 (2026-04-13) — 忘却論 (Force is Oblivion) シリーズ
 
 結論を先に述べれば ——
 
-1. **carry defect は忘却曲率の離散版である** — automath の carry defect $\delta(x,y) = \Phi_{\mathrm{fold}}(x \oplus y) - \Phi_{\mathrm{fold}}(x) \oplus \Phi_{\mathrm{fold}}(y)$ は、忘却論の合成ドリフト $\delta = G(f \circ g) - G(f) \circ G(g)$ の離散的・有限体上のインスタンスである。前者は Lean 4 で機械検証済み。後者は Paper I §9.5 の未証明予想 OP-I-2
+1. **carry defect は忘却曲率の有限・離散 obstruction model である** — automath の carry defect $\delta(x,y) = \Phi_{\mathrm{fold}}(x \oplus y) - \Phi_{\mathrm{fold}}(x) \oplus \Phi_{\mathrm{fold}}(y)$ は、忘却論の合成ドリフト $\delta = G(f \circ g) - G(f) \circ G(g)$ の有限・離散側に現れる nonsplit witness である。Lean 4 で閉じているのは projection / restriction に沿った discrete defect cocycle の層までであり、連続側の composition drift と defect 2-cell の同一視は Paper I §9.5 の Open C に残る
 
-2. **Walsh-Stokes 恒等式は Leibniz 規則の離散版である** — automath の `walshFlux` と `deltaSet` は忘却場の Leibniz 規則 $d(\Phi T) = d\Phi \wedge T + \Phi \cdot dT$ の離散外微分に対応する。ここで得られるのは、$\Delta^n$ と `Man_No11` を足場にした**離散化 schema** $D$ であり、厳密な関手性は `Man_No11` 上でのみ確保される。$\mathbf{Man}$ 全体への拡張は open である
+2. **Walsh-Stokes 側は cubical cochain level の discrete Stokes target を与える** — automath の `walshFlux` と `deltaSet` は忘却場の Leibniz 規則 $d(\Phi T) = d\Phi \wedge T + \Phi \cdot dT$ に向かう離散外微分対応を与える。ここで閉じるのは、$\Delta^n$ と `Man_No11` を足場にした cubical / multilinear / boundary-face observable 上の chain-map surface である。$\mathbf{Man}$ 全体への拡張は open である
 
 3. **OP-I-2 の離散鎖は Lean 4 で強く支持される** — no-consecutive-1s 制約が消えると carry defect は消え、fold は厳密な環準同型へ戻る。だが連続側では $\delta = 0 \Rightarrow \mathrm{Hom}_\Phi \in \{0,1\}$ は既存公理だけでは出ない。ここには追加公理 `ZeroForgetCollapse` と、離散から連続へのリフトが残る
 
 4. **黄金比 $\varphi$ は忘却論の内部に存在する** — ただし本稿で proof spine として先に固定するのは Route D である。Pauli 排他律 ($e_x \wedge e_x = 0$) が公理の加法的成長を強制し、$|A(n)| = |A(n-1)| + |A(n-2)|$ (Fibonacci 再帰) を生む。ここで直接に押すのは tower 全体の具体列ではなく、seed 非依存の漸近主張 `growth rate = \varphi` である。Route A はその離散証人、Route C は容量版の系、Route B は Kalon 読みである。$\varphi$ は忘却の文法の成長率である
 
 これらの主張を、以降の節で順に示す。
+
+### 1.1 主張境界 ledger
+
+| 層 | 本稿で押す内容 | SOURCE / donor | 本稿でまだ押さない内容 |
+|:---|:---|:---|:---|
+| Theorem A | `CubeExp_proj` と `Man_No11` 実装包絡における projection / restriction の strict functoriality | D5 | $\mathbf{Man}$ 全域での strict functor completion |
+| Theorem B | `d \mapsto \mathrm{deltaSet}`, `\int \mapsto \mathrm{walshFlux}` の cubical cochain level chain-map | D7 | 一般 smooth function 全体への chain-map 拡張 |
+| Schema C1 | carry defect を方向性定理の finite discrete obstruction model として読む | D5-D6 | 連続側 composition drift と discrete defect cocycle の equality |
+| Open C | lax monoidal coherence の defect 2-cell 同定 | §5.3, D9 | completed theorem としての連続側橋 |
+| Supporting evidence | q=5 anomaly, `e_2(A_5)=11`, 符号反転 donor は C1 の数値的補助証拠 | D4 | Theorem A/B/Open C の proof spine そのもの |
 
 ---
 
@@ -107,6 +117,12 @@ $$F_{ij} \neq 0 \iff d(\Phi T) \neq 0$$
 | ゼロ忘却 | No11 制約が消滅 → $\delta = 0$ → 環準同型 [Lean] | $\Phi = 0 \Rightarrow \ker(G)=\{0\} \Rightarrow \delta = 0$ は押せるが、$\delta = 0 \Rightarrow \mathrm{Hom}_\Phi \in \{0,1\}$ には `ZeroForgetCollapse` が必要 [Open] |
 
 構造は同一である。射影は合成を壊す。壊れ方の尺度が defect であり、曲率であり、力である。
+
+ここでいう不均一と曲率は、別々の対象を比喩的に対応させたものではない。状態の差が、比較の向きや合成の順序に依存して残るとき、その同じ差分構造を、状態の記述では不均一と呼び、幾何学の記述では曲率と呼ぶ。
+
+Paper I では、この同一性は $F_{ij} = (\alpha/2)[d(\Phi T)]_{ij}$ として書かれる。すなわち、$d(\Phi T)$ は忘却の方向的不均一であり、同時に、それが曲率テンソル $F_{ij}$ として測られる。
+
+したがって、不均一が曲率に似ているのではない。不均一が、幾何学的に書かれたものが曲率である。
 
 ---
 
@@ -197,17 +213,19 @@ Walsh 基底は位置 $w$ に依存しない。ゆえに離散 Chebyshev torsion
 
 ### 4.4 離散化 bridge の三層分解 — strict / chain-map / Open C
 
-上の対応は、単一の「$D: \mathbf{Man}\to\mathbf{Hyp}$ は関手か」という問いでは粗すぎる。2026-04 の再定式化では、問題は strict 1-functor 部分、chain-map 部分、lax monoidal coherence の defect 2-cell 同定に分かれる [SOURCE: 本リポジトリ外の内部作業ノート L8]。
+上の対応は、単一の「$D: \mathbf{Man}\to\mathbf{Hyp}$ は関手か」という問いでは粗すぎる。2026-04 の再定式化では、問題は strict 1-functor 部分、chain-map 部分、lax monoidal coherence の defect 2-cell 同定に分かれる [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/関手の合成保存問題_再定式化.md L8]。
 
-> **構造的対応** (schema $D$). $D$ は、統計多様体の幾何をハイパーキューブ側へ対応づける局所的な構造対応である。少なくとも $D(M)=\{0,1\}^n$, $D(\Phi)=f$, $D(T)=A\subseteq\mathrm{Fin}(n)$, $D(d)=\mathrm{deltaSet}$, $D(\wedge)=\mathrm{carry\ defect}$ という対応を持つ [SOURCE: 本リポジトリ外の内部作業ノート L27]。
+> **構造的対応** (schema $D$). $D$ は、統計多様体の幾何をハイパーキューブ側へ対応づける局所的な構造対応である。少なくとも $D(M)=\{0,1\}^n$, $D(\Phi)=f$, $D(T)=A\subseteq\mathrm{Fin}(n)$, $D(d)=\mathrm{deltaSet}$, $D(\wedge)=\mathrm{carry\ defect}$ という対応を持つ [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/形式化仕様書.md L27]。
 
-1. **定理 (Theorem A: strict 1-functor 部分)**. `CubeExp_proj`、すなわち product Bernoulli family $M_I=(\Delta^1)^I$ と座標忘却 $\pi_{J\subseteq I}$ からなる部分圏では、$D_{\mathrm{proj}}(\pi_{J\subseteq I})=\mathrm{restrict}_{J\subseteq I}$ と置くことで ordinary composition の strict functoriality が成り立つ [SOURCE: 本リポジトリ外の内部作業ノート L120]。Lean 側の witness は `restrict_functorial` である [Lean: restrict_functorial in Omega/Folding/Defect.lean]。旧稿の「$D$ が厳密に関手なのは `Man_No11` に限定したときである」という観察は、ここでは「Theorem A は `CubeExp_proj` 上で成立し、`Man_No11` はその strictness を保持する実装包絡である」と読む [SOURCE: 本リポジトリ外の内部作業ノート L394]。
+1. **定理 (Theorem A: strict 1-functor 部分)**. `CubeExp_proj`、すなわち product Bernoulli family $M_I=(\Delta^1)^I$ と座標忘却 $\pi_{J\subseteq I}$ からなる部分圏では、$D_{\mathrm{proj}}(\pi_{J\subseteq I})=\mathrm{restrict}_{J\subseteq I}$ と置くことで ordinary composition の strict functoriality が成り立つ [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/関手の合成保存問題_再定式化.md L120]。Lean 側の witness は `restrict_functorial` である [Lean: restrict_functorial in Omega/Folding/Defect.lean]。旧稿の「$D$ が厳密に関手なのは `Man_No11` に限定したときである」という観察は、ここでは「Theorem A は `CubeExp_proj` 上で成立し、`Man_No11` はその strictness を保持する実装包絡である」と読む [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/三者対応辞書.md L394]。
 
-2. **定理 (Theorem B: chain-map 部分)**. 観測量を multilinear observable / cubical cochain に制限すると、`deltaSet` は混合偏微分の cell 積分に一致する。したがって $d\mapsto\mathrm{deltaSet}$ と $\int\mapsto\mathrm{walshFlux}$ は、単なる類推ではなく cubical cochain のレベルで実定理に落ちる [SOURCE: 本リポジトリ外の内部作業ノート L180]。この層が閉じるのは、一般の滑らかな関数全体ではなく、cubical / multilinear / boundary-face 版に限られる [SOURCE: 本リポジトリ外の内部作業ノート L245]。
+2. **定理 (Theorem B: chain-map 部分)**. 観測量を multilinear observable / cubical cochain に制限すると、`deltaSet` は混合偏微分の cell 積分に一致する。したがって $d\mapsto\mathrm{deltaSet}$ と $\int\mapsto\mathrm{walshFlux}$ は、単なる類推ではなく cubical cochain のレベルで実定理に落ちる [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/関手の合成保存問題_再定式化.md L180]。この層が閉じるのは、一般の滑らかな関数全体ではなく、cubical / multilinear / boundary-face 版に限られる [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/関手の合成保存問題_再定式化.md L245]。
 
-3. **予想 (Open C: lax monoidal coherence の defect 2-cell 同定)**. 残る核心は、ordinary functoriality ではなく、加法・合成・composition drift まで含めた monoidal coherence である。automath 側では `restrict_stableAdd_carry_defect` と `globalDefect_compose` が defect 2-cell を担い、bridge の型は strict functor だけでなく lax monoidal functor / pseudofunctor として読む必要がある [SOURCE: 本リポジトリ外の内部作業ノート L255] [Lean: globalDefect_compose in Omega/Folding/Defect.lean] [Lean: restrict_stableAdd_carry_defect in Omega/Folding/CarryDefect.lean]。bridge essay も、忘却関手を lax functor として読み、laxity/compositor が carry defect と忘却曲率の対応点であると明記している [SOURCE: 本リポジトリ外の内部作業ノート L99]。
+3. **予想 (Open C: lax monoidal coherence の defect 2-cell 同定)**. 残る核心は、ordinary functoriality ではなく、加法・合成・composition drift まで含めた monoidal coherence である。automath 側では `restrict_stableAdd_carry_defect` と `globalDefect_compose` が defect 2-cell を担い、bridge の型は strict functor だけでなく lax monoidal functor / pseudofunctor として読む必要がある [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/関手の合成保存問題_再定式化.md L255] [Lean: globalDefect_compose in Omega/Folding/Defect.lean] [Lean: restrict_stableAdd_carry_defect in Omega/Folding/CarryDefect.lean]。bridge essay も、忘却関手を lax functor として読み、laxity/compositor が carry defect と忘却曲率の対応点であると明記している [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/曲率は忘却の繰り上がりである_草稿.md L99]。
 
 したがって、本稿の主張は「$\mathbf{Man}$ 全域で離散化関手が完成した」ではない。正確には、strict 1-functor 部分と chain-map 部分は閉じ、残る未解決核が defect 2-cell の連続側同定へ縮約された、である。**合成保存**: ordinary composition としての合成保存は Theorem A の範囲で閉じ、monoidal coherence としての合成保存は Open C に残る。完全な open は §5.3 で Open C として整理する。
+
+ここで q=5 anomaly や `e_2(A_5)=11` の donor は、C1 を補強する**supporting evidence**ではあっても、Theorem A/B/Open C の proof spine ではない。本稿の spine は projection functoriality / cubical chain map / defect 2-cell open の三層で立て、q=5 donor は数値的補助証拠として外周に留める。
 
 ---
 
@@ -268,19 +286,39 @@ $$\Phi_{\mathrm{fold}}(x \oplus y) = \Phi_{\mathrm{fold}}(x) \oplus \Phi_{\mathr
 
 ### 5.3 連続版への持ち上げ — Open C と三つの実装路線
 
-OP-I-2 の連続極限リフトは、`関手の合成保存問題の再定式化` (2026-04) で問題位相が 1 段下がった。1-functor 部分と chain-map 部分は閉じた (Theorem A / B, §4.4)。残る open は **Open C: lax monoidal coherence の defect 2-cell 同定** に縮約される。すなわち合成ドリフト $\delta$ を Čech 型 2-cocycle $\kappa$ として連続側で同定する課題である [SOURCE: 本リポジトリ外の内部作業ノート L22] [SOURCE: 本リポジトリ外の内部作業ノート L313]。
+OP-I-2 の連続極限リフトは、`関手の合成保存問題の再定式化` (2026-04) で問題位相が 1 段下がった。1-functor 部分と chain-map 部分は閉じた (Theorem A / B, §4.4)。残る open は **Open C: lax monoidal coherence の defect 2-cell 同定** に縮約される。すなわち合成ドリフト $\delta$ を Čech 型 2-cocycle $\kappa$ として連続側で同定する課題である [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/関手の合成保存問題_再定式化.md L22] [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/関手の合成保存問題_再定式化.md L313]。
 
 Open C は単一の問題だが、3 つの独立な実装路線を持つ:
 
-1. **路線 1 (Dual citizenship 採用の橋梁公理)**: `ZeroForgetCollapse` を **A+B Dual citizenship 構造** で採用し (d)→(e) を局所固定する。これは `\delta=0` から Boolean 回復が自動ではないというギャップを、橋梁公理として明示的に塞ぐ路線である [SOURCE: 本リポジトリ外の内部作業ノート L166]。**射程明示** (2026-04-27 第三次更新): 「Boolean 化」の意味を 3 軸 (Hom 集合の濃度 / 値 / 存在 indicator) に分解した結果、ZFC は 2 解釈下で異なる地位を持つ — **解釈 A (V-enriched [0,1] base 文脈)** では独立公理 (反例 min合成圏が有効、派生候補は **2 経路 ((a) Lawvere Boolean topos / (c) HoTT)** に縮約。(d) Smithe Bayesian lens 合成は /noe+ L3 で **派生不能 (Closed)** 確定 — Kleisli morphism collapse は base monoidal V を変えない enriched category theory 標準事実 + Paper II §7.5 インデックス圏不一致 (Poly vs (ℝ,≤)) の二重防御) / **解釈 B (Set existence indicator 文脈)** では Paper IX §3.5(ii) からの派生定理候補 (Mor(C_α)(I,X) = ∅ なら indicator 0、≠ ∅ なら indicator 1)。同一 ZFC が 2 解釈下で並列保持される (Yugaku Definition Surface Protocol)。**Boolean 化 3 軸 ↔ 派生候補 ↔ 解釈の 3:3 対応構造**: (i) 濃度↔3.1 Lawvere↔解釈 A / (ii) 値↔3.4 Smithe (Closed)↔解釈 A / (iii) indicator↔3.3 HoTT + 3.2 Paper IX↔解釈 A or B。詳細は `三者対応辞書.md` §7.5 OT-S05-3 + OP-S05-3.1〜3.4。
+ただし、**continuous recipient の順序**は並列同格ではない。本稿が first recipient として採るのは **Čech 型 2-cocycle** である。これは defect 2-cell を obstruction class として最小限に受ける器だからである。**central extension** はその非分裂性を algebraic に読む第二表現であり、**gerbe 的障害**は branchwise completion を与える第三表現である。逆に composition drift $\delta$ 自体は受け皿ではなく、これらの器へ同一視されるべき連続側の現象である。
 
-2. **路線 2 (極限戦略)**: $\{0,1\}^{\mathbb{N}}$ を固定 ambient profinite として、$\lambda$-依存弱*連続測度族 $\mu_\lambda$ を構成する。これは $X_\infty(\lambda)$ 自体を動かす案ではなく、期待値の連続変形を問う路線である [SOURCE: 本リポジトリ外の内部作業ノート L196] [SOURCE: 本リポジトリ外の内部作業ノート L208]。
+1. **路線 1 (Dual citizenship 採用の橋梁公理)**: `ZeroForgetCollapse` を **A+B Dual citizenship 構造** で採用し (d)→(e) を局所固定する。これは `\delta=0` から Boolean 回復が自動ではないというギャップを、橋梁公理として明示的に塞ぐ路線である [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/三者対応辞書.md L166]。**射程明示** (2026-04-27 第三次更新): 「Boolean 化」の意味を 3 軸 (Hom 集合の濃度 / 値 / 存在 indicator) に分解した結果、ZFC は 2 解釈下で異なる地位を持つ — **解釈 A (V-enriched [0,1] base 文脈)** では独立公理 (反例 min合成圏が有効、派生候補は **2 経路 ((a) Lawvere Boolean topos / (c) HoTT)** に縮約。(d) Smithe Bayesian lens 合成は /noe+ L3 で **派生不能 (Closed)** 確定 — Kleisli morphism collapse は base monoidal V を変えない enriched category theory 標準事実 + Paper II §7.5 インデックス圏不一致 (Poly vs (ℝ,≤)) の二重防御) / **解釈 B (Set existence indicator 文脈)** では Paper IX §3.5(ii) からの派生定理候補 (Mor(C_α)(I,X) = ∅ なら indicator 0、≠ ∅ なら indicator 1)。同一 ZFC が 2 解釈下で並列保持される (Yugaku Definition Surface Protocol)。**Boolean 化 3 軸 ↔ 派生候補 ↔ 解釈の 3:3 対応構造**: (i) 濃度↔3.1 Lawvere↔解釈 A / (ii) 値↔3.4 Smithe (Closed)↔解釈 A / (iii) indicator↔3.3 HoTT + 3.2 Paper IX↔解釈 A or B。詳細は `三者対応辞書.md` §7.5 OT-S05-3 + OP-S05-3.1〜3.4。
 
-3. **路線 3 (関手 debt)**: `Discretizable` + `DescendsToCube` typeclass を付与した $\mathbf{Man}$ 上の射クラスへ拡張し、Strategy B (逆極限経由) で `discretize_functorial` の sorry を剥がす。これは full $\mathbf{Man}$ 上の無条件 strict functor 化ではなく、descent data を持つ射への拡張である [SOURCE: 本リポジトリ外の内部作業ノート L357] [SOURCE: 本リポジトリ外の内部作業ノート L394] [SOURCE: 本リポジトリ外の内部作業ノート L86]。
+2. **路線 2 (極限戦略)**: $\{0,1\}^{\mathbb{N}}$ を固定 ambient profinite として、$\lambda$-依存弱*連続測度族 $\mu_\lambda$ を構成する。これは $X_\infty(\lambda)$ 自体を動かす案ではなく、期待値の連続変形を問う路線である [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/三者対応辞書.md L196] [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/三者対応辞書.md L208]。
 
-これらは Open C を閉じるために**並行して**進める実装課題であり、互いの代用品ではない。Open C 自体の連続側受け皿候補は (a) composition drift $\delta$ (Paper I §9.5), (b) Čech 2-cocycle, (c) central extension / gerbe 的障害である [SOURCE: 本リポジトリ外の内部作業ノート L78]。
+3. **路線 3 (関手 debt)**: `Discretizable` + `DescendsToCube` typeclass を付与した $\mathbf{Man}$ 上の射クラスへ拡張し、Strategy B (逆極限経由) で `discretize_functorial` の sorry を剥がす。これは full $\mathbf{Man}$ 上の無条件 strict functor 化ではなく、descent data を持つ射への拡張である [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/三者対応辞書.md L357] [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/三者対応辞書.md L394] [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/形式化仕様書.md L86]。
+
+これらは Open C を閉じるために**並行して**進める実装課題であり、互いの代用品ではない。だが recipient と strategy は区別すべきである。Open C 自体の連続側受け皿は、第一に Čech 2-cocycle、第二にその非分裂性を読む central extension、第三に branchwise completion を与える gerbe 的障害、の順で読むのが最も混線が少ない [SOURCE: /home/makaron8426/Sync/oikos/01_ヘゲモニコン｜Hegemonikon/10_知性｜Nous/04_企画｜Boulēsis/12_遊学｜Yugaku/03_忘却論｜Oblivion/01_草稿｜Drafts/02_伴走｜Companion/automath_bridge/形式化仕様書.md L78]。composition drift $\delta$ は受け皿ではなく、そこへ同一視されるべき連続側の現象である。
 
 本稿が与えるのは完成証明ではない。完成証明の設計図である。Open C を 3 路線に分けずに「離散版が真だから連続版も真だ」と言うなら、それは前進ではない。問題位相の 1 段下げ (関手 → lax monoidal) を見ないふりしただけである。
+
+### 5.4 Landauer 的熱散逸 — 曲率そのものではなく物理的観測像
+
+ここで、物理的計算における Landauer 的熱散逸を、本稿の忘却曲率と直結させる誘惑が生じる。だが同一視してはならない。Landauer の原理が与えるのは、忘却が物理的消去として実装されるときの最小熱価格である [9]。一方、本稿の曲率は、その忘却が合成と可換でないときの構造的 defect を測る。Bennett が示したように、計算そのものは可逆な履歴保存として実装できる [10]。熱価格が必然化するのは、計算ではなく、保存された区別を本当に消去する局面である。
+
+したがって、熱散逸は曲率そのものではない。熱散逸は忘却射 $G$ の非単射性に対する scalar cost であり、曲率は $G$ の非可換性に対する obstruction である。$G$ が一様な消去なら、消去価格はありえても曲率は立たない。これは §5.1 の注意、すなわち $F = 0$ は $\Phi = 0$ を含意しない、という区別と同じである。
+
+逆に、$G$ が合成順序に依存して異なる区別を潰すなら、二つの経路
+
+$$G(f \circ g) \qquad \text{and} \qquad G(f) \circ G(g)$$
+
+は同じ忘却価格を持つとは限らない。このとき合成ドリフト
+
+$$\delta_G(f,g) = G(f \circ g) - G(f) \circ G(g)$$
+
+は、Landauer 的には「どの順で忘れるか」によって消去される履歴・区別・fiber が変わることを意味する。熱力学的に観測されうるのは、曲率そのものではなく、同じ defect を物理的消去過程へ実装したときに現れうる経路依存的な cost gap である。すなわち Landauer は Open C を閉じる第四路線ではない。Open C が同定しようとしている defect 2-cell を、物理的消去過程へ写したときに現れる熱力学的観測像である。
+
+外部実験は本稿命題を実証するものではなく、scalar erasure baseline / 実装依存 cost / feedback 会計を分ける donor として使う。Bérut et al. は一ビット消去の scalar baseline を与えるに留まる [11]。Gavrilov-Bechhoefer、Dago-Bellon、Ciampini et al. は、消去費用がポテンシャル非対称性、有限時間、慣性、初期非平衡資源に依存することを示す donor である [12-15]。Toyabe / Koski 系は feedback と mutual information の熱力学会計であり、erasure curvature の直接測定ではない [16-18]。よって C6 が言えるのは、合成順序に依存する忘却が物理的消去へ実装された場合、その差分が経路依存的な消去価格として観測されうる、までである。
 
 ---
 
@@ -330,7 +368,7 @@ tr = 2, det = -2 という普遍不変量は、忘却論への新しい輸入で
 
 **第一: 格子ゲージ理論の先例 (Wilson 1974)**。連続ゲージ理論 (Yang-Mills) の離散版としての格子ゲージ理論には、50 年の主流物理学の蓄積がある。格子上の plaquette action は、連続曲率 tensor $F_{\mu\nu}$ の離散版である。両者は連続極限で接続する。automath の carry defect と忘却論の忘却曲率 $F_{ij}$ の関係は、Wilson 格子の plaquette と Yang-Mills の $F_{\mu\nu}$ の関係と構造同型である。ここで言う「離散版」は、全域定理というより、連続版の**局所的な離散模型**としての資格を持つ、という意味である。
 
-**第二: 圏論的単体 $\Delta^n$ の橋**。Paper I Appendix B は、圏論的単体 $\Delta^n$、すなわち離散確率分布上で、方向性定理の具体計算を完了した。$\Delta^n$ 上の Chebyshev 1-形式は $T_i = 1 - (n+1)p_i$ である。指数型族ゆえに $dT = 0$ が成り立つ。一様分布 $(1/3, 1/3, 1/3)$ では $F_{12} = 0$ である。非対称点 $(0.15, 0.15, 0.70)$ では $F_{12} = -2.728$ である。$\Delta^n$ は $\{0,1\}^n$ の統計多様体への持ち上げの自然候補である。各 bit 位置を Bernoulli 確率変数と読めば、安定語 (No11 制約) は Bernoulli 積空間の制約付き部分多様体に対応する。carry defect は、この部分多様体上の $F_{ij}$ の離散制限である。
+**第二: 圏論的単体 $\Delta^n$ の橋**。Paper I Appendix B は、圏論的単体 $\Delta^n$、すなわち離散確率分布上で、方向性定理の具体計算を完了した。$\Delta^n$ 上の Chebyshev 1-形式は $T_i = 1 - (n+1)p_i$ である。指数型族ゆえに $dT = 0$ が成り立つ。一様分布 $(1/3, 1/3, 1/3)$ では $F_{12} = 0$ である。非対称点 $(0.15, 0.15, 0.70)$ では $F_{12} = -2.728$ である。$\Delta^n$ は $\{0,1\}^n$ の統計多様体への持ち上げの自然候補である。各 bit 位置を Bernoulli 確率変数と読めば、安定語 (No11 制約) は Bernoulli 積空間の制約付き部分多様体に対応する。carry defect は、この部分多様体上で方向性定理を有限・離散 obstruction model として可視化する witness である。
 
 **第三: Baez–Stay (2009) の「Rosetta Stone」方法論**。異なる圏のあいだの構造的類似そのものが、数学的対象である。自然変換である。automath と忘却論の対応を自然変換として構成すること、それが離散化関手 $D$ の関手性を証明することに他ならない。Baez–Stay は、物理学・位相・論理・計算の対応を、「単なる比喩」としてでなく、「関手的対応」として定式化した。本稿の第一主張も同じ方法論に従う。
 
@@ -422,10 +460,10 @@ $$\lim_{n \to \infty} \frac{|A(n)|}{|A(n-1)|} = \varphi$$
 
 以上で C3-core の骨格は
 
-> 排他性
-> grade 分離
-> `A(n)=A(n-1)\sqcup A(n-2)`
-> Fibonacci
+> 排他性  
+> grade 分離  
+> `A(n)=A(n-1)\sqcup A(n-2)`  
+> Fibonacci  
 > seed-free asymptotic growth rate = `\varphi`
 
 の順に定まる。Route A はこの core の離散証人、Route C はその容量版の系、Route B は得られた $\varphi$ を Kalon と読む解釈である。
@@ -436,8 +474,8 @@ $$\lim_{n \to \infty} \frac{|A(n)|}{|A(n-1)|} = \varphi$$
 
 **C3-core の残る proof debt.**
 
-1. **`ℤ_2 \to \mathbb{N}` の次数拡張** — Paper III の反可換構造を、n-cell tower の grade へどう持ち上げるか。補題 F2.1c の内部構成が要る。
-2. **seed の確定** — `|A(1)|`, `|A(1.5)|` を実際に数え、再帰を tower 全体の具体列へ落とす必要がある。これは Corollary F2.2 の漸近主張とは別の debt である。
+1. **`ℤ_2 \to \mathbb{N}` の次数拡張** — Paper III の反可換構造を、n-cell tower の grade へどう持ち上げるか。補題 F2.1c の内部構成が要る。  
+2. **seed の確定** — `|A(1)|`, `|A(1.5)|` を実際に数え、再帰を tower 全体の具体列へ落とす必要がある。これは Corollary F2.2 の漸近主張とは別の debt である。  
 3. **連続極限リフト** — 「連続では見えないだけ」を slogan で終えず、なぜ公理計数が微分幾何へ溶けるかの橋を作る必要がある。
 
 Lean 4 による autoformalization は、この三件が見えた後の **verification layer** である。本体ではない。先に spine を閉じ、その後に機械検証へ渡す。
@@ -448,6 +486,7 @@ Lean 4 による autoformalization は、この三件が見えた後の **verifi
 - **C3 verification layer**: C3-core の recurrence と系 F2.2 を Lean 4 へ落とし、その後で具体列と連続リフトを追加する。autoformalization は proof debt の代用品ではなく、閉じた spine の検証器である
 - **C2 (forcing $\leftrightarrow$ $\alpha$-filtration)**: automath の 11-layer conservative extension と、忘却論の $\alpha$-忘却濾過 (Paper VIII) の対応を精密化する。layer 数の不一致 (11 vs. 8) を解く正規化写像を構成する
 - **三者統合**: automath の Rosetta Stone (Lean 4) × The Omega (Von Neumann algebras + QCA) × 忘却論 (category theory + information geometry) を統合する。三つの独立言語が同じ構造を記述するなら、その構造こそが物理学の文法である
+- **対称性は非対称世界の特殊解として読める** (Tolmetes 2026-05-08): §2.4 共通構造の対応表は、対称的世界 (carry indicator $\kappa = 0$ / Levi-Civita 接続 $\alpha = 0$) を非対称世界 ($\kappa = 1$ / $\alpha \neq 0$) の特殊解として読み返す射影を含意する。Paper VIII が派生する $|F| = g_{\mathrm{eff}} \cdot |T|_g$ は忘却曲率テンソル $F_{ij}$ にノルム射影 (= 方向情報の忘却) を適用して導出されるため、ニュートン力学は忘却論が自身の方向情報を忘却した像として位置づけられる。本稿ではこれを **carry defect の存在論的射影 (existential reading)** と呼び、C4 の射程 (Paper I C5 を物理的同一視に折りたたむ overclaim の禁止) を保ったまま支線として記録する
 
 ---
 
@@ -457,7 +496,7 @@ Lean 4 による autoformalization は、この三件が見えた後の **verifi
 
 完全結晶には転位がない。単一通貨には丸め誤差がない。全情報を保存する系は力を生まない。これらは個別例である。より深い命題は次である。**射影は合成を壊し、Pauli 排他律が、その壊れ方の蓄積速度を規定する。**
 
-automath が Lean 4 で証明したのは、この命題の離散版である。忘却論が統計多様体上で予想したのは、その連続版である。両プロジェクトは互いを知らずに、同じ定理の異なるインスタンスを独立に導いた。
+automath が Lean 4 で証明したのは、この命題の有限・離散側の obstruction witness と strict / chain-map 部分である。忘却論が統計多様体上で予想したのは、その連続側の方向性定理と Open C の橋である。両プロジェクトは互いを知らずに、同じ構造の異なる層を独立に導いた。
 
 これは偶然ではない。
 
@@ -485,3 +524,13 @@ automath は格子上にとどまる。だから $\varphi$ を見る。忘却論
 - [6] Makaron (2026d). 存在は忘却に先行する — 容器/内容の cell 次元論と CPS0' の米田的導出. Paper VIII. 忘却論シリーズ.
 - [7] Wilson, K. G. (1974). Confinement of quarks. *Physical Review D*, 10(8), 2445–2459. https://doi.org/10.1103/PhysRevD.10.2445
 - [8] Baez, J. C., & Stay, M. (2009). Physics, topology, logic and computation: A Rosetta Stone. arXiv:0903.0340. https://arxiv.org/abs/0903.0340
+- [9] Landauer, R. (1961). Irreversibility and heat generation in the computing process. *IBM Journal of Research and Development*, 5(3), 183–191. https://doi.org/10.1147/rd.53.0183
+- [10] Bennett, C. H. (1973). Logical reversibility of computation. *IBM Journal of Research and Development*, 17(6), 525–532. https://doi.org/10.1147/rd.176.0525
+- [11] Bérut, A., Arakelyan, A., Petrosyan, A., Ciliberto, S., Dillenschneider, R., & Lutz, E. (2012). Experimental verification of Landauer's principle linking information and thermodynamics. *Nature*, 483, 187–189. https://doi.org/10.1038/nature10872
+- [12] Gavrilov, M., & Bechhoefer, J. (2016). Erasure without work in an asymmetric double-well potential. *Physical Review Letters*, 117, 200601. https://doi.org/10.1103/PhysRevLett.117.200601
+- [13] Dago, S., Pereda, J., Barros, N., Ciliberto, S., & Bellon, L. (2021). Information and thermodynamics: Fast and precise approach to Landauer's bound in an underdamped micro-mechanical oscillator. *Physical Review Letters*, 126, 170601. https://doi.org/10.1103/PhysRevLett.126.170601
+- [14] Dago, S., & Bellon, L. (2022). Dynamics of information erasure and extension of Landauer's bound to fast processes. *Physical Review Letters*, 128, 070604. https://doi.org/10.1103/PhysRevLett.128.070604
+- [15] Ciampini, M. A., Wenzl, T., Konopik, M., Thalhammer, G., Aspelmeyer, M., Lutz, E., & Kiesel, N. (2021). Experimental nonequilibrium memory erasure beyond Landauer's bound. arXiv:2107.04429. https://arxiv.org/abs/2107.04429
+- [16] Toyabe, S., Sagawa, T., Ueda, M., Muneyuki, E., & Sano, M. (2010). Experimental demonstration of information-to-energy conversion and validation of the generalized Jarzynski equality. *Nature Physics*, 6, 988–992. https://doi.org/10.1038/nphys1821
+- [17] Koski, J. V., Maisi, V. F., Pekola, J. P., & Averin, D. V. (2014). Experimental realization of a Szilard engine with a single electron. *Proceedings of the National Academy of Sciences*, 111(38), 13786–13789. https://doi.org/10.1073/pnas.1406966111
+- [18] Koski, J. V., Maisi, V. F., Sagawa, T., & Pekola, J. P. (2014). Experimental observation of the role of mutual information in the nonequilibrium dynamics of a Maxwell demon. *Physical Review Letters*, 113, 030601. https://doi.org/10.1103/PhysRevLett.113.030601

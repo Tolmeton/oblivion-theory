@@ -48,6 +48,7 @@ This public edition can lag behind the private working archive that tracks plann
 - Core expansion: Paper VI, Paper VII, Paper VIII
 - Technical bridges: Paper II, Paper III, Paper V, Paper IX, Paper XII, Paper XIV
 - Exploratory frontier: Paper X, Paper XI, Paper XIII
+- Synthesis: Paper XV
 - Companion branches: mathematical foundations, comparison morphism formalization, and free-energy drafts in [02_伴走枝｜Companion/README.md](02_伴走枝｜Companion/README.md)
 
 ## Papers
@@ -71,6 +72,7 @@ This public edition can lag behind the private working archive that tracks plann
 | XII | Absence Outruns Presence | concept draft | Kinematics of distinguishability boundaries |
 | XIII | Spacetime is Oblivion | concept draft | CPS span to spacetime dictionary |
 | XIV | Curvature is the Carry of Oblivion | concept draft | Discrete carry as directional oblivion |
+| XV | Oblivion Precedes Mathematics and Physics | concept draft | Series synthesis: oblivion as prior to mathematics and physics |
 
 ### Companion Drafts
 

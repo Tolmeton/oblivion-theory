@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: How to engage and cite
+    url: https://github.com/Tolmeton/oblivion-theory/blob/main/CONTRIBUTING.md
+    about: Read this first — what this archive invites, what is out of scope, and how to cite.

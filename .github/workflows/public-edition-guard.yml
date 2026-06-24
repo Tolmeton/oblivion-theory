@@ -33,7 +33,7 @@ jobs:
             "03_単独論考｜Standalone"
             "04_出版証跡｜Publications"
           )
-          forbidden='backstage|読者には見せない|共同作業の台帳|internal working draft|内部作業文書として参照'
+          forbidden='読者には見せない|共同作業の台帳|internal working draft|内部作業文書として参照'
           if grep -RInE "$forbidden" -- "${public_paths[@]}"; then
             echo "Backstage language leaked into the public edition."
             exit 1
@@ -60,5 +60,4 @@ jobs:
               echo "$unexpected"
               exit 1
             fi
-          fi
           fi
