@@ -6,6 +6,18 @@
 
 This repository is the public reading edition of **Oblivion Theory**. It is a reader-facing archive for papers and essays, not the internal research ledger or the private production source.
 
+## What is Oblivion Theory?
+
+Oblivion Theory rests on a single core claim: **forgetting is the precursor operation that brings mathematical structure and physical law into being.** The theory formalizes this operation as a categorical adjunction, **free ⊣ forgetful**, and seeks to show that force, perception, existence, entropy, and spacetime are all different projections of this one operation.
+
+The theory first defines *freedom* as the generalization, to the cognitive and informational setting, of the same kind of margin that thermodynamics calls Helmholtz free energy — the margin "still extractable as external work" — and then defines *forgetting* as the concept paired with it.
+
+In this theory, *freedom* is the state in which, under a given frame of observation, differences, options, interpretations, and possibilities for action have not yet converged into a single structure, but are held open as a margin still convertible into work, action, or interpretation.
+
+*Forgetting*, by contrast, is the movement that decreases this freedom — a change of state. It is the operation that equates the differences and differentials between states, lets distinguishability be lost, and converges the system toward a state with less room for variation. This theory uses "forgetting" to name the state thus reached as well as the operation itself. In categorical terms, the forgetful functor does not erase the existence of objects; it identifies morphisms that were once distinct. The information itself does not vanish — only the distinctions between pieces of information fade away.
+
+In short, forgetting consumes freedom and converges; freedom opens up forgettable differences and diffuses. Categorically, freedom is the left adjoint (the free functor, the side that generates new distinctions) and forgetting is the right adjoint (the forgetful functor, the side that folds distinctions away). Neither alone makes a system move: with freedom alone, no state settles; with forgetting alone, no new state-possibility can be opened.
+
 ## Status Notice
 
 All papers in this repository are **concept drafts**. They are unfinished
