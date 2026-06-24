@@ -8,9 +8,9 @@
 まずこの順で読んでください。
 
 1. [README.ja.md](README.ja.md)
-2. [papers/series/論文I_力としての忘却_草稿.md](papers/series/%E8%AB%96%E6%96%87I_%E5%8A%9B%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AE%E5%BF%98%E5%8D%B4_%E8%8D%89%E7%A8%BF.md)
-3. [papers/series/論文VII_知覚は忘却である_草稿.md](papers/series/%E8%AB%96%E6%96%87VII_%E7%9F%A5%E8%A6%9A%E3%81%AF%E5%BF%98%E5%8D%B4%E3%81%A7%E3%81%82%E3%82%8B_%E8%8D%89%E7%A8%BF.md)
-4. [papers/series/論文VIII_存在は忘却に先行する_草稿.md](papers/series/%E8%AB%96%E6%96%87VIII_%E5%AD%98%E5%9C%A8%E3%81%AF%E5%BF%98%E5%8D%B4%E3%81%AB%E5%85%88%E8%A1%8C%E3%81%99%E3%82%8B_%E8%8D%89%E7%A8%BF.md)
+2. [01_本編シリーズ｜Series/01_論文I_力としての忘却.md](01_本編シリーズ｜Series/01_論文I_力としての忘却.md)
+3. [01_本編シリーズ｜Series/07_論文VII_知覚は忘却である.md](01_本編シリーズ｜Series/07_論文VII_知覚は忘却である.md)
+4. [01_本編シリーズ｜Series/08_論文VIII_存在は忘却に先行する.md](01_本編シリーズ｜Series/08_論文VIII_存在は忘却に先行する.md)
 
 ## 読み筋
 
@@ -44,10 +44,10 @@
 
 本体の文法を入れたあと、隣接する展開 branch を見たいなら:
 
-1. [伴走ドラフト入口](drafts/companion/README.md)
-2. [数学の忘却論 — 数の基礎](drafts/companion/数学の忘却論_数の基礎/数学の忘却論_数の基礎シリーズ.claimmap.md)
-3. [比較射σと形式化](drafts/companion/比較射σと形式化/比較射σと形式化シリーズ.claimmap.md)
-4. [忘却と自由エネルギー](drafts/companion/忘却と自由エネルギー/忘却と自由エネルギーシリーズ.claimmap.md)
+1. [伴走ドラフト入口](02_伴走枝｜Companion/README.md)
+2. [数学の忘却論 — 数の基礎](02_伴走枝｜Companion/数学の忘却論_数の基礎/構造地図.md)
+3. [比較射σと形式化](02_伴走枝｜Companion/比較射σと形式化/構造地図.md)
+4. [忘却と自由エネルギー](02_伴走枝｜Companion/忘却と自由エネルギー/構造地図.md)
 
 ## 状態ラベルの読み方
 
